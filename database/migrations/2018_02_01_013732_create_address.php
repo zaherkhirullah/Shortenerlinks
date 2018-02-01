@@ -14,7 +14,14 @@ class CreateAddress extends Migration
     public function up()
     {
         Schema::table('address', function (Blueprint $table) {
-            //
+            $table->increments('id');
+            $table->integer('city_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->string('state',255);
+            $table->string('Address1');
+            $table->string('Address2')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -24,9 +31,7 @@ class CreateAddress extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::table('address', function (Blueprint $table) {
-            //
-        });
+    {  
+        Schema::dropIfExists('address');
     }
 }

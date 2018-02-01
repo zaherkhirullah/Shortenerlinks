@@ -12,11 +12,11 @@ class CreateWithdrawTable extends Migration
         Schema::create('withdraws', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('status',256);
             $table->float('amount')->scale(6)->precision(50)->default(0);
-            $table->integer('payment_id');
-            $table->string('transaction_id')->nullable();
+            $table->integer('withdrawal_method_id')->unsigned();
+            $table->string('transaction_id')->default('-');
             $table->boolean('isDeleted')->default(0);
+            $table->string('status',256)->comment('active','pending','cancle');
             $table->timestamps();
         });  
     }

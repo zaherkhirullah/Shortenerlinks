@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Domain;
 use App\User;
+use App\AdsTypes;
 class file extends Model
 {
   protected $fillable = ['user_id','status','url','title','description','hits','isDeleted  ','domain_id', ];
@@ -30,5 +31,9 @@ class file extends Model
       public function User()
      {
        return $this->belongsTo(User::class); 
+     }
+     public function AdsTypes()
+     {
+       return $this->belongsTo(AdsTypes::class); 
      }
 }

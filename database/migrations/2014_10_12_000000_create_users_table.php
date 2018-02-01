@@ -16,20 +16,15 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->boolean('confirm_email')->default(0);
             $table->string('password',255);
-            $table->string('phone_number',255)->default(0);
-            $table->string('address1',255)->default(0);
-            $table->string('address2',255)->nullable();
-            $table->string('city',255)->default(0);
-            $table->string('state',255)->default(0);
-            $table->string('zip',255)->default(0);
-            $table->string('country',255)->default(0);
-            $table->string('withdrawal_email',255)->default(0);
-            $table->string('withdrawal_method',255)->default(0);
-            $table->float('advertiser_balance',255)->default(0);
-            $table->float('publisher_balance',255)->default(0);
-            $table->integer('role')->comment('owner,admin,user')->default(3);
-            $table->string('status',255)->comment('active,pending,inactive')->default(3);
             $table->string('avatar',255)->nullable();
+            $table->string('phone_number',255)->default(0);
+            $table->string('withdrawal_email',255)->default('-');
+            $table->float('advertiser_balance',255)->default('-');
+            $table->float('publisher_balance',255)->default('-');
+            $table->integer('role')
+            ->comment('owner,admin,user')->default(3);
+            $table->string('status',255)
+            ->comment('active,pending,inactive')->default(3);
             $table->boolean('isDeleted')->default(0);
             $table->rememberToken();
             $table->timestamps();

@@ -14,7 +14,10 @@ class CreateCountry extends Migration
     public function up()
     {
         Schema::table('country', function (Blueprint $table) {
-            //
+           $table->increments('id');
+            $table->string('sembol');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class CreateCountry extends Migration
      */
     public function down()
     {
-        Schema::table('country', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('country');
     }
 }

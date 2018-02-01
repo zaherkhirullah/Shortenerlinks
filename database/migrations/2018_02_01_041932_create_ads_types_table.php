@@ -15,6 +15,9 @@ class CreateAdsTypesTable extends Migration
     {
         Schema::create('ads_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->boolean('isDeleted')->default(0);
             $table->timestamps();
         });
     }
