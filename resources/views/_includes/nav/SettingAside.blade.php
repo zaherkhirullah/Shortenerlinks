@@ -7,9 +7,9 @@
 						<img src="https://ouo.io/images/avatar.jpg" class="img-circle">
 					</a>
 					<div class="clear">
-						<div class="h3 m-t-xs m-b-xs font-thin"> User Name</div>
+						<div class="h3 m-t-xs m-b-xs font-thin"> {{Auth::user()->username}} </div>
 						<small class="text-muted">
-							<i class="fa fa-envelope-o"></i> email@gmail.com
+							<i class="fa fa-envelope-o"> </i> {{ Auth::user()->email }}
 						</small>
 					</div>
 				</div>

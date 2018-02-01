@@ -30,11 +30,11 @@
 	<!--/ Head-->
 	<body >
 		<section class="vbox">
-			@include("_includes.nav.header")
+			@include("_includes.admin.header")
 			<section id="main" class="hbox stretch">
 				<aside class="bg-dark lter aside-md hidden-print" id="nav" data-pjax="true">
 				<div>
-					@include("_includes.nav.aside")
+					@include("_includes.admin.aside")
 			 	</div>
 			    </aside>
 				<section id="content">

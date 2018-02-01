@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.adlayout')
 
 @section('content')
 <section class="col-md-8">

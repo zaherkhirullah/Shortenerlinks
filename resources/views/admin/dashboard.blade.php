@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.adlayout')
 <!-- <?php
 // $this->assign('title', __('Dashboard'));
 // $this->assign('description', '');
@@ -48,7 +48,7 @@
                         <p>Total Earnings</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-shopping-bag">
+                        <i class="fa fa-shopping-cart">
                         </i>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     <p>Total Earnings</p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-shopping-bag">
+                    <i class="fa fa-shopping-cart">
                     </i>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                 <p>Total Earnings</p>
             </div>
             <div class="icon">
-                <i class="fa fa-shopping-bag">
+                <i class="fa fa-shopping-cart">
                 </i>
             </div>
         </div>

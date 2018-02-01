@@ -15,12 +15,14 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-             $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('domain_id')->unsigned();
             $table->string('status',256)->comment('active,inactive,hidden');
             $table->string('url',500);
             $table->string('title',256);
             $table->string('description')->nullable();
             $table->integer('hits')->unsigned();
+            $table->boolean('isDeleted')->default(0);
             $table->timestamps();
         });
     }

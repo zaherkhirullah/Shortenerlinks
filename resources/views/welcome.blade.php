@@ -13,7 +13,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/landing.css') }}" type="text/css">
@@ -46,18 +46,19 @@
                         <li class="nav-item">
                             <a href="http://Shortenerlinks/rates">Payout Rates</a>
                         </li>
-                            <li class="dropdown nav-item">
-                         <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                          <i class="fa fa-language" aria-hidden="true"></i>
-                                  <span class="caret"></span>
-                              </a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">العربية</a></li>
-                                  </ul>
-                         
-                         </li>
-                        
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
+                                <i class="fa fa-language" aria-hidden="true"></i> Languages
+                                <span class="caret"></span>
+                            </a> 
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">العربية</a></li>
+                            </ul>
+
+                        </li>
+
                         @if (Route::has('login'))
                         @auth
                         <li class="nav-item nav-item-cta last">

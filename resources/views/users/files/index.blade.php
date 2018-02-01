@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-        <section class="vbox lter box box-info">
+        <section class="lter box box-info">
             <header class="box-header with-border">
                 <h3 class="box-title">
                     <i class="fa fa-file-o">
@@ -14,28 +14,35 @@
                     <button type="button" class="btn btn-box-tool" data-widget="collapse">
                         <i class="fa fa-minus"></i>
                     </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove">
-                        <i class="fa fa-times"></i>
-                    </button>
+                  
                 </div>
             </header>
             <!-- /.box-header -->
-            <div class="footer b-t bg-white-only">
-                <form class="m-t-sm">
-                    <div class="input-group">
-                        <input type="text" class="input-sm form-control input-s-sm" placeholder="Search" disabled="">
-                        <div class="input-group-btn">
-                            <button class="btn btn-sm btn-default" disabled="">
-                                <i class="fa fa-search">
-                                </i>
-                            </button>
-                        </div>
+          
+        <div class="footer b-t bg-white-only"> 
+         <div class="col-md-3 " style="top:10px;">
+            <a href="{{url('user/files/create')}}" type="button" class="btn btn-info btn-md">
+             <i class="fa fa-file"></i>
+               Add New File
+            </a>
+         </div>
+           <div class="col-md-5 pull-right">
+            <form class="m-t-sm">
+                <div class="input-group">
+                    <input type="text" class="input-sm form-control input-s-sm" placeholder="Search" disabled="">
+                    <div class="input-group-btn">
+                     <button class="btn btn-sm btn-default" >
+                            <i class="fa fa-search">
+                            </i>
+                        </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
+      </div>
             <!--/ SEARCH BOX -->
 
-                <section class="scrollable hover">
+                <section class="box-body">
                     <table class="table table-striped table-hover table-flip-scroll cf">
                         <tbody>
                             @for ($i = 0; $i < 10; $i++)
@@ -51,26 +58,24 @@
                                     <div class="pos-rlt">
                                         <button class="btn btn-Download text-info" data-clipboard-text="http://ouo.io/8qRygF" data-toggle="button">
                                             <span class="text">
-                                                <i class="fa fa-download">
-                                                </i> Download
+                                                <i class="fa fa-download"> </i> Download
                                             </span>
                                             <span class="text-active">
-                                                <i class="fa fa-check">
-                                                </i> Download
+                                               Downloaded
                                             </span>
                                         </button>
                                     </div>
                                 </td>
-                                <td>
-                                    <a href="#edit-file" data-toggle="modal"
-                                    class="btn btn-info text-muted" >
+                                <td class="pull-right">
+                                   <a href="#edit-file" data-toggle="modal"
+                                    class="btn btn-xs btn-info text-muted" >
                                         <span class="text">
                                             <i class="fa fa-edit">
                                             </i> 
                                         </span>
                                          </a>
                                         <a href="#delete-file" data-toggle="modal"
-                                        class="btn btn-danger text-muted" >
+                                        class="btn btn-xs btn-danger text-muted" >
                                         <span class="text">
                                             <i class="fa fa-trash">
                                             </i> 
@@ -89,7 +94,7 @@
         <div class="modal-content bg-danger">
             <div class="modal-body">
                 <div class="padder">
-                    {!! Form::open(array ('route' => 'deletefile', 'method'  => 'delete','class'  => 'form-delete'  ,'id'  => 'form-delete' )) !!}
+                    {!! Form::open($deleteform) !!}
 
                     <h4 id="msg-shorten">Delete Shorten File</h4>
                     <p>Are You Sure You Want Delete This item ?</p> 

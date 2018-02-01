@@ -1497,21 +1497,23 @@ a:hover .caret-white{border-top-color:#fff}
 .modal-content{-webkit-box-shadow:0 2px 10px rgba(0,0,0,.25);box-shadow:0 2px 10px rgba(0,0,0,.25)}
 .icon-muted{color:#ccc}
 .navbar-inverse .navbar-collapse,.navbar-inverse .navbar-form{border-color:transparent}
-@media (min-width:768px){.app,.app body{width:100%;height:100%;overflow:hidden}
+@media (min-width:768px)
+{
+.app,.app body{width:100%;height:100%; overflow: auto;}
 .app .hbox.stretch{height:100%}
 .app .vbox>footer,.app .vbox>section{position: relative;top: 0;}
-.app .vbox.flex>section>section{overflow:auto}
+.app .vbox.flex>section>section{overflow:auto;}
 .hbox{display:table;table-layout:fixed;border-spacing:0;width:100%}
 .hbox>aside,.hbox>section{display:table-cell;vertical-align:top;height:100%;padding:0;float:none}
 .hbox>aside.hidden-sm,.hbox>aside.show,.hbox>section.hidden-sm,.hbox>section.show{display:table-cell!important}
-.vbox{display:table;border-spacing:0;position:relative;height:100%;width:100%;top: 4px;}
-.vbox>footer,.vbox>section{top:0;bottom:0;width:100%}
+.vbox{display:table;border-spacing:0;position:relative;height:100%;width:100%;min-height: 520px;top: 0;}
+.vbox>footer,.vbox>section{top:0;bottom:0;width:100%;}
 .vbox>header~section{top: 50px;}
-.vbox>section.w-f{bottom:50px}
+.vbox>section.w-f{bottom:50px;}
 .vbox>footer{top:auto;z-index:1000}
 .vbox>footer~section{bottom:50px}
 .vbox.flex>footer,.vbox.flex>header,.vbox.flex>section{position:inherit}
-.vbox.flex>section{display:table-row;height:100%}
+.vbox.flex>section{display:table-row;height:100%;}
 .vbox.flex>section>section{position:relative;height:100%;-webkit-overflow-scrolling:touch}
 .ie .vbox.flex>section>section{display:table-cell}
 .vbox.flex>section>section>section{position:absolute;top:0;bottom:0;left:0;right:0}
@@ -1542,8 +1544,8 @@ a:hover .caret-white{border-top-color:#fff}
 .footer .nav-tabs.nav-white>li.active a,.footer .nav-tabs.nav-white>li.active a:hover,.header .nav-tabs.nav-white>li.active a,.header .nav-tabs.nav-white>li.active a:hover{background-color:#fff}
 .footer.navbar,.header.navbar{min-height:0;border-radius:0;border:none;margin-bottom:0;padding:0}
 .scrollable{overflow-x:hidden;overflow-y:auto}
-.no-touch .scrollable.hover{overflow-y:hidden}
-.no-touch .scrollable.hover:hover{overflow:visible;overflow-y:auto}
+.no-touch .scrollable-hover{overflow-y:hidden}
+.no-touch .scrollable-hover:hover{overflow:visible;overflow-y:auto}
 @media print{.hbox,.vbox,body,html{height:auto}
 .vbox>footer,.vbox>section{position:relative}
 }

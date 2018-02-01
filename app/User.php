@@ -4,27 +4,52 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\link;
+use App\file;
+use Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'first_name',   'last_name', 'email', 'password', 'username', 'avatar',
-
+    protected $fillable =
+     [
+      'first_name','last_name','username','email','confirm_email','password',
+      'phone_number','address1','address2','city','state','zip','country',
+      'withdrawal_email','withdrawal_method','advertiser_balance',
+      'publisher_balance','role','status','avatar','isDeleted',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = [ 'password', 'remember_token',];
+  
+      public function UserId()
+      {
+        return Auth::id();
+      } 
+
+     // list All users
+      public function users()
+      {
+       return $this->where('isDeleted','0')->orderBy('created_at','desc');
+      }
+     // list of  users has been deleted and list (Desc) by create date
+      public function deletedusers()
+      {
+       return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+      }
+     public function links()
+     {
+         return $this->hasMany(link::class)->orderBy('created_at','desc');
+     }
+     public function files()
+     {
+         return $this->hasMany(file::class)->orderBy('created_at','desc');
+     }
+     public function Userlinks()
+     {
+         return $this->links()->where([['user_id',UserId()]]);
+     }
+     public function Userfiles()
+     {
+         return $this->files()->where([['user_id',UserId()]]);
+     }
 }
