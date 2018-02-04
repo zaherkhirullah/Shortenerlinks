@@ -8,6 +8,12 @@ use App\Http\Requests\FileValidation;
 
 class fileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(file $file)
     {
         // Show list of files

@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
- public function dashboard()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function dashboard()
     {
      return view('users.dashboard');
     }

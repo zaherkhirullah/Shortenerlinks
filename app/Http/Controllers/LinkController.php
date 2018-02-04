@@ -6,9 +6,15 @@ use App\link;
 use Illuminate\Http\Request;
 use App\Http\Requests\LinkValidation;
 use App\Domain;
+use App\AdsTypes;
+
 class LinkController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(link $link)
     {
         // Show list of links
@@ -24,11 +30,10 @@ class LinkController extends Controller
 
         $domains = Domain::pluck('name', 'id');
         $selectedDomain = 2;
-        $ads=Domain::pluck('name', 'id');
+        $ads=AdsTypes::pluck('name', 'id');
         $selectedAds =1;
 
         return view('users.links.create',compact('domains','selectedDomain','ads','selectedAds'));
-
     }
 
     public function store(LinkValidation $request)
@@ -95,9 +100,7 @@ class LinkController extends Controller
           'user_id'    => Auth::id(),
           'domain_id'  => $data['domain_id'],
           'ad_id'      => $data['ad_id'],
-          'title'      => $data['title'],
           'alias'      => $data['alias'],
-          'about'      => $data['about'],
           'status'     => $data['status'],
           'url'        => $data['url'],
           'description'=> $data['description'],

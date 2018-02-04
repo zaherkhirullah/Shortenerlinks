@@ -8,7 +8,7 @@ class CreateWithdrawMethodsTable extends Migration
 {
     public function up()
     { 
-        Schema::create('WithdrawMethods', function (Blueprint $table) {
+        Schema::create('withdraw_methods', function (Blueprint $table) {
             $table->increments('id');
              $table->string('name',100);
             $table->float('min_amount')->default(5);
@@ -20,6 +20,6 @@ class CreateWithdrawMethodsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('payment_ways');
+        Schema::dropIfExists('withdraw_methods');
     }
 }

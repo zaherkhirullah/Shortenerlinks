@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateAdsTypesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('ads_types', function (Blueprint $table) {
@@ -22,11 +18,6 @@ class CreateAdsTypesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('ads_types');

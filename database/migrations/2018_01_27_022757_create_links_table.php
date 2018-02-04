@@ -22,7 +22,7 @@ class CreateLinksTable extends Migration
             $table->string('url',500);
             $table->string('original_url',500);
             $table->string('alias',256);
-            $table->integer('hits')->unsigned();
+            $table->string('hits')->default(0); // ziaretci
             $table->boolean('isDeleted')->default(0);
             $table->string('status',256)->comment('active,inactive,hidden');
             $table->timestamps();
