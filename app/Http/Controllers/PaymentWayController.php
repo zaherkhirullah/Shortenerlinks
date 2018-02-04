@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\paymentWay;
+use App\Http\Models\paymentWay;
 use Illuminate\Http\Request;
 
 class PaymentWayController extends Controller

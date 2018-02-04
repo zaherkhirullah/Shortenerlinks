@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\campaigns;
+use App\Http\Models\campaigns;
 use Illuminate\Http\Request;
 
 class CampaignsController extends Controller

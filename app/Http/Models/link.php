@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Domain;
+use App\Http\Models\Domain;
 use App\User;
-use App\AdsTypes;
+use App\Http\Models\AdsTypes;
 class link extends Model
 {
      protected $fillable = ['user_id','domain_id','ad_id',

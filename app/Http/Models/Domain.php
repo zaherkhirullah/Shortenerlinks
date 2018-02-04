@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\link;
-use App\file;
+use App\Http\Models\link;
+use App\Http\Models\file;
 class Domain extends Model
 {
     //

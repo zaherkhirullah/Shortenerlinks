@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class role extends Model
+class withdraw extends Model
 {
     //
 }

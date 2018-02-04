@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\file;
+use App\Http\Models\file;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 

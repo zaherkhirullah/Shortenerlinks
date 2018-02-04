@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\withdrows;
+use App\Http\Models\withdrows;
 use Illuminate\Http\Request;
 
 class WithdrowsController extends Controller

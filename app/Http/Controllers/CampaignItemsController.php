@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\campaign_items;
+use App\Http\Models\campaign_items;
 use Illuminate\Http\Request;
 
 class CampaignItemsController extends Controller

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\link;
 use Illuminate\Http\Request;
 use App\Http\Requests\LinkValidation;
-use App\Domain;
-use App\AdsTypes;
+
+use App\Http\Models\Domain;
+use App\Http\Models\AdsTypes;
+use App\Http\Models\link;
 
 class LinkController extends Controller
 {
