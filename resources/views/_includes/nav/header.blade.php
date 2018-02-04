@@ -18,9 +18,20 @@
             <li>
                 <a href="/admin/dashboard"> Admin</a>
             </li>
+            <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
+                                <i class="fa fa-language" aria-hidden="true"></i> Languages
+                                <span class="caret"></span>
+                            </a> 
 
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">العربية</a></li>
+                            </ul>
+
+                        </li>
             <li class="hidden-xs">
-                <a href="/manage/home" class="dropdown-toggle dk" data-toggle="dropdown">
+                <a href="/manage/home" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bell">
                     </i>
                 </a>

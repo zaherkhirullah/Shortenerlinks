@@ -2,6 +2,15 @@
 
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <section class="scrollable padder">
 <section class="content">
 <div class="col-md-12">
@@ -20,7 +29,7 @@
 </div>
 <!-- /.box-header -->
 <div class="box-body" style="display: block;">
-
+@include('_includes.forms.addlink')
 <div class="box-short" id="shorterNew" >
 <div class="box box-solid shorten-member">
     <div class="box-body">

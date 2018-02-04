@@ -5,17 +5,20 @@ namespace App\Http\Middleware;
 use Closure;
 use Sentinel;
 
-class Admin
+class Visitor
 {
-
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
-    	$checkAdmin =Sentinel:: getUser()->roles()->first()->name;
-
-    	if(Sentinel::check()&& $checkAdmin == 'admin')
+        if(!Sentinel::check())
          return $next($request);
          else
             return redirect('/');
     }
-    
 }

@@ -11,7 +11,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="{{ asset('styles/app.css') }}" rel="stylesheet">
+<style type="text/css">
+    #app{
+        background: #111 url('../styles/home/images/background/bg-footer-1.jpg')  ;
+        background-size:  cover;
+min-height: 570px;
+    }
+</style>
+
 </head>
 <body>
     <div id="app">

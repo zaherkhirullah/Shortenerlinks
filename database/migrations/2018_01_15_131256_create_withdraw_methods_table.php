@@ -10,7 +10,7 @@ class CreateWithdrawMethodsTable extends Migration
     { 
         Schema::create('withdraw_methods', function (Blueprint $table) {
             $table->increments('id');
-             $table->string('name',100);
+            $table->string('name',100);
             $table->float('min_amount')->default(5);
             $table->string('icon')->nullable();
              $table->boolean('isDeleted')->default(0);
