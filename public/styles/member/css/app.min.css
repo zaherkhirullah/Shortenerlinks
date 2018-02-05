@@ -719,8 +719,8 @@ tbody.collapse.in{display:table-row-group}
 .dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box}
 .dropdown-menu.pull-right{right:0;left:auto}
 .dropdown-menu .divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
-.dropdown-menu>li>a{display:block;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap}
-.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{text-decoration:none;background-color:#f5f5f5}
+.dropdown-menu>li>a{display:block;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap;padding: 10px 15px;}
+.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{box-shadow: 0px 10px 20px -11px rgba(0,0,0,0.5);text-decoration:none;background-color:#f5f5f5}
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{text-decoration:none;background-color:#428bca;outline:0}
 .dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#777}
 .dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{text-decoration:none;cursor:not-allowed;background-color:transparent;background-image:none;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}
@@ -1458,7 +1458,7 @@ a:hover .caret-white{border-top-color:#fff}
 .dropdown-menu{font-size:13px;border-radius:4px;-webkit-box-shadow:0 2px 6px rgba(0,0,0,.1);box-shadow:0 2px 6px rgba(0,0,0,.1);border:1px solid #ddd;border:1px solid rgba(0,0,0,.1)}
 .dropdown-menu.pull-left{left:100%}
 .dropdown-menu>.panel{border:none;margin:-5px 0}
-.dropdown-menu>li>a{padding:5px 15px}
+.dropdown-menu>li>a{padding:10px 15px}
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{background-image:none;filter:none;background-color:#e8eff0!important;color:#717171}
 .dropdown-header{padding:5px 15px}
 .dropdown-submenu{position:relative}

@@ -13,6 +13,10 @@ class HomeController extends Controller
     // }
     public function index()
     {
-        return view('welcome');
+        return view('home.home');
+    }
+    public function rates()
+    {
+        return view('home.rates');
     }
 }

@@ -15,7 +15,7 @@
 		<meta name="description" content="{{ config('app.name', 'Shortener links') }} Publisher Backend">
 
 		<!-- Title -->
-		<title>{{ config('app.name', 'Shortener links') }}</title>
+		<title>{{ config('app.name', 'Shorter links') }}</title>
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="{{ asset('styles/member/css/dashboard.css') }}" type="text/css">

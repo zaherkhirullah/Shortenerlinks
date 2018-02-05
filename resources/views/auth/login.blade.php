@@ -24,7 +24,7 @@
                                         <i class="ion ion-ios-email"></i>
                                     </span>
 
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="email@shorter.link" required>
 
                                     @if ($errors->has('email'))
                                     <span class="help-block">

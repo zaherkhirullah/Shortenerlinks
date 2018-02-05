@@ -18,6 +18,10 @@ class CreateAddressTable extends Migration
              $table->increments('id');
             $table->string('sembol')->nullable();
             $table->string('name');
+            $table->float('link_price')
+                  ->scale(6)->precision(50)->default(0.40);
+            $table->float('file_price')
+                  ->scale(6)->precision(50)->default(0.40);
             $table->timestamps();
 
             $table->engine = 'InnoDB';

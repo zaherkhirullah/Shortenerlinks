@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Domain;
 use App\User;
 use App\Http\Models\AdsTypes;
+use App\Http\Models\folders;
 class link extends Model
 {
-     protected $fillable = ['user_id','domain_id','ad_id',
-     'status','url','alias','title','description','hits','isDeleted' , ];
+     protected $fillable = 
+     [
+      'user_id','domain_id','ad_id','folder_id','slug','clicks',
+      'status','url','alias','title','description','isDeleted',
+     ];
 
     // list All Links
       public function links()
@@ -34,6 +38,10 @@ class link extends Model
       public function User()
      {
        return $this->belongsTo(User::class); 
+     }
+       public function folders()
+     {
+       return $this->belongsTo(folders::class); 
      }
       public function AdsTypes()
      {

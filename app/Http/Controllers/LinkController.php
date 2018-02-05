@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\LinkValidation;
 
+use App\Http\Models\folders;
 use App\Http\Models\Domain;
 use App\Http\Models\AdsTypes;
 use App\Http\Models\link;
@@ -40,8 +41,10 @@ class LinkController extends Controller
         $selectedDomain = 2;
         $ads=AdsTypes::pluck('name', 'id');
         $selectedAds =1;
+        $folders=folders::pluck('name', 'id');
+        $selectedfolder =1;
 
-        return view('users.links.create',compact('domains','selectedDomain','ads','selectedAds'));
+        return view('users.links.create',compact('domains','selectedDomain','folders','selectedfolder','ads','selectedAds'));
     }
 
     public function store(LinkValidation $request)

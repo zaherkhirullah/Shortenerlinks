@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Domain;
 use App\User;
 use App\Http\Models\AdsTypes;
+use App\Http\Models\folders;
 class file extends Model
 {
-  protected $fillable = ['user_id','status','url','title','description','hits','isDeleted  ','domain_id', ];
+    protected $fillable = 
+     [
+          'user_id','domain_id','folder_id','slug','url','title',
+          'description','isDeleted','downloads','views' ,'isprivate','password' ,
+     ];
 
     // list All files
       public function files()
@@ -31,6 +36,10 @@ class file extends Model
       public function User()
      {
        return $this->belongsTo(User::class); 
+     }
+        public function folders()
+     {
+       return $this->belongsTo(folders::class); 
      }
      public function AdsTypes()
      {

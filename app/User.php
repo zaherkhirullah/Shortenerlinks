@@ -13,9 +13,7 @@ class User extends Authenticatable
     use Notifiable;
     protected $fillable =
      [
-      'first_name','last_name','username','email','confirm_email','password',
-      'phone_number','withdrawal_email','withdrawal_method','advertiser_balance',
-      'publisher_balance','role','status','avatar','isDeleted',
+      'first_name','last_name','username','email','confirm_email','password', 'affiliate_id', 'referred_by','role','status','isDeleted',
     ];
 
     protected $hidden = [ 'password', 'remember_token',];
@@ -24,6 +22,17 @@ class User extends Authenticatable
       {
         return Auth::id();
       } 
+    
+      public function Profile()
+      {
+          return $this->hasOne('App\Profile');
+      }
+
+      public function Balance()
+      {
+          return $this->hasOne('App\Balance');
+      }
+      
 
      // list All users
       public function users()

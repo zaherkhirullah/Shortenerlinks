@@ -2,12 +2,33 @@
 
 /*
 |=============================
+|      --/LanguageContrroler /--      
+|=============================
+*/
+Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
+
+Route::post('/language/', array('before' =>'csrf',
+                                'as'=>'changelang',
+                                'uses'=>'LanguageController@changelang',)
+      );
+
+/*
+|=============================
 |      --/Visitor Area /--      
 |=============================
 */
-Route::get('/', function () { return view('welcome'); });
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/{locale}', function ($locale) { 
+//  App::setLocale($locale); 
+//   return view('home.home'); 
+// });
+Route::get('/', function () { 
+  return view('home.home'); 
+});
 
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/rates', 'HomeController@rates')->name('rates');
+
+   
 
 /*
 |=============================

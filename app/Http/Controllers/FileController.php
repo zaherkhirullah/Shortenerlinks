@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\file;
+use App\Http\Models\folders;
+use App\Http\Models\Domain;
+use App\Http\Models\AdsTypes;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 
@@ -24,8 +27,14 @@ class fileController extends Controller
     }
 // upload new file
     public function create()
-    {
-      return view('users.files.create');
+    {   $domains = Domain::pluck('name', 'id');
+        $selectedDomain = 2;
+        $ads=AdsTypes::pluck('name', 'id');
+        $selectedAds =1;
+        $folders=folders::pluck('name', 'id');
+        $selectedfolder =1;
+
+        return view('users.files.create',compact('domains','selectedDomain','folders','selectedfolder','ads','selectedAds'));
     }
 // build file
     public function store(FileValidation $request)
@@ -85,11 +94,12 @@ class fileController extends Controller
         [
          'user_id'    =>  Auth::user()->id(),
          'domain_id'  => $data['domain_id'],
-         'status'     => $data['status'],
-         'url'        => $data['url'],
+         'domain_id'  => $data['folder_id'],
+         'slug'        => $data['slug'],
+         'path'        => $data['path'],
+
          'title'      => $data['title'],
          'description'=> $data['description'],
-         'hits'       => $data['hits'],
         ]);
      
     }

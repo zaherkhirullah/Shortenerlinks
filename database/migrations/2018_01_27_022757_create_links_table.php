@@ -16,16 +16,19 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('domain_id')->unsigned();
+            $table->integer('domain_id')->unsigned()->default(1);
+            $table->integer('folder_id')->unsigned()->default(1);
             $table->integer('ad_id')->unsigned()
                                     ->comment('\'Interstitial Advertisement ($$$$$)\',\'Framed Banner ($$$)\',\'No Advert\'');
             $table->string('url',500);
-            $table->string('original_url',500);
             $table->string('alias',256);
-            $table->string('hits')->default(0); // ziaretci
+            $table->string('slug',256)->unique();
+            $table->string('clicks')->default(0); 
             $table->boolean('isDeleted')->default(0);
-            $table->string('status',256)->comment('active,inactive,hidden');
+            $table->string('status',256)
+                  ->comment('active,inactive,hidden');
             $table->timestamps();
+            $table->index('user_id');
         });
 
     }

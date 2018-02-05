@@ -13,7 +13,7 @@ class CreateWithdrawsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->float('amount')
-                  ->scale(6)->precision(50)->default(0);
+                  ->scale(6)->precision(50)->default(1);
             $table->integer('withdrawal_method_id')->unsigned();
             $table->string('transaction_id')->default('-');
             $table->boolean('isDeleted')->default(0);

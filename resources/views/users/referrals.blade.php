@@ -7,7 +7,8 @@
         <header class="box-header with-border">
             <h3 class="box-title">
                 <i class="fa fa-users">
-                </i> Referals
+                </i> Referals 
+
             </h3>
 
             <div class="box-tools pull-right">
@@ -30,7 +31,11 @@
                         The <b>ouo.io</b> referral program is a great way to spread the word of this great service and to earn even more money with your short links! Refer friends and receive 20% of their earnings for life!
                     </div>
                     <div class="well m-t">
-                        <code> http://ouo.io/ref/pZoLQlWT</code>
+                        <code>
+                    @if(Auth::user()->affiliate_id)
+                    {{url('/register').'/?ref='.Auth::user()->affiliate_id}}
+                    @endif
+                        </code>
                     </div>
                     <h4 class="font-thin m-t-xl">Referral <b>Banners</b></h4>
                     <div class="nav-tabs-alt">
@@ -45,27 +50,27 @@
                         <div class="tab-content wrapper-md">
                             <div id="720x90" class="tab-pane">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r1.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r1.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r1.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                             <div id="480x60" class="tab-pane">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r2.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r2.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r2.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                             <div id="336x280" class="tab-pane">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r3.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r3.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r3.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                             <div id="300x250" class="tab-pane active">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r4.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r4.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r4.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                             <div id="250x250" class="tab-pane">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r5.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r5.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r5.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                             <div id="160x600" class="tab-pane">
                                 <img class="center-block m-b" src="https://ouo.io/images/banners/r6.jpg" style="display: none !important;">
-                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="http://ouo.io/ref/pZoLQlWT"&gt;&lt;img src="http://ouo.io/images/banners/r6.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
+                                <pre>&lt;!-- Start of ouo.io banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://ouo.io/images/banners/r6.jpg" title="ouo.io - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of ouo.io banner code --&gt;</pre>
                             </div>
                         </div>
                     </div>

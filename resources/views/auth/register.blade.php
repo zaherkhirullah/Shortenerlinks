@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
+
         <div class="col-md-6 col-md-offset-3">
+
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3>
@@ -14,6 +16,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
+
                         <div class="col-md-12">
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
 
@@ -70,7 +73,7 @@
                                         <i class="ion ion-ios-email"></i>
                                     </span>
 
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="email@shorter.link" required>
 
                                     @if ($errors->has('email'))
                                     <span class="help-block">
@@ -109,16 +112,22 @@
                                 </div>
                             </div>
 
-
                         </div>
                     </div>
 
+
                     <footer class="panel-footer">
                         <center class="">
-                              <a class="btn btn-link" href="{{ route('login') }}">
-                            <i class="ion ion-android-checkmark-circle"></i> I have Account already
+                            <div class="social-auth-links text-center">
+                                <p>- OR -</p>
+
+
+                            </div>
+
+                            <a class="btn btn-link" href="{{ route('login') }}">
+                                <i class="ion ion-android-checkmark-circle"></i> I have Account already
                             </a>
-                            
+
                             <button type="submit" class="btn btn-success">
                                 <i class="ion ion-ios-personadd"></i> Register
                             </button>

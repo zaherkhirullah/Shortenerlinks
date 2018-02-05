@@ -5,7 +5,11 @@
             <i class="fa fa-bars">
             </i>
         </a>
-        <a href="/" class="navbar-brand" data-toggle="fullscreen">shortener links</a>                                                           
+        <a href="/" class="navbar-brand" data-toggle="fullscreen">
+        <i class="ion ion-ios-rose-outline" ></i>
+                       Shorter Links
+                     <i class="ion ion-ios-rose-outline" ></i>
+                 </a>                                                           
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
             <i class="fa fa-cog">
             </i>

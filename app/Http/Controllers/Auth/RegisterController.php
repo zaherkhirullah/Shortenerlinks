@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Profile;
+use App\Balance;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Cookie;
 
 class RegisterController extends Controller
 {
@@ -44,12 +47,22 @@ class RegisterController extends Controller
   
     protected function create(array $data)
     {
-        return User::create([
+        $referred_by = Cookie::get('referral');
+
+        $user =  User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'affiliate_id' => str_random(10),
+            'referred_by'   => $referred_by,
         ]);
+
+        $user->profile()->save(new Profile);
+        $user->Balance()->save(new Balance);
+        
+      return $user;
     }
+
 }

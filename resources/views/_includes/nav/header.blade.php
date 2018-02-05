@@ -6,7 +6,10 @@
         </a>
         <a href="/" class="navbar-brand" data-toggle="fullscreen">
             <!-- <img src="{{ asset('styles/member/logo.png') }}" class="m-r-xs"> -->
-        shortener links</a>
+       <i class="ion ion-ios-rose-outline" ></i>
+                       Shorter Links
+       <i class="ion ion-ios-rose-outline" ></i>
+       </a>
             <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
                 <i class="fa fa-cog">
                 </i>
@@ -25,11 +28,17 @@
                             </a> 
 
                             <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">العربية</a></li>
+                                <li><a href="#" onclick="lang()" id="en">English</a></li>
+                                <li><a href="#" onclick="lang()" d="ar">العربية</a></li>
                             </ul>
 
                         </li>
+                 <!--         <li >
+                            <select id="changelang">
+                                <option value="en"  $cuRRlocal =='en'?'selected':'' }}>english</option>
+                                <option  value="ar"  $cuRRlocale =='ar'?'selected':'' }}>العربية</option>
+                            </select>
+                        </li> -->
             <li class="hidden-xs">
                 <a href="/manage/home" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bell">
