@@ -99,15 +99,15 @@ Route::prefix('user')->group(function()
 
 });
 
-Route::prefix('user/account')->group(function()
+Route::prefix('account')->group(function()
 {
-  Route::group(['namespace' => 'Users'], function()
+  Route::group(['namespace' => 'Account'], function()
   {
-    Route::get( '/profile', 'UsersController@profile')
+    Route::get( '/profile', 'AccountController@profile')
             ->name("profile");
-    Route::get( '/change-password', 'UsersController@changepassword')
+    Route::get( '/change-password', 'AccountController@changepassword')
             ->name("changepassword");
-    Route::get( '/change-email', 'UsersController@changeemail')
+    Route::get( '/change-email', 'AccountController@changeemail')
             ->name("changeemail");
   });
 });

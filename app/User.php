@@ -33,6 +33,15 @@ class User extends Authenticatable
           return $this->hasOne('App\Balance');
       }
       
+      public function referrer()
+      {
+          return $this ->belongsTo( 'App\User', 'referrer_by' );
+      }
+
+      public function referrals()
+      {
+          return $this ->hasMany( 'App\User', 'referrer_by' );
+      }
 
      // list All users
       public function users()

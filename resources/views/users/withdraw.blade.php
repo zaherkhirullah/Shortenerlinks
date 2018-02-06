@@ -3,7 +3,7 @@
 @section('content')
 <section class="col-md-8">
     <section class="vbox lter box box-info">
-        <header class="box-header with-border">
+        <header class="box-header with-border text-center">
             <h3 class="box-title">
                 <i class="fa fa-users">
                 </i> Withdraw
@@ -14,10 +14,7 @@
                     <i class="fa fa-minus">
                     </i>
                 </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove">
-                    <i class="fa fa-times">
-                    </i>
-                </button>
+           
             </div>
         </header>
         <!-- /.box-header -->
@@ -71,7 +68,6 @@
                 <tbody>
                 </tbody>
             </table>
-
         </section>
     </section>
 </section>     

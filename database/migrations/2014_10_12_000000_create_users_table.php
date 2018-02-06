@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('email',255);
             $table->boolean('confirm_email')->default(0);
             $table->string('password',255);
-            $table->string('referred_by')->nullable();
+            $table->integer('referred_by')->unsigned()->nullable();
             $table->string('affiliate_id')->unique();
             $table->string('status',255)
                   ->comment('active,pending,inactive')->default(1);
@@ -29,7 +29,6 @@ class CreateUsersTable extends Migration
             $table->unique('username');
             $table->unique('email');
             $table->engine = 'InnoDB';
-          
         });
 
         Schema::create('profile', function (Blueprint $table) {

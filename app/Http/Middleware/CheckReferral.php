@@ -14,16 +14,14 @@ class CheckReferral
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle($request, Closure $next)
     {
-        if( $request->hasCookie('referral')) {
-            return $next($request);
-        }
-        else {
-            if( $request->query('ref') ) {
-                return redirect($request->fullUrl())->withCookie(cookie()->forever('referral', $request->query('ref')));
-            }
+        if ( !$request->hasCookie('referral') && $request->query('ref') )
+         {
+            return redirect($request->fullUrl())->withCookie(cookie()->forever('referral', $request->query('ref')));
         }
         return $next($request);
-    }
+    }   
+
 }

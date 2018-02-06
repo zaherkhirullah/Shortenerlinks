@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class UsersController extends Controller
 {
     public function __construct()
@@ -23,19 +24,7 @@ class UsersController extends Controller
     {
         return view('users.withdraw');
     }
-
-      public function Settings()
-    {
-        return view('users.settings');
-    }
-     public function profile()
-    {
-        return view('users.profile');
-    }
-    public function changepassword()
-    {
-        return view('users.changepassword');
-    }
+    
    
 
     // public function dashboard1()

@@ -3,11 +3,12 @@
 @section('content')
 
 <div class="col-md-12">
-    <section class="vbox lter box box-info">       
-        <header class="box-header with-border">
-            <h3 class="box-title">
+    <section class="vbox lter box box-success">       
+        <header class="box-header with-border text-center">
+            <h3 class="box-title ">
                 <i class="fa fa-link">
-                </i> All Your Links 
+                </i>
+                 All Your Links 
             </h3>
 
             <div class="box-tools pull-right">

@@ -12,7 +12,7 @@
 
             <div class="col-md-12">
                 <div class="box box-info">
-                    <div class="box-header with-border">
+                    <div class="box-header with-border text-center">
                         <h3 class="box-title">
                             <i class="fa fa-link">
                             </i> Your Links 15
@@ -111,14 +111,18 @@
                         </div>
                         <!-- ./col -->
                     </div>
-
+                      <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="/user/links" class="uppercase">View All links</a>
+                    </div>
+                    <!-- /.box-footer -->
                 </div>
-                <!-- /.box-body -->
+              
             </div>
             <!-- /.col-md-12  -->
             <div class="col-md-12">
                 <div class="box box-success">
-                    <div class="box-header with-border">
+                    <div class="box-header with-border text-center">
                         <h3 class="box-title">
                             <i class="fa fa-file-o"> 
                             </i> Your Files 15
@@ -219,7 +223,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Files</a>
+                        <a href="/user/files" class="uppercase">View All Files</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -229,8 +233,8 @@
             <div>
                 <div class="col-md-6">
                     <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">
+                        <div class="box-header with-border text-center">
+                            <h3 class="box-title ">
                                 <i class="fa fa-leaf">
                                 </i> used Space  15
                             </h3>
@@ -239,9 +243,7 @@
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
+                               
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -254,19 +256,21 @@
                 <!-- /.col-md-6  -->
                 <div class="col-md-6">
                     <div class="box box-success">
-                        <div class="box-header with-border">
+                        <div class="box-header with-border text-center">
                             <h3 class="box-title">
-                                <i class="fa fa-leaf">
-                                </i> view links & Files
+                                 <i class="fa fa-link"> </i> links
+                                  <sup>&</sup>
+                                  <sub>&</sub>
+                                  <sup>&</sup>
+                                 <i class="fa fa-file-o"> </i>  Files
+                                 
                             </h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
+                             
                             </div>
                         </div>
                         <!-- /.box-header -->

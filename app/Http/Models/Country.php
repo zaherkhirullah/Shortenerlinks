@@ -4,7 +4,9 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class paymentWay extends Model
+class Country extends Model
 {
     //
+     protected $table = 'country';
+     
 }

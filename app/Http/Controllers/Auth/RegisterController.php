@@ -47,6 +47,8 @@ class RegisterController extends Controller
   
     protected function create(array $data)
     {
+
+   
         $referred_by = Cookie::get('referral');
 
         $user =  User::create([
@@ -58,7 +60,6 @@ class RegisterController extends Controller
             'affiliate_id' => str_random(10),
             'referred_by'   => $referred_by,
         ]);
-
         $user->profile()->save(new Profile);
         $user->Balance()->save(new Balance);
         

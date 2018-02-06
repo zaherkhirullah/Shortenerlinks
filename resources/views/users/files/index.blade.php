@@ -4,7 +4,7 @@
 
 <div class="col-md-12">
         <section class="lter box box-info">
-            <header class="box-header with-border">
+        <header class="box-header with-border text-center">
                 <h3 class="box-title">
                     <i class="fa fa-file-o">
                     </i> All Your Files
