@@ -88,14 +88,10 @@ Route::prefix('user')->group(function()
       Route::get( '/withdraw', 'UsersController@withdraw')
                 ->name("withdraw");
        });
-       Route::prefix('links')->group(function()
-       {
-        Route::resource( '/', 'LinkController');
-       });
-       Route::prefix('files')->group(function()
-       {  
-        Route::resource( '/', 'FileController');
-       });
+      
+        Route::resource( '/links', 'LinkController');  
+        Route::resource( '/files', 'FileController');
+       
 
 });
 

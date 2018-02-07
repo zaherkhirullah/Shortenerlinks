@@ -90,17 +90,33 @@ class fileController extends Controller
      // NewItemew for create new item in table(for calling in store).
     protected function NewItem(array $data)
     {
+        
+        if(is_null($data['title']))
+        {
+            $slug = str_random(str_random(5,10));
+        }
+        else
+        {
+            $slug =$data['title'];
+        }
+        $UserId = 1;
+        if (Auth::id()!=null) 
+        {
+            $UserId = Auth::id();
+        }
+        
      return file::create(
         [
-         'user_id'    =>  Auth::user()->id(),
+         'user_id'    => $UserId ,
          'domain_id'  => $data['domain_id'],
-         'domain_id'  => $data['folder_id'],
-         'slug'        => $data['slug'],
-         'path'        => $data['path'],
-
+         'folder_id'  => $data['folder_id'],
+         'slug'       => $slug ,
          'title'      => $data['title'],
          'description'=> $data['description'],
+         'path'       => $data['path'],
+         'isprivate'  => $data['isprivate'],
+         'password'   => $data['password'],
         ]);
-     
     }
+
 }

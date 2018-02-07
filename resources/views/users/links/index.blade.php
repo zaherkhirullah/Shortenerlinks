@@ -3,25 +3,25 @@
 @section('content')
 
 <div class="col-md-12">
-    <section class="vbox lter box box-success">       
+    <section class="lter box box-success">
         <header class="box-header with-border text-center">
-            <h3 class="box-title ">
-                <i class="fa fa-link">
-                </i>
-                 All Your Links 
-            </h3>
+                <h3 class="box-title">
+                    <i class="fa fa-link">
+                    </i> All Your links
+                </h3>
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                </button>
-               
-            </div>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                  
+                </div>
         </header>
-      <!-- /.box-header -->
+            <!-- /.box-header -->
+          
         <div class="footer b-t bg-white-only"> 
          <div class="col-md-3 " style="top:10px;">
-            <a href="{{url('/user/links/create')}}" type="button" class="btn btn-success btn-md">
+            <a href="{{url('user/links/create')}}" type="button" class="btn btn-success btn-md">
              <i class="fa fa-link"></i>
                Add New link
             </a>
@@ -41,22 +41,25 @@
         </div>
       </div>
             <!--/ SEARCH BOX -->
-        <section class="box-body">
-            <table class="table table-striped table-hover table-flip-scroll cf">
+        <section class="box-body">   
+          @if(count($links))
+           <table class="table table-striped table-hover table-flip-scroll cf">
                 <tbody>
-                    @for ($i = 0; $i < 10; $i++)
-                    <tr>
+                 @foreach ($links as $link)
+                        <tr>
+                      
                         <td>
-                            <a href="http://ouo.io/8qRygF" class="h5 text-success" target="_blank">
-                                <strong>http://ouo.io/8qRygF</strong>
+                            <a href="{{$link->Domain->url .'/'.$link->slug }}" class="h5 text-success" target="_blank">
+                                <strong>{{$link->Domain->url .'/'.$link->slug }}</strong>
                             </a>
-                            <small class="text-muted block">http://www.tettt.ka</small>
+                            <small class="text-muted block">{{$link->url}}</small>
                         </td>
-                        <td class="v-middle hidden-xs">2017-09-04</td>
+                        <td class="v-middle hidden-xs">{{$link->created_at}}</td>
                         <td class="v-middle hidden-xs">
 
                             <div class="pos-rlt">
-                                <button class="btn btn-copy text-success" data-clipboard-text="http://ouo.io/8qRygF" data-toggle="button">
+                                <button class="btn btn-copy text-success" data-clipboard-text="{{$link->Domain->url .'/' .$link->slug }}"
+                                 data-toggle="button">
                                     <span class="text">
                                         <i style="font-size: 20px" class="ion ion-ios-copy-outline">
                                         </i> COPY
@@ -83,38 +86,48 @@
                                 </span>
                             </a>
                         </td>
-                      </tr>
-                 @endfor
-
-                    </tbody>
-             </table>   
-      </section>
-
+                    </tr>
+                 @endforeach
+                 </tbody> 
+           </table>
+              @else
+            <div class="col-md-8 col-md-offset-2">
+             <center> 
+                <h2 class="text-danger alert alert-info"> You don't have links</h2>
+             </center>
+            </div>
+           <div class="text-clear col-md-12">  </div>
+            <div class="col-md-12 text-center">
+                <a href="/user/links/create" class="btn btn-success"> 
+                    Click to Add New link
+                 </a>
+            </div>
+            @endif 
+        </section>
     </section>
-</div>
- <div class="modal fade" id="delete-link">
-            <div class="modal-dialog modal-shorten">
-                <div class="modal-content bg-danger">
-                    <div class="modal-body">
-                        <div class="padder">
-                        {!! Form::open($deleteform) !!}
-                            <h4 id="msg-shorten">Delete Shorten Link</h4>
-                            <p>Are You Sure You Want Delete This item ?</p> 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                    <i class="fa fa-remove"></i> cancle
-                                </button>
-                                <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                    <i class="fa fa-trash"></i> confirm
-                                </button>
-                            </div>
-                        {!! Form::close() !!}
-                        </div>
+</div>  
+<div class="modal fade" id="delete-link">
+    <div class="modal-dialog modal-shorten">
+        <div class="modal-content bg-danger">
+            <div class="modal-body">
+                <div class="padder">
+                    {!! Form::open($deleteform) !!}
+
+                    <h4 id="msg-shorten">Delete Shorten link</h4>
+                    <p>Are You Sure You Want Delete This item ?</p> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+                            <i class="fa fa-remove"></i> cancle
+                        </button>
+                        <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
+                            <i class="fa fa-trash"></i> confirm
+                        </button>
                     </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <footer class="footer hidden-xs">
-        </footer>
 @endsection

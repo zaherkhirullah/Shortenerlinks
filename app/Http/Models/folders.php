@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class folders extends Model
 {
+protected $table = 'folders';
+
      public function links()
      {
          return $this->hasMany(link::class)->orderBy('created_at','desc');

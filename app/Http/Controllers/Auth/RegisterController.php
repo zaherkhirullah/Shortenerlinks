@@ -26,7 +26,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
 
-    protected $redirectTo = '/user/account/profile';
+    protected $redirectTo = '/account/profile';
 
     public function __construct()
     {
@@ -47,8 +47,6 @@ class RegisterController extends Controller
   
     protected function create(array $data)
     {
-
-   
         $referred_by = Cookie::get('referral');
 
         $user =  User::create([
@@ -62,7 +60,6 @@ class RegisterController extends Controller
         ]);
         $user->profile()->save(new Profile);
         $user->Balance()->save(new Balance);
-        
       return $user;
     }
 

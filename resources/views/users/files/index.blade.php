@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-        <section class="lter box box-info">
+    <section class="lter box box-info">
         <header class="box-header with-border text-center">
                 <h3 class="box-title">
                     <i class="fa fa-file-o">
@@ -16,7 +16,7 @@
                     </button>
                   
                 </div>
-            </header>
+        </header>
             <!-- /.box-header -->
           
         <div class="footer b-t bg-white-only"> 
@@ -41,53 +41,66 @@
         </div>
       </div>
             <!--/ SEARCH BOX -->
-
-                <section class="box-body">
-                    <table class="table table-striped table-hover table-flip-scroll cf">
-                        <tbody>
-                            @for ($i = 0; $i < 10; $i++)
-                            <tr>
-                                <td>
-                                    <a href="http://ouo.io/8qRygF" class="h5 text-info" target="_blank">
-                                        <strong>http://ouo.io/8qRygF</strong>
-                                    </a>
-                                    <small class="text-muted block">http://www.tettt.ka</small>
-                                </td>
-                                <td class="v-middle hidden-xs">2017-09-04</td>
-                                <td class="v-middle hidden-xs">
-                                    <div class="pos-rlt">
-                                        <button class="btn btn-Download text-info" data-clipboard-text="http://ouo.io/8qRygF" data-toggle="button">
-                                            <span class="text">
-                                                <i class="fa fa-download"> </i> Download
-                                            </span>
-                                            <span class="text-active">
-                                               Downloaded
-                                            </span>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="pull-right">
-                                   <a href="#edit-file" data-toggle="modal"
-                                    class="btn btn-xs btn-info text-muted" >
-                                        <span class="text">
-                                            <i class="fa fa-edit">
-                                            </i> 
-                                        </span>
-                                         </a>
-                                        <a href="#delete-file" data-toggle="modal"
-                                        class="btn btn-xs btn-danger text-muted" >
-                                        <span class="text">
-                                            <i class="fa fa-trash">
-                                            </i> 
-                                        </span>
-                                    </a>
-                                </td>
-                             </tr>
-                             @endfor
-                         </tbody>
-                     </table>
-                </section>
+        <section class="box-body">   
+          @if(count($files))
+           <table class="table table-striped table-hover table-flip-scroll cf">
+                <tbody>
+                 @foreach ($files as $file)
+                    <tr>
+                        <td>
+                            <a href="http://ouo.io/8qRygF" class="h5 text-info" target="_blank">
+                                <strong>http://ouo.io/8qRygF</strong>
+                            </a>
+                            <small class="text-muted block">http://www.tettt.ka</small>
+                        </td>
+                        <td class="v-middle hidden-xs">2017-09-04</td>
+                        <td class="v-middle hidden-xs">
+                            <div class="pos-rlt">
+                                <button class="btn btn-Download text-info" data-clipboard-text="http://ouo.io/8qRygF" data-toggle="button">
+                                    <span class="text">
+                                        <i class="fa fa-download"> </i> Download
+                                    </span>
+                                    <span class="text-active">
+                                       Downloaded
+                                    </span>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="pull-right">
+                           <a href="#edit-file" data-toggle="modal"
+                            class="btn btn-xs btn-info text-muted" >
+                                <span class="text">
+                                    <i class="fa fa-edit">
+                                    </i> 
+                                </span>
+                                 </a>
+                                <a href="#delete-file" data-toggle="modal"
+                                class="btn btn-xs btn-danger text-muted" >
+                                <span class="text">
+                                    <i class="fa fa-trash">
+                                    </i> 
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                 @endforeach
+                 </tbody> 
+           </table>
+              @else
+            <div class="col-md-8 col-md-offset-2">
+             <center> 
+                <h2 class="text-danger alert alert-info"> You don't have files</h2>
+             </center>
+            </div>
+           <div class="text-clear col-md-12">  </div>
+            <div class="col-md-12 text-center">
+                <a href="/user/files/create" class="btn btn-success"> 
+                    Click to Add New file
+                 </a>
+            </div>
+            @endif 
         </section>
+    </section>
 </div>  
 <div class="modal fade" id="delete-file">
     <div class="modal-dialog modal-shorten">

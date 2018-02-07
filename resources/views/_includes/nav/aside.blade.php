@@ -123,21 +123,21 @@
 					</a>
 					<ul class="nav lt">
 						<li>
-							<a href="/user/account/profile">
+							<a href="/account/profile">
 								<i class="fa fa-angle-right">
 								</i>
 								<span>Profile</span>
 							</a>
 						</li>
 						<li>
-							<a href="/user/account/change-password">
+							<a href="/account/change-password">
 								<i class="fa fa-angle-right">
 								</i>
 								<span>Change Password</span>
 							</a>
 						</li>
 							<!-- <li>
-								<a href="/user/account/change-email">
+								<a href="/account/change-email">
 									<i class="fa fa-angle-right"> </i>
 									<span>Change Email</span>
 								</a>

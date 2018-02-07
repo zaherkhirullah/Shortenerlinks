@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdsTypes extends Model
 {
-    //
+   protected $table = 'ads_types';
+   
     public function links()
      {
          return $this->hasMany(link::class)->orderBy('created_at','desc');

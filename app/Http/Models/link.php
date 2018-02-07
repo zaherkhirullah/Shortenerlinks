@@ -9,10 +9,11 @@ use App\Http\Models\AdsTypes;
 use App\Http\Models\folders;
 class link extends Model
 {
+  protected $table = 'links';
      protected $fillable = 
      [
       'user_id','domain_id','ad_id','folder_id','slug','clicks',
-      'status','url','alias','title','description','isDeleted',
+      'status','url','shorted_url','alias','isDeleted',
      ];
 
     // list All Links

@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Http\Requests\LinkValidation;
+
+use App\Http\Controllers\FrontController;
 
 use App\Http\Models\folders;
 use App\Http\Models\Domain;
 use App\Http\Models\AdsTypes;
 use App\Http\Models\link;
 
-use App\Http\Controllers\FrontController;
-
-use Cake\Network\Exception\NotFoundException;
-use Cake\ORM\TableRegistry;
-use Cake\Event\Event;
-use Cake\I18n\Time;
-
+use Auth;
 class LinkController extends Controller
 {
     
@@ -24,6 +20,7 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index(link $link)
     {
         // Show list of links
@@ -52,7 +49,8 @@ class LinkController extends Controller
         //build link
       $this->NewItem($request->all());
 
-      return redirect()->route('links.index')->with(['message'=>$request->title .
+
+      return redirect()->route('links.index')->with(['message'=>$request->slug .
         ' Sucessfully Created :)']);
     }
 
@@ -106,16 +104,39 @@ class LinkController extends Controller
   // NewItemew for create new item in table(for calling in store).
     protected function NewItem(array $data)
     {
+        if(is_null($data['alias']))
+            $slug = str_random(10);
+        else
+            $slug =$data['alias'];
+
+        if(is_null($data['domain_id']))
+            $domain_id = 1;
+        else
+            $domain_id =$data['domain_id'];
+
+        if(is_null($data['ad_id']))
+            $ad_id = 1;
+        else
+            $ad_id =$data['ad_id'];
+
+        if(is_null($data['folder_id']))
+            $folder_id = 1;
+        else
+            $folder_id =$data['folder_id'];
+        
+        $domain = Domain::find($domain_id);
+        $shorted_url = $domain->url . $slug ;
+
      return link::create(
         [
           'user_id'    => Auth::id(),
-          'domain_id'  => $data['domain_id'],
-          'ad_id'      => $data['ad_id'],
+          'domain_id'  => $domain_id,
+          'folder_id'  => $folder_id,
+          'ad_id'      => $ad_id,
           'alias'      => $data['alias'],
-          'status'     => $data['status'],
+          'slug'       => $slug,
           'url'        => $data['url'],
-          'description'=> $data['description'],
-          'hits'       => $data['hits'],
+          'shorted_url' =>$shorted_url ,
         ]);
     }
 
@@ -153,18 +174,16 @@ class LinkController extends Controller
             $this->response->body(json_encode($content));
             return $this->response;
         }
+
         $user_id = 1;
 
         if (Auth::id()!=null) {
             $user_id = Auth::id();
         }
 
-
-        if ($user_id === 1 &&
+        if ($user_id === 1 && 
             (bool)get_option('enable_captcha_shortlink_anonymous', false) &&
-            isset_captcha() &&
-            !$this->Captcha->verify($this->request->data)
-        ) 
+            isset_captcha() && !$this->Captcha->verify($this->request->data))
         {
         $content = [
             'status' => 'error',

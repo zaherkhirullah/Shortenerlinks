@@ -1,6 +1,16 @@
+  
+   {!! Form::open(array ('route' => 'links.store',
+     'method'  => 'POST', 'id'=>'shorten_form' ,'files'  => true)) !!}
 
-{{ Form::open(array('url' => '/user/links/create' , 'id'=>'shorten_form')) }}
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
     <div class="card card-body">

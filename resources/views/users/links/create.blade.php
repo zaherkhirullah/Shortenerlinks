@@ -22,7 +22,8 @@
                 <div class="box-body" style="display: block;">
                     <div class="box-short" id="shorterNew" >
                         <div class="box box-solid shorten-member">
-                            <div class="box-body"> @include('_includes.forms.addlink')
+                            <div class="box-body">
+                             @include('_includes.forms.addlink')
                             </div>
                         </div>
                     </div>

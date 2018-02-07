@@ -11,6 +11,7 @@ use Auth;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
     protected $fillable =
      [
       'first_name','last_name','username','email','confirm_email','password', 'affiliate_id', 'referred_by','role','status','isDeleted',

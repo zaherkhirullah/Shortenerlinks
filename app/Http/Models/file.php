@@ -9,12 +9,15 @@ use App\Http\Models\AdsTypes;
 use App\Http\Models\folders;
 class file extends Model
 {
+  protected $table = 'files';
+
     protected $fillable = 
      [
-          'user_id','domain_id','folder_id','slug','url','title',
-          'description','isDeleted','downloads','views' ,'isprivate','password' ,
+     
+          'user_id','domain_id','folder_id','slug','path','title',
+          'description','isDeleted','downloads','views' ,'isPrivate','password' ,
      ];
-
+     
     // list All files
       public function files()
       {

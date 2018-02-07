@@ -7,7 +7,8 @@ use App\Http\Models\link;
 use App\Http\Models\file;
 class Domain extends Model
 {
-    //
+    
+    protected $table = 'domains';
      protected $fillable = ['Name','slug','url','isDeleted',];
 
     // list All files

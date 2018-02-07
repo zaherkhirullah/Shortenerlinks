@@ -21,6 +21,7 @@ class CreateLinksTable extends Migration
             $table->integer('ad_id')->unsigned()
                                     ->comment('\'Interstitial Advertisement ($$$$$)\',\'Framed Banner ($$$)\',\'No Advert\'');
             $table->string('url',500);
+            $table->string('shorted_url',500);
             $table->string('alias',256);
             $table->string('slug',256)->unique();
             $table->string('clicks')->default(0); 
