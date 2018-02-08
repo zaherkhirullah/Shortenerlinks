@@ -1,13 +1,11 @@
 <?php
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("DATABASE_URL"));
 
-$server = $url["host"]??null;
+$server = $url["host"]?? null;
 $username = $url["user"]??null;
 $password = $url["pass"]??null;
 $db = substr($url["path"], 1)??null;
-
-$conn = new mysqli($server, $username, $password, $db);
 
 return [
 
