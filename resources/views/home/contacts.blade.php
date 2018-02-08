@@ -58,12 +58,13 @@
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('subject') ? ' has-error' : ''}}">
 							{!!  Form::label('subject','Subject *')   !!}
-							{{Form::text('subject','', ['class' =>
-							"form-control input-sm ,
-							'id'=>'subject','required'=>'true','placeholder'=>'Add subject'])  }}
+							{{Form::text('subject','', ['class' =>"form-control input-sm" ,
+							'id'=>'subject','required'=>'true','placeholder'=>'Add subject'])  
+						     }}
 							@if ($errors->has('subject'))
 							<span class="help-block">
-								<strong>{{ $errors->first('subject') }}
+								<strong>
+									{{ $errors->first('subject') }}
 								</strong>
 							</span>
 							@endif

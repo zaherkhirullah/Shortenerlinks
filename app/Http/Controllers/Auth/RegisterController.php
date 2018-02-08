@@ -60,7 +60,8 @@ class RegisterController extends Controller
         ]);
         $user->profile()->save(new Profile);
         $user->Balance()->save(new Balance);
-      return $user;
+    
+     return $user;
     }
 
 }
