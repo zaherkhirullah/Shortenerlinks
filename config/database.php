@@ -1,11 +1,11 @@
 <?php
 
-$url = parse_url(getenv("DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$server = $url["host"]?? null;
-$username = $url["user"]??null;
-$password = $url["pass"]??null;
-$db = substr($url["path"], 1)??null;
+$host = $url["host"]?? null;
+$username = $url["user"]?? null;
+$password = $url["pass"]?? null;
+$db = substr($url["path"], 1)?? null;
 
 return [
 
@@ -20,7 +20,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql_heroku'),
+    'default' => env('DB_CONNECTION', 'Mysql_heroku'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +53,19 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+         'Mysql_heroku' => [
+            'driver' => 'mysql',
+            'host' => $host,
+            'database' =>$db,
+            'username' => $username,
+            'password' =>$password,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -125,7 +138,6 @@ return [
     'redis' => [
 
         'client' => 'predis',
-
         'default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
