@@ -130,12 +130,8 @@
 </section>
 </section>
 </div>  
-
-
-
-<a href="{{ route('links.destroy', $link->id) }}" data-method="delete" class="jquery-postback">Delete</a>
-
 <script>
+
 $.ajaxSetup({
     headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
