@@ -32,7 +32,6 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('profile', function (Blueprint $table) {
-            $table->integer('id');
             $table->integer('user_id')->unsigned();
             $table->string('avatar',255)->nullable();
             $table->string('phone_number',255)->default(0);
@@ -42,19 +41,18 @@ class CreateUsersTable extends Migration
             $table->string('location')->nullable();     
             $table->timestamps();
             $table->engine = 'InnoDB';
-            $table->primary(['user_id','id']);
+            $table->primary('user_id');
         });
         
        
         Schema::create('Balances', function (Blueprint $table) {
-            $table->integer('id');
             $table->integer('user_id')->unsigned();
             $table->float('advertiser_balance')->default(0);
             $table->float('publisher_balance')->default(0);
             $table->timestamps();
 
             $table->engine = 'InnoDB';
-            $table->primary(['user_id','id']);
+            $table->primary(['user_id']);
         });
     }
     public function down()
