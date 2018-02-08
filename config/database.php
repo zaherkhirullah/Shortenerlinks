@@ -1,13 +1,13 @@
 <?php
 
-// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// $server = $url["host"];
-// $username = $url["user"];
-// $password = $url["pass"];
-// $db = substr($url["path"], 1);
+$server = $url["host"]??null;
+$username = $url["user"]??null;
+$password = $url["pass"]??null;
+$db = substr($url["path"], 1)??null;
 
-// $conn = new mysqli($server, $username, $password, $db);
+$conn = new mysqli($server, $username, $password, $db);
 
 return [
 
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql_heroku'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,6 +70,17 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+          'pgsql_heroku' => [
+            'driver' => 'pgsql',
+            'host' => $host,
+            'database' =>$db,
+            'username' => $username,
+            'password' =>$password,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

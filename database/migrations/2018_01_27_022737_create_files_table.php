@@ -18,10 +18,11 @@ class CreateFilesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('domain_id')->unsigned()->default(1);
             $table->integer('folder_id')->unsigned()->default(1);
-            $table->string('slug',256)->unique();
-            $table->string('title',256);
+            $table->string('slug',255)->unique();
+            $table->string('title',255)->nullable();
             $table->string('path',500);
-            $table->string('description')->nullable();
+            $table->string('shorted_url',255);
+            $table->string('description',1000)->nullable();
             $table->integer('downloads')->default(0);
             $table->integer('views')->default(0);
             $table->string('password',255)->nullable();

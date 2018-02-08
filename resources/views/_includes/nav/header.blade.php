@@ -40,7 +40,7 @@
                             </select>
                         </li> -->
             <li class="hidden-xs">
-                <a href="/manage/home" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="/home" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bell">
                     </i>
                 </a>
@@ -82,7 +82,7 @@
                     <span class="arrow top">
                     </span>
                     <li>
-                        <a href="/manage/account/profile">Settings</a>
+                        <a href="/account/profile">Settings</a>
                     </li>
                         <!-- <li class="divider">
                         </li> -->

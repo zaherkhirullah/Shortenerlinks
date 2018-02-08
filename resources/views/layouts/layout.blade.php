@@ -25,7 +25,6 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
 		<!-- Head Scripts -->
-		
 	</head>
 	<!--/ Head-->
 	<body >
@@ -38,13 +37,19 @@
 			 	</div>
 			    </aside>
 				<section id="content">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-						@endif
 					<section class="vbox">
-						
+						<div class="col-md-12">
+							@if (session('success'))
+							<div class="alert alert-success">
+								{{ session('success') }}
+							</div>
+							@endif
+							@if (session('error'))
+							<div class="alert alert-success">
+								{{ session('error') }}
+							</div>
+							@endif
+						</div>
 						<!--Start  Content-->
 						@yield('content')
 						<!--End Content-->	

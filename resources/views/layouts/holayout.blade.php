@@ -53,6 +53,10 @@
                             <a href="/rates">
                               <i class="ion ion-cash" aria-hidden="true"></i>  Payout Rates</a>
                         </li>
+                         <li class="nav-item">
+                            <a href="/contacts">
+                              <i class="fa fa-phone" aria-hidden="true"></i>  Contact us</a>
+                        </li>
                         <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
                                 <i class="fa fa-language" aria-hidden="true"></i> Languages

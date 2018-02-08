@@ -22,12 +22,12 @@ class CreateLinksTable extends Migration
                                     ->comment('\'Interstitial Advertisement ($$$$$)\',\'Framed Banner ($$$)\',\'No Advert\'');
             $table->string('url',500);
             $table->string('shorted_url',500);
-            $table->string('alias',256);
+            $table->string('alias',256)->nullable();
             $table->string('slug',256)->unique();
             $table->string('clicks')->default(0); 
             $table->boolean('isDeleted')->default(0);
             $table->string('status',256)
-                  ->comment('active,inactive,hidden');
+                  ->comment('active,inactive,hidden')->default(1);
             $table->timestamps();
             $table->index('user_id');
         });

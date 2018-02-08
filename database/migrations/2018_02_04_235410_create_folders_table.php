@@ -20,7 +20,7 @@ class CreateFoldersTable extends Migration
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();
 
-            $table->unique('name');
+            $table->unique(['name','user_id']);
             $table->index('user_id');
         });
     }

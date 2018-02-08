@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileValidation extends FormRequest
+class ContactsValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,13 @@ class FileValidation extends FormRequest
      */
     public function rules()
     {
-        return [
-            'domain_id'=>  'required|integer',
-            'folder_id'=>  'required|integer',
-            'path'  => 'required|min:10|max:15000'   ,
-            'description'  =>'required|min:10|string|max:1000'    ,
-            'isPrivate'  =>   'required'   ,
+        return
+         [
+            'name' => 'required|string|min:4|max:50',
+            'email' => 'required|string|min:5|max:255',
+            'subject' => 'required|string|min:5|max:255',
+            'Message' => 'required|string|min:5|max:1500',
         ];
     }
+    
 }

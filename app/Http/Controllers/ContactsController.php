@@ -2,84 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Contacts;
+use App\Http\Models\Contacts;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactsValidation;
 
 class ContactsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function index(Contacts $contacts)
     {
-        //
+       // Show list of contacts
+        $contacts = $contacts->contacts()->paginate(20);
+        return view('home.contacts')->withContacts($contacts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+      return view('home.contacts');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ContactsValidation $request)
     {
-        //
+        $this->NewItem($request->all());
+
+        return view('home.contacts')-> with( ['message'=>' Sucessfully Created :)']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Contacts  $contacts
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Contacts $contacts)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Contacts  $contacts
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Contacts $contacts)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contacts  $contacts
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function update(Request $request, Contacts $contacts)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Contacts  $contacts
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Contacts $contacts)
     {
         //
+    }
+  // NewItemew for create new item in table(for calling in store).
+    protected function NewItem(array $data)
+    {
+     return Contacts::create(
+        [
+         'name'    =>  $data['name'],
+         'email'  => $data['email'],
+         'subject'  => $data['subject'],
+         'Message'       =>  $data['Message'],
+        ]);
     }
 }

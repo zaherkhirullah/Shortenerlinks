@@ -130,7 +130,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="/account/change-password">
+							<a href="/account/changePassword">
 								<i class="fa fa-angle-right">
 								</i>
 								<span>Change Password</span>

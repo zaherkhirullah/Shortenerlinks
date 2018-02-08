@@ -48,15 +48,32 @@
                  @foreach ($files as $file)
                     <tr>
                         <td>
-                            <a href="http://ouo.io/8qRygF" class="h5 text-info" target="_blank">
-                                <strong>http://ouo.io/8qRygF</strong>
+                            <a href="{{$file->shorted_url}}" class="h5 text-info" target="_blank">
+                                <strong>{{$file->shorted_url}}</strong>
                             </a>
-                            <small class="text-muted block">http://www.tettt.ka</small>
+                      <small class="text-muted block">{{$file->title}}</small>
                         </td>
-                        <td class="v-middle hidden-xs">2017-09-04</td>
+                       <td class="v-middle hidden-xs">{{$file->description}}</td>
+                        <td class="v-middle hidden-xs">{{$file->views}}</td>
+                        <td class="v-middle hidden-xs">{{$file->downloads}}</td>
+                        <td class="v-middle hidden-xs">
+                            @if($file->password)
+                            {{$file->password}}
+                            @else 
+                            -
+                            @endif
+                        </td>
+                        <td class="v-middle hidden-xs">
+                             @if($file->isPrivate == 0)
+                            Private
+                            @else 
+                            Public
+                            @endif
+                            </td>
+                          <td class="v-middle hidden-xs">{{$file->created_at}}</td>
                         <td class="v-middle hidden-xs">
                             <div class="pos-rlt">
-                                <button class="btn btn-Download text-info" data-clipboard-text="http://ouo.io/8qRygF" data-toggle="button">
+                                <button class="btn btn-Copy text-info" data-clipboard-text="{{$file->shorted_url}}" data-toggle="button">
                                     <span class="text">
                                         <i class="fa fa-download"> </i> Download
                                     </span>
@@ -64,25 +81,61 @@
                                        Downloaded
                                     </span>
                                 </button>
+                                 <button class="btn btn-Copy text-info" download="{{$file->shorted_url}}" data-toggle="button">
+                                    <span class="text">
+                                        <i class="ion ion-ios-copy-outline"> </i> Copy
+                                    </span>
+                                    <span class="text-active">
+                                       Copied
+                                    </span>
+                                </button>
                             </div>
                         </td>
                         <td class="pull-right">
                            <a href="#edit-file" data-toggle="modal"
-                            class="btn btn-xs btn-info text-muted" >
+                            class="text-info">
                                 <span class="text">
-                                    <i class="fa fa-edit">
+                                    <i class="fa fa-2x fa-edit">
                                     </i> 
                                 </span>
                                  </a>
-                                <a href="#delete-file" data-toggle="modal"
-                                class="btn btn-xs btn-danger text-muted" >
+                                <a href="#delete-file-{{$file->id}}" data-toggle="modal"
+                                class=" text-danger" >
                                 <span class="text">
-                                    <i class="fa fa-trash">
+                                    <i class="fa fa-2x fa-eye-slash">
                                     </i> 
                                 </span>
                             </a>
                         </td>
+
                     </tr>
+<div class="modal fade" id="delete-file-{{$file->id}}">
+    <div class="modal-dialog modal-shorten">
+        <div class="modal-content bg-default">
+            <div class="modal-body">
+                <div class="padder">
+        {!! Form::open(array('route' =>['files.destroy',$file->id],
+      'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
+ <div class="text-center">
+            <h4 id="msg-shorten ">Hide File</h4>
+          </div>
+          <hr>
+                    <p>Are You Sure You Want Hide <b class="text-info">
+                     {{$file->slug}} </b> file ?</p> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+                             cancle
+                        </button>
+                        <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
+                            <i class="fa fa-eye-slash"></i> hide
+                        </button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                  @endforeach
                  </tbody> 
            </table>
@@ -102,28 +155,6 @@
         </section>
     </section>
 </div>  
-<div class="modal fade" id="delete-file">
-    <div class="modal-dialog modal-shorten">
-        <div class="modal-content bg-danger">
-            <div class="modal-body">
-                <div class="padder">
-                    {!! Form::open($deleteform) !!}
 
-                    <h4 id="msg-shorten">Delete Shorten File</h4>
-                    <p>Are You Sure You Want Delete This item ?</p> 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                            <i class="fa fa-remove"></i> cancle
-                        </button>
-                        <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                            <i class="fa fa-trash"></i> confirm
-                        </button>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection

@@ -13,9 +13,8 @@ class file extends Model
 
     protected $fillable = 
      [
-     
           'user_id','domain_id','folder_id','slug','path','title',
-          'description','isDeleted','downloads','views' ,'isPrivate','password' ,
+          'description','isDeleted','downloads','views' ,'isPrivate','password','shorted_url',
      ];
      
     // list All files

@@ -21,15 +21,13 @@ Route::post('/language/', array('before' =>'csrf',
 //  App::setLocale($locale); 
 //   return view('home.home'); 
 // });
-Route::get('/', function () { 
-  return view('home.home'); 
-});
 
+Route::get('/', function () { return view('home.home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/rates', 'HomeController@rates')->name('rates');
-
-   
-
+Route::get('/contacts', 'ContactsController@create')->name('create');
+Route::post('/contacts', 'ContactsController@store')->name('contacts.store');
+  
 /*
 |=============================
 |  --/Register and sign in/-- 
@@ -99,12 +97,10 @@ Route::prefix('account')->group(function()
 {
   Route::group(['namespace' => 'Account'], function()
   {
-    Route::get( '/profile', 'AccountController@profile')
-            ->name("profile");
-    Route::get( '/change-password', 'AccountController@changepassword')
-            ->name("changepassword");
-    Route::get( '/change-email', 'AccountController@changeemail')
-            ->name("changeemail");
+    Route::get( '/profile', 'AccountController@profile')->name("profile");
+    Route::get( '/changePassword', 'AccountController@showchangePassword')->name("showchangePassword");
+    Route::post('/changePassword','AccountController@changePassword')->name('changePassword');
+    Route::get( '/change-email', 'AccountController@changeemail')->name("changeemail");
   });
 });
 
@@ -113,8 +109,3 @@ Route::prefix('account')->group(function()
 |      --/Settings Area /--      
 |=============================
 */
-  // Route::get( '/change-password', 'ManagerController@changepassword')
-  //        ->name("changepassword");
-  // Route::get( '/change-email', 'ManagerController@changeemail')
-  //        ->name("changeemail");
-

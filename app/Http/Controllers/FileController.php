@@ -6,9 +6,10 @@ use App\Http\Models\file;
 use App\Http\Models\folders;
 use App\Http\Models\Domain;
 use App\Http\Models\AdsTypes;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
-
+use Auth;
 class fileController extends Controller
 {
 
@@ -27,7 +28,8 @@ class fileController extends Controller
     }
 // upload new file
     public function create()
-    {   $domains = Domain::pluck('name', 'id');
+    {  
+     $domains = Domain::pluck('name', 'id');
         $selectedDomain = 2;
         $ads=AdsTypes::pluck('name', 'id');
         $selectedAds =1;
@@ -40,8 +42,9 @@ class fileController extends Controller
     public function store(FileValidation $request)
     { 
       $this->NewItem($request->all());
-      return redirect()->route('links.index')->
-              with( ['message'=> $request->title.' Sucessfully Created :)']);
+
+      return redirect()->route('files.index')->
+              with( ['message'=>' Sucessfully Created :)']);
     }
 // show file details
     public function show(file $file)
@@ -91,19 +94,16 @@ class fileController extends Controller
     protected function NewItem(array $data)
     {
         
-        if(is_null($data['title']))
-        {
-            $slug = str_random(str_random(5,10));
-        }
-        else
-        {
-            $slug =$data['title'];
-        }
-        $UserId = 1;
-        if (Auth::id()!=null) 
-        {
-            $UserId = Auth::id();
-        }
+       $title=($data['title'])?: null;
+       $slug =($data['title'])?: str_random(7);
+     
+       $domain_id = $data['domain_id'];
+       $domain = Domain::find($domain_id);
+       $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
+
+       $data['path'] = "15";
+       $data['isPrivate'] = ($data['isPrivates'])?:0;
+       $UserId = Auth::id();
         
      return file::create(
         [
@@ -114,8 +114,9 @@ class fileController extends Controller
          'title'      => $data['title'],
          'description'=> $data['description'],
          'path'       => $data['path'],
-         'isprivate'  => $data['isprivate'],
+         'isPrivate'  => $data['isPrivate'],
          'password'   => $data['password'],
+         'shorted_url' =>$shorted_url ,
         ]);
     }
 

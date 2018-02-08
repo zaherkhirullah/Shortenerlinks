@@ -36,7 +36,7 @@
 						</a>
 					</li>
 					<li class="">
-						<a href="/account/change-password">
+						<a href="/account/changePassword">
 							<i class="fa fa-fw fa-key">
 							</i> Change Password
 						</a>

@@ -1,5 +1,7 @@
-{!! Form::open(array ('route' => 'changepassword', 'method'  => 'POST',
-'accept-charset'=>'utf-8','files'  => true)) !!}
+
+
+{!! Form::open(array ('route' => 'changePassword', 'method'  => 'POST',
+'accept-charset'=>'utf-8','class'  => 'form-horizontal')) !!}
 
 <div style="display: none;">
 	{{ method_field('PUT') }}
@@ -11,37 +13,55 @@
 </legend>
 
 <div class="row">
+<div class="col-md-12">
+	
+@if (session('error'))
+	<div class="alert alert-danger">
+		{{ session('error') }}
+	</div>
+	@endif
+	{{ session('error') }}
+	</div>
+	@if (session('success'))
+	<div class="alert alert-success">
+		{{ session('success') }}
+	</div>
+	@endif
+	
+</div> 
 	<div class="col-sm-8 col-sm-offset-2">
-		<div class="form-group text {{ $errors->has('password') ? ' has-error' : '' }} required">
-			{{ Form::label('password', 'Old Password') }}
-			{{ Form::password('password', 
-			['class' => 'form-control',
-			'id' => 'password',
-			'maxlength'=>'256' ,
-			'placeholder'=>'Old Password *'
-			]) 
-			,'autofocus'
-		}}
+		<div class="form-group {{ $errors->has('current_password') ? ' has-error' : '' }} required">
+			{{ Form::label('current_password', 'Old Password',['class'=>'col-md-4 control-label']) }}
+			<div class="col-md-8">
+				{{ Form::password('current_password', 
+					['class' => 'form-control',
+					'id' => 'current_password',
+					'maxlength'=>'256' ,
+					'placeholder'=>'Old Password *'
+					,'autofocus']) 
+			  }}
+		  </div>
 
-		@if ($errors->has('password'))
+		@if ($errors->has('current_password'))
 		<span class="help-block">
-			<strong>{{ $errors->first('password') }}</strong>
+			<strong>{{ $errors->first('current_password') }}</strong>
 		</span>
 		@endif   
 	</div> 
-</div> 
-
+    </div>
 <div class="col-sm-8 col-sm-offset-2">
-	<div class="form-group text {{ $errors->has('new_password') ? ' has-error' : '' }} required">
-		{{ Form::label('new_password', 'New Password') }}
-		{{ Form::password('new_password', 
-		['class' => 'form-control',
-		'id' => 'new_password',
-		'maxlength'=>'256' ,
-		'placeholder'=>'New Password *'
-		]) 
-		,'autofocus'
-	}}
+	<div class="form-group {{ $errors->has('new_password') ? ' has-error' : '' }} required">
+		{{ Form::label('new_password', 'New Password',['class'=>'col-md-4 control-label']) }}
+		<div class="col-md-8">
+			{{ Form::password('new_password', 
+			['class' => 'form-control',
+			'id' => 'new_password',
+			'maxlength'=>'256' ,
+			'placeholder'=>'New Password *'
+			,'autofocus'
+			]) 
+		}}
+	</div>
 
 	@if ($errors->has('new_password'))
 	<span class="help-block">
@@ -52,27 +72,29 @@
 </div> 
 
 <div class="col-sm-8 col-sm-offset-2">
-	<div class="form-group text {{ $errors->has('conf_new_password') ? ' has-error' : '' }} required">
-		{{ Form::label('conf_new_password', 'Confirm New Password') }}
-		{{ Form::password('conf_new_password', 
-		['class' => 'form-control',
-		'id' => 'conf_new_password',
-		'maxlength'=>'256' ,
-		'placeholder'=>'Confirm New Password *'
-		]) 
-		,'autofocus'
-	}}
+	<div class="form-group  {{ $errors->has('new_password_confirm') ? ' has-error' : '' }} required">
+		{{ Form::label('new_password_confirm', 'Confirm New Password',['class'=>'col-md-4 control-label']) }}
+		<div class="col-md-8">
+			{{ Form::password('new_password_confirm', 
+			['class' => 'form-control',
+			'id' => 'new_password_confirm',
+			'maxlength'=>'256' ,
+			'placeholder'=>'Confirm New Password *'
+			,'autofocus'
+			]) 
+		}}
+	  </div>
 
-	@if ($errors->has('conf_new_password'))
+	@if ($errors->has('new_password_confirm'))
 	<span class="help-block">
-		<strong>{{ $errors->first('conf_new_password') }}</strong>
+		<strong>{{ $errors->first('new_password_confirm') }}</strong>
 	</span>
 	@endif   
 </div> 
 </div> 
 
 </div>
-<footer class="panel-footer text-center bg-light lter">
-	<button type="submit" class="btn btn-success btn-s-xs">Update</button>
+<footer class="text-center bg-light lter">
+	<button type="submit" class="btn btn-success btn-s-xs">Change password</button>
 </footer>
 {!! Form::close() !!}
