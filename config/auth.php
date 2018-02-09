@@ -16,6 +16,8 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'profiles' => 'users',
+        'balances' => 'users',
     ],
 
     /*
@@ -69,6 +71,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,6 +99,18 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+    ],
+    'profiles' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+    ],
+    'balances' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
         ],
     ],
 
