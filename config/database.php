@@ -20,7 +20,9 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    // 'default' => env('DB_CONNECTION', 'mysql'),
+
+    'default' => env('DB_CONNECTION', 'pgsql_heroku'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,19 +62,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-         'Mysql_heroku' => [
-            'driver' => 'mysql',
-            'host' => $host,
-            'database' =>$db,
-            'username' => $username,
-            'password' =>$password,
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
+     
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -97,7 +87,19 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
+        'Mysql_heroku' => [
+            'driver' => 'mysql',
+            'host' => $host,
+            'database' =>$db,
+            'username' => $username,
+            'password' =>$password,
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),
