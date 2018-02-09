@@ -29,11 +29,35 @@
 						</a>
 					</li>
 					<li>
+						<a href="/admin/folders">
+							<i class="fa fa-folder-o">
+								<b class="bg-warning dker"></b>
+							</i>
+							<span>Folders</span>
+						</a>
+					</li>
+					<li>
+					<a href="/admin/domains">
+						<i class="fa fa-file-o">
+							<b class="bg-success dker"></b>
+						</i>
+						<span>Domains</span>
+					</a>
+				</li>
+				<li>
+						<a href="/admin/adstypes">
+							<i class="fa fa-file-o">
+								<b class="bg-success dker"></b>
+							</i>
+							<span>Ads Types</span>
+						</a>
+					</li>
+					<li>
 						<a href="/admin/users">
 							<i class="fa fa-columns">
 								<b class="bg-info dker"></b>
 							</i>
-							<span>Referrals</span>
+							<span>Users</span>
 						</a>
 					</li>
 					<li>

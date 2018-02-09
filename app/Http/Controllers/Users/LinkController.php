@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LinkValidation;
-
-use App\Http\Controllers\FrontController;
-
+use App\Http\Controllers\Controller;
 use App\Http\Models\folders;
 use App\Http\Models\Domain;
 use App\Http\Models\AdsTypes;
@@ -20,10 +18,9 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
     }
-
+// Show list of links
     public function index(link $link)
     {
-        // Show list of links
           $links = $link->links()->paginate(20);
           // $deleteform = $link->deleteForm();
           return view('users.links.index')->withLinks($links);
@@ -78,7 +75,7 @@ class LinkController extends Controller
     public function delete(link $link)
     {
        
-          return redirect()->back();
+      return redirect()->back();
     }
 
     /*
@@ -88,30 +85,28 @@ class LinkController extends Controller
     */
    
   // NewItemew for create new item in table(for calling in store).
-    protected function NewItem(array $data)
-    {   
-
-
-       $alias=($data['alias'])?: null;
-       $slug =($data['alias'])?: str_random(10);
+  protected function NewItem(array $data)
+  {   
+     $alias=($data['alias'])?: null;
+     $slug =($data['alias'])?: str_random(10);
+   
+     $domain_id = $data['domain_id'];
+     $domain = Domain::find($domain_id);
+     $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
      
-       $domain_id = $data['domain_id'];
-       $domain = Domain::find($domain_id);
-       $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
-       
-       $link = link::create(
-          [
-            'user_id'    => Auth::id(),
-            'domain_id'  => $domain_id ,
-            'folder_id'  => $data['folder_id'],
-            'ad_id'      => $data['ad_id'],
-            'alias'      => $alias,
-            'slug'       => $slug,
-            'url'        => $data['url'],
-            'shorted_url' =>$shorted_url ,
-          ]);
-     return $link ;
-    }
+     $link = link::create(
+      [
+        'user_id'    => Auth::id(),
+        'domain_id'  => $domain_id ,
+        'folder_id'  => $data['folder_id'],
+        'ad_id'      => $data['ad_id'],
+        'alias'      => $alias,
+        'slug'       => $slug,
+        'url'        => $data['url'],
+        'shorted_url' =>$shorted_url ,
+      ]);
+ return $link ;
+  }
 
 
 }

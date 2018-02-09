@@ -9,14 +9,14 @@ class Domain extends Model
 {
     
     protected $table = 'domains';
-     protected $fillable = ['Name','slug','url','isDeleted',];
+    protected $fillable = ['name','slug','url','isDeleted',];
 
-    // list All files
-      public function Domains()
-      {
-       return $this->where('isDeleted','0')->orderBy('created_at','desc');
-      }
-    // list of  files has been deleted and list (Desc) by create date
+   // list All domains
+   public function Domains()
+   {
+    return $this->where('isDeleted','0')->orderBy('created_at','desc');
+   }
+    // list of  domains has been deleted and list (Desc) by create date
       public function deletedDomains()
       {
        return $this->where('isDeleted','1')->orderBy('updated_at','desc');

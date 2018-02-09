@@ -17,10 +17,10 @@ class LinkValidation extends FormRequest
     public function rules()
     {
         return [
-         'domain_id'=>  'required|integer',
-         'ad_id'=>  'required|integer',
-         'folder_id'=>  'required|integer',
-         'url'=>  'required|url|string',
+            'domain_id'=>  'required|integer',
+            'ad_id'=>  'required|integer',
+            'folder_id'=>  'required|integer',
+            'url'=>  'required|url|string',
         ];
     }
      public function messages()

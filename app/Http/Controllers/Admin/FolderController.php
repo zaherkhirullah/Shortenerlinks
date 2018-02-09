@@ -1,42 +1,39 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers;
-
-use App\folders;
+use App\Http\Models\folders;
 use Illuminate\Http\Request;
+use App\Http\Requests\FoldersValidation;
+use App\Http\Controllers\Controller;
+use Auth;
 
-class FoldersController extends Controller
+class FolderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index(folders $folders)
+    {
+        $folders = $folders->folders()->paginate(20);
+        return view('admin.folders.index')->withFolders($folders);
+    }
+  
     public function create()
     {
-        //
+        return view('admin.folders.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  
+    public function store(FoldersValidation $request)
     {
-        //
+        $this->NewItem($request->all());
+
+        return redirect()->route('folders.index')
+        ->with(['success'=>$request->name .' Sucessfully Created :)']);
     }
+
 
     /**
      * Display the specified resource.
@@ -82,4 +79,17 @@ class FoldersController extends Controller
     {
         //
     }
+
+    // NewItemew for create new item in table(for calling in store).
+    protected function NewItem(array $data)
+    { 
+    $Folder = folders::create(
+        [
+            'name'  => $data['name'],
+            'user_id'  => Auth::id(),
+        ]);
+        
+    return $Folder ;
+    }
+
 }

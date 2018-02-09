@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Models\AdsTypes;
+use App\Http\Models\campaigns;
 use Illuminate\Http\Request;
 
-class AdsTypesController extends Controller
+use App\Http\Controllers\Controller;
+
+class CampaignsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class AdsTypesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\AdsTypes  $adsTypes
+     * @param  \App\campaigns  $campaigns
      * @return \Illuminate\Http\Response
      */
-    public function show(AdsTypes $adsTypes)
+    public function show(campaigns $campaigns)
     {
         //
     }
@@ -52,10 +54,10 @@ class AdsTypesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AdsTypes  $adsTypes
+     * @param  \App\campaigns  $campaigns
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdsTypes $adsTypes)
+    public function edit(campaigns $campaigns)
     {
         //
     }
@@ -64,10 +66,10 @@ class AdsTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AdsTypes  $adsTypes
+     * @param  \App\campaigns  $campaigns
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdsTypes $adsTypes)
+    public function update(Request $request, campaigns $campaigns)
     {
         //
     }
@@ -75,10 +77,10 @@ class AdsTypesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AdsTypes  $adsTypes
+     * @param  \App\campaigns  $campaigns
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdsTypes $adsTypes)
+    public function destroy(campaigns $campaigns)
     {
         //
     }

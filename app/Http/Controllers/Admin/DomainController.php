@@ -1,41 +1,38 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Models\Domain;
 use Illuminate\Http\Request;
+use App\Http\Requests\DomainValidation;
+use App\Http\Controllers\Controller;
 
 class DomainController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+{ 
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index(Domain $domain)
+    {
+        $domains = $domain->domains()->paginate(20);
+        return view('admin.domains.index')->withDomains($domains);
+    }
+
+  
     public function create()
     {
-        //
+        return view('admin.domains.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  
+    public function store(DomainValidation $request)
     {
-        //
+        $this->NewItem($request->all());
+
+        return redirect()->route('domains.index')
+        ->with(['success'=>$request->name .' Sucessfully Created :)']);
     }
 
     /**
@@ -82,4 +79,19 @@ class DomainController extends Controller
     {
         //
     }
+
+// NewItemew for create new item in table(for calling in store).
+protected function NewItem(array $data)
+{ 
+   $Domain = Domain::create(
+    [
+        'name'  => $data['name'],
+        'slug'  => $data['slug'],
+        'url'   => $data['url'],
+    ]);
+     
+ return $Domain ;
+}
+
+
 }

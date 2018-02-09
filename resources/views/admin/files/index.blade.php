@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.adlayout')
 
 @section('content')
 
@@ -64,7 +64,7 @@
                             @endif
                         </td>
                         <td class="v-middle hidden-xs">
-                             @if($file->isPrivate == 1)
+                             @if($file->isPrivate == 0)
                             Private
                             @else 
                             Public

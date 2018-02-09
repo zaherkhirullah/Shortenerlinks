@@ -45,12 +45,18 @@ Route::prefix('admin')->group(function()
 { 
   Route::group(['namespace' => 'Admin'], function()
   {
+    Route::get( '/', 'AdminController@dashboard')->name("admin");
     Route::get( '/dashboard', 'AdminController@dashboard')->name("Adashboard");
-    Route::get( '/links', 'AdminController@links')->name("Alinks");
-    Route::get( '/files', 'AdminController@files')->name("Afiles");
     Route::get( '/withdraws', 'AdminController@withdraws')->name("Awithdraws");
     Route::get( '/users', 'AdminController@users')->name("Ausers");
+    Route::resource( '/domains', 'DomainController');  
+    Route::resource( '/adstypes', 'AdsTypesController');
+    Route::resource( '/folders', 'FolderController');
+    Route::resource( '/links', 'LinkController');  
+    Route::resource( '/files', 'FileController');
   });
+ 
+
 });
 /*
 |=============================
@@ -77,18 +83,22 @@ Route::prefix('admin')->group(function()
 Route::prefix('user')->group(function() 
 {
    Route::group(['namespace' => 'Users'], function(){
-
-      Route::get( '/dashboard', 'UsersController@dashboard')
-                ->name("dashboard");
+    Route::get( '/', 'UsersController@dashboard')
+    ->name("user");
+    Route::get( '/dashboard', 'UsersController@dashboard')
+    ->name("dashboard");
 
       Route::get( '/referrals', 'UsersController@referrals')
                 ->name("referrals");
       Route::get( '/withdraw', 'UsersController@withdraw')
                 ->name("withdraw");
-       });
+
+      Route::resource( '/folders', 'FolderController'); 
+      Route::resource( '/links', 'LinkController');  
+      Route::resource( '/files', 'FileController');
+    });
       
-        Route::resource( '/links', 'LinkController');  
-        Route::resource( '/files', 'FileController');
+     
        
 
 });

@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class AdsTypes extends Model
 {
    protected $table = 'ads_types';
-   
-    public function links()
+   protected $fillable = ['name','description','isDeleted',];
+    
+    // list All AdsTypes
+    public function AdsTypes()
+    {
+     return $this->where('isDeleted','0')->orderBy('created_at','desc');
+    }
+
+   public function links()
      {
          return $this->hasMany(link::class)->orderBy('created_at','desc');
      }

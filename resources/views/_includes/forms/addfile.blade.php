@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'files.store' , 'id'=>'upload_form')) }}
+{{ Form::open(array('route' => 'files.store' , 'id'=>'upload_form','files'=>true)) }}
 
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">

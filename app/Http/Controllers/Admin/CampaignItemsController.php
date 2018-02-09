@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Models\campaign_items;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
 
 class CampaignItemsController extends Controller
 {
