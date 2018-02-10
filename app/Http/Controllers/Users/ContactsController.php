@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use App\Http\Models\Contacts;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactsValidation;
 
+use App\Http\Controllers\Controller;
 class ContactsController extends Controller
 {
     
@@ -21,9 +22,11 @@ class ContactsController extends Controller
       return view('home.contacts');
     }
 
-    public function store(ContactsValidation $request)
+    public function store(ContactsValidation $request, Contacts $model) 
     {
-        $this->NewItem($request->all());
+        
+        $model->fill($request->all());
+        $model->save();
 
         return view('home.contacts')-> with( ['message'=>' Sucessfully Created :)']);
     }
@@ -52,15 +55,5 @@ class ContactsController extends Controller
     {
         //
     }
-  // NewItemew for create new item in table(for calling in store).
-    protected function NewItem(array $data)
-    {
-     return Contacts::create(
-        [
-         'name'    =>  $data['name'],
-         'email'  => $data['email'],
-         'subject'  => $data['subject'],
-         'Message'       =>  $data['Message'],
-        ]);
-    }
+  
 }

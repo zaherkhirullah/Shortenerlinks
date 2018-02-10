@@ -7,8 +7,12 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <i class="fa fa-link">
-                        </i> Add New folder
+                        <i class="fa fa-link"></i> 
+                        @if(Route::is('links.create'))
+                              Add New link 
+                        @elseif(Route::is('links.edit'))
+                              Edit This link
+                        @endif  
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -21,7 +25,11 @@
                     <div class="box-short" id="shorterNew" >
                         <div class="box box-solid shorten-member">
                             <div class="box-body">
-                            @include('_includes.admin.forms.addFolder')
+                            @if(Route::is('links.create'))
+                                @include('_includes.forms.admin.link.create')
+                            @elseif(Route::is('links.edit'))
+                                 @include('_includes.forms.admin.link.edit')
+                            @endif 
                             </div>
                         </div>
                     </div>

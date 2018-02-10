@@ -22,10 +22,11 @@
 		<link rel="stylesheet" href="{{ asset('styles/member/css/styles.min.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ asset('styles/member/css/app.min.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ asset('styles/member/css/nprogress.css') }}" type="text/css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css"  type="text/css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css" type="text/css">
+  
 		<!-- Head Scripts -->
-		
 	</head>
 	<!--/ Head-->
 	<body >

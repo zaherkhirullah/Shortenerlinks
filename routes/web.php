@@ -6,12 +6,10 @@
 |=============================
 */
 Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
-
 Route::post('/language/', array('before' =>'csrf',
                                 'as'=>'changelang',
                                 'uses'=>'LanguageController@changelang',)
       );
-
 /*
 |=============================
 |      --/Visitor Area /--      
@@ -25,9 +23,12 @@ Route::post('/language/', array('before' =>'csrf',
 Route::get('/', function () { return view('home.home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/rates', 'HomeController@rates')->name('rates');
-Route::get('/contacts', 'ContactsController@create')->name('create');
+
+Route::group(['namespace' => 'Users'], function(){
+Route::get('/contacts', 'ContactsController@create')->name('contacts.create');
 Route::post('/contacts', 'ContactsController@store')->name('contacts.store');
-  
+});
+
 /*
 |=============================
 |  --/Register and sign in/-- 
@@ -54,6 +55,8 @@ Route::prefix('admin')->group(function()
     Route::resource( '/folders', 'FolderController');
     Route::resource( '/links', 'LinkController');  
     Route::resource( '/files', 'FileController');
+    Route::resource( '/contacts', 'ContactsController');
+    
   });
  
 
@@ -82,20 +85,24 @@ Route::prefix('admin')->group(function()
 */
 Route::prefix('user')->group(function() 
 {
-   Route::group(['namespace' => 'Users'], function(){
-    Route::get( '/', 'UsersController@dashboard')
-    ->name("user");
-    Route::get( '/dashboard', 'UsersController@dashboard')
-    ->name("dashboard");
+  Route::group(['namespace' => 'Users'], function(){
+     Route::get( '/', 'UsersController@dashboard')->name("user");
+     Route::get( '/dashboard', 'UsersController@dashboard')->name("dashboard");
 
-      Route::get( '/referrals', 'UsersController@referrals')
-                ->name("referrals");
-      Route::get( '/withdraw', 'UsersController@withdraw')
-                ->name("withdraw");
+     Route::get( '/referrals', 'UsersController@referrals')->name("referrals");
+     Route::get( '/withdraw', 'UsersController@withdraw')->name("withdraw");
 
-      Route::resource( '/folders', 'FolderController'); 
-      Route::resource( '/links', 'LinkController');  
-      Route::resource( '/files', 'FileController');
+     Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
+     Route::delete( '/links/restore/{link}',array('uses' => 'LinkController@restore', 'as' => 'links.restore'));
+     
+     Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
+     Route::delete( '/files/restore/{file}',array('uses' => 'FileController@restore', 'as' => 'files.restore'));
+     
+     Route::resource( '/folders', 'FolderController'); 
+     Route::resource( '/links', 'LinkController');  
+     Route::resource( '/files', 'FileController');
+
+  
     });
       
      

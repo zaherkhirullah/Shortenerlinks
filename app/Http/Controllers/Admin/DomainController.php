@@ -23,7 +23,7 @@ class DomainController extends Controller
   
     public function create()
     {
-        return view('admin.domains.create');
+        return view('admin.domains.Form');
     }
 
   
@@ -35,51 +35,32 @@ class DomainController extends Controller
         ->with(['success'=>$request->name .' Sucessfully Created :)']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Domain $domain)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Domain $domain)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Domain $domain)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Domain  $domain
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Domain $domain)
-    {
-        //
-    }
-
+    
+// show link details
+public function show(link $link)
+{
+    return view('admin.links.show');
+}
+// edit link details
+public function edit(link $link)
+{
+    return view('admin.links.Form');
+}
+// update function
+public function update(Request $request, link $link)
+{    
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully Edited :)']);
+}
+// for hide link    
+public function destroy(link $link)
+{
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully hided :)']);
+}
+// for delete link
+public function delete(link $link)
+{
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully deleted :)']);
+}
 // NewItemew for create new item in table(for calling in store).
 protected function NewItem(array $data)
 { 

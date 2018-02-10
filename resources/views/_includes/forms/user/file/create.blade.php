@@ -25,7 +25,7 @@
             <div class="form-group {{$errors->has('folder_id') ? ' has-error' : ''}}">
               {!!  Form::label('folder_id', 'Folder Name');   !!}
 
-              {{Form::select('folder_id', $folders ,$selectedfolder, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
+              {{Form::select('folder_id', $folders ,1, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
               @if ($errors->has('folder_id'))
               <span class="help-block">
                 <strong>{{ $errors->first('folder_id') }}</strong>
@@ -37,7 +37,7 @@
             <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
               <label for="domains">domains</label>
 
-              {{Form::select('domain_id', $domains ,$selectedDomain, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
+              {{Form::select('domain_id', $domains ,1, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
               @if ($errors->has('domain_id'))
               <span class="help-block">
                 <strong>{{ $errors->first('domain_id') }}</strong>
@@ -49,7 +49,7 @@
             <div class="form-group {{$errors->has('ad_id') ? ' has-error' : ''}}">
               <label for="ad-type">Advertising Type</label>
 
-              {{Form::select('ad_id', $ads ,$selectedAds, 
+              {{Form::select('ad_id', $ads ,1, 
               ['class' =>"form-control input-sm",'id'=>'ad_id'])  }}
               @if ($errors->has('ad_id'))
               <span class="help-block">

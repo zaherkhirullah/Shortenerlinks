@@ -39,22 +39,74 @@
 						</a>
 					</li>
 					<li>
-						<a href="/user/links">
-							<i class="fa fa-link">
-								<b class="bg-warning dker">
-								</b>
+					<a href="#links">
+						<i class="fa fa-link">
+							<b class="bg-success">
+							</b>
+						</i>
+						<span class="pull-right">
+							<i class="fa fa-angle-down text">
 							</i>
-							<span>Links</span>
-						</a>
-					</li>
+							<i class="fa fa-angle-up text-active">
+							</i>
+						</span>
+						<span>Links</span>
+					</a>
+					<ul class="nav lt">
 					<li>
-						<a href="/user/files">
-							<i class="fa fa-file">
+						<a href="{{url('/user/links')}}">
+							<i class="fa fa-eye">
 								<b class="bg-info dker">
 								</b>
 							</i>
-							<span>Files</span>
+							<span>active Links</span>
 						</a>
+					</li>
+					<li>
+						<a href="{{url('/user/links/dlist')}}">
+							<i class="fa fa-eye-slash">
+								<b class="bg-warning dker">
+								</b>
+							</i>
+							<span>Hide Links</span>
+						</a>
+					</li>
+						</ul>
+					</li>
+					<li>
+					<a href="#files">
+						<i class="fa fa-file-o">
+							<b class="bg-info">
+							</b>
+						</i>
+						<span class="pull-right">
+							<i class="fa fa-angle-down text">
+							</i>
+							<i class="fa fa-angle-up text-active">
+							</i>
+						</span>
+						<span>Files</span>
+					</a>
+					<ul class="nav lt">
+					<li>
+						<a href="{{url('/user/files')}}">
+							<i class="fa fa-eye">
+								<b class="bg-info dker">
+								</b>
+							</i>
+							<span>active Files</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{url('/user/files/dlist')}}">
+							<i class="fa fa-eye-slash">
+								<b class="bg-warning dker">
+								</b>
+							</i>
+							<span>Hide Files</span>
+						</a>
+					</li>
+						</ul>
 					</li>
 					<li>
 						<a href="/user/referrals">
@@ -65,40 +117,7 @@
 							<span>Referrals</span>
 						</a>
 					</li>
-				<!-- 	<li>
-						<a href="#Tools">
-							<i class="fa fa-flask">
-								<b class="bg-info"></b>
-							</i>
-							<span class="pull-right">
-								<i class="fa fa-angle-down text"></i>
-								<i class="fa fa-angle-up text-active"></i>
-							</span>
-							<span>Tools</span>
-						</a>
-						<ul class="nav lt">
-							<li>
-								<a href="/user/tools/multi-links">
-									<i class="fa fa-angle-right"></i>
-									<span>Mass Shrinker</span>
-								</a>
-							</li>
-							<li>
-								<a href="/user/tools/quick-link">
-									<i class="fa fa-angle-right"></i>
-									<span>Quick Link</span>
-								</a>
-							</li>
-							<li>
-								<a href="user/tools/full-page-script">
-									<i class="fa fa-angle-right"></i>
-									<span>Full Page Script</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				-->
-				<li>
+					<li>
 					<a href="/user/withdraw">
 						<i class="fa fa-dollar">
 							<b class="bg-success">
@@ -144,6 +163,41 @@
 							</li> -->
 						</ul>
 					</li>
+					
+				<!-- 	<li>
+						<a href="#Tools">
+							<i class="fa fa-flask">
+								<b class="bg-info"></b>
+							</i>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Tools</span>
+						</a>
+						<ul class="nav lt">
+							<li>
+								<a href="/user/tools/multi-links">
+									<i class="fa fa-angle-right"></i>
+									<span>Mass Shrinker</span>
+								</a>
+							</li>
+							<li>
+								<a href="/user/tools/quick-link">
+									<i class="fa fa-angle-right"></i>
+									<span>Quick Link</span>
+								</a>
+							</li>
+							<li>
+								<a href="user/tools/full-page-script">
+									<i class="fa fa-angle-right"></i>
+									<span>Full Page Script</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				-->
+				
 				</ul>
 			</nav>
 

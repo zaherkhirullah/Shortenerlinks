@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Http\Models\folders;
+use App\Http\Models\folder;
 use Illuminate\Http\Request;
-use App\Http\Requests\FoldersValidation;
+use App\Http\Requests\FolderValidation;
 use App\Http\Controllers\Controller;
 use Auth;
 
@@ -15,82 +15,64 @@ class FolderController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(folders $folders)
+    public function index(folder $folder)
     {
-        $folders = $folders->folders()->paginate(20);
-        return view('admin.folders.index')->withFolders($folders);
+        $folders = $folder->folder()->paginate(20);
+        return view('admin.folders.index')->withfolder($folders);
     }
   
     public function create()
     {
-        return view('admin.folders.create');
+        return view('admin.folders.Form');
     }
 
   
-    public function store(FoldersValidation $request)
+    public function store(FolderValidation $request)
     {
         $this->NewItem($request->all());
 
-        return redirect()->route('folders.index')
+        return redirect()->route('folder.index')
         ->with(['success'=>$request->name .' Sucessfully Created :)']);
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\folders  $folders
-     * @return \Illuminate\Http\Response
-     */
-    public function show(folders $folders)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\folders  $folders
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(folders $folders)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\folders  $folders
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, folders $folders)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\folders  $folders
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(folders $folders)
-    {
-        //
-    }
+   
+// show folder details
+public function show(folder $folder)
+{
+    return view('users.folders.show');
+}
+// edit folder details
+public function edit(folder $folder)
+{
+    return view('users.folders.Form');
+}
+// update function
+public function update(Request $request, folder $folder)
+{    
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully Edited :)']);
+}
+// for hide folder    
+public function destroy(folder $folder)
+{
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully hided :)']);
+}
+// for delete folder
+public function delete(folder $folder)
+{
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully deleted :)']);
+}
 
 // NewItemew for create new item in table(for calling in store).
 protected function NewItem(array $data)
 { 
-   $Folder = folders::create(
+   $Folders = folder::create(
     [
         'name'  => $data['name'],
         'user_id'  => Auth::id(),
     ]);
      
- return $Folder ;
+ return $Folders ;
 }
 
 }

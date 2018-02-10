@@ -5,8 +5,8 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Domain;
 use App\User;
-use App\Http\Models\AdsTypes;
-use App\Http\Models\folders;
+use App\Http\Models\Adstype;
+use App\Http\Models\folder;
 class file extends Model
 {
   protected $table = 'files';
@@ -23,7 +23,7 @@ class file extends Model
        return $this->where('isDeleted','0')->orderBy('created_at','desc');
       }
     // list of  files has been deleted and list (Desc) by create date
-      public function deletedfiles()
+      public function deletedFiles()
       {
        return $this->where('isDeleted','1')->orderBy('updated_at','desc');
       }
@@ -31,20 +31,20 @@ class file extends Model
       public function userfiles(User $user)
       {
       }
-     public function Domain()
-     {
-       return $this->belongsTo(Domain::class); 
-     }
-      public function User()
-     {
-       return $this->belongsTo(User::class); 
-     }
-        public function folders()
-     {
-       return $this->belongsTo(folders::class); 
-     }
-     public function AdsTypes()
-     {
-       return $this->belongsTo(AdsTypes::class); 
-     }
+      public function domain()
+      {
+        return $this->belongsTo(Domain::class); 
+      }
+       public function user()
+      {
+        return $this->belongsTo(User::class); 
+      }
+         public function folder()
+      {
+        return $this->belongsTo(folder::class); 
+      }
+      public function adstype()
+      {
+        return $this->belongsTo(Adstype::class); 
+      }
 }

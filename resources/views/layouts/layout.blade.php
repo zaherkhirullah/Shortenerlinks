@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="{{ asset('styles/member/css/app.min.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ asset('styles/member/css/nprogress.css') }}" type="text/css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
 		<!-- Head Scripts -->
 	</head>
@@ -42,6 +43,11 @@
 							@if (session('success'))
 							<div class="alert alert-success">
 								{{ session('success') }}
+						<span class="pull-right">
+						<a type="button" class="btn" data-dismiss="">
+						<i class="fa fa-times"></i>
+						</a>
+							</span>
 							</div>
 							@endif
 							@if (session('error'))

@@ -8,3 +8,4 @@
 <script src="{{ asset('styles/home/js/back-to-top.js') }}"></script>
 <script src="{{ asset('styles/home/js/main.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>

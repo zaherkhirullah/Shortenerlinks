@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LinkValidation;
 
 use App\Http\Controllers\Controller;
-use App\Http\Models\folders;
+use App\Http\Models\folder;
 use App\Http\Models\Domain;
-use App\Http\Models\AdsTypes;
+use App\Http\Models\Adstype;
 use App\Http\Models\link;
 
 use Auth;
@@ -32,11 +32,11 @@ class LinkController extends Controller
 
         $domains = Domain::pluck('name', 'id');
         $selectedDomain = 1;
-        $ads=AdsTypes::pluck('name', 'id');
+        $ads=Adstype::pluck('name', 'id');
         $selectedAds =1;
-        $folders=folders::pluck('name', 'id');
+        $folders=folder::pluck('name', 'id');
         $selectedfolder =1;
-        return view('admin.links.create',
+        return view('admin.links.Form',
                     compact('domains','selectedDomain','folders','selectedfolder','ads','selectedAds')
                    );
     }
@@ -47,35 +47,32 @@ class LinkController extends Controller
       return redirect()->route('links.index')
       ->with(['success'=>$request->slug .' Sucessfully Created :)']);
     }
-// show link details
-    public function show(link $link)
-    {
-        
-    }
- // edit link details
-    public function edit(link $link)
-    {
-       
-       return view('admin.links.edit');
-    }
 
-     // update function
-    public function update(Request $request, link $link)
-    {
-       
-    }
-  // for hide link 
-    public function destroy(link $link)
-    {
-      
-          return redirect()->back();
-    }
-     // for delete link 
-    public function delete(link $link)
-    {
-       
-      return redirect()->back();
-    }
+// show link details
+public function show(link $link)
+{
+    return view('admin.links.show');
+}
+// edit link details
+public function edit(link $link)
+{
+    return view('admin.links.Form');
+}
+// update function
+public function update(Request $request, link $link)
+{    
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully Edited :)']);
+}
+// for hide link    
+public function destroy(link $link)
+{
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully hided :)']);
+}
+// for delete link
+public function delete(link $link)
+{
+    return redirect()->route('links.index')->with( ['success'=>' Sucessfully deleted :)']);
+}
 
     /*
     |------------------------

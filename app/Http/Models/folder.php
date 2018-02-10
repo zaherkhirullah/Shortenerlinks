@@ -5,7 +5,7 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\link;
 use App\Http\Models\file;
-class folders extends Model
+class folder extends Model
 {
 protected $table = 'folders';
 protected $fillable = ['name','user_id','isDeleted',];

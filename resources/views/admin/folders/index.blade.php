@@ -3,152 +3,109 @@
 @section('content')
 
 <div class="col-md-12">
-  <section class="lter box box-success">
-    <header class="box-header with-border text-center">
-      <h3 class="box-title">
-        <i class="fa fa-link">
-        </i> All Your folders
-      </h3>
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-          <i class="fa fa-minus"></i>
-        </button>
-      </div>
-    </header>
-    <!-- /.box-header -->
+	<section class="lter box box-success">
+		<header class="box-header with-border text-center">
+			<h3 class="box-title">
+				<i class="fa fa-link">
+				</i> All Your folders
+			</h3>
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse">
+					<i class="fa fa-minus"></i>
+				</button>
+			</div>
+		</header>
+		<!-- /.box-header -->
+		<section class="box-body">   
+			@if(count($folders))
+			<table id="DataTable" class="mdl-data-table table-bordered table-hover" cellspacing="0" width="100%">
 
-    <div class="footer b-t bg-white-only"> 
-      <div class="col-md-3 " style="top:10px;">
-        <a href="{{route('folders.create')}}" type="button" class="btn btn-success btn-md">
-          <i class="fa fa-link"></i>
-          Add New folder
-        </a>
-      </div>
-      <div class="col-md-5 pull-right">
-        <form class="m-t-sm">
-          <div class="input-group">
-            <input type="text" class="input-sm form-control input-s-sm" placeholder="Search" disabled="">
-            <div class="input-group-btn">
-              <button class="btn btn-sm btn-default" >
-                <i class="fa fa-search">
-                </i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!--/ SEARCH BOX -->
-    <section class="box-body">   
-      @if(count($folders))
-      <table class="table table-striped table-hover table-flip-scroll cf">
-        <tbody>
-          @foreach ($folders as $folder)
-          <tr>
+				<div class="col-md-3 " style="top:10px;">
+					<a href="{{route('folders.create')}}" type="button" class="btn btn-success btn-md">
+						<i class="fa fa-link"></i>
+						Add New folder
+					</a>
+				</div>
 
-            <td>
-              <a href="{{$folder->name }}" class="h5 text-success" target="_blank">
-                <strong>{{$folder->name}}</strong>
-              </a>
-              <small class="text-muted block">{{$folder->name }}</small>
-            </td>
-            <td class="v-middle hidden-xs">{{$folder->created_at}}</td>
-            <td class="v-middle hidden-xs">
-
-              <div class="pos-rlt">
-                <button class="btn btn-copy text-success" data-clipboard-text="{{$folder->url}}"
-                 data-toggle="button">
-                 <span class="text">
-                  <i style="font-size: 20px" class="ion ion-ios-copy-outline">
-                  </i> COPY
-                </span>
-                <span class="text-active">
-                 COPIED
-               </span>
-             </button>
-
-           </div>
-         </td>
-         <td class="pull-right">
-          <a href="#edit-link-{{$folder->id}}" data-toggle="modal"
-          class="text-success" >
-          <span class="text">
-            <i class="fa fa-2x fa-edit">
-            </i> 
-          </span>
-        </a>
-        <a href="#delete-link-{{$folder->id}}" data-toggle="modal" class=" text-danger" >
-          <span class="text">
-            <i class="fa fa-2x fa-eye-slash">
-            </i> 
-          </span>
-        </a>
-      </td>
-    </tr>
-<div class="modal fade" id="delete-link-{{$folder->id}}">
-  <div class="modal-dialog modal-shorten">
-    <div class="modal-content bg-default">
-      <div class="modal-body">
-        <div class="padder">
-      {!! Form::open(array('route' =>['folders.destroy',$folder->id],
-      'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
-          <div class="text-center">
-            <h4 id="msg-shorten ">Hide Shorten link</h4>
-          </div>
-          <p class="text-danger">Are You Sure You Want Hide
-           <b class="text-success">{{$folder->slug}}</b> link ?</p> 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-             cancle
-            </button>
-            <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-              <i class="fa fa-eye-slash"></i> Hide
-            </button>
-          </div>
-          {!! Form::close() !!}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    @endforeach
-  </tbody> 
-</table>
-@else
-<div class="col-md-8 col-md-offset-2">
-  <center> 
-    <h2 class="text-danger alert alert-info"> You don't have folders</h2>
-  </center>
-</div>
-<div class="text-clear col-md-12">  </div>
-<div class="col-md-12 text-center">
-  <a href="{{route('folders.create')}}" class="btn btn-success"> 
-    Click to Add New link
-  </a>
-</div>
-@endif 
-</section>
-</section>
-</div>  
-<script>
-
-$.ajaxSetup({
-    headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-$(document).on('click', 'a.jquery-postback', function(e) {
-    e.preventDefault(); // does not go through with the link.
-
-    var $this = $(this);
-
-    $.post({
-        type: $this.data('method'),
-        url: $this.attr('href')
-    }).done(function (data) {
-        alert('success');
-        console.log(data);
-    });
-});
-</script>
-@endsection
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Created date</th>
+						<th>Update date</th>
+						<th>Options</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Created date</th>
+						<th>Update date</th>
+						<th>Options</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					@foreach ($folders as $folder)
+					<tr>
+						<td>{{$folder->name }}</td>
+						<td>{{$folder->created_at }}</td>
+						<td>{{$folder->updated_at }}</td>
+						<td>
+							<a href="{{route('folders.edit',$folder->id)}}" data-toggle="modal"class="text-success" >
+								<span class="text">
+									<i class="fa fa-2x fa-edit"></i> 
+								</span>
+							</a>
+							<a href="#delete-link-{{$folder->id}}" data-toggle="modal" class=" text-danger" >
+								<span class="text">
+									<i class="fa fa-2x fa-eye-slash"></i> 
+								</span>	
+							</a>
+						</td>
+					</tr>
+					<div class="modal fade" id="delete-link-{{$folder->id}}">
+						<div class="modal-dialog modal-shorten">
+							<div class="modal-content bg-default">
+								<div class="modal-body">
+									<div class="padder">
+										{!! Form::open(array('route' =>['folders.destroy',$folder->id],
+										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
+										<div class="text-center">
+											<h4 id="msg-shorten ">Hide Shorten link</h4>
+										</div>
+										<p class="text-danger">Are You Sure You Want Hide
+											<b class="text-success">{{$folder->slug}}</b> link ?</p> 
+											<div class="modal-footer">
+												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+													cancle
+												</button>
+												<button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
+													<i class="fa fa-eye-slash"></i> Hide
+												</button>
+											</div>
+											{!! Form::close() !!}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						@endforeach
+					</tbody>
+				</table>
+					
+				@else
+				<div class="col-md-8 col-md-offset-2">
+					<center> 
+						<h2 class="text-danger alert alert-info"> You don't have folders</h2>
+					</center>
+				</div>
+				<div class="text-clear col-md-12">  </div>
+				<div class="col-md-12 text-center">
+					<a href="{{route('folders.create')}}" class="btn btn-success"> 
+						Click to Add New link
+					</a>
+				</div>
+				@endif 
+				</section>
+				</section>
+				</div>  
+		@endsection

@@ -4,8 +4,8 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Domain;
-use App\Http\Models\AdsTypes;
-use App\Http\Models\folders;
+use App\Http\Models\Adstype;
+use App\Http\Models\folder;
 use App\User;
 
 class link extends Model
@@ -53,21 +53,21 @@ class link extends Model
        return $this->User()->find()
         ->where(['status' =>1, 'id' =>$user->id])->first();
       }
-      public function Domain()
+      public function domain()
       {
-       return $this->belongsTo(Domain::class); 
+        return $this->belongsTo(Domain::class); 
       }
-      public function User()
+       public function user()
       {
-       return $this->belongsTo(User::class); 
+        return $this->belongsTo(User::class); 
       }
-      public function folders()
+         public function folder()
       {
-       return $this->belongsTo(folders::class); 
+        return $this->belongsTo(folder::class); 
       }
-      public function AdsTypes()
+      public function adstype()
       {
-       return $this->belongsTo(AdsTypes::class); 
+        return $this->belongsTo(Adstype::class); 
       }
 
       public function striposArray($haystack, $needle, $offset = 0)

@@ -8,7 +8,13 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-link">
-                        </i> Add New Link
+                        </i>
+                        @if(Route::is('domains.create'))
+                             Add New Domain
+                        @elseif(Route::is('domains.edit'))
+                             Edit This Domain
+                        @endif 
+                             
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -21,7 +27,11 @@
                     <div class="box-short" id="shorterNew" >
                         <div class="box box-solid shorten-member">
                             <div class="box-body">
-                            @include('_includes.admin.forms.addAdsType')
+                            @if(Route::is('domains.create'))
+                                @include('_includes.forms.admin.domain.create')
+                            @elseif(Route::is('domains.edit'))
+                                 @include('_includes.forms.admin.domain.edit')
+                            @endif 
                             </div>
                         </div>
                     </div>

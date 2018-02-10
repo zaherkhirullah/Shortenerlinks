@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Models\file;
-use App\Http\Models\folders;
+use App\Http\Models\folder;
 use App\Http\Models\Domain;
-use App\Http\Models\AdsTypes;
+use App\Http\Models\Adstype;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -23,21 +23,25 @@ class fileController extends Controller
     {
         // Show list of files
           $files = $file->files()->paginate(20);
-          $deleteform = $this->deleteForm();
-
-     return view('admin.files.index',compact('deleteform'))->withFiles($files);
+     return view('admin.files.index')->withFiles($files);
+    }
+    public function deleteFiles(file $file)
+    {
+        // Show list of files
+          $files = $file->deleteFiles()->paginate(20);
+     return view('admin.files.index')->withFiles($files);
     }
 // upload new file
     public function create()
     {  
      $domains = Domain::pluck('name', 'id');
         $selectedDomain = 1;
-        $ads=AdsTypes::pluck('name', 'id');
+        $ads=Adstype::pluck('name', 'id');
         $selectedAds =1;
-        $folders=folders::pluck('name', 'id');
+        $folders=folder::pluck('name', 'id');
         $selectedfolder =1;
 
-        return view('admin.files.create',compact('domains','selectedDomain','folders','selectedfolder','ads','selectedAds'));
+        return view('admin.files.Form',compact('domains','selectedDomain','folders','selectedfolder','ads','selectedAds'));
     }
 // build file
     public function store(FileValidation $request)
@@ -47,50 +51,33 @@ class fileController extends Controller
       return redirect()->route('files.index')->
               with( ['message'=>' Sucessfully Created :)']);
     }
-// show file details
-    public function show(file $file)
-    {
-    }
-// edit file details
-    public function edit(file $file)
-    {
-        
-         return view('admin.files.edit');
-    }
- // update function
-    public function update(Request $request, file $file)
-    {    
-    }
-// for hide file    
-    public function destroy(file $file)
-    {
-  
-    }
-// for delete file
-    public function delete(file $file)
-    {
- 
-    }
 
-/*
-|------------------------
-|  private Functions
-|------------------------
-*/
-    private function deleteForm()
-    {
-        return array ('url' => 'user/files/destroy',
-                               'method'  => 'delete',
-                               'class'  => 'form-delete',
-                               'id'  => 'form-delete' );
-    }
-    private function editForm()
-    {
-        return array ('url' => 'user/files/update',
-                               'method'  => 'Post',
-                               'class'  => 'form-edit'  ,
-                               'id'  => 'form-edit' );
-    }
+// show folder details
+public function show(folder $folder)
+{
+    return view('admin.folders.show');
+}
+// edit folder details
+public function edit(folder $folder)
+{
+    return view('admin.folders.Form');
+}
+// update function
+public function update(Request $request, folder $folder)
+{    
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully Edited :)']);
+}
+// for hide folder    
+public function destroy(folder $folder)
+{
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully hided :)']);
+}
+// for delete folder
+public function delete(folder $folder)
+{
+    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully deleted :)']);
+}
+
      // NewItemew for create new item in table(for calling in store).
      protected function NewItem(array $data)
      {

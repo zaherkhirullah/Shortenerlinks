@@ -9,8 +9,12 @@
 				<div class="box box-success">
 					<div class="box-header with-border">
 						<h3 class="box-title">
-							<i class="fa fa-file">
-							</i> Add New File
+							<i class="fa fa-file"></i> 
+							@if(Route::is('files.create'))
+                              Add New file 
+                        @elseif(Route::is('files.edit'))
+                              Edit This file
+                        @endif 
 						</h3>
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -24,7 +28,11 @@
 						<div class="box-short" id="uploadFileNew" >
 							<div class="box box-solid shorten-member">
 								<div class="box-body">
-									@include('_includes.forms.addfile')
+								@if(Route::is('files.create'))
+                                @include('_includes.forms.user.file.create')
+                            @elseif(Route::is('files.edit'))
+                                 @include('_includes.forms.user.file.edit')
+                            @endif 
 								</div>
 							</div>
 						</div>

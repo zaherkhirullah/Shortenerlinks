@@ -12,7 +12,7 @@
 						<section class="col-md-12">
 							<div class="box box-primary">
 								<div class="box-body">
-									@include('_includes.forms.profile')
+									@include('_includes.forms.account.profile')
 								
 								</div>
 							</div>

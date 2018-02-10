@@ -4,11 +4,11 @@
     <div class="col-md-8">
     <div class="col-md-6">
     <div class="form-group {{$errors->has('name') ? ' has-error' : ''}}">
-    {!!  Form::label('name', 'Add name');   !!}
+    {!!  Form::label('name', 'Edit name');   !!}
 
     {{Form::text('name','',
     ['class' => "form-control input-sm ",
-    'id'=>'name'])  }}
+    'id'=>'name','placeholder'=>'Edit name'])  }}
 
     @if ($errors->has('name'))
     <span class="help-block">
@@ -20,10 +20,10 @@
 
 
     <div class="col-md-6">
-    {!!  Form::label('slug', 'Add Slug');   !!}
+    {!!  Form::label('slug', 'Edit Slug');   !!}
     <div class="form-group {{$errors->has('slug') ? ' has-error' : ''}}">
     {{   Form::text('slug','', ['class' =>"form-control input-sm ",
-    'id'=>'slug','placeholder'=>'Add slug']) 
+    'id'=>'slug','placeholder'=>'Edit slug']) 
     }}
     @if ($errors->has('slug'))
     <span class="help-block">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-md-8">
-    {!!  Form::label('url', 'Add url');   !!}
+    {!!  Form::label('url', 'Edit url');   !!}
     <div class="form-group {{$errors->has('url') ? ' has-error' : ''}}">
     <!-- {!!  Form::label('url', 'url');   !!} -->
     {!! Form::text('url','',
@@ -62,4 +62,4 @@
     </div>
     {!! Form::close() !!}
 
-    <div class="upload add-file-result"></div>
+    <div class="upload Edit-file-result"></div>

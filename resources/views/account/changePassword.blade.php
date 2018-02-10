@@ -8,7 +8,7 @@
 				<section class="scrollable wrapper">
 					<div class="box box-info">
 						<div class="box-body">
-							@include('_includes.forms.changepass')
+							@include('_includes.forms.account.changepass')
 						</div>
 					</div>
 				</section>
