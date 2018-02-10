@@ -39,7 +39,7 @@ class fileController extends Controller
     {  
      $domains = Domain::pluck('name', 'id');
         $ads=Adstype::pluck('name', 'id');
-        $folders=folders::pluck('name', 'id');
+        $folders=folder::pluck('name', 'id');
 
         return view('users.files.Form',compact('domains','folders','ads'));
     }
