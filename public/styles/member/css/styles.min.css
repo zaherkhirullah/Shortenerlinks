@@ -2,7 +2,6 @@ body {
     font-family: 'Muli', sans-serif;
     color: #515151;
 }
-
 a,
 a:hover,
 a:focus,
@@ -30,6 +29,7 @@ img {
 /*
  * Loader
  */
+
 .loader:before,
 .loader:after,
 .loader {

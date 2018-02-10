@@ -19,10 +19,11 @@ class LinkController extends Controller
     }
 
    // Show list of links
-   public function index(link $link)
-   {
+   public function index(link $link ,Request $request)
+   {    
+         $ip = $request->ip();
          $links = $link->links()->paginate(20);
-         return view('users.links.index')->withLinks($links);
+         return view('users.links.index',compact('ip'))->withLinks($links);
    }
     // Show list of deleted links
     public function deletedLinks(link $link)

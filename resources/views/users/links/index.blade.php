@@ -7,7 +7,7 @@
     <header class="box-header with-border text-center">
       <h3 class="box-title">
         <i class="fa fa-link">
-        </i> All Your links
+        </i> All Your links     ip: <Address> {{$ip}}</Address>
       </h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -16,31 +16,32 @@
       </div>
     </header>
     <!-- /.box-header -->
-    <div class="footer b-t bg-white-only"> 
-      <div class="col-md-3 " style="top:10px;">
-        <a href="{{route('links.create')}}" type="button" class="btn btn-success btn-md">
-          <i class="fa fa-link"></i>
-          Add New link
-        </a>
-      </div>
-      <div class="col-md-5 pull-right">
-        <form class="m-t-sm">
-          <div class="input-group">
-            <input type="text" class="input-sm form-control input-s-sm" placeholder="Search" disabled="">
-            <div class="input-group-btn">
-              <button class="btn btn-sm btn-default" >
-                <i class="fa fa-search">
-                </i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!--/ SEARCH BOX -->
+    
     <section class="box-body">   
       @if(count($links))
-      <table class="table table-striped table-hover table-flip-scroll cf">
+      <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
+           <div class="col-sm-3 " style="top:10px;">
+            <a href="{{url('user/links/create')}}" type="button" class="btn btn-success btn-md">
+             <i class="fa fa-link"></i>
+               Add New link
+            </a>
+            </div>
+              <thead>
+              <tr>
+               <th>Link</th>
+               <th>views</th>
+               <th>ceated date</th>
+               <th>Options</th>
+              </tr>
+              </thead>
+<tfoot>
+<tr>
+               <th>Link</th>
+               <th>views</th>
+               <th>ceated date</th>
+               <th>Options</th>
+              </tr>
+</tfoot>
         <tbody>
           @foreach ($links as $link)
           <tr>
@@ -50,11 +51,11 @@
                 <button class="btn btn-sm btn-copy text-success pull-right" data-clipboard-text="{{$link->shorted_url}}"
                   data-toggle="button">
                   <span class="text">
-                    <i style="font-size: 20px" class="ion ion-ios-copy-outline">
-                    </i> COPY
+                    <i class="ion ion-ios-copy-outline text-md">
+                    </i> Copy
                   </span>
                   <span class="text-active">
-                    COPIED
+                  <i class="fa fa-check"> </i> Copied
                   </span>
                 </button>
               </a>
@@ -62,12 +63,16 @@
               {{$link->url}}
               </small>
             </td>
-            <td class="v-middle hidden-xs"><i class="fa fa-eye"></i> {{$link->clicks}}</td>
+            <td class="v-middle hidden-xs">
+              <a  href="{{route('links.show',$link->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
+                        <i class="fa fa-eye"></i>
+                </a> 
+             {{$link->clicks}}</td>
             <td class="v-middle hidden-xs">{{$link->created_at}}</td>
             <td class="pull-right">
               <a href="{{route('links.edit',$link->id)}}" title="Edit" data-toggle="modal"
                 class="text-success" >
-                <span class="text"  style="font-size:18px;">
+                <span class="text text-sm">
                   <i class="fa fa-edit">
                   </i> 
                 </span>
@@ -75,7 +80,7 @@
               @if(Route::is('links.index'))
               <a href="#delete-link-{{$link->id}}" title="Hide"  data-toggle="modal"
                 class=" text-danger" >
-                <span class="text" style="font-size:18px;">
+                <span class="text text-sm">
                   <i class="fa fa-eye-slash">
                   </i> 
                 </span>
@@ -83,7 +88,7 @@
               @elseif(Route::is('links.deletedLinks'))
               <a href="#restore-link-{{$link->id}}" title="Unhide"  data-toggle="modal"
                 class="text-warning" >
-                <span class="text" style="font-size:18px;">
+                <span class="text text-sm">
                   <i class="fa fa-eye">
                   </i> 
                 </span>

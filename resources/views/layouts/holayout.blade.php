@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/landing.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/font-awesome.min.css') }}" type="text/css">

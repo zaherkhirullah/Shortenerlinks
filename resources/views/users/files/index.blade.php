@@ -16,31 +16,37 @@
                 </div>
         </header>
             <!-- /.box-header -->
-          
-        <div class="footer b-t bg-white-only"> 
-         <div class="col-md-3 " style="top:10px;">
-            <a href="{{url('user/files/create')}}" type="button" class="btn btn-info btn-md">
-             <i class="fa fa-file"></i>
-               Add New File
-            </a>
-         </div>
-           <div class="col-md-5 pull-right">
-            <form class="m-t-sm">
-                <div class="input-group">
-                    <input type="text" class="input-sm form-control input-s-sm" placeholder="Search" disabled="">
-                    <div class="input-group-btn">
-                     <button class="btn btn-sm btn-default" >
-                            <i class="fa fa-search">
-                            </i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-      </div>
         <section class="box-body">   
           @if(count($files))
-           <table class="table table-striped table-hover table-flip-scroll cf">
+          <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
+          <div class="col-sm-3 " style="top:10px;">
+           <a href="{{url('user/files/create')}}" type="button" class="btn btn-info btn-md">
+            <i class="fa fa-file"></i>
+              Add New File
+           </a>
+           </div>
+             <thead>
+             <tr>
+              <th>Link</th>
+              <th>views</th>
+              <th>Downloads</th>
+              <th>Password</th>
+              <th>Privacy</th>
+              <th>ceated date</th>
+              <th>Options</th>
+             </tr>
+             </thead>
+<tfoot>
+<tr>
+              <th>Link</th>
+              <th>views</th>
+              <th>Downloads</th>
+              <th>Password</th>
+              <th>Privacy</th>
+              <th>ceated date</th>
+              <th>Options</th>
+             </tr>
+</tfoot>
                 <tbody>
                  @foreach ($files as $file)
                     <tr>
@@ -48,19 +54,31 @@
                             <a href="{{$file->shorted_url}}" class="h5 text-info" target="_blank">
                                 <strong><i class="fa fa-file"></i> {{$file->shorted_url}}</strong>
                             </a>
-                      <small class="text-muted block"><i class="fa fa-file-text"></i> {{$file->description}}
+                      <small class="text-muted block"><i class="fa fa-file-text"></i> 
+                      {{$file->description}}
                       <button class="btn btn-xs text-info btn-copy pull-right" data-clipboard-text=" {{$file->shorted_url}}"  data-toggle="button">
                         <span class="text">
-                            <i class="ion ion-ios-copy-outline"> </i> Copy
+                        <i class="ion ion-ios-copy-outline"> </i> Copy
                         </span>
                         <span class="text-active">
-                            Copied
+                        <i class="fa fa-check"> </i> Copied
                         </span>
                     </button>
                       </small>
                         </td>
-                        <td class="v-middle hidden-xs"><i class="fa fa-eye"></i> {{$file->views}}</td>
-                        <td class="v-middle hidden-xs"><i class="fa fa-download"></i> {{$file->downloads}}</td>
+                        <td class="v-middle hidden-xs">
+                        <a  href="{{route('files.show',$file->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
+                        <i class="fa fa-eye"></i></a> {{$file->views}}
+                        </td>
+                        <td class="v-middle hidden-xs" >
+                         {{$file->downloads}}
+                         <a href="{{url($file->path)}}"  class="btn btn-sm text-info" title="Download" 
+                            download>
+                                    <span class="text">
+                                        <i class="fa fa-download" > </i>
+                                    </span>
+                                </a> 
+                         </td>
                         <td class="v-middle hidden-xs">
                             @if($file->password)
                             <i class="fa fa-lock"></i> {{$file->password}}
@@ -76,24 +94,11 @@
                             @endif
                             </td>
                         <td class="v-middle hidden-xs">{{$file->created_at}}</td>
-                        <td class="v-middle hidden-xs">
-                            <div class="pos-rlt">
-                            <a href="{{url($file->path)}}"  class="btn btn-sm text-info" title="Download" 
-                            download>
-                                    <span class="text">
-                                        <i class="fa fa-download"> </i> Download
-                                    </span>
-                                    <span class="text-active">
-                                       Downloaded
-                                    </span>
-                                </a>
-                                 
-                            </div>
-                        </td>
+                       
                         <td class="pull-right">
                            <a href="{{route('files.edit',$file->id)}}" title="Edit"  data-toggle="modal"
                             class="text-info">
-                                <span class="text" style="font-size:18px;">
+                                <span class="text text-md" >
                                     <i class="fa  fa-edit">
                                     </i> 
                                 </span>
@@ -101,7 +106,7 @@
                                  @if(Route::is('files.index'))
                                  <a href="#delete-file-{{$file->id}}" title="Hide"  data-toggle="modal"
                                      class=" text-danger" >
-                                     <span class="text" style="font-size:18px;">
+                                     <span class="text  text-sm" >
                                          <i class="fa fa-eye-slash">
                                          </i> 
                                      </span>
@@ -109,7 +114,7 @@
                                  @elseif(Route::is('files.deletedFiles'))
                                  <a href="#restore-file-{{$file->id}}" title="Unhide"  data-toggle="modal"
                                      class=" text-warning" >
-                                     <span class="text" style="font-size:18px;">
+                                     <span class="text text-sm">
                                          <i class="fa  fa-eye"> </i> 
                                      </span>
                                  </a>
@@ -181,6 +186,4 @@
         </section>
     </section>
 </div>  
-
-
 @endsection
