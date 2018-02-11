@@ -26,7 +26,6 @@ class dbSeeder extends Seeder
         $role->save();
 
         $folder = new \App\Http\Models\folder();
-        
         $folder->name = 'General';
         $folder->user_id =1; 
         $folder->save();
@@ -50,6 +49,16 @@ class dbSeeder extends Seeder
         $user->role_id= 1;
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('Zz96321//');
+        $user->save();
+
+        $user = new \App\User();
+        $user->first_name='The';
+        $user->last_name='admin';
+        $user->username='TheAdmin';
+        $user->email='admin@admin.com';
+        $user->role_id= 3;
+        $user->affiliate_id= str_random(7);
+        $user->password=bcrypt('admin');
         $user->save();
     }
 }
