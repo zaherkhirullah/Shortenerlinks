@@ -5,6 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
+
+        "rackspace/php-opencloud": "dev-master",
         "php": ">=7.0.0",
         "cartalyst/sentinel": "2.0.*",
         "csanquer/pdo-service-provider": "^1.0",
@@ -18,7 +20,7 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "symfony/thanks": "^1.0"
+        "symfony/thanks": "~1.0"
     },
     "autoload": {
         "classmap": [

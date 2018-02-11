@@ -1,5 +1,16 @@
-{!! Form::open(array ('route' => 'links.store',
-  'method'  => 'POST', 'id'=>'shorten_form' ,'files'  => true)) !!}
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+{{ Form::open(array ('route' => 'link.store',
+  'method'  => 'POST', 'id'=>'shorten_form' ,'files'  => true)) }}
 <div class="col-md-12">
 <div class="collapse" id="collapseAdvanced">
  <div class="card card-body">
@@ -9,11 +20,10 @@
      <div class="row">
        <div class="col-sm-3">
          <div class="form-group {{$errors->has('alias') ? 'has-error':''}}"> 
-           {!!  Form::label('alias','Add alias')   !!}
-           {!! Form::text('alias', '',
-           ['placeholder' =>'Alias','id'=>'alias',
-           'class' => "form-control input-sm ",]);  
-           !!}
+           {{  Form::label('alias','Add alias')   }}
+           {{ Form::text('alias', '', ['placeholder' =>'Alias','id'=>'alias',
+           'class' => "form-control input-sm ",])  
+           }}
            @if ($errors->has('alias'))
            <span class="help-block">
              <strong>{{ $errors->first('alias') }}</strong>
@@ -23,7 +33,7 @@
        </div>
        <div class="col-sm-3">
          <div class="form-group {{$errors->has('folder_id') ? 'has-error':''}}">
-           {!!  Form::label('folder_id', 'Folder Name');   !!}
+           {{  Form::label('folder_id', 'Folder Name')   }}
 
            {{Form::select('folder_id', $folders ,1, ['class' => "form-control input-sm  "
            ,'id'=>'folder_id'])  }}
@@ -67,12 +77,12 @@
 <div class="col-md-10">
  <div class="form-group {{$errors->has('url') ? 'has-error':'' }}">
  <div class="col-md-8">
-   {!! Form::text('url','',
+   {{ Form::text('url','',
    ['placeholder' =>'Insert Your URL Here',
    'required'=>'required','id'=>'url',
    'class' =>"form-control "
-   ]);  
-   !!}
+   ])  
+   }}
     @if ($errors->has('url'))
    <span class="help-block">
      <strong>{{ $errors->first('url') }}</strong>
@@ -80,7 +90,7 @@
    @endif
   </div>
    <span class="col-md-2">
-     {!! Form::submit('shorten',['class' => 'btn btn-md btn-info '])   !!}
+     {{ Form::submit('shorten',['class' => 'btn btn-md btn-info '])   }}
    </span>
  </div>
 </div>
@@ -91,5 +101,5 @@
 </div>
 
 </div>
-{!! Form::close() !!}
+{{ Form::close() }}
 <div class="shorten add-link-result"></div>

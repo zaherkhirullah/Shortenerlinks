@@ -40,12 +40,12 @@ class FolderController extends Controller
 // show folder details
 public function show(folder $folder)
 {
-    return view('users.folders.show');
+    return view('users.folders.show',compact('folder'));
 }
 // edit folder details
 public function edit(folder $folder)
 {
-    return view('users.folders.Form');
+    return view('users.folders.Form',compact('folder'));
 }
 // update function
 public function update(Request $request, folder $folder)

@@ -8,9 +8,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-link"></i>
-                        @if(Route::is('links.create'))
+                        @if(Route::is('link.create'))
                               Add New link 
-                        @elseif(Route::is('links.edit'))
+                        @elseif(Route::is('link.edit'))
                               Edit This link
                         @endif  
                     </h3>
@@ -25,9 +25,9 @@
                     <div class="box-short" id="shorterNew" >
                         <div class="box box-solid shorten-member">
                             <div class="box-body">
-                            @if(Route::is('links.create'))
+                            @if(Route::is('link.create'))
                                 @include('_includes.forms.user.link.create')
-                            @elseif(Route::is('links.edit'))
+                            @elseif(Route::is('link.edit'))
                                  @include('_includes.forms.user.link.edit')
                             @endif 
                             </div>

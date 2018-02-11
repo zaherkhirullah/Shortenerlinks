@@ -7,7 +7,12 @@
         <header class="box-header with-border text-center">
                 <h3 class="box-title">
                     <i class="fa fa-file-o">
-                    </i> All Your Files
+                    </i>   
+                    @if(Route::is('file.index'))
+                        All Your Files
+                    @elseif(Route::is('files.deletedFiles'))
+                         All Your deleted Files
+                    @endif
                 </h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -20,7 +25,7 @@
           @if(count($files))
           <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
           <div class="col-sm-3 " style="top:10px;">
-           <a href="{{url('user/files/create')}}" type="button" class="btn btn-info btn-md">
+           <a href="{{route('file.create')}}" type="button" class="btn btn-info btn-md">
             <i class="fa fa-file"></i>
               Add New File
            </a>
@@ -67,7 +72,7 @@
                       </small>
                         </td>
                         <td class="v-middle hidden-xs">
-                        <a  href="{{route('files.show',$file->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
+                        <a  href="{{route('file.show',$file->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
                         <i class="fa fa-eye"></i></a> {{$file->views}}
                         </td>
                         <td class="v-middle hidden-xs" >
@@ -96,14 +101,14 @@
                         <td class="v-middle hidden-xs">{{$file->created_at}}</td>
                        
                         <td class="pull-right">
-                           <a href="{{route('files.edit',$file->id)}}" title="Edit"  data-toggle="modal"
+                           <a href="{{route('file.edit',$file->id)}}" title="Edit"  data-toggle="modal"
                             class="text-info">
                                 <span class="text text-md" >
                                     <i class="fa  fa-edit">
                                     </i> 
                                 </span>
                                  </a>
-                                 @if(Route::is('files.index'))
+                                 @if(Route::is('file.index'))
                                  <a href="#delete-file-{{$file->id}}" title="Hide"  data-toggle="modal"
                                      class=" text-danger" >
                                      <span class="text  text-sm" >
@@ -122,7 +127,7 @@
                                 
                         </td>
                     </tr>
-                    @if(Route::is('files.index'))
+                    @if(Route::is('file.index'))
                     <div class="modal fade" id="delete-file-{{$file->id}}">
                     @elseif(Route::is('files.deletedFiles'))
                     <div class="modal fade" id="restore-file-{{$file->id}}">
@@ -131,8 +136,8 @@
                         <div class="modal-content bg-default">
                             <div class="modal-body">
                                 <div class="padder">
-                                @if(Route::is('files.index'))
-                                {!! Form::open(array('route' =>['files.destroy',$file->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
+                                @if(Route::is('file.index'))
+                                {!! Form::open(array('route' =>['file.destroy',$file->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
                                 <div class="text-center">
                                         <h4 id="msg-shorten ">Hide File</h4>
                                     </div>
@@ -151,7 +156,7 @@
                                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
                                             cancle
                                         </button>
-                                        @if(Route::is('files.index'))
+                                        @if(Route::is('file.index'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
                                         <i class="fa fa-eye-slash"></i> hide
                                     </button>
@@ -178,8 +183,8 @@
             </div>
            <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
-                <a href="/user/files/create" class="btn btn-success"> 
-                    Click to Add New file
+                <a href="{{route('file.create')}}" class="btn btn-success"> 
+                  <i class="fa fa-plus"></i>  Click to Add New file
                  </a>
             </div>
             @endif 

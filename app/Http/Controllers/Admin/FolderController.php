@@ -19,7 +19,12 @@ class FolderController extends Controller
         $folders = $folder->folders()->paginate(20);
         return view('admin.folders.index')->withFolders($folders);
     }
-  
+   // Show list of deleted links
+   public function deletedFolders(folder $folder)
+   {
+         $folders = $folder->deletedFolders()->paginate(20);
+         return view('admin.folders.index',compact('folders'));
+   }
     public function create()
     {
         return view('admin.folders.Form');
@@ -39,12 +44,12 @@ class FolderController extends Controller
 // show folder details
 public function show(folder $folder)
 {
-    return view('admin.folders.show');
+    return view('admin.folders.show',compact('folder'));
 }
 // edit folder details
 public function edit(folder $folder)
 {
-    return view('admin.folders.Form');
+    return view('admin.folders.Form',compact('folder'));
 }
 // update function
 public function update(Request $request, folder $folder)

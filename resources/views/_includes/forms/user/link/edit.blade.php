@@ -1,17 +1,29 @@
-{!! Form::open(array ('route' => 'links.store',
-     'method'  => 'POST', 'id'=>'shorten_form' ,'files'  => true)) !!}
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{ Form::open(array ('route' => ['link.update',$link->id],'method'  => 'post', 'id'=>'shorten_form')) }}
+     <div style="display: none;">
+	{{ method_field('PUT') }}
+	{{ csrf_field() }}
+</div>
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
     <div class="card card-body">
       <div class="advanced-div" id="advanced-div" style="">
         <!-- display: none; overflow: hidden; -->
-        {!! Form::hidden('alias', $link->alias)!!}
-        {!! Form::hidden('user_id', $link->user_id)!!}
+        {{ Form::hidden('alias', $link->alias)}}
+        {{ Form::hidden('user_id', $link->user_id)}}
         <div class="row">
           
           <div class="col-sm-4">
             <div class="form-group {{$errors->has('folder_id') ? 'has-error':''}}">
-              {!!  Form::label('folder_id', 'Folder Name');   !!}
+              {{  Form::label('folder_id', 'Folder Name')   }}
 
               {{Form::select('folder_id', $folders ,$link->folder_id, ['class' => "form-control input-sm  "
               ,'id'=>'folder_id'])  }}
@@ -55,13 +67,9 @@
   <div class="col-md-10">
     <div class="form-group {{$errors->has('url') ? 'has-error':'' }}">
     <div class="col-md-8">
-    {!!  Form::label('url','Edit url')   !!}
-    {!! Form::text('url',$link->url,
-        ['placeholder' =>'Insert Your URL Here',
-        'required'=>'required','id'=>'url',
-        'class' =>"form-control "
-        ]);  
-        !!}
+    {{  Form::label('url','Edit url')   }}
+    {{ Form::text('url',$link->url,['placeholder' =>'Insert Your URL Here',
+      'required'=>'required','id'=>'url', 'class' =>"form-control "])   }}
        @if ($errors->has('url'))
       <span class="help-block">
         <strong>{{ $errors->first('url') }}</strong>
@@ -69,11 +77,11 @@
       @endif
      </div>
      <div class="col-md-8">
-     {!!  Form::label('slug','Edit Alias')   !!}
-    {!! Form::text('slug',$link->slug,
+     {{  Form::label('slug','Edit Alias')   }}
+     {{ Form::text('slug',$link->slug,
         ['placeholder' =>'Insert Alias', 'required'=>'required',
-        'id'=>'slug','class' =>"form-control " ]);  
-        !!}
+        'id'=>'alias','class' =>"form-control " ])  
+        }}
        @if ($errors->has('shorted_url'))
       <span class="help-block">
         <strong>{{ $errors->first('shorted_url') }}</strong>
@@ -81,7 +89,7 @@
       @endif
      </div>
       <span class="col-md-2">
-        {!! Form::submit('update',['class' => 'btn btn-md btn-info '])   !!}
+        {{ Form::submit('update',['class' => 'btn btn-md btn-info '])   }}
       </span>
     </div>
   </div>
@@ -92,5 +100,5 @@
   </div>
 
 </div>
-{!! Form::close() !!}
+{{ Form::close() }}
 <div class="shorten add-link-result"></div>

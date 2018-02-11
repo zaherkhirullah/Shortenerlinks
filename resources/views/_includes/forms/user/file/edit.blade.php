@@ -1,5 +1,17 @@
-{{ Form::open(array('route' => 'files.store' , 'id'=>'upload_form','files'=>true)) }}
-
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{ Form::open(array('route' =>  ['file.update',$file->id] ,'method'  => 'POST', 'id'=>'upload_form','files'=>true)) }}
+<div style="display: none;">
+	{{ method_field('PUT') }}
+	{{ csrf_field() }}
+</div>
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
     <div class="card card-body">
@@ -9,7 +21,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
-              {!!  Form::label('password', 'Add password');   !!}
+              {{  Form::label('password', 'Add password')   }}
 
               {{Form::text('password',$file->password,
               ['class' => "form-control input-sm ",
@@ -24,7 +36,7 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group {{$errors->has('folder_id') ? ' has-error' : ''}}">
-              {!!  Form::label('folder_id', 'Folder Name');   !!}
+              {{  Form::label('folder_id', 'Folder Name')   }}
 
               {{Form::select('folder_id', $folders ,$file->folder_id, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
               @if ($errors->has('folder_id'))
@@ -35,13 +47,13 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
-              <label for="domains">domains</label>
+            <div class="form-group {{$errors->has('file_id') ? ' has-error' : ''}}">             
+              <label for="files">files</label>
 
-              {{Form::select('domain_id', $domains ,$file->domain_id, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
-              @if ($errors->has('domain_id'))
+              {{Form::select('file_id', $files ,$file->file_id, ['class' => "form-control input-sm ",'id'=>'file_id'])  }}
+              @if ($errors->has('file_id'))
               <span class="help-block">
-                <strong>{{ $errors->first('domain_id') }}</strong>
+                <strong>{{ $errors->first('file_id') }}</strong>
               </span>
               @endif
             </div>
@@ -74,8 +86,8 @@
           <div class="col-sm-3">
             <div class="well well-sm {{$errors->has('isPrivate') ? ' has-error' : ''}}">
              
-             {!! Form::radio('isPrivate','1',FALSE) !!} private
-             {!! Form::radio('isPrivate','0',TRUE) !!} Public
+             {{ Form::radio('isPrivate','1',FALSE) }} private
+             {{ Form::radio('isPrivate','0',TRUE) }} Public
 
               @if ($errors->has('isPrivate'))
               <span class="help-block">
@@ -136,10 +148,10 @@
     </div>
 
     <div class="form-group {{$errors->has('description') ? ' has-error' : ''}}">
-      <!-- {!!  Form::label('description', 'description');   !!} -->
-      {!! Form::textarea('description',$file->description,
-      ['id'=>'path','placeholder'=>'Insert define to your file','class' => "form-control ",'required' => 'required',]);  
-      !!}
+      <!-- {{  Form::label('description', 'description')   }} -->
+      {{ Form::textarea('description',$file->description,
+      ['id'=>'path','placeholder'=>'Insert define to your file','class' => "form-control ",'required' => 'required',])  
+      }}
      
     </div>
 
@@ -155,12 +167,12 @@
   </div>
   <footer class="panel-footer">
     <center>
-      {!! Form::submit('Update',['class' => 'btn btn-lg btn-success'])   !!}
+      {{ Form::submit('Update',['class' => 'btn btn-lg btn-success'])   }}
     </center>
 
   </footer>
 </div>
-{!! Form::close() !!}
+{{ Form::close() }}
 
 <div class="upload add-file-result"></div>
 <div class="row">

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 use Auth;
+use Session;
 class fileController extends Controller
 {
 
@@ -24,9 +25,8 @@ class fileController extends Controller
     {
         // Show list of files
           $files = $file->files()->paginate(20);
-          $deleteform = $this->deleteForm();
 
-     return view('users.files.index',compact('deleteform'))->withFiles($files);
+     return view('users.files.index')->withFiles($files);
     }
      // Show list of deleted files
      public function deletedFiles(file $file)
@@ -48,12 +48,12 @@ class fileController extends Controller
     { 
       $this->NewItem($request->all());
 
-      return redirect()->route('files.index')->with( ['success'=>' Sucessfully Created :)']);
+      return redirect()->route('file.index');
     }
       // show file details
       public function show(file $file)
       {
-          return view('users.files.show')->withFile($file);
+          return view('users.files.show',compact('file'));
       }
       // edit file details
       public function edit(file $file)
@@ -68,7 +68,8 @@ class fileController extends Controller
 // update function
 public function update(Request $request, file $file)
 {    
-    return redirect()->route('files.index')->with( ['success'=>' Sucessfully Edited :)']);
+     Session::flash('success',' Sucessfully updated the ' .$file->slug . ' file .');
+    return redirect()->route('file.index');
 }
 // for hide file    
 public function destroy(file $file)
@@ -84,7 +85,8 @@ public function destroy(file $file)
 // for delete file
 public function delete(file $file)
 {
-    return redirect()->route('files.index')->with( ['success'=>' Sucessfully deleted :)']);
+    Session::flash('success',' Sucessfully deleted the ' .$file->slug . ' file .');
+    return redirect()->route('file.index');
 }
 
 /*
@@ -124,7 +126,7 @@ public function delete(file $file)
           $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
           $UserId = Auth::id();
            
-        return file::create(
+        $file = file::create(
            [
             'user_id'    => $UserId ,
             'domain_id'  => $domain_id,
@@ -137,6 +139,8 @@ public function delete(file $file)
             'password'   => $data['password'],
             'shorted_url' =>$shorted_url ,
            ]);
+           Session::flash('success',' Sucessfully created the ' .$slug . ' file .');
+           return $file;
        }
        // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
         Protected function Deleteate(file $file, $data)
@@ -174,7 +178,7 @@ public function delete(file $file)
                 $Message = ' Error!!  has been filed restore :(';
                 }
             }
-            return redirect()->route('files.index')->with([$class =>   $file->slug .  $Message]);
+            return redirect()->route('file.index')->with([$class =>   $file->slug .  $Message]);
             }
         }
 

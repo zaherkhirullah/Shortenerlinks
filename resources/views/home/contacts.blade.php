@@ -25,7 +25,7 @@
 					</span>
 					thus you will be benefiting from all your traffic.
 				</p>
-		    	{{ Form::open(array('route' => 'contacts.store' , 'id'=>'Contacts_form')) }}
+		    	{{ Form::open(array('route' => 'home.contacts.store' , 'id'=>'Contacts_form')) }}
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('name') ? ' has-error' : ''}}">

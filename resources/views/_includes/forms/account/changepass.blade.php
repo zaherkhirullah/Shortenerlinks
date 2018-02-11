@@ -1,7 +1,7 @@
 
 
-{!! Form::open(array ('route' => 'changePassword', 'method'  => 'POST',
-'accept-charset'=>'utf-8','class'  => 'form-horizontal')) !!}
+{{ Form::open(array ('route' => 'changePassword', 'method'  => 'POST',
+'accept-charset'=>'utf-8','class'  => 'form-horizontal')) }}
 
 <div style="display: none;">
 	{{ method_field('PUT') }}
@@ -97,4 +97,4 @@
 <footer class="text-center bg-light lter">
 	<button type="submit" class="btn btn-success btn-s-xs">Change password</button>
 </footer>
-{!! Form::close() !!}
+{{ Form::close() }}

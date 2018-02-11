@@ -6,7 +6,7 @@
 	<section class="lter box box-success">
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
-				<i class="fa fa-link">
+				<i class="fa fa-domain">
 				</i> All Your domains
 			</h3>
 			<div class="box-tools pull-right">
@@ -24,7 +24,7 @@
 
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('domains.create')}}" type="button" class="btn btn-success btn-md">
-						<i class="fa fa-link"></i>
+						<i class="fa fa-domain"></i>
 						Add New domain
 					</a>
 				</div>
@@ -63,14 +63,14 @@
 									<i class="fa fa-2x fa-edit"></i> 
 								</span>
 							</a>
-							<a href="#delete-link-{{$domain->id}}" data-toggle="modal" class=" text-danger" >
+							<a href="#delete-domain-{{$domain->id}}" data-toggle="modal" class=" text-danger" >
 								<span class="text">
 									<i class="fa fa-2x fa-eye-slash"></i> 
 								</span>	
 							</a>
 						</td>
 					</tr>
-					<div class="modal fade" id="delete-link-{{$domain->id}}">
+					<div class="modal fade" id="delete-domain-{{$domain->id}}">
 						<div class="modal-dialog modal-shorten">
 							<div class="modal-content bg-default">
 								<div class="modal-body">
@@ -78,10 +78,10 @@
 										{!! Form::open(array('route' =>['domains.destroy',$domain->id],
 										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Hide Shorten link</h4>
+											<h4 id="msg-shorten ">Hide  domain</h4>
 										</div>
 										<p class="text-danger">Are You Sure You Want Hide
-											<b class="text-success">{{$domain->slug}}</b> link ?</p> 
+											<b class="text-success">{{$domain->slug}}</b> domain ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
 													cancle
@@ -109,7 +109,7 @@
 				<div class="text-clear col-md-12">  </div>
 				<div class="col-md-12 text-center">
 					<a href="{{route('domains.create')}}" class="btn btn-success"> 
-						Click to Add New link
+						Click to Add New domain
 					</a>
 				</div>
 				@endif 

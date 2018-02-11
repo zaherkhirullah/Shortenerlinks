@@ -10,9 +10,9 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">
 							<i class="fa fa-file"></i> 
-							@if(Route::is('files.create'))
+							@if(Route::is('file.create'))
                               Add New file 
-                        @elseif(Route::is('files.edit'))
+                        @elseif(Route::is('file.edit'))
                               Edit This file
                         @endif 
 						</h3>
@@ -28,9 +28,9 @@
 						<div class="box-short" id="uploadFileNew" >
 							<div class="box box-solid shorten-member">
 								<div class="box-body">
-								@if(Route::is('files.create'))
+								@if(Route::is('file.create'))
                                 @include('_includes.forms.user.file.create')
-                            @elseif(Route::is('files.edit'))
+                            @elseif(Route::is('file.edit'))
                                  @include('_includes.forms.user.file.edit')
                             @endif 
 								</div>

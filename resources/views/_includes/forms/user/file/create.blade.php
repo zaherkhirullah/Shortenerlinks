@@ -1,4 +1,13 @@
-{{ Form::open(array('route' => 'files.store' , 'id'=>'upload_form','files'=>true)) }}
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{ Form::open(array('route' => 'file.store' ,'method'  => 'POST', 'id'=>'upload_form','files'=>true)) }}
 
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
@@ -8,11 +17,9 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
-              {!!  Form::label('password', 'Add password');   !!}
+              {{  Form::label('password', 'Add password')   }}
 
-              {{Form::text('password','',
-              ['class' => "form-control input-sm ",
-              'id'=>'password'])  }}
+              {{Form::text('password',old('password'), ['class' => "form-control input-sm ",'id'=>'password'])  }}
 
               @if ($errors->has('password'))
               <span class="help-block">
@@ -23,9 +30,9 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group {{$errors->has('folder_id') ? ' has-error' : ''}}">
-              {!!  Form::label('folder_id', 'Folder Name');   !!}
+              {{  Form::label('folder_id', 'Folder Name')   }}
 
-              {{Form::select('folder_id', $folders ,1, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
+              {{Form::select('folder_id', $folders ,old('folder_id')?:1, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
               @if ($errors->has('folder_id'))
               <span class="help-block">
                 <strong>{{ $errors->first('folder_id') }}</strong>
@@ -37,7 +44,7 @@
             <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
               <label for="domains">domains</label>
 
-              {{Form::select('domain_id', $domains ,1, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
+              {{Form::select('domain_id', $domains ,old('domain_id')?:1, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
               @if ($errors->has('domain_id'))
               <span class="help-block">
                 <strong>{{ $errors->first('domain_id') }}</strong>
@@ -49,7 +56,7 @@
             <div class="form-group {{$errors->has('ad_id') ? ' has-error' : ''}}">
               <label for="ad-type">Advertising Type</label>
 
-              {{Form::select('ad_id', $ads ,1, 
+              {{Form::select('ad_id', $ads ,old('domain_id')?:1, 
               ['class' =>"form-control input-sm",'id'=>'ad_id'])  }}
               @if ($errors->has('ad_id'))
               <span class="help-block">
@@ -60,9 +67,7 @@
           </div>
           <div class="col-sm-3">
             <div class="well well-sm {{$errors->has('title') ? ' has-error' : ''}}">
-              {{Form::text('title','', ['class' =>
-              "form-control input-sm ",
-              'id'=>'title','placeholder'=>'Add Title'])  }}
+              {{Form::text('title',old('title'), ['class' => "form-control input-sm ",'id'=>'title','placeholder'=>'Add Title'])  }}
               @if ($errors->has('title'))
               <span class="help-block">
                 <strong>{{ $errors->first('title') }}</strong>
@@ -73,8 +78,8 @@
           <div class="col-sm-3">
             <div class="well well-sm {{$errors->has('isPrivate') ? ' has-error' : ''}}">
              
-             {!! Form::radio('isPrivate','1',FALSE) !!} private
-             {!! Form::radio('isPrivate','0',TRUE) !!} Public
+             {{ Form::radio('isPrivate','1',FALSE) }} private
+             {{ Form::radio('isPrivate','0',TRUE) }} Public
 
               @if ($errors->has('isPrivate'))
               <span class="help-block">
@@ -91,10 +96,8 @@
   <div class="col-md-8">
     <div class="form-group {{$errors->has('path') ? ' has-error' : ''}}">
 
-      {!! Form::file('path',
-      ['id'=>'path','value'=>'Upload', 'class' => 
-      "form-control ",]);  
-      !!}
+      {{ Form::file('path',['id'=>'path','value'=>old('path'), 'class' => "form-control ",])  
+      }}
       @if ($errors->has('path'))
       <span class="help-block">
         <strong>{{ $errors->first('path') }}</strong>
@@ -102,10 +105,10 @@
       @endif
     </div>
     <div class="form-group {{$errors->has('description') ? ' has-error' : ''}}">
-      <!-- {!!  Form::label('description', 'description');   !!} -->
-      {!! Form::textarea('description','',
-      ['id'=>'path','placeholder'=>'Insert define to your file','class' => "form-control ",'required' => 'required',]);  
-      !!}
+      <!-- {{  Form::label('description', 'description')   }} -->
+      {{ Form::textarea('description','',
+      ['id'=>'path','placeholder'=>'Insert define to your file','class' => "form-control ",'required' => 'required',])  
+      }}
       @if ($errors->has('description'))
       <span class="help-block">
         <strong>{{ $errors->first('description') }}</strong>
@@ -125,11 +128,11 @@
   </div>
   <footer class="panel-footer">
     <center>
-      {!! Form::submit('Upload',['class' => 'btn btn-lg btn-success'])   !!}
+      {{ Form::submit('Upload',['class' => 'btn btn-lg btn-success'])   }}
     </center>
 
   </footer>
 </div>
-{!! Form::close() !!}
+{{ Form::close() }}
 
 <div class="upload add-file-result"></div>

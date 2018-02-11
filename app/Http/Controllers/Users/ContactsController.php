@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Users;
 use App\Http\Models\Contacts;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactsValidation;
-
 use App\Http\Controllers\Controller;
+use Session;
+
 class ContactsController extends Controller
 {
     
@@ -22,38 +23,12 @@ class ContactsController extends Controller
       return view('home.contacts');
     }
 
-    public function store(ContactsValidation $request, Contacts $model) 
+    public function store(ContactsValidation $request, Contacts $contact) 
     {
-        
-        $model->fill($request->all());
-        $model->save();
-
-        return view('home.contacts')-> with( ['message'=>' Sucessfully Created :)']);
-    }
-
-    
-    public function show(Contacts $contacts)
-    {
-        //
-    }
-
-    
-    public function edit(Contacts $contacts)
-    {
-        //
-    }
-
-    
-
-    public function update(Request $request, Contacts $contacts)
-    {
-        //
-    }
-
-   
-    public function destroy(Contacts $contacts)
-    {
-        //
+        $contact->fill($request->all());
+        $contact->save();
+        Session::flash('success',' Sucessfully created the ' .$request->name . ' Contacts .');
+        return view('home.home');
     }
   
 }

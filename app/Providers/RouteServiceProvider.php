@@ -21,6 +21,23 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    //  public function boot(Router $router)
+    // {
+    //     // $router->model('admin_contacts', 'App\Contact');
+    //     // $router->model('admin_folders', 'App\folder'); 
+    //     // $router->model('admin_files', 'App\file');
+    //     // $router->model('admin_links', 'App\link'); 
+    //     // $router->model('user_contacts', 'App\Contact');
+    //     // $router->model('user_folders', 'App\folder'); 
+    //     // $router->model('user_files', 'App\file');
+    //     // $router->model('user_links', 'App\link'); 
+    //     // parent::boot($router);
+    // }
+    // if (isset($options['wildcards'][$resource]))
+    // {
+    //     $resource = $options['wildcards'][$resource];
+    // }
+
     public function boot()
     {
         //

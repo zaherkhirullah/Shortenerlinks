@@ -6,7 +6,7 @@
 	<section class="lter box box-success">
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
-				<i class="fa fa-link">
+				<i class="fa fa-folder">
 				</i> All Your folders
 			</h3>
 			<div class="box-tools pull-right">
@@ -22,7 +22,7 @@
 
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('folders.create')}}" type="button" class="btn btn-success btn-md">
-						<i class="fa fa-link"></i>
+						<i class="fa fa-folder"></i>
 						Add New folder
 					</a>
 				</div>
@@ -55,14 +55,14 @@
 									<i class="fa fa-2x fa-edit"></i> 
 								</span>
 							</a>
-							<a href="#delete-link-{{$folder->id}}" data-toggle="modal" class=" text-danger" >
+							<a href="#delete-folder-{{$folder->id}}" data-toggle="modal" class=" text-danger" >
 								<span class="text">
 									<i class="fa fa-2x fa-eye-slash"></i> 
 								</span>	
 							</a>
 						</td>
 					</tr>
-					<div class="modal fade" id="delete-link-{{$folder->id}}">
+					<div class="modal fade" id="delete-folder-{{$folder->id}}">
 						<div class="modal-dialog modal-shorten">
 							<div class="modal-content bg-default">
 								<div class="modal-body">
@@ -70,10 +70,10 @@
 										{!! Form::open(array('route' =>['folders.destroy',$folder->id],
 										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Hide Shorten link</h4>
+											<h4 id="msg-shorten ">Hide Shorten folder</h4>
 										</div>
 										<p class="text-danger">Are You Sure You Want Hide
-											<b class="text-success">{{$folder->slug}}</b> link ?</p> 
+											<b class="text-success">{{$folder->slug}}</b> folder ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
 													cancle
@@ -101,7 +101,7 @@
 				<div class="text-clear col-md-12">  </div>
 				<div class="col-md-12 text-center">
 					<a href="{{route('folders.create')}}" class="btn btn-success"> 
-						Click to Add New link
+						Click to Add New folder
 					</a>
 				</div>
 				@endif 

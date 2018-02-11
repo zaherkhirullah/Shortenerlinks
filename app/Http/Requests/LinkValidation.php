@@ -20,6 +20,7 @@ class LinkValidation extends FormRequest
             'domain_id'=>  'required|integer',
             'ad_id'=>  'required|integer',
             'folder_id'=>  'required|integer',
+            'slug'=>  'unique:links',
             'url'=>  'required|url|string',
         ];
     }

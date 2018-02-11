@@ -7,7 +7,7 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <i class="fa fa-link">
+                        <i class="fa fa-domain">
                         </i>
                         @if(Route::is('domains.create'))
                              Add New Domain

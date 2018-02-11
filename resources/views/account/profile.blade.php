@@ -5,9 +5,8 @@
 	<section class="scrollable">
 		<section class="hbox stretch">
 
-			<section class="vbox">
+			<div class=" col-md-12">
 				<section class="scrollable wrapper">
-
 					<div class="row">
 						<section class="col-md-12">
 							<div class="box box-primary">
@@ -20,7 +19,7 @@
 					</div>
 					<!--/ row 2-->
 				</section>
-			</section>
+			</div>
 
 			@include('_includes.nav.SettingAside')
 

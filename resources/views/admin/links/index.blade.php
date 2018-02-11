@@ -21,7 +21,7 @@
       <table id="DataTable" class="mdl-data-table table-bordered table-hover" cellspacing="0" width="100%">
 
 <div class="col-md-3 " style="top:10px;">
-  <a href="{{route('links.create')}}" type="button" class="btn btn-success btn-md">
+  <a href="{{url('admin/links/create')}}" type="button" class="btn btn-success btn-md">
     <i class="fa fa-link"></i>
     Add New link
   </a>
@@ -120,8 +120,8 @@
 </div>
 <div class="text-clear col-md-12">  </div>
 <div class="col-md-12 text-center">
-  <a href="{{route('links.create')}}" class="btn btn-success"> 
-    Click to Add New link
+  <a href="{{url('admin/links/create')}}" class="btn btn-success"> 
+   <i class="fa fa-plus"></i>   Click to Add New link
   </a>
 </div>
 @endif 

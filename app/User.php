@@ -34,10 +34,16 @@ class User extends Authenticatable
           return $this->hasOne('App\Balance');
       }
       
+      public function Role()
+      {
+          return $this ->belongsTo( 'App\Http\Models\role', 'role_id' );
+      }
+
       public function referrer()
       {
           return $this ->belongsTo( 'App\User', 'referrer_by' );
       }
+      
 
       public function referrals()
       {
@@ -45,15 +51,15 @@ class User extends Authenticatable
       }
 
      // list All users
-      public function users()
-      {
-       return $this->where('isDeleted','0')->orderBy('created_at','desc');
-      }
-     // list of  users has been deleted and list (Desc) by create date
-      public function deletedusers()
-      {
-       return $this->where('isDeleted','1')->orderBy('updated_at','desc');
-      }
+     public function users()
+     {
+      return $this->where('isDeleted','0')->orderBy('created_at','desc');
+     }
+    // list of  users has been deleted and list (Desc) by create date
+     public function deletedusers()
+     {
+      return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+     }
      public function links()
      {
          return $this->hasMany(link::class)->orderBy('created_at','desc');

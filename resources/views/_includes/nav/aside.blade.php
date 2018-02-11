@@ -54,7 +54,7 @@
 					</a>
 					<ul class="nav lt">
 					<li>
-						<a href="{{url('/user/links')}}">
+						<a href="{{url('/user/link')}}">
 							<i class="fa fa-eye">
 								<b class="bg-info dker">
 								</b>
@@ -89,7 +89,7 @@
 					</a>
 					<ul class="nav lt">
 					<li>
-						<a href="{{url('/user/files')}}">
+						<a href="{{url('/user/file')}}">
 							<i class="fa fa-eye">
 								<b class="bg-info dker">
 								</b>

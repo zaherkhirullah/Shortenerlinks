@@ -1,12 +1,15 @@
-    {{ Form::open(array('route' => 'domains.store' , 'id'=>'Create_form')) }}
-
+    {{ Form::open(array('route' => ['domains.update',$domain->id] ,'method'  => 'POST', 'id'=>'Edit_form')) }}
+    <div style="display: none;">
+	{{ method_field('PUT') }}
+	{{ csrf_field() }}
+</div>
 
     <div class="col-md-8">
     <div class="col-md-6">
     <div class="form-group {{$errors->has('name') ? ' has-error' : ''}}">
-    {!!  Form::label('name', 'Edit name');   !!}
+    {{  Form::label('name', 'Edit name')   }}
 
-    {{Form::text('name','',
+    {{Form::text('name',$domain->name,
     ['class' => "form-control input-sm ",
     'id'=>'name','placeholder'=>'Edit name'])  }}
 
@@ -20,9 +23,9 @@
 
 
     <div class="col-md-6">
-    {!!  Form::label('slug', 'Edit Slug');   !!}
+    {{  Form::label('slug', 'Edit Slug')   }}
     <div class="form-group {{$errors->has('slug') ? ' has-error' : ''}}">
-    {{   Form::text('slug','', ['class' =>"form-control input-sm ",
+    {{   Form::text('slug',$domain->slug, ['class' =>"form-control input-sm ",
     'id'=>'slug','placeholder'=>'Edit slug']) 
     }}
     @if ($errors->has('slug'))
@@ -34,12 +37,12 @@
     </div>
 
     <div class="col-md-8">
-    {!!  Form::label('url', 'Edit url');   !!}
+    {{  Form::label('url', 'Edit url')   }}
     <div class="form-group {{$errors->has('url') ? ' has-error' : ''}}">
-    <!-- {!!  Form::label('url', 'url');   !!} -->
-    {!! Form::text('url','',
-    ['id'=>'path','placeholder'=>'Insert Domain Url ','class' => "form-control ",'required' => 'required',]);  
-    !!}
+    <!-- {{  Form::label('url', 'url')   }} -->
+    {{ Form::text('url',$domain->url,
+    ['id'=>'path','placeholder'=>'Insert Domain Url ','class' => "form-control ",'required' => 'required',])  
+    }}
     @if ($errors->has('url'))
     <span class="help-block">
     <strong>{{ $errors->first('url') }}</strong>
@@ -55,11 +58,11 @@
     </div>
     <footer class="panel-footer">
     <center>
-    {!! Form::submit('Create',['class' => 'btn btn-lg btn-success'])   !!}
+    {{ Form::submit('Edit',['class' => 'btn btn-lg btn-success'])   }}
     </center>
 
     </footer>
     </div>
-    {!! Form::close() !!}
+    {{ Form::close() }}
 
     <div class="upload Edit-file-result"></div>

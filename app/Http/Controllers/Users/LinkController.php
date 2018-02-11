@@ -9,6 +9,7 @@ use App\Http\Models\folder;
 use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
 use App\Http\Models\link;
+use Session;
 use Auth;
 class LinkController extends Controller
 {
@@ -19,11 +20,10 @@ class LinkController extends Controller
     }
 
    // Show list of links
-   public function index(link $link ,Request $request)
-   {    
-         $ip = $request->ip();
+   public function index(link $link)
+   {
          $links = $link->links()->paginate(20);
-         return view('users.links.index',compact('ip'))->withLinks($links);
+         return view('users.links.index')->withLinks($links);
    }
     // Show list of deleted links
     public function deletedLinks(link $link)
@@ -32,29 +32,25 @@ class LinkController extends Controller
           return view('users.links.index')->withLinks($links);
     }
 
- 
+ //create new link
     public function create()
     {
-        //create new link
-
         $domains = Domain::pluck('name', 'id');
         $ads=Adstype::pluck('name', 'id');
         $folders=folder::pluck('name', 'id');
-        return view('users.links.Form',
-                    compact('domains','folders','ads')
-                   );
+        return view('users.links.Form', compact('domains','folders','ads'));
     }
   /* build link  LinkValidation */
     public function store(LinkValidation $request)
     {  
       $this->NewItem($request->all());
-      return redirect()->route('links.index')
-      ->with(['success'=>$request->slug .' Sucessfully Created :)']);
+      
+      return redirect()->route('link.index');
     }
     // show link details
     public function show(link $link)
     {
-        return view('users.links.show')->withLink($link);
+        return view('users.links.show',compact('link'));
     }
     // edit link details
     public function edit(link $link)
@@ -66,13 +62,24 @@ class LinkController extends Controller
 
     }
     // update function
-    public function update(Request $request, link $link)
+    public function update(LinkValidation $request, link $link)
     {
       $domain = Domain::find($request->domain_id);
-      $shorted_url =( $request->domain_id ==1)? url('/'. $request->slug) : $domain->url .'/'. $request->slug;
-      $request->shorted_url = $shorted_url;
+
+      $datalias=($request->alias)?: null;
+      $slug =($request->slug)?: str_random(10);
+
+      $shorted_url =( $request->domain_id ==1)? url('/'.  $slug ) : $domain->url .'/'. $slug;
       $link->update($request->all());
-        return redirect()->route('links.index')->with( ['success'=>   $link->slug .  ' Sucessfully Updated :)']);
+      if($link->slug != $slug)
+        $link->slug = $slug;
+      else; 
+      $link->url =$request->url;
+      $link->shorted_url = $shorted_url;
+      if($link->save())
+      Session::flash('success',' Sucessfully updated the ' .$slug . ' link .');
+      return redirect()->route('link.index');
+     
     }
     // for hide link    
     public function destroy(link $link)
@@ -87,7 +94,8 @@ class LinkController extends Controller
     // for delete link
     public function delete(link $link)
     {
-        return redirect()->route('links.index')->with( ['success'=>' Sucessfully deleted :)']);
+      
+        return redirect()->route('link.index')->with( ['success'=>' Sucessfully deleted :)']);
     }
 
     /*
@@ -112,11 +120,12 @@ class LinkController extends Controller
         'domain_id'  => $domain_id ,
         'folder_id'  => $data['folder_id'],
         'ad_id'      => $data['ad_id'],
-        'alias'      => $data['alias'],
+        'alias'      => $datalias,
         'slug'       => $slug,
         'url'        => $data['url'],
         'shorted_url' =>$shorted_url ,
       ]);
+      Session::flash('success',' Sucessfully created the ' .$slug . ' link .');
  return $link ;
   }
 // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
@@ -155,7 +164,7 @@ class LinkController extends Controller
             $Message = ' Error!!  has been filed restore :(';
          }
       }
-     return redirect()->route('links.index')->with([$class =>   $link->slug .  $Message]);
+     return redirect()->route('link.index')->with([$class =>   $link->slug .  $Message]);
      }
     }
 

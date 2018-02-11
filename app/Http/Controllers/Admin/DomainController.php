@@ -6,7 +6,7 @@ use App\Http\Models\Domain;
 use Illuminate\Http\Request;
 use App\Http\Requests\DomainValidation;
 use App\Http\Controllers\Controller;
-
+use Session;
 class DomainController extends Controller
 { 
     public function __construct()
@@ -17,7 +17,7 @@ class DomainController extends Controller
     public function index(Domain $domain)
     {
         $domains = $domain->domains()->paginate(20);
-        return view('admin.domains.index')->withDomains($domains);
+        return view('admin.domains.index',compact('domains'));
     }
 
   
@@ -36,31 +36,37 @@ class DomainController extends Controller
     }
 
     
-// show link details
-public function show(link $link)
-{
-    return view('admin.links.show');
-}
-// edit link details
-public function edit(link $link)
-{
-    return view('admin.links.Form');
-}
-// update function
-public function update(Request $request, link $link)
-{    
-    return redirect()->route('links.index')->with( ['success'=>' Sucessfully Edited :)']);
-}
-// for hide link    
-public function destroy(link $link)
-{
-    return redirect()->route('links.index')->with( ['success'=>' Sucessfully hided :)']);
-}
-// for delete link
-public function delete(link $link)
-{
-    return redirect()->route('links.index')->with( ['success'=>' Sucessfully deleted :)']);
-}
+    // show domain details
+    public function show(domain $domain)
+    {
+        return view('admin.domains.show',compact('domain'));
+    }
+    // edit domain details
+    public function edit(domain $domain)
+    {
+        return view('admin.domains.Form',compact('domain'));
+    }
+    // update function
+    public function update(Request $request, domain $domain)
+    {    $domain = domain::findOrfail($domain);
+            $domain->name =$request->name;
+            $domain->slug =$request->slug;
+            $domain->url =$request->url;
+            $domain->save();
+        Session::flash('success',' Sucessfully update the' .$request->name . 'domain .');
+        return redirect()->route('domains.index');
+
+    }
+// for hide domain    
+    public function destroy(domain $domain)
+    {
+        $domain =domain::find($domain);
+        $domain->delete();
+        $domain->save();
+        
+        return redirect()->route('domains.index')->with( ['success'=>' Sucessfully deleted :)']);
+    }
+
 // NewItemew for create new item in table(for calling in store).
 protected function NewItem(array $data)
 { 

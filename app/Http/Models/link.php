@@ -11,11 +11,11 @@ use App\User;
 class link extends Model
 {
   protected $table = 'links';
-     protected $fillable = 
-     [
-      'user_id','domain_id','ad_id','folder_id','slug','clicks',
-      'status','url','shorted_url','alias','isDeleted',
-     ];
+  protected $fillable = 
+  [
+   'user_id','domain_id','ad_id','folder_id','slug','clicks',
+   'status','url','shorted_url','alias','isDeleted',
+  ];
  /*
     |------------------------
     |  private Functions

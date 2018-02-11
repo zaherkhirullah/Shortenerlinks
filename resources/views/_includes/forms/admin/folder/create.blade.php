@@ -1,10 +1,10 @@
-    {{ Form::open(array('route' => 'folders.store' , 'id'=>'Create_form')) }}
+    {{ Form::open(array('route' => 'folders.store' ,'method'  => 'POST', 'id'=>'Create_form')) }}
 
 
     <div class="col-md-8">
     <div class="col-md-6">
     <div class="form-group {{$errors->has('name') ? ' has-error' : ''}}">
-    {!!  Form::label('name', 'Add name');   !!}
+    {{  Form::label('name', 'Add name')   }}
 
     {{Form::text('name','',
     ['class' => "form-control input-sm ",
@@ -26,11 +26,11 @@
     </div>
     <footer class="panel-footer">
     <center>
-    {!! Form::submit('Create',['class' => 'btn btn-lg btn-success'])   !!}
+    {{ Form::submit('Create',['class' => 'btn btn-lg btn-success'])   }}
     </center>
 
     </footer>
     </div>
-    {!! Form::close() !!}
+    {{ Form::close() }}
 
     <div class="upload add-file-result"></div>

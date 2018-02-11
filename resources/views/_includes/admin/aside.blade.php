@@ -12,53 +12,158 @@
 							<span>Dashboard</span>
 						</a>
 					</li>
+					<!-- links -->
 					<li>
-						<a href="/admin/links">
+						<a href="#links">
 							<i class="fa fa-link">
-								<b class="bg-warning dker"></b>
+								<b class="bg-success"></b>
 							</i>
-							<span>Links</span>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Manage Links</span>
 						</a>
+						<ul class="nav lt">
+						<li>
+							<a href="/admin/links">
+								<i class="fa fa-link"></i>
+								<span>Links</span>
+							</a>
+						</li>
+						
+						<li>
+							<a href="/admin/links/dlist">
+								<i class="fa fa-link"></i>
+								<span>hidden Links</span>
+							</a>
+						</li>
+							
+						</ul>
 					</li>
+					<!-- files -->
+					<li>
+						<a href="#files">
+							<i class="fa fa-file-o">
+								<b class="bg-info"></b>
+							</i>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Manage Files</span>
+						</a>
+						<ul class="nav lt">
 						<li>
 						<a href="/admin/files">
-							<i class="fa fa-file-o">
-								<b class="bg-success dker"></b>
-							</i>
-							<span>files</span>
-						</a>
+							<i class="fa fa-file-text"></i>
+							<span>Files</span>
+							</a>
+						</li>	
+						<li>
+						<a href="/admin/files/private">
+							<i class="fa fa-lock"></i>
+							<span>Private Files</span>
+							</a>
+						</li>
+						<li>
+						<a href="/admin/files/public">
+							<i class="fa fa-unlock"></i>
+							<span>Public Files</span>
+							</a>
+						</li>	
+						<li>
+							<a href="/admin/files/dlist">
+								<i class="fa fa-eye-slash"></i>
+								<span>hidden Files</span>
+							</a>
+						</li>
+							
+						</ul>
 					</li>
+					<!-- folders -->
 					<li>
-						<a href="/admin/folders">
+						<a href="#folders">
 							<i class="fa fa-folder-o">
-								<b class="bg-warning dker"></b>
+								<b class="bg-warning"></b>
 							</i>
-							<span>Folders</span>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Manage Folders</span>
 						</a>
+						<ul class="nav lt">
+						<li>
+							<a href="/admin/folders">
+								<i class="fa fa fa-folder-open-o"></i>
+								<span>Folders</span>
+							</a>
+						</li>
+						<li>
+							<a href="/admin/folders/dlist">
+								<i class="fa fa-eye-slash"></i>
+								<span>Hidden Folders</span>
+							</a>
+						</li>
+						</ul>
 					</li>
+					<!-- Users -->
 					<li>
-					<a href="/admin/domains">
-						<i class="fa fa-file-o">
-							<b class="bg-success dker"></b>
-						</i>
-						<span>Domains</span>
-					</a>
-				</li>
-				<li>
-						<a href="/admin/adstypes">
-							<i class="fa fa-file-o">
-								<b class="bg-success dker"></b>
+						<a href="#folders">
+							<i class="fa fa-user">
+								<b class="bg-primary"></b>
 							</i>
-							<span>Ads Types</span>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Manage Users</span>
 						</a>
-					</li>
-					<li>
+						<ul class="nav lt">
+						<li>
 						<a href="/admin/users">
-							<i class="fa fa-columns">
-								<b class="bg-info dker"></b>
-							</i>
+							<i class="fa fa-users"></i>
 							<span>Users</span>
 						</a>
+						</li>
+						<li>
+							<a href="/admin/users">
+								<i class="fa fa-lock">
+								</i>
+								<span>Non active Users</span>
+							</a>
+						</li>
+						</ul>
+					</li>
+					<!-- Roles -->
+					<li>
+						<a href="/admin/roles">
+							<i class="fa fa-users">
+							<b class="bg-info dker"></b>
+							</i>
+
+							<span>Roles</span>
+						</a>
+						</li>
+						<!-- Contatcs -->
+						<li>
+						<a href="/admin/contacts">
+							<i class="fa fa-phone">
+							<b class="bg-warning dker"></b>
+							</i>
+							<span>Contatcs</span>
+						</a>
+						</li>
+						
+				<!-- Withdraw -->
+				<li>
+					<a href="/admin/withdraws">
+						<i class="fa fa-money">
+						<b class="bg-success dker"></b>
+						</i>
+						<span>Withdraws</span>
+					</a>
 					</li>
 					<li>
 						<a href="#Tools">
@@ -72,24 +177,25 @@
 							<span>Tools</span>
 						</a>
 						<ul class="nav lt">
-							<li>
-								<a href="/admin/tools/multi-links">
-									<i class="fa fa-angle-right"></i>
-									<span>Mass Shrinker</span>
-								</a>
-							</li>
-							<li>
-								<a href="/admin/tools/quick-link">
-									<i class="fa fa-angle-right"></i>
-									<span>Quick Link</span>
-								</a>
-							</li>
-							<li>
-								<a href="admin/tools/full-page-script">
-									<i class="fa fa-angle-right"></i>
-									<span>Full Page Script</span>
-								</a>
-							</li>
+								<!-- domains -->			
+					<li>
+						<a href="/admin/domains">
+							<i class="fa fa-code-fork">
+								<b class="bg-danger dker"></b>
+							</i>
+							<span>Domains</span>
+						</a>
+					</li>
+					<!-- Ads Types -->
+					<li>
+						<a href="/admin/adstypes">
+							<i class="fa fa-area-chart">
+								<b class="bg-info dker"></b>
+							</i>
+							<span>Ads Types</span>
+						</a>
+					</li>
+					
 						</ul>
 					</li>
 					<li>
@@ -124,14 +230,7 @@
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="/admin/withdraws">
-							<i class="fa fa-dollar">
-								<b class="bg-success"></b>
-							</i>
-							<span>Withdraws </span>
-						</a>
-					</li>
+					
 				</ul>
 			</nav>
 

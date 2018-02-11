@@ -7,7 +7,12 @@
     <header class="box-header with-border text-center">
       <h3 class="box-title">
         <i class="fa fa-link">
-        </i> All Your links     ip: <Address> {{$ip}}</Address>
+        </i>
+                    @if(Route::is('link.index'))
+                        All Your links
+                    @elseif(Route::is('links.deletedFiles'))
+                         All Your deleted links
+                    @endif 
       </h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -21,7 +26,7 @@
       @if(count($links))
       <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
            <div class="col-sm-3 " style="top:10px;">
-            <a href="{{url('user/links/create')}}" type="button" class="btn btn-success btn-md">
+            <a href="{{route('link.create')}}" type="button" class="btn btn-success btn-md">
              <i class="fa fa-link"></i>
                Add New link
             </a>
@@ -64,20 +69,20 @@
               </small>
             </td>
             <td class="v-middle hidden-xs">
-              <a  href="{{route('links.show',$link->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
+              <a  href="{{route('link.show',$link->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
                         <i class="fa fa-eye"></i>
                 </a> 
              {{$link->clicks}}</td>
             <td class="v-middle hidden-xs">{{$link->created_at}}</td>
             <td class="pull-right">
-              <a href="{{route('links.edit',$link->id)}}" title="Edit" data-toggle="modal"
+              <a href="{{route('link.edit',$link->id)}}" title="Edit" data-toggle="modal"
                 class="text-success" >
                 <span class="text text-sm">
                   <i class="fa fa-edit">
                   </i> 
                 </span>
               </a>
-              @if(Route::is('links.index'))
+              @if(Route::is('link.index'))
               <a href="#delete-link-{{$link->id}}" title="Hide"  data-toggle="modal"
                 class=" text-danger" >
                 <span class="text text-sm">
@@ -98,13 +103,13 @@
             </td>
           </tr>
 
-          @if(Route::is('links.index'))
+          @if(Route::is('link.index'))
           <div class="modal fade" id="delete-link-{{$link->id}}">
             <div class="modal-dialog modal-shorten">
               <div class="modal-content bg-default">
                 <div class="modal-body">
                   <div class="padder">
-                    {!! Form::open(array('route' =>['links.destroy',$link->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
+                    {!! Form::open(array('route' =>['link.destroy',$link->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
                     <div class="text-center">
                       <h4 id="msg-shorten ">Hide link</h4>
                     </div>
@@ -172,8 +177,8 @@
             </div>
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
-              <a href="{{route('links.create')}}" class="btn btn-success"> 
-                Click to Add New link
+              <a href="{{route('link.create')}}" class="btn btn-success"> 
+              <i class="fa fa-plus"></i>  Click to Add New link
               </a>
             </div>
             @endif 

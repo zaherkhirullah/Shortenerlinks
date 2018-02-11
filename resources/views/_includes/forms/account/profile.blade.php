@@ -192,7 +192,7 @@
 
 	<div class="col-sm-6">
 		<div class="form-group select  {{ $errors->has('country_id') ? ' has-error' : '' }}  required">
-			{!!  Form::label('country_id', 'Country');   !!}
+			{!!  Form::label('country_id', 'Country')   !!}
 
 			{{ Form::select('country_id', $countries ,$selectedCountry, 
 			['class' => "form-control input-sm  $errors->has('country_id') ? ' has-error' : '' ",'id'=>'country_id'])  }}
@@ -210,7 +210,7 @@
 <div class="row">
 	<div class="col-sm-6">
 		<div class="form-group select  {{ $errors->has('withdrawal_method_id') ? ' has-error' : '' }}  required">
-			{!!  Form::label('withdrawal_method_id', 'Withdrawal Method');   !!}
+			{!!  Form::label('withdrawal_method_id', 'Withdrawal Method')   !!}
 
 			{{ Form::select('withdrawal_method_id', $withdrawMethods ,$selectedMethod, 
 			['class' => "form-control input-sm  $errors->has('withdrawal_method_id') ? ' has-error' : '' ",'id'=>'withdrawal_method_id'])  }}

@@ -26,7 +26,7 @@ Route::get('/rates', 'HomeController@rates')->name('rates');
 
 Route::group(['namespace' => 'Users'], function(){
 Route::get('/contacts', 'ContactsController@create')->name('contacts.create');
-Route::post('/contacts', 'ContactsController@store')->name('contacts.store');
+Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
 });
 
 /*
@@ -49,13 +49,30 @@ Route::prefix('admin')->group(function()
     Route::get( '/', 'AdminController@dashboard')->name("admin");
     Route::get( '/dashboard', 'AdminController@dashboard')->name("Adashboard");
     Route::get( '/withdraws', 'AdminController@withdraws')->name("Awithdraws");
-    Route::get( '/users', 'AdminController@users')->name("Ausers");
+   
+    Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
+    Route::post( '/links/restore/{link}',array('uses' => 'LinkController@restore', 'as' => 'links.restore'));
+    
+    Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
+    Route::get( '/files/private', 'FileController@private')->name("files.private");
+    Route::get( '/files/public', 'FileController@public')->name("files.public");
+    Route::post( '/files/restore/{file}',array('uses' => 'FileController@restore', 'as' => 'files.restore'));
+   
+    Route::get( '/folders/dlist', 'FolderController@deletedFolders')->name("links.deletedFolders");
+    Route::post( '/folders/restore/{folder}',array('uses' => 'FolderController@restore', 'as' => 'links.restore'));
+
+   
     Route::resource( '/domains', 'DomainController');  
-    Route::resource( '/adstypes', 'AdsTypesController');
+    Route::resource( '/adstypes', 'AdstypesController');
     Route::resource( '/folders', 'FolderController');
-    Route::resource( '/links', 'LinkController');  
+    Route::resource( 'links', 'LinkController');
     Route::resource( '/files', 'FileController');
     Route::resource( '/contacts', 'ContactsController');
+    Route::resource( '/users', 'UserController');  
+    Route::resource( '/roles', 'RoleController');  
+
+
+
     
   });
  
@@ -98,9 +115,9 @@ Route::prefix('user')->group(function()
      Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
      Route::delete( '/files/restore/{file}',array('uses' => 'FileController@restore', 'as' => 'files.restore'));
      
-     Route::resource( '/folders', 'FolderController'); 
-     Route::resource( '/links', 'LinkController');  
-     Route::resource( '/files', 'FileController');
+     Route::resource( '/folder', 'FolderController'); 
+     Route::resource( '/link', 'LinkController');  
+     Route::resource( '/file', 'FileController');
 
   
     });
