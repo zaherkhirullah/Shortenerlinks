@@ -13,5 +13,10 @@ class role extends Model
    {
        return $this ->hasMany( 'App\User', 'role_id' );
    }
+     // list All users
+     public function roles()
+     {
+      return $this->where([['id','<>','1']])->orderBy('created_at','desc');
+     }
   
 }

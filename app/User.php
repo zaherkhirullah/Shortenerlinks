@@ -58,12 +58,12 @@ class User extends Authenticatable
      // list All users
      public function users()
      {
-      return $this->where('isDeleted','0')->orderBy('created_at','desc');
+      return $this->where([['isDeleted','0'],['role_id','<>','1']])->orderBy('created_at','desc');
      }
     // list of  users has been deleted and list (Desc) by create date
      public function deletedusers()
      {
-      return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+      return $this->where(['isDeleted','1'],['role_id','<>','1'])->orderBy('updated_at','desc');
      }
      public function links()
      {

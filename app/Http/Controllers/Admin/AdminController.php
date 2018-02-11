@@ -16,25 +16,4 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
-     public function links()
-    {
-        return view('admin.links');
-    }
-    public function files()
-    {
-        return view('admin.files');
-    }
-    public function users()
-    {
-        return view('admin.users');
-    }
-      public function paymentMethods()
-    {
-        return view('admin.paymentMethods');
-    }
-     public function withdraws()
-    {
-        return view('admin.withdraws');
-    }
-
 }
