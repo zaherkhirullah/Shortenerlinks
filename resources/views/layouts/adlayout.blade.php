@@ -27,6 +27,12 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css" type="text/css">
   
 		<!-- Head Scripts -->
+		<style>
+			.text-xs{font-size: 15px;}
+			.text-sm{font-size: 18px;}
+			.text-md{font-size: 21px;}
+			.text-lg{font-size: 24px;}
+		</style>
 	</head>
 	<!--/ Head-->
 	<body >

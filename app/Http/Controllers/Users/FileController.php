@@ -20,15 +20,13 @@ class fileController extends Controller
     {
         $this->middleware('auth');
     }
-    
+  // Show list of files   
     public function index(file $file)
     {
-        // Show list of files
           $files = $file->files()->paginate(20);
-
      return view('users.files.index')->withFiles($files);
     }
-     // Show list of deleted files
+// Show list of deleted files
      public function deletedFiles(file $file)
      {
            $files = $file->deletedFiles()->paginate(20);
@@ -47,15 +45,14 @@ class fileController extends Controller
     public function store(FileValidation $request)
     { 
       $this->NewItem($request->all());
-
       return redirect()->route('file.index');
     }
-      // show file details
+// show file details
       public function show(file $file)
       {
           return view('users.files.show',compact('file'));
       }
-      // edit file details
+// edit file details
       public function edit(file $file)
       {
          $domains = Domain::pluck('name', 'id');
@@ -67,9 +64,23 @@ class fileController extends Controller
 
 // update function
 public function update(Request $request, file $file)
-{    
-     Session::flash('success',' Sucessfully updated the ' .$file->slug . ' file .');
+{  
+    $domain = Domain::find($request->domain_id);
+   
+    $dattitle=($request->title)?: null;
+    $slug =($request->title)?: str_random(10);
+    $shorted_url =( $request->domain_id ==1)? url('/'.  $slug ) : $domain->url .'/'. $slug;
+    
+    $file->update($request->all());
+    if($file->slug != $slug)
+      $file->slug = $slug;
+    else; 
+    $file->shorted_url = $shorted_url;
+
+    if($file->save())
+    Session::flash('success',' Sucessfully updated the ' .$slug . ' file .');
     return redirect()->route('file.index');
+
 }
 // for hide file    
 public function destroy(file $file)
@@ -108,7 +119,7 @@ public function delete(file $file)
                                'class'  => 'form-edit'  ,
                                'id'  => 'form-edit' );
     }
-       // NewItemew for create new item in table(for calling in store).
+ // NewItemew for create new item in table(for calling in store).
        protected function NewItem(array $data)
        {
            $domain_id = $data['domain_id'];
@@ -142,13 +153,13 @@ public function delete(file $file)
            Session::flash('success',' Sucessfully created the ' .$slug . ' file .');
            return $file;
        }
-       // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
+ // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
         Protected function Deleteate(file $file, $data)
          {
             $file = file::find($file->id);
             $isDeleted = $file->isDeleted;
             $Message = '';  $class = '';
-        // Not Found Page
+  // Not Found Page
         if (is_null($file))
             return view('errors.NotFound');
             else

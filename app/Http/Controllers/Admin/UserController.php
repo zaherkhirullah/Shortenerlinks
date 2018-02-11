@@ -11,8 +11,9 @@ class UserController extends Controller
      
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
+
     public function index()
     {   $user = new User();
         $users =  $user->users()->paginate(10);
@@ -21,7 +22,7 @@ class UserController extends Controller
 
     public function create()
     {
-    
+        return redirect()->route('users.index');
     }
 
 

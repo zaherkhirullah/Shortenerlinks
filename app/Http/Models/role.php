@@ -11,7 +11,7 @@ class role extends Model
    
    public function users()
    {
-       return $this ->hasMany( 'App\User', 'referrer_by' );
+       return $this ->hasMany( 'App\User', 'role_id' );
    }
   
 }

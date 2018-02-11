@@ -17,14 +17,13 @@ class LinkController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
-// Show list of links
+    // Show list of links
     public function index(link $link)
     {
-          $links = $link->links()->paginate(20);
-          // $deleteform = $link->deleteForm();
-          return view('admin.links.index')->withLinks($links);
+        $links = $link->links()->paginate(20);
+        return view('admin.links.index')->withLinks($links);
     }
      // Show list of deleted links
      public function deletedLinks(link $link)
@@ -32,61 +31,74 @@ class LinkController extends Controller
            $links = $link->deletedLinks()->paginate(20);
            return view('admin.links.index')->withLinks($links);
      }
-
+    //create new link
     public function create()
     {
-        //create new link
-
         $domains = Domain::pluck('name', 'id');
-        $selectedDomain = 1;
         $ads=Adstype::pluck('name', 'id');
-        $selectedAds =1;
         $folders=folder::pluck('name', 'id');
-        $selectedfolder =1;
-      
         return view('admin.links.Form',compact('domains','folders','ads'));
     }
   /* build link  LinkValidation */
     public function store(LinkValidation $request)
     {  
       $this->NewItem($request->all());
-      return redirect()->route('links.index');
-      
+      return redirect()->route('links.index'); 
     }
+    // show link details
+    public function show(link $link)
+    {
+        return view('admin.links.show',compact('link'));
+    }
+    // edit link details
+    public function edit(link $link)
+    { 
+        $domains = Domain::pluck('name', 'id');
+        $ads=Adstype::pluck('name', 'id');
+        $folders=folder::pluck('name', 'id');
+        return view('admin.links.Form',compact('domains','folders','ads','link'));
+    }
+    // update function
+    public function update(LinkValidation $request, link $link)
+    {   
+        $domain = Domain::find($request->domain_id);
 
-// show link details
-public function show(link $link)
-{
-    return view('admin.links.show',compact('link'));
-}
-// edit link details
-public function edit(link $link)
-{
-    return view('admin.links.Form',compact('link'));
-}
-// update function
-public function update(LinkValidation $request, link $link)
-{   
-    Session::flash('success',' Sucessfully updated the ' .$request->slug . ' link .');
-    return redirect()->route('links.index')->with( ['success'=>' Sucessfully Edited :)']);
-}
-// for hide link    
-public function destroy(link $link)
-{
-    return $this->Deleteate($link , 1);
-}
- // for unhide link    
- public function restore(link $link)
- {
-    return $this->Deleteate($link , 0);
- }
+        $datalias=($request->alias)?: null;
+        $slug =($request->slug)?: str_random(10);
 
-// for delete link
-public function delete(link $link)
-{   
-    Session::flash('success',' Sucessfully deleted the ' .$request->slug . ' link .');
-    return redirect()->route('links.index');
-}
+        $shorted_url =( $request->domain_id ==1)? url('/'.  $slug ) : $domain->url .'/'. $slug;
+        $link->update($request->all());
+        
+        if($link->slug != $slug)
+        $link->slug = $slug;
+        else; 
+        $link->url =$request->url;
+        $link->shorted_url = $shorted_url;
+        if($link->save())
+
+        Session::flash('success',' Sucessfully updated the ' .$slug . ' link .');
+        return redirect()->route('links.index');
+    }
+    // for hide link    
+    public function destroy(link $link)
+    {
+        $name= $link->name;
+        $link = link::find($link)->first();
+        $link->delete();
+        Session::flash('success',' Sucessfully deleted the ' .$name . ' link .');
+        return redirect()->route('links.index');
+    }
+    // for unhide link    
+    public function restore(link $link)
+    {
+        return $this->Deleteate($link , 0);
+    }
+    // for delete link
+    public function delete(link $link)
+    {   
+        return $this->Deleteate($link , 1);
+    
+    }
 
     /*
     |------------------------
@@ -153,7 +165,7 @@ public function delete(link $link)
           $Message = ' Error!!  has been filed restore :(';
        }
     }
-   return redirect()->route('link.index')->with([$class =>   $link->slug .  $Message]);
+   return redirect()->route('links.index')->with([$class =>   $link->slug .  $Message]);
    }
   }
 

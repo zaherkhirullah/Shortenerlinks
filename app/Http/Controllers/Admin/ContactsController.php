@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 use Session;
 class ContactsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+    
     // Show list of contacts  
     public function index(Contacts $contacts)
     {
@@ -33,18 +38,20 @@ class ContactsController extends Controller
     // edit contact details
     public function edit(Contacts $contact)
     {
-        return view('admin.contacts.Form');
+        return view('admin.contacts.Form',compact('contact'));
     }
     // update function
-    public function update(Request $request, Contacts $contact)
-    {    
+    public function update( ContactsValidation $request, Contacts $contact)
+    {   $contact->update($request->all());
+        $contact->save();
         Session::flash('success',' Sucessfully updated the ' .$request->name . ' Contacts .');
         return redirect()->route('contacts.index');
     }
     // for delete contact    
     public function destroy(Contacts $contact)
-    { $contact = Contacts::find($contact)->first();
+    {  
         $name= $contact->name;
+        $contact = Contacts::find($contact)->first();
         $contact->delete();
         Session::flash('success',' Sucessfully deleted the ' .$name . ' Contacts .');
         return redirect()->route('contacts.index');

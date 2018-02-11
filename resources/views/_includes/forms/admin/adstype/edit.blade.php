@@ -1,7 +1,7 @@
 {{ Form::open(array('route' => ['adstypes.update',$adstype->id] ,'method'  => 'POST', 'id'=>'Edit_form')) }}
 <div style="display: none;">
-	{{ method_field('PUT') }}
-	{{ csrf_field() }}
+{{ method_field('PUT') }}
+{{ csrf_field() }}
 </div>
 
 <div class="col-md-8">

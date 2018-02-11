@@ -69,7 +69,9 @@
         <div class="modal-body">
           <div class="padder">
             {!! Form::open(array('route' =>['roles.destroy',$role->id],
-            'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
+            'method'=>'post','class'=>'form-delete','id'=>'form-delete' )) !!}
+            {{ csrf_field() }}
+                      {{ method_field('DELETE') }}
             <div class="text-center">
               <h4 id="msg-shorten ">Hide Shorten role</h4>
             </div>
@@ -95,7 +97,7 @@
 @else
 <div class="col-md-8 col-md-offset-2">
   <center> 
-    <h2 class="text-danger alert alert-info"> You don't have roles</h2>
+    <h2 class="text-danger alert alert-warning"> You don't have roles</h2>
   </center>
 </div>
 <div class="text-clear col-md-12">  </div>

@@ -8,11 +8,11 @@
       <h3 class="box-title">
         <i class="fa fa-link">
         </i>
-                    @if(Route::is('link.index'))
-                        All Your links
-                    @elseif(Route::is('links.deletedFiles'))
-                         All Your deleted links
-                    @endif 
+        @if(Route::is('link.index'))
+        All Your links
+    @elseif(Route::is('link.deletedLinks'))
+         All Your deleted links
+    @endif 
       </h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -53,7 +53,9 @@
             <td>
               <a href="{{$link->shorted_url }}" class="h5 text-success" target="_blank">
                 <strong>{{$link->shorted_url}}</strong>
-                <button class="btn btn-sm btn-copy text-success pull-right" data-clipboard-text="{{$link->shorted_url}}"
+              </a>
+              <span class="pull-right">
+              <button class="btn btn-sm btn-copy text-success" data-clipboard-text="{{$link->shorted_url}}"
                   data-toggle="button">
                   <span class="text">
                     <i class="ion ion-ios-copy-outline text-md">
@@ -63,8 +65,9 @@
                   <i class="fa fa-check"> </i> Copied
                   </span>
                 </button>
-              </a>
+                </span>
               <small class="text-muted block">
+            
               {{$link->url}}
               </small>
             </td>
@@ -90,8 +93,8 @@
                   </i> 
                 </span>
               </a>
-              @elseif(Route::is('links.deletedLinks'))
-              <a href="#restore-link-{{$link->id}}" title="Unhide"  data-toggle="modal"
+              @elseif(Route::is('link.deletedLinks'))
+              <a href="#restore-link-{{$link->id}}" title="UnHidden"  data-toggle="modal"
                 class="text-warning" >
                 <span class="text text-sm">
                   <i class="fa fa-eye">
@@ -133,7 +136,7 @@
                   </div>
                 </div>
               </div>
-              @elseif(Route::is('links.deletedLinks'))
+              @elseif(Route::is('link.deletedLinks'))
               <div class="modal fade" id="restore-link-{{$link->id}}">
                 <div class="modal-dialog modal-shorten">
                   <div class="modal-content bg-default">
@@ -143,10 +146,10 @@
                         'class'=>'form-restore','id'=>'form-restore' ))
                         !!}
                         <div class="text-center">
-                          <h4 id="msg-shorten ">UnHide link</h4>
+                          <h4 id="msg-shorten ">UnHidden link</h4>
                         </div>
                         <hr>
-                        <p>Are You Sure You Want UnHide
+                        <p>Are You Sure You Want UnHidden
                           <b class="text-info">
                             {{$link->slug}} </b> link ?
                           </p> 

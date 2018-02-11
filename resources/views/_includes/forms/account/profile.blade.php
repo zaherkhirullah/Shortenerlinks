@@ -1,5 +1,5 @@
 
-{!! Form::open(array ('route' => 'profile', 'method'  => 'POST',
+{!! Form::open(array ('route' => 'account.profile', 'method'  => 'POST',
 'accept-charset'=>'utf-8','files'  => true)) !!}
 
 <div style="display: none;">

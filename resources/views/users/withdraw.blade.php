@@ -36,17 +36,35 @@
             <div class="row text-center padder-v m-b-xl b-t b-b b-light bg-light lter pull-in">
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">Payment processor</span>
-                    <small class="h5 text-success m-b-xs block">
-                        <i class="fa fa-check">
-                        </i> PayPal
-                    </small>
+                    @if((Auth::user()->Profile->withdrawal_method_id) != null )
+                        <small class="h5 text-success m-b-xs block">
+                            {{Auth::user()->Profile->withdrawal_method_id}}
+                        </small>
+                        @else
+                        <small class="h5 text-danger m-b-xs block">
+                            <i class="fa fa-times-circle"></i>
+                            <a href="{{route('account.profile')}}" title="Click To add email">
+                              No Payment way 
+                              </a>
+                        </small>
+                        @endif
+
+                 
                 </div>
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">Payment email</span>
-                    <small class="h5 text-success m-b-xs block">
-                        <i class="fa fa-check">
-                        </i> uobabylon@mohmal.com
-                    </small>
+                        @if((Auth::user()->Profile->withdrawal_email) != "-")
+                        <small class="h5 text-success m-b-xs block">
+                            {{Auth::user()->Profile->withdrawal_email}}
+                        </small>
+                        @else
+                        <small class="h5 text-danger m-b-xs block">
+                            <i class="fa fa-times-circle"></i>
+                            <a href="{{route('account.profile')}}" title="Click To add email">
+                            No Email 
+                            </a>
+                        </small>
+                        @endif
                 </div>
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">Next Payment date</span>

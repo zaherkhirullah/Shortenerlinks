@@ -1,6 +1,6 @@
 
 
-{{ Form::open(array ('route' => 'changePassword', 'method'  => 'POST',
+{{ Form::open(array ('route' => 'account.changePassword', 'method'  => 'POST',
 'accept-charset'=>'utf-8','class'  => 'form-horizontal')) }}
 
 <div style="display: none;">

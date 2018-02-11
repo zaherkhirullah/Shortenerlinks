@@ -94,8 +94,7 @@ class LinkController extends Controller
     // for delete link
     public function delete(link $link)
     {
-      
-        return redirect()->route('link.index')->with( ['success'=>' Sucessfully deleted :)']);
+        return redirect()->route('link.index');
     }
 
     /*

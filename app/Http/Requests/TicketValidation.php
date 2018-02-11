@@ -3,18 +3,21 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Auth;
-class FolderValidation extends FormRequest
+
+class TicketValidation extends FormRequest
 {
     
     public function authorize()
     {
         return true;
     }
+
     public function rules()
     {
         return [
-           'name' => 'required|string|min:3|max:50|unique:folders,name,NULL,id,user_id,' . Auth::id(),    
+            'subject'=>'string|required|min:4|max:50',
+            'message'=>'string|required|min:10|max:2000',
+            'path' => 'mimes:jpeg,bmp,png,pdf,xls,docx,doc'
         ];
     }
 }

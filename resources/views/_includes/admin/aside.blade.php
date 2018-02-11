@@ -146,8 +146,18 @@
 							<span>Roles</span>
 						</a>
 						</li>
-						<!-- Contatcs -->
-						<li>
+						
+				<!-- Withdraw -->
+				<li>
+					<a href="{{route('admin.withdraws')}}">
+						<i class="fa fa-money">
+						<b class="bg-success dker"></b>
+						</i>
+						<span>Withdraws</span>
+					</a>
+					</li>
+					<!-- Contatcs -->
+					<li>
 						<a href="/admin/contacts">
 							<i class="fa fa-phone">
 							<b class="bg-warning dker"></b>
@@ -156,15 +166,6 @@
 						</a>
 						</li>
 						
-				<!-- Withdraw -->
-				<li>
-					<a href="/admin/withdraws">
-						<i class="fa fa-money">
-						<b class="bg-success dker"></b>
-						</i>
-						<span>Withdraws</span>
-					</a>
-					</li>
 					<li>
 						<a href="#Tools">
 							<i class="fa fa-flask">
@@ -177,18 +178,27 @@
 							<span>Tools</span>
 						</a>
 						<ul class="nav lt">
-								<!-- domains -->			
-					<li>
-						<a href="/admin/domains">
-							<i class="fa fa-code-fork">
-								<b class="bg-danger dker"></b>
+						<!-- domains -->			
+						<li>
+						<a href="/admin/PayMethods">
+							<i class="fa fa-dollar">
+								<b class="bg-success dker"></b>
 							</i>
-							<span>Domains</span>
+							<span>PayMethods</span>
 						</a>
 					</li>
+								<!-- domains -->			
+					<li>
+					<a href="{{route('domains.index')}}">
+						<i class="fa fa-code-fork">
+							<b class="bg-danger dker"></b>
+						</i>
+						<span>Domains</span>
+					</a>
+				</li>
 					<!-- Ads Types -->
 					<li>
-						<a href="/admin/adstypes">
+						<a href="{{route('adstypes.index')}}">
 							<i class="fa fa-area-chart">
 								<b class="bg-info dker"></b>
 							</i>
@@ -211,13 +221,13 @@
 						</a>
 						<ul class="nav lt">
 							<li>
-								<a href="admin/account/profile">
+								<a href="{{route('account.profile')}}">
 									<i class="fa fa-angle-right"></i>
 									<span>Profile</span>
 								</a>
 							</li>
 							<li>
-								<a href="/admin/account/change-password">
+								<a href="{{route('account.changePassword')}}">
 									<i class="fa fa-angle-right"></i>
 									<span>Change Password</span>
 								</a>
@@ -237,7 +247,7 @@
 		</div>
 	</section>
 	<footer class="footer lt hidden-xs b-t b-dark">
-		<a href="/admin/home#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
+		<a href="/admin/" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
 			<i class="fa fa-angle-left text"></i>
 			<i class="fa fa-angle-right text-active"></i>
 		</a>

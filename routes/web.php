@@ -2,36 +2,21 @@
 
 /*
 |=============================
-|      --/LanguageContrroler /--      
-|=============================
-*/
-Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
-Route::post('/language/', array('before' =>'csrf',
-                                'as'=>'changelang',
-                                'uses'=>'LanguageController@changelang',)
-      );
-/*
-|=============================
 |      --/Visitor Area /--      
 |=============================
 */
-// Route::get('/{locale}', function ($locale) { 
-//  App::setLocale($locale); 
-//   return view('home.home'); 
-// });
 
-Route::get('/', function () { return view('home.home'); });
+Route::get('/', 'HomeController@index')->name('homepage');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/rates', 'HomeController@rates')->name('rates');
 
-Route::group(['namespace' => 'Users'], function(){
-Route::get('/contacts', 'ContactsController@create')->name('contacts.create');
+Route::get('/contacts', 'ContactsController@create')->name('home.contacts.create');
 Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
-});
+
 
 /*
 |=============================
-|  --/Register and sign in/-- 
+|  --/ Authouraization /-- 
 |=============================
 */
 
@@ -39,62 +24,49 @@ Auth::routes();
 
 /*
 |=============================
-|      --/Admin Area /--      
+|      --/ Admin Area /--      
 |=============================
 */
 Route::prefix('admin')->group(function()
 { 
   Route::group(['namespace' => 'Admin'], function()
   {
+     // Admin 
     Route::get( '/', 'AdminController@dashboard')->name("admin");
-    Route::get( '/dashboard', 'AdminController@dashboard')->name("Adashboard");
-    Route::get( '/withdraws', 'AdminController@withdraws')->name("Awithdraws");
+    Route::get( '/dashboard', 'AdminController@dashboard')->name("admin.dashboard");
+    Route::get( '/withdraws', 'AdminController@withdraws')->name("admin.withdraws");
    
+    // Admin links
     Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
-    Route::post( '/links/restore/{link}',array('uses' => 'LinkController@restore', 'as' => 'links.restore'));
-    
+    Route::delete( '/links/{link}/restore',array('uses' => 'LinkController@restore',
+                                               'as' => 'links.restore'));
+    // Admin Files
     Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
     Route::get( '/files/private', 'FileController@private')->name("files.private");
     Route::get( '/files/public', 'FileController@public')->name("files.public");
-    Route::post( '/files/restore/{file}',array('uses' => 'FileController@restore', 'as' => 'files.restore'));
+    Route::delete( '/files/{file}/restore',array('uses' => 'FileController@restore', 
+                                               'as'   => 'files.restore'));
+    // Admin Folders
+    Route::get( '/folders/dlist', 'FolderController@deletedFolders')->name("folders.deletedFolders");
+    Route::delete( '/folders/{folder}/restore',array('uses' => 'FolderController@restore', 
+                                                   'as'   => 'folders.restore'));
+
+    // Admin Resources
+    Route::resource( '/users',      'UserController');  
+    Route::resource( '/roles',      'RoleController');
+    Route::resource( '/domains',    'DomainController');  
+    Route::resource( '/adstypes',   'AdstypesController');
+    Route::resource( '/PayMethods', 'PayMethodController'); 
+    Route::resource( '/contacts',   'ContactsController');
+    Route::resource( '/folders',    'FolderController');
+    Route::resource( '/links',      'LinkController');
+    Route::resource( '/files',      'FileController');
+    Route::resource( '/tickets',      'TicketController');
    
-    Route::get( '/folders/dlist', 'FolderController@deletedFolders')->name("links.deletedFolders");
-    Route::post( '/folders/restore/{folder}',array('uses' => 'FolderController@restore', 'as' => 'links.restore'));
-
-   
-    Route::resource( '/domains', 'DomainController');  
-    Route::resource( '/adstypes', 'AdstypesController');
-    Route::resource( '/folders', 'FolderController');
-    Route::resource( 'links', 'LinkController');
-    Route::resource( '/files', 'FileController');
-    Route::resource( '/contacts', 'ContactsController');
-    Route::resource( '/users', 'UserController');  
-    Route::resource( '/roles', 'RoleController');  
-
-
-
-    
   });
  
 
 });
-/*
-|=============================
-|      --/Manager Area /--      
-|=============================
-*/
-// Route::prefix('manager')->group(function()
-// {
-//   Route::group(['namespace' => 'Manager'], function()
-//   {
-//     Route::get('/dashboard','ManagerController@dashboard')->name("Mdashboard");
-//     Route::get('/links','ManagerController@links')->name("Mlinks");
-//     Route::get('/withdraw','ManagerController@withdraw')->name("Mwithdraw");
-//     Route::get('/referrals','ManagerController@referrals')->name("Mreferrals");
-//     Route::get('/profile', 'ManagerController@profile')->name("Mprofile");
-//     Route::get('/users', 'ManagerController@users')->name("Musers");
-//   });
-// });
 /*
 |=============================
 |      --/User Area /--      
@@ -102,40 +74,29 @@ Route::prefix('admin')->group(function()
 */
 Route::prefix('user')->group(function() 
 {
-  Route::group(['namespace' => 'Users'], function(){
-     Route::get( '/', 'UsersController@dashboard')->name("user");
-     Route::get( '/dashboard', 'UsersController@dashboard')->name("dashboard");
-
-     Route::get( '/referrals', 'UsersController@referrals')->name("referrals");
-     Route::get( '/withdraw', 'UsersController@withdraw')->name("withdraw");
-
-     Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
-     Route::delete( '/links/restore/{link}',array('uses' => 'LinkController@restore', 'as' => 'links.restore'));
-     
-     Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
-     Route::delete( '/files/restore/{file}',array('uses' => 'FileController@restore', 'as' => 'files.restore'));
-     
-     Route::resource( '/folder', 'FolderController'); 
-     Route::resource( '/link', 'LinkController');  
-     Route::resource( '/file', 'FileController');
-
-  
-    });
-      
-     
-       
-
-});
-
-Route::prefix('account')->group(function()
-{
-  Route::group(['namespace' => 'Account'], function()
+  Route::group(['namespace' => 'Users'], function()
   {
-    Route::get( '/profile', 'AccountController@profile')->name("profile");
-    Route::get( '/changePassword', 'AccountController@showchangePassword')->name("showchangePassword");
-    Route::post('/changePassword','AccountController@changePassword')->name('changePassword');
-    Route::get( '/change-email', 'AccountController@changeemail')->name("changeemail");
-  });
+    // Users
+     Route::get( '/', 'UsersController@dashboard')->name("user");
+     Route::get( '/dashboard', 'UsersController@dashboard')->name("user.dashboard");
+    //  Referals & withdraws
+     Route::get( '/referrals', 'UsersController@referrals')->name("user.referrals");
+     Route::get( '/withdraw', 'UsersController@withdraw')->name("user.withdraws");
+    // Users Links
+     Route::get( '/link/dlist', 'LinkController@deletedLinks')->name("link.deletedLinks");
+     Route::post( '/link/restore/{link}',array('uses' => 'LinkController@restore', 
+                                               'as' => 'link.restore'));
+     // Users Files
+     Route::get( '/file/dlist', 'FileController@deletedFiles')->name("file.deletedFiles");
+     Route::post( '/file/restore/{file}',array('uses' => 'FileController@restore', 
+                                               'as' => 'file.restore'));
+     // Users Recources
+     Route::resource( '/folder', 'FolderController'); 
+     Route::resource( '/link',   'LinkController');  
+     Route::resource( '/file',   'FileController');
+    Route::resource( '/ticket',      'TicketController');
+
+    });
 });
 
 /*
@@ -143,3 +104,28 @@ Route::prefix('account')->group(function()
 |      --/Settings Area /--      
 |=============================
 */
+
+Route::prefix('account')->group(function()
+{
+  Route::group(['namespace' => 'Account'], function()
+  {
+    Route::get( '/profile',        'AccountController@profile')->name("account.profile");
+    Route::get( '/changePassword', 'AccountController@showchangePassword')->name("account.changePassword");
+    Route::post('/changePassword', 'AccountController@changePassword')->name('account.PchangePassword');
+    Route::get( '/change-email',   'AccountController@changeemail')->name("changeemail");
+  });
+});
+
+/*
+|=============================
+|      --/LanguageContrroler /--      
+|=============================
+*/
+Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
+Route::post('/language', array('before' =>'csrf','as'=>'changelang',
+                                'uses'=>'LanguageController@changelang',));
+                                
+// Route::get('/{locale}', function ($locale) { 
+//  App::setLocale($locale); 
+//   return view('home.home'); 
+// });

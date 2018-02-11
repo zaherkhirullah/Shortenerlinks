@@ -92,8 +92,8 @@
                       {{ Form::open(array('route' =>['adstypes.destroy',$adstype->id],'method'=>'post',
                         'class'=>'form-delete','id'=>'form-delete' ))}}
                       
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
 
                       <div class="text-center">
                         <h4 id="msg-hidden ">Hide  adstype</h4>
@@ -120,7 +120,7 @@
       @else
       <div class="col-md-8 col-md-offset-2">
         <center> 
-          <h2 class="text-danger alert alert-info"> You don't have adstypes</h2>
+          <h2 class="text-danger alert alert-warning"> You don't have adstypes</h2>
         </center>
       </div>
       <div class="text-clear col-md-12">  </div>

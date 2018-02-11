@@ -67,6 +67,8 @@
                                     <div class="padder">
                                         {!! Form::open(array('route' =>['contacts.destroy',$contact->id],
                                         'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
+                                        {{ csrf_field() }}
+                                     {{ method_field('DELETE') }}
                                         <div class="text-center">
                                             <h4 id="msg-shorten ">Hide Contatcs</h4>
                                         </div>
@@ -96,11 +98,11 @@
                     </center>
                 </div>
                 <div class="text-clear col-md-12">  </div>
-                <div class="col-md-12 text-center">
+                <!-- <div class="col-md-12 text-center">
                     <a href="{{route('contacts.create')}}" class="btn btn-success"> 
                        <i class="fa fa-plus"></i> Click to Add New contacts
                     </a>
-                </div>
+                </div> -->
             @endif 
             
 </section>

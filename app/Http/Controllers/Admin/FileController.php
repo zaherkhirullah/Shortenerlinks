@@ -15,54 +15,50 @@ class fileController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
-// Show list of files
+    // Show list of files
     public function index(file $file)
     {
         $files = $file->files()->paginate(20);
         return view('admin.files.index')->withFiles($files);
     }
-// Show list of deleted files
+    // Show list of deleted files
     public function deletedFiles(file $file)
     {  $files = $file->deletedFiles()->paginate(20);
         return view('admin.files.index')->withFiles($files);
     }
 
-// Show list of private files
+    // Show list of private files
     public function private(file $file)
     {
         $files = $file->private()->paginate(20);
         return view('admin.files.index')->withFiles($files);
     }
-// Show list of public files
+    // Show list of public files
     public function public(file $file)
     {
         $files = $file->public()->paginate(20);
         return view('admin.files.index')->withFiles($files);
      }
-// upload new file
+    // upload new file
     public function create()
     {  
-    $domains = Domain::pluck('name', 'id');
-        $selectedDomain = 1;
+        $domains = Domain::pluck('name', 'id');
         $ads=Adstype::pluck('name', 'id');
-        $selectedAds =1;
         $files=file::pluck('name', 'id');
-        $selectedfile =1;
-
-        return view('admin.files.Form',compact('domains','selectedDomain','files','selectedfile','ads','selectedAds'));
+        return view('admin.files.Form',compact('domains','files','ads'));
     }
-// build file
+    // build file
         public function store(FileValidation $request)
         { 
         $this->NewItem($request->all());
-
+        Session::flash('success',' Sucessfully Created the ' .$name . ' file .');
         return redirect()->route('files.index')->
                 with( ['message'=>' Sucessfully Created :)']);
         }
 
-// show file details
+    // show file details
     public function show(file $file)
     {
         return view('admin.files.show',compact('file'));
@@ -74,18 +70,24 @@ class fileController extends Controller
     }
     // update function
     public function update(Request $request, file $file)
-    {    
-        return redirect()->route('files.index')->with( ['success'=>' Sucessfully Edited :)']);
+    {     
+        Session::flash('success',' Sucessfully Updated the ' .$name . ' file .');
+        return redirect()->route('files.index');
     }
     // for hide file    
     public function destroy(file $file)
-    {
-        return redirect()->route('files.index')->with( ['success'=>' Sucessfully hided :)']);
+    {   
+        $name= $file->name;
+        $file = file::find($file)->first();
+        $file->delete();
+        Session::flash('success',' Sucessfully deleted the ' .$name . ' file .');
+        return redirect()->route('files.index');
     }
     // for delete file
     public function delete(file $file)
     {
-        return redirect()->route('files.index')->with( ['success'=>' Sucessfully deleted :)']);
+        Session::flash('success',' Sucessfully hided the ' .$name . ' file .');
+        return redirect()->route('files.index');
     }
 
     // NewItemew for create new item in table(for calling in store).
@@ -95,7 +97,7 @@ class fileController extends Controller
         $file_id = $data['file_id'];
         $path = $data['path'];
         $title=($data['title'])?: null;
-        $slug =($data['title'])?: str_random(7);
+        $slug =($data['title'])?: str_random(6);
         if($path !=null)
         {
             $file_name='file_' . $slug .'_'.time() . '.' . $path->getClientOriginalExtension();
@@ -103,9 +105,8 @@ class fileController extends Controller
             $I_path=   $path->move($destination_path, $file_name);
         }
         $domain = Domain::find($domain_id);
-        $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
+        $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'\/f/'. $slug;
         $UserId = Auth::id();
-        
         return file::create(
             [
             'user_id'    => $UserId ,

@@ -4,7 +4,7 @@
 		
 
 			<nav class="nav-primary hidden-xs">
-					<a href="#modal-shorten" data-toggle="modal" class="clearfix wrapper dk nav-user block " style="border-bottom: 1px solid #eee;">
+					<a href="{{route('link.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block " style="border-bottom: 1px solid #eee;">
 				<button class="btn btn-rounded btn-md btn-icon btn-success pull-left m-r">
 					<i class="fa fa-link"></i>
 				</button>
@@ -15,7 +15,7 @@
 					</span>
 				</span>
 			</a>
-			<a href="#modal-shorten" data-toggle="modal" class="clearfix wrapper dk nav-user block ">
+			<a href="{{route('file.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block ">
 				<button class="btn btn-rounded btn-md btn-icon btn-info pull-left m-r">
 					<i class="fa fa-file">
 					</i>
@@ -30,7 +30,7 @@
 			</a>
 				<ul class="nav">
 					<li class="active">
-						<a href="/user/dashboard">
+						<a href="{{route('user.dashboard')}}">
 							<i class="fa fa-dashboard">
 								<b class="bg-info">
 								</b>
@@ -54,7 +54,7 @@
 					</a>
 					<ul class="nav lt">
 					<li>
-						<a href="{{url('/user/link')}}">
+						<a href="{{route('link.index')}}">
 							<i class="fa fa-eye">
 								<b class="bg-info dker">
 								</b>
@@ -63,7 +63,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{url('/user/links/dlist')}}">
+						<a href="{{route('link.deletedLinks')}}">
 							<i class="fa fa-eye-slash">
 								<b class="bg-warning dker">
 								</b>
@@ -89,7 +89,7 @@
 					</a>
 					<ul class="nav lt">
 					<li>
-						<a href="{{url('/user/file')}}">
+						<a href="{{route('file.index')}}">
 							<i class="fa fa-eye">
 								<b class="bg-info dker">
 								</b>
@@ -98,7 +98,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{url('/user/files/dlist')}}">
+						<a href="{{route('file.deletedFiles')}}">
 							<i class="fa fa-eye-slash">
 								<b class="bg-warning dker">
 								</b>
@@ -109,7 +109,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="/user/referrals">
+						<a href="{{route('user.referrals')}}">
 							<i class="fa fa-columns">
 								<b class="bg-primary dker">
 								</b>
@@ -118,12 +118,12 @@
 						</a>
 					</li>
 					<li>
-					<a href="/user/withdraw">
+					<a href="{{route('user.withdraws')}}">
 						<i class="fa fa-dollar">
 							<b class="bg-success">
 							</b>
 						</i>
-						<span>Withdraw</span>
+						<span>Withdraws</span>
 					</a>
 				</li>
 				<li>
@@ -142,14 +142,14 @@
 					</a>
 					<ul class="nav lt">
 						<li>
-							<a href="/account/profile">
+							<a href="{{route('account.profile')}}">
 								<i class="fa fa-angle-right">
 								</i>
 								<span>Profile</span>
 							</a>
 						</li>
 						<li>
-							<a href="/account/changePassword">
+							<a href="{{route('account.changePassword')}}">
 								<i class="fa fa-angle-right">
 								</i>
 								<span>Change Password</span>
@@ -217,7 +217,7 @@
 		</form>
 	</div>
 	@endguest
-		<a href="/user/dashboard" data-toggle="class:nav-xs" class="pull-left btn btn-sm btn-dark btn-icon">
+		<a href="{{route('user.dashboard')}}" data-toggle="class:nav-xs" class="pull-left btn btn-sm btn-dark btn-icon">
 			<i class="fa fa-angle-left text"></i>
 			<i class="fa fa-angle-right text-active"></i>
 		</a>

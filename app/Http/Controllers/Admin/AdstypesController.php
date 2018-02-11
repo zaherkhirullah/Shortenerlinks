@@ -12,7 +12,7 @@ class AdstypesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function index(Adstype $adstype)
@@ -54,10 +54,10 @@ class AdstypesController extends Controller
     // update function
     public function update(Request $request, Adstype $adstype)
     {  
-        $Adstype = adstype::find($adstype)->first();
-        $Adstype->name =$request->name;
-        $Adstype->description =$request->description;
-        $Adstype->save();
+       
+        $adstype->name =$request->name;
+        $adstype->description =$request->description;
+        $adstype->save();
         Session::flash('success',' Sucessfully updated the ' .$request->name . ' Ads Type .');
         return redirect()->route('adstypes.index');
 
@@ -65,9 +65,9 @@ class AdstypesController extends Controller
     // for delete adstype    
     public function destroy(Adstype $adstype)
     {   
-        $Adstype = Adstype::find($adstype)->first();
-        $name= $Adstype->name;
-        $Adstype->delete();
+        $name= $adstype->name;
+        $adstype = Adstype::find($adstype)->first();
+        $adstype->delete();
         Session::flash('success',' Sucessfully deleted the ' .$name . ' Ads Type .');
         return redirect()->route('adstypes.index');
     }

@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FolderValidation;
 use App\Http\Controllers\Controller;
 use Auth;
-
+use Session;
 class FolderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function index(folder $folder)
@@ -30,53 +30,53 @@ class FolderController extends Controller
         return view('admin.folders.Form');
     }
 
-  
     public function store(FolderValidation $request)
-    {
+    {  
         $this->NewItem($request->all());
-
-        return redirect()->route('folders.index')
-        ->with(['success'=>$request->name .' Sucessfully Created :)']);
+        Session::flash('success',' Sucessfully Created the ' .$request->name . ' folder .');
+        return redirect()->route('folders.index');
     }
 
-
-   
-// show folder details
-public function show(folder $folder)
-{
-    return view('admin.folders.show',compact('folder'));
-}
-// edit folder details
-public function edit(folder $folder)
-{
-    return view('admin.folders.Form',compact('folder'));
-}
-// update function
-public function update(Request $request, folder $folder)
-{    
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully Edited :)']);
-}
-// for hide folder    
-public function destroy(folder $folder)
-{
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully hided :)']);
-}
-// for delete folder
-public function delete(folder $folder)
-{
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully deleted :)']);
-}
+    // show folder details
+    public function show(folder $folder)
+    {
+        return view('admin.folders.show',compact('folder'));
+    }
+    // edit folder details
+    public function edit(folder $folder)
+    {
+        return view('admin.folders.Form',compact('folder'));
+    }
+    // update function
+    public function update(FolderValidation $request, folder $folder)
+    {    $folder ->update($request->all());
+         $folder->save();
+        Session::flash('success',' Sucessfully Updated the ' .$request->name . ' folder .');
+        return redirect()->route('folders.index');
+    }
+    // for hide folder    
+    public function destroy(folder $folder)
+    {   $name =$folder->name;
+        $folder = folder::find($folder)->first();
+        $folder->delete();
+        Session::flash('success',' Sucessfully deleted the ' .$name . ' folder .');
+        return redirect()->route('folders.index');
+    }
+    // for delete folder
+    public function delete(folder $folder)
+    {
+        Session::flash('success',' Sucessfully Hided the ' .$request->name . ' folder .');
+        return redirect()->route('folders.index');
+    }
 
     // NewItemew for create new item in table(for calling in store).
     protected function NewItem(array $data)
     { 
-    $Folders = folder::create(
+        return folder::create(
         [
             'name'  => $data['name'],
             'user_id'  => Auth::id(),
         ]);
-        
-    return $Folders ;
     }
 
 }

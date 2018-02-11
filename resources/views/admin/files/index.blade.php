@@ -153,12 +153,12 @@
             @else
             <div class="col-md-8 col-md-offset-2">
             <center> 
-                <h2 class="text-danger alert alert-info"> You don't have files</h2>
+                <h2 class="text-danger alert alert-warning"> You don't have files</h2>
             </center>
             </div>
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
-                <a href="/user/files/create" class="btn btn-success"> 
+                <a href="{{route('files.create')}}" class="btn btn-success"> 
                     Click to Add New file
                 </a>
             </div>

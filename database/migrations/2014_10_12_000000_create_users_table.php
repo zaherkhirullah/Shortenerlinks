@@ -36,9 +36,8 @@ class CreateUsersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('avatar',255)->nullable();
             $table->string('phone_number',255)->default(0);
-            $table->string('withdrawal_email',255)->default('-');
-            $table->integer('withdrawal_method_id')
-                  ->unsigned()->default(1);
+            $table->string('withdrawal_email',255)->nullable();
+            $table->integer('withdrawal_method_id')->unsigned()->nullable();
             $table->string('location')->nullable();     
             $table->timestamps();
             $table->engine = 'InnoDB';

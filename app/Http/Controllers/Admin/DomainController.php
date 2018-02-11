@@ -11,9 +11,8 @@ class DomainController extends Controller
 { 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
-
     public function index(Domain $domain)
     {
         $domains = $domain->domains()->paginate(20);
@@ -28,11 +27,12 @@ class DomainController extends Controller
 
   
     public function store(DomainValidation $request)
-    {
-        $this->NewItem($request->all());
-
-        return redirect()->route('domains.index')
-        ->with(['success'=>$request->name .' Sucessfully Created :)']);
+    {   
+        $domain =new domain();
+        $domain->fill($request->all());
+        $domain->save();
+        Session::flash('success',' Sucessfully Created the ' .$request->name . ' domain .');
+        return redirect()->route('domains.index');
     }
 
     
@@ -47,38 +47,37 @@ class DomainController extends Controller
         return view('admin.domains.Form',compact('domain'));
     }
     // update function
-    public function update(Request $request, domain $domain)
-    {    $domain = domain::findOrfail($domain);
-            $domain->name =$request->name;
-            $domain->slug =$request->slug;
-            $domain->url =$request->url;
-            $domain->save();
-        Session::flash('success',' Sucessfully update the' .$request->name . 'domain .');
+    public function update(DomainValidation $request, domain $domain)
+    {         
+        $domain->name =$request->name;
+        $domain->slug =$request->slug;
+        $domain->url =$request->url;
+        $domain->save();
+            Session::flash('success',' Sucessfully update the ' .$request->name . ' domain .');
         return redirect()->route('domains.index');
 
     }
 // for hide domain    
     public function destroy(domain $domain)
-    {
-        $domain =domain::find($domain);
+    {   
+        $name = $domain->url;
+        $domain = domain::find($domain)->first();
         $domain->delete();
-        $domain->save();
-        
-        return redirect()->route('domains.index')->with( ['success'=>' Sucessfully deleted :)']);
+        Session::flash('success',' Sucessfully deleted the ' .$name . ' domain .');
+        return redirect()->route('domains.index');
     }
 
 // NewItemew for create new item in table(for calling in store).
-protected function NewItem(array $data)
-{ 
-   $Domain = Domain::create(
-    [
-        'name'  => $data['name'],
-        'slug'  => $data['slug'],
-        'url'   => $data['url'],
-    ]);
-     
- return $Domain ;
-}
+    protected function NewItem(array $data)
+    { 
+    $Domain = Domain::create(
+        [
+            'name'  => $data['name'],
+            'slug'  => $data['slug'],
+            'url'   => $data['url'],
+        ]);
+    return $Domain ;
+    }
 
 
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
+use App\Http\Models\WithdrawalMethod;
 
 class UsersController extends Controller
 {
@@ -21,8 +22,13 @@ class UsersController extends Controller
         return view('users.referrals');
     }
     public function withdraw()
-    {
-        return view('users.withdraw');
+    {  
+       $User= Auth::user();
+       $method_id = $User->profile->withdrawal_method_id;
+       $method = WithdrawalMethod::where(['id',$method_id])->first();
+       $PaymentMethod = $method->name;
+
+       return view('users.withdraw',compact('PaymentMethod') );
     }
     
    

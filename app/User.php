@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\link;
-use App\file;
+use App\Http\Models\link;
+use App\Http\Models\file;
+use App\Http\Models\Ticket;
 use Auth;
 
 class User extends Authenticatable
@@ -48,6 +49,10 @@ class User extends Authenticatable
       public function referrals()
       {
           return $this ->hasMany( 'App\User', 'referrer_by' );
+      }
+      public function tickets()
+      {
+          return $this ->hasMany( Ticket::class)->orderBy('created_at','desc');;
       }
 
      // list All users

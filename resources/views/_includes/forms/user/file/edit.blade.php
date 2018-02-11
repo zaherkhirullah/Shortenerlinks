@@ -19,7 +19,7 @@
         <!-- display: none; overflow: hidden; -->
         
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
               {{  Form::label('password', 'Add password')   }}
 
@@ -34,7 +34,7 @@
               @endif
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="form-group {{$errors->has('folder_id') ? ' has-error' : ''}}">
               {{  Form::label('folder_id', 'Folder Name')   }}
 
@@ -46,32 +46,20 @@
               @endif
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="form-group {{$errors->has('file_id') ? ' has-error' : ''}}">             
-              <label for="files">files</label>
+          <div class="col-sm-4">
+            <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
+              <label for="domains">domains</label>
 
-              {{Form::select('file_id', $files ,$file->file_id, ['class' => "form-control input-sm ",'id'=>'file_id'])  }}
-              @if ($errors->has('file_id'))
+              {{Form::select('domain_id', $domains ,$file->domain_id, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
+              @if ($errors->has('domain_id'))
               <span class="help-block">
-                <strong>{{ $errors->first('file_id') }}</strong>
+                <strong>{{ $errors->first('domain_id') }}</strong>
               </span>
               @endif
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="form-group {{$errors->has('ad_id') ? ' has-error' : ''}}">
-              <label for="ad-type">Advertising Type</label>
-
-              {{Form::select('ad_id', $ads ,$file->ad_id, 
-              ['class' =>"form-control input-sm",'id'=>'ad_id'])  }}
-              @if ($errors->has('ad_id'))
-              <span class="help-block">
-                <strong>{{ $errors->first('ad_id') }}</strong>
-              </span>
-              @endif
-            </div>
-          </div>
-          <div class="col-sm-3">
+        
+          <div class="col-sm-4">
             <div class="well well-sm {{$errors->has('title') ? ' has-error' : ''}}">
               {{Form::text('title',$file->title, ['class' =>
               "form-control input-sm ",
@@ -83,7 +71,7 @@
               @endif
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="well well-sm {{$errors->has('isPrivate') ? ' has-error' : ''}}">
              
              {{ Form::radio('isPrivate','1',FALSE) }} private

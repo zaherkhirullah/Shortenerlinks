@@ -28,12 +28,11 @@
 		<!-- Head Scripts -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 		<style>
-		
-.text-xs{font-size: 15px;}
-.text-sm{font-size: 18px;}
-.text-md{font-size: 21px;}
-.text-lg{font-size: 24px;}
-</style>
+			.text-xs{font-size: 15px;}
+			.text-sm{font-size: 18px;}
+			.text-md{font-size: 21px;}
+			.text-lg{font-size: 24px;}
+		</style>
 	</head>
 	<!--/ Head-->
 	<body >
@@ -48,19 +47,24 @@
 				<section id="content">
 					<section class="vbox">
 						<div class="col-md-12">
-							@if (session('success'))
+						@if (session('success'))
 							<div class="alert alert-success">
-								{{ session('success') }}
-						<span class="pull-right">
-						<a type="button" class="btn" data-dismiss="">
-						<i class="fa fa-times"></i>
-						</a>
+							<center>{{ session('error') }}</center>
+							<span class="pull-right">
+								<a   data-dismiss="modal">
+									<i class="fa fa-times"></i>
+								</a>
 							</span>
 							</div>
 							@endif
 							@if (session('error'))
-							<div class="alert alert-success">
-								{{ session('error') }}
+							<div class="alert alert-danger">
+							<center>{{ session('error') }}</center>
+							<span class="pull-right">
+								<a  data-dismiss="Warning">
+									<i class="fa fa-times"></i>
+								</a>
+							</span>
 							</div>
 							@endif
 						</div>

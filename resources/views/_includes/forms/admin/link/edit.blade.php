@@ -1,3 +1,12 @@
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 {{ Form::open(array ('route' =>  ['links.update',$link->id],
      'method'  => 'POST', 'id'=>'shorten_form' )) }}
      <div style="display: none;">
@@ -27,13 +36,13 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="form-group {{$errors->has('link_id') ? 'has-error':''}}">             
-              <label for="links">links</label>
+            <div class="form-group {{$errors->has('domain_id') ? 'has-error':''}}">             
+              <label for="links">domains</label>
 
-              {{Form::select('link_id', $links ,$link->link_id, ['class' => "form-control input-sm ",'id'=>'link_id'])  }}
-              @if ($errors->has('link_id'))
+              {{Form::select('domain_id', $domains ,$link->domain_id, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
+              @if ($errors->has('domain_id'))
               <span class="help-block">
-                <strong>{{ $errors->first('link_id') }}</strong>
+                <strong>{{ $errors->first('domain_id') }}</strong>
               </span>
               @endif
             </div>

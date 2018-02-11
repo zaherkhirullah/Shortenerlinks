@@ -12,7 +12,7 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function index()
     {
@@ -40,28 +40,25 @@ class RoleController extends Controller
         return view('admin.roles.show',compact('role'));
     }
 
-  
     public function edit(role $role)
     {
         return view('admin.roles.Form',compact('role'));
     }
 
- 
-    public function update(Request $request, role $role)
+    public function update(RoleValidation $request, role $role)
     {
-        $role = role::find($role);
-        $link= $link->update($request->all());
-        $link->save();
-        Session::flash('success' , 'Sucessfully Update' .$request->slug .' Role :)');
+         $role->update($request->all());
+         if($role->save())
+         Session::flash('success' , 'Sucessfully Updated The ' .$request->slug .' Role :)');
         return redirect()->route('roles.index');
-    }
-
-    
+    }    
     public function destroy(role $role)
-    {
-        $role = role::find($role);
-        $role->delete($role);
-        $role->save();
-        return redirect()->route('roles.index')->with(['success'=>$request->slug .' Sucessfully Deleted :)']);
+    {          
+        $Role = role::find($role)->first();
+        $name =$Role->name;
+        $Role->delete();
+        if($Role->save())
+        Session::flash('success' , 'Sucessfully deleted The ' .$name .' Role :)');
+        return redirect()->route('roles.index');
     }
 }

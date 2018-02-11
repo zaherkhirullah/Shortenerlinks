@@ -19,13 +19,13 @@
 <section class="box-body">   
 @if(count($users))
 <table id="DataTable" class="mdl-data-table table-bordered table-hover" cellspacing="0" width="100%">
-
+<!-- 
 <div class="col-md-3 " style="top:10px;">
 <a href="{{route('users.create')}}" type="button" class="btn btn-success btn-md">
 <i class="fa fa-user"></i>
 Add New user
 </a>
-</div>
+</div> -->
 
 <thead>
 <tr>
@@ -53,7 +53,7 @@ Add New user
 <td> {{$user->first_name}} {{$user->last_name}}</td>
 <td> {{$user->username }}</td>
 <td> {{$user->email }}</td>
-<td> {{$user->role_id }}</td>
+<td> {{$user->role->slug }}</td>
 <td>{{$user->created_at }}</td>
 <td class="text-center">
 <dt>
@@ -102,7 +102,7 @@ Add New user
   @else
   <div class="col-md-8 col-md-offset-2">
   <center> 
-  <h2 class="text-danger alert alert-info"> You don't have users</h2>
+  <h2 class="text-danger alert alert-warning"> You don't have users</h2>
   </center>
   </div>
   <div class="text-clear col-md-12">  </div>

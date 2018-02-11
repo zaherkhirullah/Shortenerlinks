@@ -6,8 +6,8 @@
 	<section class="lter box box-success">
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
-				<i class="fa fa-domain">
-				</i> All Your domains
+				<i class="fa fa-PayMethod">
+				</i> All Your PayMethods
 			</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -19,71 +19,69 @@
 
 		<!--/ SEARCH BOX -->
 		<section class="box-body">   
-			@if(count($domains))
+			@if(count($PayMethods))
 			<table id="DataTable" class="mdl-data-table" cellspacing="0" width="100%">
 
 				<div class="col-md-3 " style="top:10px;">
-					<a href="{{route('domains.create')}}" type="button" class="btn btn-success btn-md">
-						<i class="fa fa-domain"></i>
-						Add New domain
+					<a href="{{route('PayMethods.create')}}" type="button" class="btn btn-success btn-md">
+						<i class="fa fa-PayMethod"></i>
+						Add New PayMethod
 					</a>
 				</div>
 
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Slug</th>
-						<th>Url</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+					<th>Name</th>
+					<th>Min Amount</th>
+					<th>Icon</th>
+					<th>Created date</th>
+					<th>Update date</th>
+					<th>Options</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Name</th>
-						<th>Slug</th>
-						<th>Url</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+					<th>Name</th>
+					<th>Min Amount</th>
+					<th>Icon</th>
+					<th>Created date</th>
+					<th>Update date</th>
+					<th>Options</th>
 					</tr>
 				</tfoot>
 				<tbody>
-					@foreach ($domains as $domain)
+					@foreach ($PayMethods as $PayMethod)
 					<tr>
-						<td>{{$domain->name }}</td>
-						<td>{{$domain->slug }}</td>
-						<td>{{$domain->url }}</td>
-						<td>{{$domain->created_at }}</td>
-						<td>{{$domain->updated_at }}</td>
+						<td>{{$PayMethod->name }}</td>
+						<td>{{$PayMethod->min_amount }} $</td>
+						<td>{{$PayMethod->icon }}</td>
+						<td>{{$PayMethod->created_at }}</td>
+						<td>{{$PayMethod->updated_at }}</td>
 						<td>
-							<a href="{{route('domains.edit',$domain->id)}}" data-toggle="modal"class="text-success" >
+							<a href="{{route('PayMethods.edit',$PayMethod->id)}}" data-toggle="modal"class="text-success" >
 								<span class="text">
 									<i class="fa fa-2x fa-edit"></i> 
 								</span>
 							</a>
-							<a href="#delete-domain-{{$domain->id}}" data-toggle="modal" class=" text-danger" >
+							<a href="#delete-PayMethod-{{$PayMethod->id}}" data-toggle="modal" class=" text-danger" >
 								<span class="text">
 									<i class="fa fa-2x fa-eye-slash"></i> 
 								</span>	
 							</a>
 						</td>
 					</tr>
-					<div class="modal fade" id="delete-domain-{{$domain->id}}">
+					<div class="modal fade" id="delete-PayMethod-{{$PayMethod->id}}">
 						<div class="modal-dialog modal-shorten">
 							<div class="modal-content bg-default">
 								<div class="modal-body">
 									<div class="padder">
-										{!! Form::open(array('route' =>['domains.destroy',$domain->id],
-										'method'=>'post','class'=>'form-delete','id'=>'form-delete' )) !!}
-										{{ csrf_field() }}
-                     					 {{ method_field('DELETE') }}
+										{!! Form::open(array('route' =>['PayMethods.destroy',$PayMethod->id],
+										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Hide  domain</h4>
+											<h4 id="msg-shorten ">Hide  PayMethod</h4>
 										</div>
 										<p class="text-danger">Are You Sure You Want Hide
-											<b class="text-success">{{$domain->slug}}</b> domain ?</p> 
+											<b class="text-success">{{$PayMethod->slug}}</b> PayMethod ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
 													cancle
@@ -105,13 +103,13 @@
 				@else
 				<div class="col-md-8 col-md-offset-2">
 					<center> 
-						<h2 class="text-danger alert alert-warning"> You don't have domains</h2>
+						<h2 class="text-danger alert alert-warning"> You don't have PayMethods</h2>
 					</center>
 				</div>
 				<div class="text-clear col-md-12">  </div>
 				<div class="col-md-12 text-center">
-					<a href="{{route('domains.create')}}" class="btn btn-success"> 
-						Click to Add New domain
+					<a href="{{route('PayMethods.create')}}" class="btn btn-success"> 
+						Click to Add New PayMethod
 					</a>
 				</div>
 				@endif 

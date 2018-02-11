@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\paymentWay;
+use App\Ticket;
 use Illuminate\Http\Request;
 
-class PaymentWayController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PaymentWayController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\paymentWay  $paymentWay
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(paymentWay $paymentWay)
+    public function show(Ticket $ticket)
     {
         //
     }
@@ -52,10 +52,10 @@ class PaymentWayController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\paymentWay  $paymentWay
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function edit(paymentWay $paymentWay)
+    public function edit(Ticket $ticket)
     {
         //
     }
@@ -64,10 +64,10 @@ class PaymentWayController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\paymentWay  $paymentWay
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, paymentWay $paymentWay)
+    public function update(Request $request, Ticket $ticket)
     {
         //
     }
@@ -75,10 +75,10 @@ class PaymentWayController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\paymentWay  $paymentWay
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(paymentWay $paymentWay)
+    public function destroy(Ticket $ticket)
     {
         //
     }

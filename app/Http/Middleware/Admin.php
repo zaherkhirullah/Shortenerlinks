@@ -3,19 +3,24 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Sentinel;
+use Auth;
+use Session;
 
 class Admin
 {
 
     public function handle($request, Closure $next)
     {
-    	$checkAdmin =Sentinel:: getUser()->roles()->first()->name;
+    	$checkAdmin =Auth::User()->role->name;
 
-    	if(Sentinel::check()&& $checkAdmin == 'admin')
+    	if($checkAdmin == 'admin')
          return $next($request);
          else
-            return redirect('/');
+         {
+             Session::flash('error', "You are don't authorize to open admin Area ");
+            return redirect()->route('user');
+         }
+            
     }
     
 }

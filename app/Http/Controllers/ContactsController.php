@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers;
 
 use App\Http\Models\Contacts;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactsValidation;
-use App\Http\Controllers\Controller;
 use Session;
 
 class ContactsController extends Controller

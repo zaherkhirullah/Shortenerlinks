@@ -38,10 +38,10 @@ class link extends Model
     */
  
     /* list All Links  */      
-      public function links()
-      {
-       return $this->where('isDeleted','0')->orderBy('created_at','desc');
-      }
+    public function links()
+    {
+     return $this->where('isDeleted','0')->orderBy('created_at','desc');
+    }
     /* list of  Links has been deleted and list (Desc) by create date */
       public function deletedLinks()
       {
@@ -57,7 +57,7 @@ class link extends Model
       {
         return $this->belongsTo(Domain::class); 
       }
-       public function user()
+      public function user()
       {
         return $this->belongsTo(User::class); 
       }

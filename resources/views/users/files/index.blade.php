@@ -10,7 +10,7 @@
                     </i>   
                     @if(Route::is('file.index'))
                         All Your Files
-                    @elseif(Route::is('files.deletedFiles'))
+                    @elseif(Route::is('file.deletedFiles'))
                          All Your deleted Files
                     @endif
                 </h3>
@@ -116,7 +116,7 @@
                                          </i> 
                                      </span>
                                  </a>
-                                 @elseif(Route::is('files.deletedFiles'))
+                                 @elseif(Route::is('file.deletedFiles'))
                                  <a href="#restore-file-{{$file->id}}" title="Unhide"  data-toggle="modal"
                                      class=" text-warning" >
                                      <span class="text text-sm">
@@ -129,7 +129,7 @@
                     </tr>
                     @if(Route::is('file.index'))
                     <div class="modal fade" id="delete-file-{{$file->id}}">
-                    @elseif(Route::is('files.deletedFiles'))
+                    @elseif(Route::is('file.deletedFiles'))
                     <div class="modal fade" id="restore-file-{{$file->id}}">
                     @endif 
                     <div class="modal-dialog modal-shorten">
@@ -143,13 +143,13 @@
                                     </div>
                                     <hr>
                                     <p>Are You Sure You Want Hide <b class="text-info">
-                                    @elseif(Route::is('files.deletedFiles'))
+                                    @elseif(Route::is('file.deletedFiles'))
                                 <div class="text-center">
                                         <h4 id="msg-shorten ">UnHide File</h4>
                                     </div>
                                     <hr>
                                     <p>Are You Sure You Want UnHide <b class="text-info">
-                                    {!! Form::open(array('route' =>['files.restore',$file->id], 'method'=>'delete','class'=>'form-restore','id'=>'form-restore' ))!!}
+                                    {!! Form::open(array('route' =>['file.restore',$file->id], 'method'=>'delete','class'=>'form-restore','id'=>'form-restore' ))!!}
                                 @endif  
                                 {{$file->slug}} </b> file ?</p> 
                                     <div class="modal-footer">
@@ -160,7 +160,7 @@
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
                                         <i class="fa fa-eye-slash"></i> hide
                                     </button>
-                                        @elseif(Route::is('files.deletedFiles'))
+                                        @elseif(Route::is('file.deletedFiles'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
                                             <i class="fa fa-eye"></i> UnHide
                                         </button>
