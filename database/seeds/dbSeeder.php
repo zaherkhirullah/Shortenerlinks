@@ -24,17 +24,32 @@ class dbSeeder extends Seeder
         $role->name='admin';
         $role->slug='Admin';
         $role->save();
-      
+
+        $folder = new \App\Http\Models\folder();
+        
+        $folder->name = 'General';
+        $folder->user_id =1; 
+        $folder->save();
+        
+        $domain = new \App\Http\Models\domain();
+        $domain->name = 'This Domain' ;
+        $domain->slug = url('/') ;
+        $domain->url = url('/');
+        $domain->save();
+        
+        $adstype = new \App\Http\Models\adstype();
+        $adstype->name='Banner';
+        $adstype->description='Banner about some descriptions';
+        $adstype->save();
+
         $user = new \App\User();
         $user->first_name='zaher';
         $user->last_name='khirullah';
         $user->username='zaherkhirullah';
         $user->email='zahir.hayrallah@gmail.com';
-        $user->role_id= 3;
+        $user->role_id= 1;
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('Zz96321//');
         $user->save();
-      
-       
     }
 }
