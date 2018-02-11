@@ -31,13 +31,13 @@ class dbSeeder extends Seeder
         $folder->user_id =1; 
         $folder->save();
         
-        $domain = new \App\Http\Models\domain();
+        $domain = new \App\Http\Models\Domain();
         $domain->name = 'This Domain' ;
         $domain->slug = url('/') ;
         $domain->url = url('/');
         $domain->save();
         
-        $adstype = new \App\Http\Models\adstype();
+        $adstype = new \App\Http\Models\Adstype();
         $adstype->name='Banner';
         $adstype->description='Banner about some descriptions';
         $adstype->save();

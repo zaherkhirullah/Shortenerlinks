@@ -13,7 +13,7 @@ class Admin
     {
     	$checkAdmin =Auth::User()->role->name;
 
-    	if($checkAdmin == 'admin')
+    	if($checkAdmin == 'admin'||$checkAdmin == 'it')
          return $next($request);
          else
          {
