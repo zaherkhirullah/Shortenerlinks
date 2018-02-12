@@ -57,6 +57,9 @@ class HomeController extends Controller
     public function goToLink(Request $request)
     {   
         $link = $this->llink($request->slug);
+        $link->clicks += 1;
+        $link->earnings += 0.0004;
+        $link->save();
         return redirect($link->url);
     }
     // file
@@ -70,14 +73,17 @@ class HomeController extends Controller
         $file =$this->flink($title);
         return view('home.Fcaptcha',compact('file'));
     }
-    public function getFile($file)
+    public function getFile(Request $request)
     {
-        $file =$this->flink($title);
+        $file =$this->flink($request->slug);
         return view('home.file',compact('file'));
     }
-    public function goToFile($file)
+    public function goToFile(Request $request)
     {
-        $file =$this->flink($title);
-        return view('home.file',compact('file'));
+        $file =$this->flink($request->slug);
+        $file->views += 1;
+        $file->earnings += 0.0004;
+        $file->save();
+        return view('home.downloadfile',compact('file'));
     }
 }

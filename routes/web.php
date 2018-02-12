@@ -20,10 +20,10 @@ Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
 Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
 // captcha file
-Route::get('/f/{file}', 'HomeController@visitFile')->name('visitFile');
+Route::get('/f/{title}', 'HomeController@visitFile')->name('visitFile');
 Route::get('/Fc/f/{title}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::get('/f/g/{title}', 'HomeController@getFile')->name('getFile');
-Route::get('/f/go/{title}', 'HomeController@goToFile')->name('goFile');
+Route::post('/f/g/{title}', 'HomeController@getFile')->name('getFile');
+Route::post('/f/go/{title}', 'HomeController@goToFile')->name('goFile');
 
 
 
