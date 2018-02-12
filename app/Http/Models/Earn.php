@@ -18,12 +18,10 @@ class Earn extends Model
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ])->get();
-    
-       
        $earn = 0;
         foreach($links as $linkk)
         {
-            $earn += $linkk->earning;
+            $earn += $linkk->earnings;
         }
        
         return $earn;
@@ -41,7 +39,7 @@ class Earn extends Model
     
          foreach($files as $filee)
         {
-            $earn += $filee->earning;
+            $earn += $filee->earnings;
         }
         return $earn;
     }
@@ -52,7 +50,7 @@ class Earn extends Model
         $links = $link->where([['user_id',Auth::id()]])->get();
         foreach($links as $linkk)
         {
-            $earn += $linkk->earning;
+            $earn += $linkk->earnings;
         }
         return $earn;
     }
@@ -63,7 +61,7 @@ class Earn extends Model
         
         foreach($files as $filee)
         {
-            $earn += $filee->earning;
+            $earn += $filee->earnings;
         }
         return $earn;
     }
