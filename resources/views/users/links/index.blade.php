@@ -95,7 +95,7 @@
               <a href="#delete-link-{{$link->id}}" title="Hide"  data-toggle="modal"
                 class=" text-danger" >
                 <span class="text text-sm">
-                  <i class="fa fa-eye-slash">Shorten
+                  <i class="fa fa-eye-slash">
                   </i> 
                 </span>
               </a>

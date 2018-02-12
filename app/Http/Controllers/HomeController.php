@@ -29,17 +29,17 @@ class HomeController extends Controller
         $link = link::where('slug', $slug)->first();
         return view('home.captcha',compact('link'));
     }
-    public function Fc_visitLink($link)
+    public function Fc_visitLink($slug)
     {
         $link = link::where('slug', $slug)->first();
         return view('home.Fcaptcha',compact('link'));
     }
-    public function getLink(link $link)
+    public function getLink($slug)
     {
         $link = link::where('slug', $slug)->first();
         return view('home.link',compact('link'));
     }
-    public function goToLink(link $link)
+    public function goToLink($link)
     {
 
     }
@@ -54,9 +54,9 @@ class HomeController extends Controller
         $file = file::where('slug', $title)->first();
         return view('home.Fcaptcha',compact('file'));
     }
-    public function getFile(file $file)
+    public function getFile($file)
     {
-        $file = link::where('slug', $slug)->first();
+        $file = file::where('slug', $slug)->first();
         return view('home.file',compact('file'));
     }
     public function goToFile(file $file)
