@@ -16,27 +16,29 @@
                         @elseif(Route::is('visitFile'))
                         <form method="POST" action="{{route('getFile',$file->slug)}}" accept-charset="UTF-8" id="captcha-form">    
                         @endif  
-                <div id="captcha" class="center-captcha"></div>
+                         <div id="captcha" class="center-captcha"></div>
                         
-            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-            </script>
-            <noscript>
-                <div class="center-captcha" class="centCaptcha">
-                    <div class="centCaptcha relative">
-                        <div class="centCaptcha  absolute">
-                         <div class="g-recaptcha" data-sitekey="6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5"></div> 
-                            <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k=6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5" frameborder="0" scrolling="no"
-                            style="border-style: none;">
-                            </iframe>
+                         {{ csrf_field() }}
+                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+                        </script>
+                        <noscript>
+                            <div class="center-captcha" class="centCaptcha">
+                                <div class="centCaptcha relative">
+                                    <div class="centCaptcha  absolute">
+                                        <div class="g-recaptcha" data-sitekey="6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5"></div> 
+                                        <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k=6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5" frameborder="0" scrolling="no"
+                                        style="border-style: none;">
+                                        </iframe>
+                                                    </div>
+                                        <div class="captchaResponse">
+                                            <textarea id="g-recaptcha-response" name="g-recaptcha-response"class="g-recaptcha-response gResponse"  value="">
+                                            </textarea>
                                         </div>
-                            <div class="captchaResponse">
-                                <textarea id="g-recaptcha-response" name="g-recaptcha-response"class="g-recaptcha-response gResponse"  value="">
-                                </textarea>
-                            </div>
-                        </div>
-                    </div>
-            <input type="submit">
-        </noscript>
+                                    </div>
+                                </div>
+                                
+                        <input type="submit">
+                    </noscript>
                         </form>
                         <script type="text/javascript" src="https://toro-tags.com/_tags/jstags.js?s=mx/ouo/300250">
                         </script>

@@ -13,16 +13,15 @@ Route::get('/rates', 'HomeController@rates')->name('rates');
 Route::get('/contacts', 'ContactsController@create')->name('home.contacts.create');
 Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
 
-// captcha
+// captcha link
 Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
-Route::get('/l/Fc/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
+Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
+Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
-Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
-Route::get('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
-// captcha
-Route::get('/f/{title}', 'HomeController@visitFile')->name('visitFile');
-Route::get('/f/Fc/{title}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-
+// captcha file
+Route::get('/f/{file}', 'HomeController@visitFile')->name('visitFile');
+Route::get('/Fc/f/{title}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
 Route::get('/f/g/{title}', 'HomeController@getFile')->name('getFile');
 Route::get('/f/go/{title}', 'HomeController@goToFile')->name('goFile');
 
