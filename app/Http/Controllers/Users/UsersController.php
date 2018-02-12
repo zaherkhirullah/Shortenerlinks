@@ -6,16 +6,39 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Models\WithdrawalMethod;
-
+use App\Http\Models\Earn;
+use App\Http\Models\Views;
+use App\Http\Models\Downloads;
+use Carbon\Carbon;
 class UsersController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-    public function dashboard()
-    {
-     return view('users.dashboard');
+
+    public function dashboard(Earn $earn ,Views $view,Downloads $download)
+    {   $TodayLinkEarnings= $earn->TodayLinkEarnings();
+        $TodayFileEarnings= $earn->TodayFileEarnings();
+        $TotalLinkEarnings= $earn->TotalLinkEarnings();
+        $TotalFileEarnings= $earn->TotalFileEarnings();
+            $TotalEarnings    = $earn->TotalEarnings();
+        $TodayLinkViews= $view->TodayLinkViews();
+        $TodayFileViews= $view->TodayFileViews();
+        $TotalLinkViews= $view->TotalLinkViews();
+        $TotalFileViews= $view->TotalFileViews();
+            $TotalViews    = $view->TotalViews();
+        $TodayFileDownloads= $download->TodayFileDownloads();
+        $TotalFileDownloads= $download->TotalFileDownloads();
+        
+        $DayTime = Carbon::today()->Format('Y-m-d');
+        $NowTime = Carbon::now();     
+         
+     return view('users.dashboard',
+     compact('TodayLinkEarnings','TodayFileEarnings','TotalLinkEarnings','TotalFileEarnings','TotalEarnings',
+     'TodayLinkViews','TodayFileViews','TotalLinkViews','TotalFileViews','TotalViews',
+     'TodayFileDownloads','TotalFileDownloads',
+     'NowTime', 'DayTime'));
     }
     public function referrals()
     {

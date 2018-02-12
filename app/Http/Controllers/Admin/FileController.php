@@ -105,7 +105,7 @@ class fileController extends Controller
             $I_path=   $path->move($destination_path, $file_name);
         }
         $domain = Domain::find($domain_id);
-        $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'\/f/'. $slug;
+        $shorted_url =($domain_id ==1)?url('/f/'. $slug) : $domain->url .'/f/'. $slug;
         $UserId = Auth::id();
         return file::create(
             [

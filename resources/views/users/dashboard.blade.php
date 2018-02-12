@@ -5,11 +5,17 @@
 // $this->assign('content_title', __('Dashboard'));
 ?> -->
 @section('content')
-
+         <!-- <code>
+             Today : {{$DayTime}}
+         </code> -->
+        
+        <center>
+        <code>Time  : {{$NowTime}}</code>
+        </center>
 <section class="scrollable padder">
     <section class="content">
         <div class="row">
-
+     
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-header with-border text-center">
@@ -32,7 +38,7 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0</span>
+                                        <span class="sum color1">{{$TodayLinkViews}}</span>
                                         <sup style="font-size: 25px">
 
                                         </sup>
@@ -53,7 +59,7 @@
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0</span>
+                                        <span class="sum color1">{{$TotalLinkViews}}</span>
                                         <sup style="font-size: 20px"></sup>
                                     </h3>
                                     <p>Total Views</p>
@@ -73,7 +79,28 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0</span>
+                                        <span class="sum color1">{{$TodayLinkEarnings}}</span>
+                                        <sup style="font-size: 25px">$</sup>
+                                    </h3>
+                                    <p>Today Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-social-usd">
+                                    </i>
+                                </div>
+                                <a href="deposits" class="small-box-footer">More info 
+                                    <i class="fa fa-arrow-circle-right">
+                                    </i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>
+                                        <span class="sum color1">{{$TotalLinkEarnings}}</span>
                                         <sup style="font-size: 25px">$</sup>
                                     </h3>
                                     <p>Total Earnings</p>
@@ -141,7 +168,7 @@
                             <div class="small-box bg-teal">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0</span>
+                                        <span class="sum color1">{{$TodayFileDownloads}} </span>
                                         <sup style="font-size: 25px">
 
                                         </sup>
@@ -163,7 +190,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0</span>
+                                        <span class="sum color1">{{$TotalFileDownloads}} </span>
                                         <sup style="font-size: 25px"></sup>
                                     </h3>
                                     <p>Total Downloads</p>
@@ -184,7 +211,28 @@
                             <div class="small-box bg-olive">
                                 <div class="inner">
                                     <h3>
-                                        <span class="sum color1">0.00</span>
+                                        <span class="sum color1">{{$TodayFileEarnings}} </span>
+                                        <sup style="font-size: 25px">$</sup>
+                                    </h3>
+                                    <p>Today Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cog-outline"></i>
+                                </div>
+                                <a href="balance/wallets" class="small-box-footer">More info
+                                    <i class="fa fa-arrow-circle-right"> </i>
+                                </a>
+                            </div>
+                        </div>
+                         <!-- ./col -->
+                        
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-olive">
+                                <div class="inner">
+                                    <h3>
+                                        <span class="sum color1">{{$TotalFileEarnings}} </span>
                                         <sup style="font-size: 25px">$</sup>
                                     </h3>
                                     <p>Total Earnings</p>
@@ -248,7 +296,19 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body" style="display: block;">
-
+                        <div class="col-md-5 col-sm-5 margin">
+                    <div class="titile">
+                        <p>استخدام التخزين السحابي</p>
+                    </div>
+                    <div class="chart">
+                       <canvas id="countries" width="699" height="349" style="width: 699px; height: 349px;"></canvas> 
+                    </div>
+                    <a href="#">
+                        <div class="footer-section color-5">
+                           <span>مشاهدة ملفاتي</span><i class="fa fa-chevron-left"></i>
+                        </div>
+                    </a>
+                </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -286,5 +346,58 @@
                 <!-- /.col-md-6  -->
             </div> 
             <!--/col-md-12 -->
-
+            <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-olive">
+                                <div class="inner">
+                                    <h3>
+                                        <span class="sum color1">{{$TotalLinkEarnings}} </span>
+                                        <sup style="font-size: 25px">$</sup>
+                                    </h3>
+                                    <p>Total Link Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cog-outline"></i>
+                                </div>
+                                <a href="balance/wallets" class="small-box-footer">More info
+                                    <i class="fa fa-arrow-circle-right"> </i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-olive">
+                                <div class="inner">
+                                    <h3>
+                                        <span class="sum color1">{{$TotalFileEarnings}} </span>
+                                        <sup style="font-size: 25px">$</sup>
+                                    </h3>
+                                    <p>Total File Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cog-outline"></i>
+                                </div>
+                                <a href="balance/wallets" class="small-box-footer">More info
+                                    <i class="fa fa-arrow-circle-right"> </i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-olive">
+                                <div class="inner">
+                                    <h3>
+                                        <span class="sum color1">{{$TotalEarnings}} </span>
+                                        <sup style="font-size: 25px">$</sup>
+                                    </h3>
+                                    <p>Total Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-cog-outline"></i>
+                                </div>
+                                <a href="balance/wallets" class="small-box-footer">More info
+                                    <i class="fa fa-arrow-circle-right"> </i>
+                                </a>
+                            </div>
+                        </div>
     @endsection

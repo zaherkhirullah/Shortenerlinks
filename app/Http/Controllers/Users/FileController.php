@@ -69,7 +69,7 @@ public function update(Request $request, file $file)
    
     $dattitle=($request->title)?: null;
     $slug =($request->title)?: str_random(10);
-    $shorted_url =( $request->domain_id ==1)? url('/'.  $slug ) : $domain->url .'/'. $slug;
+    $shorted_url =( $request->domain_id ==1)? url('/f/'.  $slug ) : $domain->url .'/f/'. $slug;
     
     $file->update($request->all());
     if($file->slug != $slug)
@@ -134,7 +134,7 @@ public function delete(file $file)
                $I_path=   $path->move($destination_path, $file_name);
            }
           $domain = Domain::find($domain_id);
-          $shorted_url =($domain_id ==1)?url('/'. $slug) : $domain->url .'/'. $slug;
+          $shorted_url =($domain_id ==1)?url('/f/'. $slug) : $domain->url ."/f/". $slug;
           $UserId = Auth::id();
            
         $file = file::create(

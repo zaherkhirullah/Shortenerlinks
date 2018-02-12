@@ -24,7 +24,8 @@ class CreateLinksTable extends Migration
             $table->string('shorted_url',500);
             $table->string('alias',256)->nullable();
             $table->string('slug',256)->unique();
-            $table->string('clicks')->default(0); 
+            $table->integer('clicks')->default(0); 
+            $table->float('earning')->scale(6)->precision(50)->default(0); 
             $table->boolean('isDeleted')->default(0);
             $table->string('status',256)
                   ->comment('active,inactive,hidden')->default(1);

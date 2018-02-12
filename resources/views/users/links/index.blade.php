@@ -35,6 +35,7 @@
               <tr>
                <th>Link</th>
                <th>views</th>
+               <th>Earnings</th>
                <th>ceated date</th>
                <th>Options</th>
               </tr>
@@ -43,6 +44,7 @@
 <tr>
                <th>Link</th>
                <th>views</th>
+               <th>Earnings</th>               
                <th>ceated date</th>
                <th>Options</th>
               </tr>
@@ -76,6 +78,10 @@
                         <i class="fa fa-eye"></i>
                 </a> 
              {{$link->clicks}}</td>
+             <td class="v-middle hidden-xs">
+             {{$link->earning}}
+              <span class="btn-xs text-success text-xs"> $</span> 
+            </td>
             <td class="v-middle hidden-xs">{{$link->created_at}}</td>
             <td class="pull-right">
               <a href="{{route('link.edit',$link->id)}}" title="Edit" data-toggle="modal"
@@ -89,7 +95,7 @@
               <a href="#delete-link-{{$link->id}}" title="Hide"  data-toggle="modal"
                 class=" text-danger" >
                 <span class="text text-sm">
-                  <i class="fa fa-eye-slash">
+                  <i class="fa fa-eye-slash">Shorten
                   </i> 
                 </span>
               </a>

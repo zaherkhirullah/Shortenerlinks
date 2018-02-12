@@ -6,9 +6,9 @@
         </a>
         <a href="/" class="navbar-brand" data-toggle="fullscreen">
             <!-- <img src="{{ asset('styles/member/logo.png') }}" class="m-r-xs"> -->
-       <i class="ion ion-ios-rose-outline" ></i>
-                       Shorter Links
-       <i class="ion ion-ios-rose-outline" ></i>
+            <i class="ion ion-ios-rose-outline" ></i>
+            Shorter Links
+<i class="ion ion-ios-rose-outline" ></i>
        </a>
             <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
                 <i class="fa fa-cog">

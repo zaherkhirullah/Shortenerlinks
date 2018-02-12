@@ -13,6 +13,21 @@ Route::get('/rates', 'HomeController@rates')->name('rates');
 Route::get('/contacts', 'ContactsController@create')->name('home.contacts.create');
 Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
 
+// captcha
+Route::get('/{slug}', 'HomeController@visitLink')->name('visitLink');
+Route::get('/Fc/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
+
+Route::get('/g/{slug}', 'HomeController@getLink')->name('getLink');
+Route::get('/go/{slug}', 'HomeController@goToLink')->name('goLink');
+// captcha
+Route::get('/f/{title}', 'HomeController@visitFile')->name('visitFile');
+Route::get('/f/Fc/{title}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
+
+Route::get('/f/g/{title}', 'HomeController@getFile')->name('getFile');
+Route::get('/f/go/{title}', 'HomeController@goToFile')->name('goFile');
+
+
+
 
 /*
 |=============================

@@ -21,34 +21,72 @@
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Questrial" type="text/css" />
 		<link rel="stylesheet" href="{{ asset('styles/member/css/bootstrap.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ asset('styles/member/css/link.css') }}" type="text/css">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
 		<script>
 			var verifyCallback = function(e) {
 				document.getElementById("captcha-form").submit()
 			};
 			var onloadCallback = function() {
 				grecaptcha.render("captcha", {
-					sitekey: "6LegWQETAAAAAIIaaAhEnrkimbuOF5QJb0ZiYEK7",
+					sitekey: "6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5",
 					callback: verifyCallback
 				})
 			};
 		</script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+
 	</head>
 	<body>
+	<style>
+    .centCaptcha
+    {
+        width: 302px;
+        height: 352px;
+    }
+    .relative{
+        position: relative;
+    }
+    .absolute{
+        position: absolute;
+    }
+    .captchaResponse{
+        width: 250px; 
+        height: 80px;
+        position: absolute;
+        border-style: none;
+        bottom: 21px; 
+        left: 25px;
+        margin: 0px;
+        padding: 0px; 
+        right: 25px;
+    }
+    .gResponse{ 
+        style="width: 250px;
+        height: 80px; 
+        border: 1px solid #c1c1c1;
+        margin: 0px; 
+        padding: 0px;
+        resize: none;
+        }
+</style>
 		<header>
 			<nav class="navbar navbar-default navbar-top">
 				<div class="container">
 					<div class="col-md-12">
 						<div class="navbar-header page-scroll">
-							<a class="navbar-brand" href="/">ouo.io</a>
+							<a class="navbar-brand" href="/">
+							<i class="ion ion-ios-rose-outline" ></i>
+                       Shorter Links
+       					<i class="ion ion-ios-rose-outline" ></i>
+							</a>
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li>
-									<a href="/">Home</a>
+									<a href="{{url('/')}}">Home</a>
 								</li>
 								<li>
-									<a href="rates">Payout Rates</a>
+									<a href="{{route('rates')}}">Payout Rates</a>
 								</li>
 							</ul>
 						</div>
@@ -57,58 +95,21 @@
 			</nav>
 		</header>
 		<section class="content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<div class="skip-container">
-							<div class="text-center">
-								<div class="afs_ads">&nbsp;</div>
-								<h4>Please check the captcha box to proceed to the destination page.</h4>
-								<span id="msg-adblock" class="msg-adblock">Nothing.</span>
-								<form method="POST" action="http://ouo.io/go/8qRygF" accept-charset="UTF-8" id="captcha-form">
-									<input name="_token" type="hidden" value="OOPC6guTt4KDeD9J9sRjqXoIsoqt2snk8iGlO2SG">
-									<div id="captcha" class="center-captcha">
-									</div>
-									<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-									</script>
-									<noscript>
-										<div class="center-captcha" style="width: 302px; height: 352px;">
-											<div style="width: 302px; height: 352px; position: relative;">
-												<div style="width: 302px; height: 352px; position: absolute;">
-													<iframe class="banner" src="https://www.google.com/recaptcha/api/fallback?k=6LegWQETAAAAAIIaaAhEnrkimbuOF5QJb0ZiYEK7" frameborder="0" scrolling="no"style="width: 302px; height:352px; border-style: none;">
-													</iframe>
-												</div>
-												<div style="width: 250px; height: 80px; position: absolute; border-style: none; bottom: 21px; left: 25px; margin: 0px; padding: 0px; right: 25px;">
-													<textarea id="g-recaptcha-response" name="g-recaptcha-response"class="g-recaptcha-response" style="width: 250px; height: 80px; border: 1px solid #c1c1c1; margin: 0px; padding: 0px; resize: none;" value="">
-													</textarea>
-												</div>
-											</div>
-										</div>
-										<input type="submit">
-									</noscript>
-								</form>
-								<script type="text/javascript" src="https://toro-tags.com/_tags/jstags.js?s=mx/ouo/300250">
-								</script>
-								<span class="desc">Click <a href="http://ouo.io/fbc/8qRygF">here</a> if you cannot submit the recaptcha.</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			@yield('content')
 		</section>
 		<div class="about">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-offset-1 col-md-3">
-						<img class="img-responsive" src="http://ouo.io/images/world.png">
+						<img class="img-responsive" src="{{asset('/styles/member/images/world.png')}}">
 					</div>
 					<div class="col-md-6">
 						<h2>Know a little about ouo.io</h2>
 						<span class="dot">
 						</span>
-						<p>ouo.io is a URL shortening service that allows users to get paid whenever they share links and someone clicks.</p>
+						<p>{{ url('/') }}is a URL shortening service that allows users to get paid whenever they share links and someone clicks.</p>
 						<p>We pay for ALL legitimate visitor you bring to your links and payout at least $1.5 per 1000 views. Multiple views from the same viewer are also counted thus you will be benefiting from all your traffic.</p>
-						<a href="http://ouo.io/">Read more</a>
+						<a href="{{url('/')}}">Read more</a>
 					</div>
 				</div>
 			</div>
@@ -138,7 +139,6 @@
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 			ga('create', 'UA-24098524-7', 'auto');
 			ga('require', 'linkid', 'linkid.js');
 			ga('send', 'pageview');
@@ -150,3 +150,4 @@
 		</script>
 	</body>
 	</html>
+	
