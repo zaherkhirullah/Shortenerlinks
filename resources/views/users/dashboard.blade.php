@@ -10,7 +10,7 @@
          </code> -->
         
         <center>
-        <code>Time  : {{$NowTime}}</code>
+        <code >Time  : <span id="Time">{{$NowTime}}</span></code>
         </center>
 <section class="scrollable padder">
     <section class="content">
@@ -346,58 +346,69 @@
                 <!-- /.col-md-6  -->
             </div> 
             <!--/col-md-12 -->
+             <div class="col-lg-3 col-xs-6">
+                 <!-- small box -->
+                <div class="small-box bg-olive">
+                    <div class="inner">
+                        <h3>
+                            <span class="sum color1">{{$TotalLinkEarnings}} </span>
+                            <sup style="font-size: 25px">$</sup>
+                        </h3>
+                        <p>Total Link Earnings</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-cog-outline"></i>
+                    </div>
+                    <a href="balance/wallets" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"> </i>
+                    </a>
+                </div>
+            </div>
             <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-olive">
-                                <div class="inner">
-                                    <h3>
-                                        <span class="sum color1">{{$TotalLinkEarnings}} </span>
-                                        <sup style="font-size: 25px">$</sup>
-                                    </h3>
-                                    <p>Total Link Earnings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios-cog-outline"></i>
-                                </div>
-                                <a href="balance/wallets" class="small-box-footer">More info
-                                    <i class="fa fa-arrow-circle-right"> </i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-olive">
-                                <div class="inner">
-                                    <h3>
-                                        <span class="sum color1">{{$TotalFileEarnings}} </span>
-                                        <sup style="font-size: 25px">$</sup>
-                                    </h3>
-                                    <p>Total File Earnings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios-cog-outline"></i>
-                                </div>
-                                <a href="balance/wallets" class="small-box-footer">More info
-                                    <i class="fa fa-arrow-circle-right"> </i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-olive">
-                                <div class="inner">
-                                    <h3>
-                                        <span class="sum color1">{{$TotalEarnings}} </span>
-                                        <sup style="font-size: 25px">$</sup>
-                                    </h3>
-                                    <p>Total Earnings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios-cog-outline"></i>
-                                </div>
-                                <a href="balance/wallets" class="small-box-footer">More info
-                                    <i class="fa fa-arrow-circle-right"> </i>
-                                </a>
-                            </div>
-                        </div>
+                <!-- small box -->
+                <div class="small-box bg-olive">
+                    <div class="inner">
+                        <h3>
+                            <span class="sum color1">{{$TotalFileEarnings}} </span>
+                            <sup style="font-size: 25px">$</sup>
+                        </h3>
+                        <p>Total File Earnings</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-cog-outline"></i>
+                    </div>
+                    <a href="balance/wallets" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"> </i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-olive">
+                    <div class="inner">
+                        <h3>
+                            <span class="sum color1">{{$TotalEarnings}} </span>
+                            <sup style="font-size: 25px">$</sup>
+                        </h3>
+                        <p>Total Earnings</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-cog-outline"></i>
+                    </div>
+                    <a href="balance/wallets" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"> </i>
+                    </a>
+                </div>
+            </div>
+  
+
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+    var d = new Date();
+    document.getElementById("Time").innerHTML = d.toLocaleTimeString();
+}
+</script>
     @endsection

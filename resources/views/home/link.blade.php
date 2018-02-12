@@ -9,7 +9,7 @@
               <div class="text-center">
                 <h4>Your link is almost ready.</h4>
                 <span id="countdown" class="countdown end">
-                <span id="timer" class="timer">0</span>
+                <span id="timer" class="timer">10</span>
                 <br>Seconds
                 </span>
                 <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every link you shorten. Up to
@@ -32,7 +32,16 @@
 <script>
 
 $(document).ready(function(){
-    setTimeout(3000);
+
+    $myVar = setInterval(myTimer, 1000);
+
+    function myTimer() {
+    var s = $("timer").val();
+        if(s>=0){
+            $("timer").innerHTML -=1 ;
+        }
+    
+}
 })   
 
 </script>
