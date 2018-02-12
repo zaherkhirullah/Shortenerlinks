@@ -48,7 +48,7 @@
                           </span>
                             @elseif(Route::is('visitFile'))
                             <span class="desc">Click
-                             <a href="{{route('Fc_visitFile',$file->slug)}}">here</a> if you cannot submit the recaptcha.
+                             <a href="{{route('Fc_visitFile',$file->title)}}">here</a> if you cannot submit the recaptcha.
                              </span>
                             @endif  
                       </div>

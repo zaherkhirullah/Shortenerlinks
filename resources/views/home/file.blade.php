@@ -15,7 +15,7 @@
                 <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
                 <a href="{{route('rates')}}">$15 / 10000</a> views.
                 </span>
-                <form method="POST" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
+                <form method="POST" action="{{route('goFile',$file->title)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <button type="submit" id="btn-main" class="btn btn-main">Get file</button>
                 <noscript>&lt;button type="submit" class="btn btn-main"&gt;Get file&lt;/button&gt;</noscript>
