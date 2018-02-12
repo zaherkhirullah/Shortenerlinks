@@ -35,6 +35,7 @@
               <th>Link</th>
               <th>views</th>
               <th>Downloads</th>
+              <th>Earnings</th>
               <th>Password</th>
               <th>Privacy</th>
               <th>ceated date</th>
@@ -46,6 +47,7 @@
               <th>Link</th>
               <th>views</th>
               <th>Downloads</th>
+              <th>Earnings</th>
               <th>Password</th>
               <th>Privacy</th>
               <th>ceated date</th>
@@ -84,6 +86,10 @@
                                     </span>
                                 </a> 
                          </td>
+                         <td class="v-middle hidden-xs">
+             {{$file->earnings}}
+              <span class="btn-xs text-success text-xs"> $</span> 
+            </td>
                         <td class="v-middle hidden-xs">
                             @if($file->password)
                             <i class="fa fa-lock"></i> {{$file->password}}

@@ -79,7 +79,7 @@
                 </a> 
              {{$link->clicks}}</td>
              <td class="v-middle hidden-xs">
-             {{$link->earning}}
+             {{$link->earnings}}
               <span class="btn-xs text-success text-xs"> $</span> 
             </td>
             <td class="v-middle hidden-xs">{{$link->created_at}}</td>
