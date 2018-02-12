@@ -16,13 +16,13 @@ Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store'
 // captcha link
 Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
 Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
 Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
 // captcha file
 Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
 Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
 Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 
 
