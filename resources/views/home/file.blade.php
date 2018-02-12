@@ -9,7 +9,7 @@
               <div class="text-center">
                 <h4>Your file is almost ready.</h4>
                 <span id="countdown" class="countdown end">
-                <span id="timer" class="timer">10</span>
+                <span id="timer" class="timer">2</span>
                 <br>Seconds
                 </span>
                 <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
@@ -18,8 +18,8 @@
                 <form method="POST" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
               
-                <button type="submit" id="btn-main" class="btn btn-main" disabled="true">Get file</button>
-                <noscript disabled="true">&lt;button type="submit" class="btn btn-main"&gt;Get file&lt;/button&gt;</noscript>
+                <button type="submit" id="btn-main" class="btn btn-main" disabled="true" >Get file</button>
+                <!-- <noscript disabled="true">&lt;button type="submit" class="btn btn-main"&gt;Get file&lt;/button&gt;</noscript> -->
                 </form>
 
                 <div style="width: 300px; margin: 0 auto;">
@@ -33,16 +33,21 @@
 
 <script>
 
+
+$('#btn-main').click(function() {
+    $(this).attr('disabled','disabled');
+});
 var myVar = setInterval(myTimer, 1000);
 function myTimer()
 {
-    document.getElementById("btn-main").disabled = true;
     if( document.getElementById("timer").innerHTML > 0){
         document.getElementById("timer").innerHTML -=1;
     }
     else{
         document.getElementById("btn-main").disabled = false;
     }
+    
 }
+
 </script>
 @endsection

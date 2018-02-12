@@ -57,7 +57,7 @@ class HomeController extends Controller
     {   
         $link = $this->llink($request->slug);
         $link->clicks += 1;
-        $link->earnings += 0.0004;
+        $link->earnings += 0.004;
         $link->save();
         return redirect($link->url);
     }
@@ -65,6 +65,7 @@ class HomeController extends Controller
     public function visitFile($slug)
     {    
         $file =$this->flink($slug);
+
         return view('home.captcha',compact('file'));
     }
     

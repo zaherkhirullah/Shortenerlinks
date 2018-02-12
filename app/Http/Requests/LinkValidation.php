@@ -21,7 +21,7 @@ class LinkValidation extends FormRequest
             'ad_id'=>  'required|integer',
             'folder_id'=>  'required|integer',
             'slug'=>  'unique:links',
-            'url'=>  'required|url|string',
+            'url'=>  'required|unique:links|url|string',
         ];
     }
      public function messages()

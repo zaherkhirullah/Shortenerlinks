@@ -90,7 +90,8 @@
    @endif
   </div>
    <span class="col-md-2">
-     {{ Form::submit('shorten',['class' => 'btn btn-md btn-info '])   }}
+     {{ Form::submit('shorten',['class' => 'btn btn-md btn-info ',
+     'id'=>'js-click-post'])   }}
    </span>
  </div>
 </div>

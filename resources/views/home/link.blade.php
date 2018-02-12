@@ -9,7 +9,7 @@
               <div class="text-center">
                 <h4>Your link is almost ready.</h4>
                 <span id="countdown" class="countdown end">
-                <span id="timer" class="timer">10</span>
+                <span id="timer" class="timer">2</span>
                 <br>Seconds
                 </span>
                 <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every link you shorten. Up to
@@ -29,7 +29,14 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
 
+    $('#btn-main').click(function() {
+    $(this).attr('disabled','disabled');
+});
+});
+</script>
 <script>
 
 var myVar = setInterval(myTimer, 1000);
