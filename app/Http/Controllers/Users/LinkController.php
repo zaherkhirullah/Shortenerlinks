@@ -44,7 +44,7 @@ class LinkController extends Controller
     public function store(LinkValidation $request)
     {  
       $this->NewItem($request->all());
-      
+      Session::flash('success',' Sucessfully created the ' .$request->url . ' link .');
       return redirect()->route('link.index');
     }
     // show link details
@@ -125,7 +125,7 @@ class LinkController extends Controller
         'shorted_url' =>$shorted_url ,
       ]);
       Session::flash('success',' Sucessfully created the ' .$slug . ' link .');
- return $link ;
+    return $link ;
   }
 // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
     Protected function Deleteate(link $link, $data)
