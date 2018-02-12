@@ -21,6 +21,8 @@ class HomeController extends Controller
     {
         return view('home.rates');
     }
+
+    
     //  link
     public function visitLink($slug)
     { 
@@ -34,7 +36,8 @@ class HomeController extends Controller
     }
     public function getLink(link $link)
     {
-
+        $link = link::where('slug', $slug)->first();
+        return view('home.link',compact('link'));
     }
     public function goToLink(link $link)
     {
@@ -53,7 +56,8 @@ class HomeController extends Controller
     }
     public function getFile(file $file)
     {
-
+        $file = link::where('slug', $slug)->first();
+        return view('home.file',compact('file'));
     }
     public function goToFile(file $file)
     {
