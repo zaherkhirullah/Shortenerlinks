@@ -67,7 +67,7 @@ class LinkController extends Controller
       $domain = Domain::find($request->domain_id);
 
       $datalias=($request->alias)?: null;
-      $slug =($request->slug)?: str_random(10);
+      $slug =($request->slug)?: str_random(7);
 
       $shorted_url =( $request->domain_id ==1)? url('/l/'.  $slug ) : $domain->url .'/l/'. $slug;
       $link->update($request->all());
@@ -107,7 +107,7 @@ class LinkController extends Controller
   protected function NewItem(array $data)
   {   
      $datalias=($data['alias'])?: null;
-     $slug =($data['alias'])?: str_random(10);
+     $slug =($data['alias'])?: str_random(7);
    
      $domain_id = $data['domain_id'];
      $domain = Domain::find($domain_id);

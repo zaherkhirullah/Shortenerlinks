@@ -26,10 +26,11 @@ class HomeController extends Controller
     {
         $link = link::where('slug', $slug)->first();
         return  $link ; 
+        
     }
-    public function flink($title)
-    {
-        $file = file::where('slug', $title)->first();
+    public function flink($slug)
+    {        
+        $file = File::where('slug', $slug)->first();  
         return  $file ; 
     }
     
@@ -40,8 +41,6 @@ class HomeController extends Controller
         return view('home.captcha',compact('link'));
     }
    
-   
-
     public function Fc_visitLink($slug)
     {
         $link = $this->llink($slug);
@@ -63,14 +62,15 @@ class HomeController extends Controller
         return redirect($link->url);
     }
     // file
-    public function visitFile($title)
-    {   $file =$this->flink($title);
+    public function visitFile($slug)
+    {    
+        $file =$this->flink($slug);
         return view('home.captcha',compact('file'));
     }
     
-    public function Fc_visitFile($title)
+    public function Fc_visitFile($slug)
     {   
-        $file =$this->flink($title);
+        $file =$this->flink($slug);
         return view('home.Fcaptcha',compact('file'));
     }
     public function getFile(Request $request)

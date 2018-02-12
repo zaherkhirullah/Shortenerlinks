@@ -16,29 +16,28 @@
                         @elseif(Route::is('visitFile'))
                         <form method="POST" action="{{route('getFile',$file->slug)}}" accept-charset="UTF-8" id="captcha-form">    
                         @endif  
-                         <div id="captcha" class="center-captcha"></div>
-                        
-                         {{ csrf_field() }}
-                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-                        </script>
-                        <noscript>
-                            <div class="center-captcha" class="centCaptcha">
-                                <div class="centCaptcha relative">
-                                    <div class="centCaptcha  absolute">
-                                        <div class="g-recaptcha" data-sitekey="6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5"></div> 
-                                        <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k=6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5" frameborder="0" scrolling="no"
-                                        style="border-style: none;">
-                                        </iframe>
-                                                    </div>
-                                        <div class="captchaResponse">
-                                            <textarea id="g-recaptcha-response" name="g-recaptcha-response"class="g-recaptcha-response gResponse"  value="">
-                                            </textarea>
+                            <div id="captcha" class="center-captcha"></div>
+                             {{ csrf_field() }}
+                            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+                            </script>
+                            <noscript>
+                                <div class="center-captcha" class="centCaptcha">
+                                    <div class="centCaptcha relative">
+                                        <div class="centCaptcha  absolute">
+                                            <div class="g-recaptcha" data-sitekey="6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5"></div> 
+                                            <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k=6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5" frameborder="0" scrolling="no"
+                                            style="border-style: none;">
+                                            </iframe>
+                                                        </div>
+                                            <div class="captchaResponse">
+                                                <textarea id="g-recaptcha-response" name="g-recaptcha-response"class="g-recaptcha-response gResponse"  value="">
+                                                </textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                
-                        <input type="submit">
-                    </noscript>
+                                    
+                                <input type="submit">
+                            </noscript>
                         </form>
                         <script type="text/javascript" src="https://toro-tags.com/_tags/jstags.js?s=mx/ouo/300250">
                         </script>
@@ -48,7 +47,7 @@
                           </span>
                             @elseif(Route::is('visitFile'))
                             <span class="desc">Click
-                             <a href="{{route('Fc_visitFile',$file->title)}}">here</a> if you cannot submit the recaptcha.
+                             <a href="{{route('Fc_visitFile',$file->slug)}}">here</a> if you cannot submit the recaptcha.
                              </span>
                             @endif  
                       </div>
