@@ -49,14 +49,14 @@
 						<div class="col-md-12">
 						@if (session('success'))
 							<div class="alert alert-success">
-							<center>{{ session('error') }}</center>
+							 <center>{{ session('success') }}</center>
 							<span class="pull-right">
 								<a   data-dismiss="modal">
 									<i class="fa fa-times"></i>
 								</a>
 							</span>
 							</div>
-							@endif
+						@endif
 							@if (session('error'))
 							<div class="alert alert-danger">
 							<center>{{ session('error') }}</center>
