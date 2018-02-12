@@ -25,7 +25,7 @@ class CreateFilesTable extends Migration
             $table->string('description',1000)->nullable();
             $table->integer('downloads')->default(0);
             $table->integer('views')->default(0);
-            $table->float('earning')->scale(6)->default(0);
+            $table->float('earnings')->scale(6)->default(0);
             $table->string('password',255)->nullable();
             $table->boolean('isDeleted')->default(0);
             $table->boolean('isPrivate')->default(0);
