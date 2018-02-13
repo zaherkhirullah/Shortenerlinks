@@ -32,22 +32,25 @@
 </div>
 
 <script>
+$(document).ready(function(){
 
-
-$('#btn-main').click(function() {
+    $('#btn-main').click(function() {
     $(this).attr('disabled','disabled');
 });
+});
+</script>
+<script>
+
 var myVar = setInterval(myTimer, 1000);
 function myTimer()
 {
+    document.getElementById("btn-main").disabled = true;
     if( document.getElementById("timer").innerHTML > 0){
         document.getElementById("timer").innerHTML -=1;
     }
     else{
         document.getElementById("btn-main").disabled = false;
     }
-    
 }
-
 </script>
 @endsection
