@@ -16,21 +16,7 @@ class link extends Model
    'user_id','domain_id','ad_id','folder_id','slug','clicks',
    'status','url','shorted_url','alias','isDeleted',
   ];
- /*
-    |------------------------
-    |  private Functions
-    |------------------------
-    */
-    public function deleteForm()
-    {
-        return array ('route' =>'links.destroy','method'=>'delete',
-                               'class'=>'form-delete','id'=>'form-delete' );
-    }
-    protected function editForm()
-    {
-        return array ('route' =>'links.update','method'=>'Post',
-                      'class'=>'form-edit','id'=>'form-edit' );
-    }
+ 
     /*
     |------------------------
     |  Public Functions

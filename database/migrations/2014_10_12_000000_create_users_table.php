@@ -47,6 +47,7 @@ class CreateUsersTable extends Migration
        
         Schema::create('Balances', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
+            $table->float('avilable_amount')->default(0);
             $table->float('advertiser_balance')->default(0);
             $table->float('publisher_balance')->default(0);
             $table->timestamps();

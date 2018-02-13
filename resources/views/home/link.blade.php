@@ -17,8 +17,8 @@
                 </span>
                 <form method="POST" action="{{route('goLink',$link->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
-                <button type="submit" id="btn-main" class="btn btn-main">Get Link</button>
-                <noscript>&lt;button type="submit" class="btn btn-main"&gt;Get Link&lt;/button&gt;</noscript>
+                <button type="submit" id="btn-main" class="btn btn-main" data-single-click>Get Link</button>
+                <!-- <noscript>&lt;button type="submit" class="btn btn-main"&gt;Get Link&lt;/button&gt;</noscript> -->
                 </form>
 
                 <div style="width: 300px; margin: 0 auto;">

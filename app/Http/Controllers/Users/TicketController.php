@@ -18,20 +18,56 @@ class TicketController extends Controller
     {
        // Show list of Tickets
         $tickets = $tickets->Tickets()->paginate(20);
-        return view('home.Tickets')->withTickets($tickets);
+        return view('home.tickets')->withTickets($tickets);
     }
 
+     
     public function create()
     {
-      return view('home.Tickets');
+        return view('users.tickets.Form');
     }
 
-    public function store(TicketValidation $request, Tickets $ticket) 
+  
+    public function store(TicketValidation $request)
     {
         $ticket->fill($request->all());
+        $ticket->user_id = Auth::id();
         $ticket->save();
-        Session::flash('success',' Sucessfully created the ' .$request->name . ' Tickets .');
-        return view('home.home');
+        Session::flash('success' , 'Sucessfully has been created the ' .$request->name .' Ticket :)');
+     
+       return redirect()->route('tickets.index');
     }
+    
+    // show Ticket details
+    public function show(Ticket $ticket)
+    {
+        return view('users.tickets.show',compact('Ticket'));
+    }
+    // edit Ticket details
+    public function edit(Ticket $ticket)
+    {
+        return view('users.tickets.Form',compact('Ticket'));
+    }
+    // update function
+    public function update(Request $request, Ticket $ticket)
+    {    
+        Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' Ticket :)');
+        return redirect()->route('tickets.index');
+    }
+    // for hide Ticket    
+    public function destroy(Ticket $ticket)
+    {
+
+        Session::flash('success' , 'Sucessfully has been hided the ' .$ticket->name .' Ticket :)');
+        return redirect()->route('tickets.index');
+    }
+    // for delete Ticket
+    public function delete(Ticket $ticket)
+    {
+        $name= $ticket->name;
+        Session::flash('success' , 'Sucessfully has been deleted the ' .$name .' Ticket :)');
+        return redirect()->route('tickets.index');
+    }
+
   
 }

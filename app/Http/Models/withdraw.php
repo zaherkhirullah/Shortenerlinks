@@ -3,8 +3,22 @@
 namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Auth ;
 class withdraw extends Model
 {
     protected $table = 'withdraws';
+    protected $fillable =  ['user_id','amount','withdraw_address','withdrawal_method_id',
+    'transaction_id','isDeleted','status'];
+
+     /* list All Withdraws  */      
+     public function Withdraws()
+     {
+      return $this->where('isDeleted','0')->orderBy('created_at','desc');
+     }
+    /* list of  Withdraws has been deleted and list (Desc) by create date */
+    public function deletedWithdraws()
+    {
+    return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+    }
+    
 }

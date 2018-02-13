@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Balance extends Model
 {
     protected $table = 'Balances';
-    protected $fillable = ['advertiser_balance','publisher_balance',];
+    protected $fillable = ['avilable_amount','advertiser_balance','publisher_balance',];
 
     public function User()
     {

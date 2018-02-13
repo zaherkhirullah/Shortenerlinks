@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WithdrawValidation extends FormRequest
+class CountryValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class WithdrawValidation extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,11 +24,7 @@ class WithdrawValidation extends FormRequest
     public function rules()
     {
         return [
-            
-            'amount'=>'integer|required',
-            'withdraw_address'=>'string|required|max:500',
-            'withdrawal_method_id'=>'integer|required',
-            'transaction_id' => 'string|max:500',
+            //
         ];
     }
 }

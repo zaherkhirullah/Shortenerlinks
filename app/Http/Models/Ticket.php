@@ -9,7 +9,7 @@ class Ticket extends Model
 { 
     protected $table = 'tickets';
 
-    protected $fillable = [   'subject','message','path',];
+    protected $fillable = [  'user_id','subject','message','path',];
 
     /* list All Tickets  */      
     public function Tickets()
@@ -24,7 +24,7 @@ class Ticket extends Model
     /* list of  Tickets has been deleted and list (Desc) by create date */
       public function closedTickets()
       {
-       return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+       return $this->where('isClosed','1')->orderBy('updated_at','desc');
       }
       public function user()
       {

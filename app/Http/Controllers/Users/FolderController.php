@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FolderValidation;
 use App\Http\Controllers\Controller;
 use Auth;
-
+use Session;
 class FolderController extends Controller
 {
     public function __construct()
@@ -18,21 +18,21 @@ class FolderController extends Controller
     public function index(folder $folder)
     {
         $folders = $folder->folder()->paginate(20);
-        return view('admin.folders.index')->withfolder($folders);
+        return view('users.folders.index')->withfolder($folders);
     }
   
     public function create()
     {
-        return view('admin.folders.Form');
+        return view('users.folders.Form');
     }
 
   
     public function store(FolderValidation $request)
     {
-        $this->NewItem($request->all());
-
-        return redirect()->route('folder.index')
-        ->with(['success'=>$request->name .' Sucessfully Created :)']);
+        $this>NewItem($request->all());
+        Session::flash('success' , 'Sucessfully has been created the ' .$request->name .' folder :)');
+     
+       return redirect()->route('folder.index');
     }
 
 
@@ -50,17 +50,22 @@ public function edit(folder $folder)
 // update function
 public function update(Request $request, folder $folder)
 {    
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully Edited :)']);
+    Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' folder :)');
+    return redirect()->route('folders.index');
 }
 // for hide folder    
 public function destroy(folder $folder)
 {
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully hided :)']);
+
+    Session::flash('success' , 'Sucessfully has been hided the ' .$folder->name .' folder :)');
+    return redirect()->route('folders.index');
 }
 // for delete folder
 public function delete(folder $folder)
 {
-    return redirect()->route('folders.index')->with( ['success'=>' Sucessfully deleted :)']);
+    $name= $folder->name;
+    Session::flash('success' , 'Sucessfully has been deleted the ' .$name .' folder :)');
+    return redirect()->route('folders.index');
 }
 
 // NewItemew for create new item in table(for calling in store).

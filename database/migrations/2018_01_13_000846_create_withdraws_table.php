@@ -15,10 +15,11 @@ class CreateWithdrawsTable extends Migration
             $table->float('amount')
                       ->scale(6)->precision(50)->default(1);
             $table->integer('withdrawal_method_id')->unsigned();
-            $table->string('transaction_id')->default('-');
+            $table->string('withdraw_address');            
+            $table->string('transaction_id')->default(0);
             $table->boolean('isDeleted')->default(0);
             $table->string('status',256)
-                  ->comment('active','pending','cancle');
+                  ->comment('active','pending','cancled');
             $table->timestamps();
         });  
     }
