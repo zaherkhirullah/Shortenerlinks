@@ -165,7 +165,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
-        Monarobase\CountryList\CountryListServiceProvider::class,
+        // Monarobase\CountryList\CountryListServiceProvider::class,
 
          'Collective\Html\HtmlServiceProvider',
         /*
@@ -234,7 +234,7 @@ return [
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
-        'Countries' => Monarobase\CountryList\CountryListFacade::class,
+        // 'Countries' => Monarobase\CountryList\CountryListFacade::class,
     ],
 
 ];

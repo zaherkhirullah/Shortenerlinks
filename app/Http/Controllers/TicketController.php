@@ -25,7 +25,7 @@ class TicketController extends Controller
     
     public function create()
     {
-        
+        return view('admin.folders.Form');
     }
 
   
@@ -37,7 +37,7 @@ class TicketController extends Controller
  
     public function show(Ticket $ticket)
     {
-        
+        return view('admin.folders.Form');
     }
 
     public function edit(Ticket $ticket)
