@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Validator;
 
-
+use Auth;
 class LinkValidation extends FormRequest
 {
 
@@ -21,7 +21,7 @@ class LinkValidation extends FormRequest
             'ad_id'=>  'required|integer',
             'folder_id'=>  'required|integer',
             'slug'=>  'unique:links',
-            'url'=>  'required|unique:links|url|string',
+            'url'=>  'required|url|string|unique:links,url,NULL,id,user_id,' . Auth::id(),
         ];
     }
      public function messages()

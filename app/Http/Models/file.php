@@ -46,6 +46,10 @@ class file extends Model
       {
         return $this->files()->where([['user_id',Auth::id()]]);
       }
+      public function UserDeletedFiles()
+      {
+          return $this->deletedFiles()->where('user_id',Auth::id());
+      }
       public function domain()
       {
         return $this->belongsTo(Domain::class); 

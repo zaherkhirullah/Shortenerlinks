@@ -24,114 +24,79 @@
         <section class="box-body">   
           @if(count($tickets))
           <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
-          <div class="col-sm-3 " style="top:10px;">
-           <a href="{{route('ticket.create')}}" type="button" class="btn btn-info btn-md">
-            <i class="fa fa-ticket"></i>
-              Add New ticket
-           </a>
-           </div>
-             <thead>
-             <tr>
-              <th>Link</th>
-              <th>views</th>
-              <th>Downloads</th>
-              <th>Earnings</th>
-              <th>Password</th>
-              <th>Privacy</th>
-              <th>ceated date</th>
-              <th>Options</th>
-             </tr>
-             </thead>
-<tfoot>
-<tr>
-              <th>Link</th>
-              <th>views</th>
-              <th>Downloads</th>
-              <th>Earnings</th>
-              <th>Password</th>
-              <th>Privacy</th>
-              <th>ceated date</th>
-              <th>Options</th>
-             </tr>
-</tfoot>
-                <tbody>
+            <div class="col-sm-3 " style="top:10px;">
+                <a href="{{route('ticket.create')}}" type="button" class="btn btn-info btn-md">
+                    <i class="fa fa-ticket"></i>
+                    Add New ticket
+                </a>
+            </div>
+            <thead>
+                <tr>
+                <th>Subject</th>
+                <th class="v-middle hidden-xs">Message</th>
+                <th class="v-middle hidden-xs">Status</th>
+                <th class="v-middle hidden-xs">ceated date</th>
+                <th>Options</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>          
+                <th>Subject</th>
+                <th class="v-middle hidden-xs">Message</th>
+                <th class="v-middle hidden-xs">Status</th>
+                <th class="v-middle hidden-xs">ceated date</th>
+                <th>Options</th>
+                </tr>
+            </tfoot>
+            <tbody>
                  @foreach ($tickets as $ticket)
-                    <tr>
-                        <td>
-                            <a href="{{$ticket->shorted_url}}" class="h5 text-info" target="_blank">
-                                <strong><i class="fa fa-ticket"></i> {{$ticket->shorted_url}}</strong>
-                            </a>
-                      <small class="text-muted block"><i class="fa fa-ticket-text"></i> 
-                      {{$ticket->description}}
-                      <button class="btn btn-xs text-info btn-copy pull-right" data-clipboard-text=" {{$ticket->shorted_url}}"  data-toggle="button">
-                        <span class="text">
-                        <i class="ion ion-ios-copy-outline"> </i> Copy
-                        </span>
-                        <span class="text-active">
-                        <i class="fa fa-check"> </i> Copied
-                        </span>
-                    </button>
-                      </small>
-                        </td>
-                        <td class="v-middle hidden-xs">
+                 <tr>
+                    <td class="v-middle">
                         <a  href="{{route('ticket.show',$ticket->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
-                        <i class="fa fa-eye"></i></a> {{$ticket->views}}
+                        <i class="fa fa-eye"></i></a> {{$ticket->subject}}
                         </td>
-                        <td class="v-middle hidden-xs" >
-                         {{$ticket->downloads}}
-                         <a href="{{url($ticket->path)}}"  class="btn btn-sm text-info" title="Download" 
-                            download>
-                                    <span class="text">
-                                        <i class="fa fa-download" > </i>
+                    <td class="v-middle hidden-xs" >{{$ticket->message}}</td>
+                    <td class="v-middle hidden-xs">
+                     {{$ticket->isClosed}} <span class="btn-xs text-success text-xs"> $</span> 
+                    </td>
+
+                    <td class="v-middle hidden-xs">
+                            @if($ticket->isClosed == 1)
+                            <i class="fa fa-lock"></i> 
+                            <b class="text-danger">Closed</b>
+                        @else 
+                        <i class="fa fa-unlock"></i> 
+                        <b class="text-danger">Open</b>
+                        @endif
+                        </td>
+                    <td class="v-middle hidden-xs">{{$ticket->created_at}}</td>
+                    
+                    <td class="pull-right">
+                        <a href="{{route('ticket.edit',$ticket->id)}}" title="Edit"  data-toggle="modal"
+                        class="text-info">
+                            <span class="text text-md" >
+                                <i class="fa  fa-edit">
+                                </i> 
+                            </span>
+                                </a>
+                                @if(Route::is('ticket.index'))
+                                <a href="#delete-ticket-{{$ticket->id}}" title="Hide"  data-toggle="modal"
+                                    class=" text-danger" >
+                                    <span class="text  text-sm" >
+                                        <i class="fa fa-eye-slash">
+                                        </i> 
                                     </span>
-                                </a> 
-                         </td>
-                         <td class="v-middle hidden-xs">
-             {{$ticket->earnings}}
-              <span class="btn-xs text-success text-xs"> $</span> 
-            </td>
-                        <td class="v-middle hidden-xs">
-                            @if($ticket->password)
-                            <i class="fa fa-lock"></i> {{$ticket->password}}
-                            @else 
-                            <i class="fa fa-unlock"></i>
-                            @endif
-                        </td>
-                        <td class="v-middle hidden-xs">
-                             @if($ticket->isPrivate == 1)
-                             <i class="fa fa-eye-slash"></i> Private
-                            @else 
-                            <i class="fa fa-eye"></i> Public
-                            @endif
-                            </td>
-                        <td class="v-middle hidden-xs">{{$ticket->created_at}}</td>
-                       
-                        <td class="pull-right">
-                           <a href="{{route('ticket.edit',$ticket->id)}}" title="Edit"  data-toggle="modal"
-                            class="text-info">
-                                <span class="text text-md" >
-                                    <i class="fa  fa-edit">
-                                    </i> 
-                                </span>
-                                 </a>
-                                 @if(Route::is('ticket.index'))
-                                 <a href="#delete-ticket-{{$ticket->id}}" title="Hide"  data-toggle="modal"
-                                     class=" text-danger" >
-                                     <span class="text  text-sm" >
-                                         <i class="fa fa-eye-slash">
-                                         </i> 
-                                     </span>
-                                 </a>
-                                 @elseif(Route::is('ticket.deletedtickets'))
-                                 <a href="#restore-ticket-{{$ticket->id}}" title="Unhide"  data-toggle="modal"
-                                     class=" text-warning" >
-                                     <span class="text text-sm">
-                                         <i class="fa  fa-eye"> </i> 
-                                     </span>
-                                 </a>
-                                 @endif 
-                                
-                        </td>
+                                </a>
+                                @elseif(Route::is('ticket.deletedtickets'))
+                                <a href="#restore-ticket-{{$ticket->id}}" title="Unhide"  data-toggle="modal"
+                                    class=" text-warning" >
+                                    <span class="text text-sm">
+                                        <i class="fa  fa-eye"> </i> 
+                                    </span>
+                                </a>
+                                @endif 
+                            
+                    </td>
                     </tr>
                     @if(Route::is('ticket.index'))
                     <div class="modal fade" id="delete-ticket-{{$ticket->id}}">

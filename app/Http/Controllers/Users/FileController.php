@@ -23,11 +23,11 @@ class fileController extends Controller
   // Show list of files   
     public function index(file $file)
     {
-          $files = $file->files()->paginate(20);
+          $files = $file->UserFiles()->paginate(20);
      return view('users.files.index')->withFiles($files);
     }
 // Show list of deleted files
-     public function deletedFiles(file $file)
+     public function UserDeletedFiles(file $file)
      {
            $files = $file->deletedFiles()->paginate(20);
            return view('users.files.index')->withfiles($files);

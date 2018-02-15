@@ -4,7 +4,7 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-
+use Auth;
 class Ticket extends Model
 { 
     protected $table = 'tickets';
@@ -24,8 +24,22 @@ class Ticket extends Model
     /* list of  Tickets has been deleted and list (Desc) by create date */
       public function closedTickets()
       {
-       return $this->where('isClosed','1')->orderBy('updated_at','desc');
+      return $this->where('isClosed','1')->orderBy('updated_at','desc');
       }
+    
+      public function UserTickets()
+      {
+        return $this->Tickets()->where('user_id',Auth::id());
+      }
+      public function UserDeletedTickets()
+      {
+        return $this->deletedTickets()->where('user_id',Auth::id());
+      }
+      public function UserClosedTickets()
+      {
+        return $this->closedTickets()->where('user_id',Auth::id());
+      }
+   
       public function user()
       {
         return $this->belongsTo(User::class); 

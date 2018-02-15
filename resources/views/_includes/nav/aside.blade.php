@@ -125,7 +125,39 @@
 						</i>
 						<span>Withdraws</span>
 					</a>
-				</li>
+					</li>
+					<li>
+					<a href="#settings">
+						<i class="fa fa-cogs">
+							<b class="bg-warning">
+							</b>
+						</i>
+						<span class="pull-right">
+							<i class="fa fa-angle-down text">
+							</i>
+							<i class="fa fa-angle-up text-active">
+							</i>
+						</span>
+						<span>Support</span>
+					</a>
+					<ul class="nav lt">
+						<li>
+							<a href="{{route('ticket.index')}}">
+								<i class="fa fa-send">
+								</i>
+								<span>Open Ticket</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{route('ticket.index')}}">
+								<i class="fa fa-envelope
+">
+								</i>
+								<span>My Tickets</span>
+							</a>
+						</li>
+						</ul>
+					</li>
 				<li>
 					<a href="#settings">
 						<i class="fa fa-cog">

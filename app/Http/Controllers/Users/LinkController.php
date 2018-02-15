@@ -22,11 +22,11 @@ class LinkController extends Controller
    // Show list of links
    public function index(link $link)
    {
-         $links = $link->links()->paginate(20);
+         $links = $link->UserLinks()->paginate(20);
          return view('users.links.index')->withLinks($links);
    }
     // Show list of deleted links
-    public function deletedLinks(link $link)
+    public function UserDeletedLinks(link $link)
     {
           $links = $link->deletedLinks()->paginate(20);
           return view('users.links.index')->withLinks($links);

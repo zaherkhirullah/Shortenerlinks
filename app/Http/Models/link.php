@@ -33,16 +33,20 @@ class link extends Model
     return $this::all();
     }
     /* list of  Links has been deleted and list (Desc) by create date */
-      public function deletedLinks()
-      {
-       return $this->where('isDeleted','1')->orderBy('updated_at','desc');
-      }
+    public function deletedLinks()
+    {
+     return $this->where('isDeleted','1')->orderBy('updated_at','desc');
+    }
     /* list all Links for a user */
     public function UserLinks()
     {
       return $this->links()->where('user_id',Auth::id());
     }
-
+    /* list of  Links has been deleted and list (Desc) by create date */
+    public function UserDeletedLinks()
+    {
+        return $this->deletedLinks()->where('user_id',Auth::id());
+    }
       public function domain()
       {
         return $this->belongsTo(Domain::class); 

@@ -17,15 +17,15 @@ class TicketController extends Controller
     }
      public function index(Ticket $ticket)
     {
-          $tickets = $ticket->deletedTickets()->paginate(20);
+          $tickets = $ticket->UserTickets()->paginate(20);
           return view('users.tickets.index ',compact('tickets'));
     }
-    public function deletedtickets(Ticket $ticket)
+    public function UserDeletedTickets(Ticket $ticket)
     {
           $tickets = $ticket->deletedtickets()->paginate(20);
           return view('users.tickets.index ',compact('tickets'));
     }
-    public function closedTickets(Ticket $ticket)
+    public function UserClosedTickets(Ticket $ticket)
     {
           $tickets = $ticket->closedTickets()->paginate(20);
           return view('users.tickets.index ',compact('tickets'));
