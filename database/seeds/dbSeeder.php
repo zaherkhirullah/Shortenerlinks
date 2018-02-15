@@ -22,20 +22,6 @@ class dbSeeder extends Seeder
         $PayMethod->name='Advcash';
         $PayMethod->min_amount=5;
         $PayMethod->save();
-        
-        $role = new \App\Http\Models\role();
-        $role->name='it';
-        $role->slug='It';
-        $role->save();
-        $role = new \App\Http\Models\role();
-        $role->name='user';
-        $role->slug='User';
-        $role->save();
-        $role->save();
-        $role = new \App\Http\Models\role();
-        $role->name='admin';
-        $role->slug='Admin';
-        $role->save();
 
         $folder = new \App\Http\Models\folder();
         $folder->name = 'General';
@@ -52,6 +38,20 @@ class dbSeeder extends Seeder
         $adstype->name='Banner';
         $adstype->description='Banner about some descriptions';
         $adstype->save();
+
+        $role = new \App\Http\Models\role();
+        $role->name='it';
+        $role->slug='It';
+        $role->save();
+        $role = new \App\Http\Models\role();
+        $role->name='user';
+        $role->slug='User';
+        $role->save();
+        $role->save();
+        $role = new \App\Http\Models\role();
+        $role->name='admin';
+        $role->slug='Admin';
+        $role->save();
 
         $user = new \App\User();
         $user->first_name='zaher';
@@ -92,7 +92,5 @@ class dbSeeder extends Seeder
         $balance = new \App\Balance();
         $balance->user_id=2;
         $balance->save();
-
-
     }
 }

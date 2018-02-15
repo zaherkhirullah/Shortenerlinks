@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Users;
 use App\Http\Models\withdraw;
 use App\Http\Models\PayMethod;
 use App\Http\Controllers\Controller;
-use App\Balance;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\WithdrawValidation;
+
+use App\Balance;
 use Session;
 use Auth;
 

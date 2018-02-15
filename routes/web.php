@@ -113,8 +113,8 @@ Route::prefix('user')->group(function()
      Route::resource( '/folder', 'FolderController'); 
      Route::resource( '/link',   'LinkController');  
      Route::resource( '/file',   'FileController');
-    Route::resource( '/ticket',      'TicketController');
-    Route::resource( '/withdraw',      'WithdrawsController');
+     Route::resource( '/ticket',  'TicketController');
+     Route::resource( '/withdraw','WithdrawsController');
 
     });
 });
