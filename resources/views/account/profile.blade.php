@@ -12,7 +12,6 @@
 							<div class="box box-primary">
 								<div class="box-body">
 									@include('_includes.forms.account.profile')
-								
 								</div>
 							</div>
 						</section>
@@ -20,9 +19,7 @@
 					<!--/ row 2-->
 				</section>
 			</div>
-
 			@include('_includes.nav.SettingAside')
-
 		</section>
 	</section>
 </section>

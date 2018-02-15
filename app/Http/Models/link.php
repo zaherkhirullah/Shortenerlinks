@@ -7,7 +7,7 @@ use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
 use App\Http\Models\folder;
 use App\User;
-
+use Auth ;
 class link extends Model
 {
   protected $table = 'links';
@@ -28,17 +28,21 @@ class link extends Model
     {
      return $this->where('isDeleted','0')->orderBy('created_at','desc');
     }
+    public function AllLinks()
+    {
+    return $this::all();
+    }
     /* list of  Links has been deleted and list (Desc) by create date */
       public function deletedLinks()
       {
        return $this->where('isDeleted','1')->orderBy('updated_at','desc');
       }
     /* list all Links for a user */
-      public function UserLinks(User $user)
-      {
-       return $this->User()->find()
-        ->where(['status' =>1, 'id' =>$user->id])->first();
-      }
+    public function UserLinks()
+    {
+      return $this->links()->where('user_id',Auth::id());
+    }
+
       public function domain()
       {
         return $this->belongsTo(Domain::class); 

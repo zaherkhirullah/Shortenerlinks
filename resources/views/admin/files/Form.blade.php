@@ -10,9 +10,9 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">
 							<i class="fa fa-file"></i> 
-							@if(Route::is('folders.create'))
+							@if(Route::is('files.create'))
                               Add New File 
-                        @elseif(Route::is('folders.edit'))
+                        @elseif(Route::is('files.edit'))
                               Edit This File
                         @endif 
 							

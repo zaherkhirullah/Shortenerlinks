@@ -1,5 +1,5 @@
 
-{!! Form::open(array ('route' => 'account.profile', 'method'  => 'POST',
+{!! Form::open(array ('route' => 'account.Pprofile', 'method'  => 'POST',
 'accept-charset'=>'utf-8','files'  => true)) !!}
 
 <div style="display: none;">
@@ -194,7 +194,7 @@
 		<div class="form-group select  {{ $errors->has('country_id') ? ' has-error' : '' }}  required">
 			{!!  Form::label('country_id', 'Country')   !!}
 
-			{{ Form::select('country_id', $countries ,$selectedCountry, 
+			{{ Form::select('country_id', $countries ,1, 
 			['class' => "form-control input-sm  $errors->has('country_id') ? ' has-error' : '' ",'id'=>'country_id'])  }}
 
 				@if ($errors->has('country_id'))
@@ -212,7 +212,7 @@
 		<div class="form-group select  {{ $errors->has('withdrawal_method_id') ? ' has-error' : '' }}  required">
 			{!!  Form::label('withdrawal_method_id', 'Withdrawal Method')   !!}
 
-			{{ Form::select('withdrawal_method_id', $withdrawMethods ,$selectedMethod, 
+			{{ Form::select('withdrawal_method_id', $withdrawMethods ,1, 
 			['class' => "form-control input-sm  $errors->has('withdrawal_method_id') ? ' has-error' : '' ",'id'=>'withdrawal_method_id'])  }}
 
 			@if ($errors->has('withdrawal_method_id'))

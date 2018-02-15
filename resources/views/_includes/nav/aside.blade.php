@@ -118,7 +118,7 @@
 						</a>
 					</li>
 					<li>
-					<a href="{{route('user.withdraws')}}">
+					<a href="{{route('withdraw')}}">
 						<i class="fa fa-dollar">
 							<b class="bg-success">
 							</b>

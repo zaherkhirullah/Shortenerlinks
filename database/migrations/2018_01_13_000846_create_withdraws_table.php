@@ -12,7 +12,7 @@ class CreateWithdrawsTable extends Migration
         Schema::create('withdraws', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->float('amount')
+            $table->float('amount',8,4)
                       ->scale(6)->precision(50)->default(1);
             $table->integer('withdrawal_method_id')->unsigned();
             $table->string('withdraw_address');            

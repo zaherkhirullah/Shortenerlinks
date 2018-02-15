@@ -19,7 +19,7 @@ class CreateCampaignItemsTable extends Migration
             $table->integer('country')->unsigned()->default(0); 
             $table->integer('views')->default(0);
             $table->integer('purchase')->default(0);
-            $table->float('weight')->default(0);
+            $table->float('weight',8,4)->default(0);
              $table->float('advertiser_price')
             ->default(0)->scale(6)->precision(50);
             $table->float('publisher_price')

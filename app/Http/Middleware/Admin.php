@@ -17,8 +17,8 @@ class Admin
          return $next($request);
          else
          {
-             Session::flash('error', "You are don't authorize to open admin Area ");
-            return redirect()->route('user');
+             Session::flash('error', "You are don't authorize for access to this page  ");
+            return redirect()->route('/');
          }
             
     }

@@ -56,10 +56,10 @@ class HomeController extends Controller
     public function goToLink(Request $request)
     {   
         $link = $this->llink($request->slug);
-        $link->clicks += 1;
-        $link->earnings += 0.004;
-        $link->save();
-        return redirect($link->url);
+            $link->clicks += 1;
+            $link->earnings += 0.004;
+            $link->save();
+            return redirect($link->url);
     }
     // file
     public function visitFile($slug)
@@ -82,9 +82,11 @@ class HomeController extends Controller
     public function goToFile(Request $request)
     {
         $file =$this->flink($request->slug);
+        
         $file->views += 1;
         $file->earnings += 0.0004;
         $file->save();
+
         return view('home.downloadfile',compact('file'));
     }
 }

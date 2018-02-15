@@ -16,10 +16,11 @@
                 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <div class="panel-body">
-
+                    <!-- <input id="referred_by" type="hiiden" name="referred_by" value=""> -->
                         <div class="col-md-12">
+                    
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-
+                
                                 <div class="input-group">
                                     <span for="first_name" title="First Name" class="input-group-addon">
                                         <i class="ion ion-happy-outline"></i>

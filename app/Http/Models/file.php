@@ -7,6 +7,7 @@ use App\Http\Models\Domain;
 use App\User;
 use App\Http\Models\Adstype;
 use App\Http\Models\folder;
+use Auth ;
 class file extends Model
 {
   protected $table = 'files';
@@ -16,10 +17,14 @@ class file extends Model
                           ];
      
 // list All files
-      public function files()
-      {
-       return $this->where('isDeleted','0')->orderBy('created_at','desc');
-      }
+    public function files()
+    {
+    return $this->where('isDeleted','0')->orderBy('created_at','desc');
+    }
+    public function AllFiles()
+    {
+    return $this::all();
+    }
 // list of  files has been deleted and list (Desc) by create date
     public function deletedFiles()
     {
@@ -36,10 +41,10 @@ class file extends Model
        return $this->where([['isDeleted','0'],['isPrivate','0']])->orderBy('updated_at','desc');
       }
       
-      
  // list all files for a user
-      public function userfiles(User $user)
+      public function UserFiles()
       {
+        return $this->files()->where([['user_id',Auth::id()]]);
       }
       public function domain()
       {

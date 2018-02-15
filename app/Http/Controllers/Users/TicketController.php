@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Http\Models\Tickets;
+use App\Http\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketValidation;
 use App\Http\Controllers\Controller;
 use Session;
+use Auth;
 
 class TicketController extends Controller
 {
@@ -14,14 +15,22 @@ class TicketController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(Tickets $tickets)
+     public function index(Ticket $ticket)
     {
-       // Show list of Tickets
-        $tickets = $tickets->Tickets()->paginate(20);
-        return view('home.tickets')->withTickets($tickets);
+          $tickets = $ticket->deletedTickets()->paginate(20);
+          return view('users.tickets.index ',compact('tickets'));
     }
-
-     
+    public function deletedtickets(Ticket $ticket)
+    {
+          $tickets = $ticket->deletedtickets()->paginate(20);
+          return view('users.tickets.index ',compact('tickets'));
+    }
+    public function closedTickets(Ticket $ticket)
+    {
+          $tickets = $ticket->closedTickets()->paginate(20);
+          return view('users.tickets.index ',compact('tickets'));
+    }
+    
     public function create()
     {
         return view('users.tickets.Form');
@@ -29,13 +38,13 @@ class TicketController extends Controller
 
   
     public function store(TicketValidation $request)
-    {
+    {   $ticket  =new Ticket();
         $ticket->fill($request->all());
         $ticket->user_id = Auth::id();
         $ticket->save();
         Session::flash('success' , 'Sucessfully has been created the ' .$request->name .' Ticket :)');
      
-       return redirect()->route('tickets.index');
+       return redirect()->route('ticket.index');
     }
     
     // show Ticket details
@@ -52,21 +61,21 @@ class TicketController extends Controller
     public function update(Request $request, Ticket $ticket)
     {    
         Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' Ticket :)');
-        return redirect()->route('tickets.index');
+        return redirect()->route('ticket.index');
     }
     // for hide Ticket    
     public function destroy(Ticket $ticket)
     {
 
         Session::flash('success' , 'Sucessfully has been hided the ' .$ticket->name .' Ticket :)');
-        return redirect()->route('tickets.index');
+        return redirect()->route('ticket.index');
     }
     // for delete Ticket
     public function delete(Ticket $ticket)
     {
         $name= $ticket->name;
         Session::flash('success' , 'Sucessfully has been deleted the ' .$name .' Ticket :)');
-        return redirect()->route('tickets.index');
+        return redirect()->route('ticket.index');
     }
 
   

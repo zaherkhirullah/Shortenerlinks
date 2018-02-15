@@ -15,7 +15,7 @@
                 <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
                 <a href="{{route('rates')}}">$15 / 10000</a> views.
                 </span>
-                <form method="POST" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
+                <form method="POST" id="form_post" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
               
                 <button type="submit" id="btn-main" class="btn btn-main" disabled="true" >Get file</button>
@@ -35,9 +35,25 @@
 $(document).ready(function(){
 
     $('#btn-main').click(function() {
-    $(this).attr('disabled','disabled');
+        $('#form_post').attr('disabled','disabled');
+        $(this).attr('disabled','disabled');
+    });
+       
+        $Nvar = setInterval(myTimer, 1000);
+        function myTimer()
+        {
+         $('#btn-main').disabled = true;
+         if( $('#timer').innerHTML > 0)
+         {
+            $('#timer').innerHTML -=1;
+         }
+         else
+         {
+            $('#btn-main').disabled = false;
+         }
+        }
 });
-});
+
 </script>
 <script>
 
@@ -45,7 +61,7 @@ var myVar = setInterval(myTimer, 1000);
 function myTimer()
 {
     document.getElementById("btn-main").disabled = true;
-    if( document.getElementById("timer").innerHTML > 0){
+    if( document.getElementById("timer").innerHTML >0  ){
         document.getElementById("timer").innerHTML -=1;
     }
     else{

@@ -164,7 +164,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+        // Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         // Monarobase\CountryList\CountryListServiceProvider::class,
 
          'Collective\Html\HtmlServiceProvider',
@@ -233,7 +233,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
-        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        // 'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         // 'Countries' => Monarobase\CountryList\CountryListFacade::class,
     ],
 

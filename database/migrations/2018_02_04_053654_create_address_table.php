@@ -18,9 +18,9 @@ class CreateAddressTable extends Migration
              $table->increments('id');
             $table->string('sembol')->nullable();
             $table->string('name');
-            $table->float('link_price')
+            $table->float('link_price',8,4)
                   ->scale(6)->default(0.004);
-            $table->float('file_price')
+            $table->float('file_price',8,4)
                   ->scale(6)->default(0.004);
                   $table->boolean('isDeleted')->default(0);
             

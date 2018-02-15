@@ -16,13 +16,13 @@ Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store'
 // captcha link
 Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
 Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
 Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
 // captcha file
 Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
 Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
 Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 
 
@@ -36,6 +36,10 @@ Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 
 Auth::routes();
 
+Route::group(['namespace' => 'Auth'], function()
+{
+  Route::post('/register/ref={code}', 'RegisterController@PrefRegister')->name('refRegister');
+});
 /*
 |=============================
 |      --/ Admin Area /--      
@@ -95,8 +99,9 @@ Route::prefix('user')->group(function()
      Route::get( '/dashboard', 'UsersController@dashboard')->name("user.dashboard");
     //  Referals & withdraws
      Route::get( '/referrals', 'UsersController@referrals')->name("user.referrals");
-     Route::get( '/withdraw', 'UsersController@withdraw')->name("user.withdraws");
-    // Users Links
+    //  Route::get( '/withdraw', 'UsersController@withdraw')->name("user.withdraws");
+    
+     // Users Links
      Route::get( '/link/dlist', 'LinkController@deletedLinks')->name("link.deletedLinks");
      Route::post( '/link/restore/{link}',array('uses' => 'LinkController@restore', 
                                                'as' => 'link.restore'));
@@ -109,6 +114,7 @@ Route::prefix('user')->group(function()
      Route::resource( '/link',   'LinkController');  
      Route::resource( '/file',   'FileController');
     Route::resource( '/ticket',      'TicketController');
+    Route::resource( '/withdraw',      'WithdrawsController');
 
     });
 });
@@ -123,10 +129,11 @@ Route::prefix('account')->group(function()
 {
   Route::group(['namespace' => 'Account'], function()
   {
-    Route::get( '/profile',        'AccountController@profile')->name("account.profile");
-    Route::get( '/changePassword', 'AccountController@showchangePassword')->name("account.changePassword");
+    Route::get(  '/profile',        'AccountController@showprofile')->name("account.profile");
+    Route::post( '/profile',        'AccountController@profile')->name("account.Pprofile");
+    Route::get( '/changePassword',  'AccountController@showchangePassword')->name('account.changePassword');;
     Route::post('/changePassword', 'AccountController@changePassword')->name('account.PchangePassword');
-    Route::get( '/change-email',   'AccountController@changeemail')->name("changeemail");
+    Route::get( '/change-email',    'AccountController@changeemail')->name("changeemail");
   });
 });
 

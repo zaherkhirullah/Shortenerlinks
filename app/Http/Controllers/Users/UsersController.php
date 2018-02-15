@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\Http\Models\WithdrawalMethod;
+use App\Http\Models\PayMethod;
 use App\Http\Models\Earn;
 use App\Http\Models\Views;
+use App\User;
 use App\Http\Models\Downloads;
 use Carbon\Carbon;
 class UsersController extends Controller
@@ -42,16 +43,18 @@ class UsersController extends Controller
     }
     public function referrals()
     {
-        return view('users.referrals');
+        $refUsers=User::where('referred_by',Auth::id())->get();
+        return view('users.referrals',compact('refUsers'));
     }
     public function withdraw()
     {  
-       $User= Auth::user();
+        $User= Auth::user();
        $method_id = $User->profile->withdrawal_method_id;
-       $method = WithdrawalMethod::where(['id',$method_id])->first();
-       $PaymentMethod = $method->name;
 
-       return view('users.withdraw',compact('PaymentMethod') );
+       $method = PayMethod::where('id',$method_id)->first();
+       $Balance=  $User->Balance->avilable_amount;
+       $PaymentMethod = $method->name;
+       return view('users.withdraw',compact('PaymentMethod','Balance') );
     }
     
    

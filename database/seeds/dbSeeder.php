@@ -11,6 +11,18 @@ class dbSeeder extends Seeder
      */
     public function run()
     {
+
+
+        $PayMethod = new \App\Http\Models\PayMethod();
+        $PayMethod->name='Paypal';
+        $PayMethod->min_amount=5;
+        $PayMethod->save();
+
+        $PayMethod = new \App\Http\Models\PayMethod();
+        $PayMethod->name='Advcash';
+        $PayMethod->min_amount=5;
+        $PayMethod->save();
+        
         $role = new \App\Http\Models\role();
         $role->name='it';
         $role->slug='It';
@@ -50,7 +62,17 @@ class dbSeeder extends Seeder
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('Zz96321//');
         $user->save();
-
+        
+        $profile = new \App\Profile();
+        $profile->user_id=1;
+        $profile->withdrawal_method_id=1;
+        $profile->withdrawal_email='zahir.hayrallah@gmail.com';
+        $profile->save();
+        
+        $balance = new \App\Balance();
+        $balance->user_id=1;
+        $balance->save();
+    
         $user = new \App\User();
         $user->first_name='The';
         $user->last_name='admin';
@@ -60,5 +82,17 @@ class dbSeeder extends Seeder
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('admin');
         $user->save();
+
+        $profile = new \App\Profile();
+        $profile->user_id=2;
+        $profile->withdrawal_method_id=1;
+        $profile->withdrawal_email='admin@admin.com';
+        $profile->save();
+       
+        $balance = new \App\Balance();
+        $balance->user_id=2;
+        $balance->save();
+
+
     }
 }

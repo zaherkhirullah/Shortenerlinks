@@ -10,6 +10,14 @@ use Carbon\Carbon ;
 class Earn extends Model
 {
     // Today()->Format('Y-m-d')
+    public function userlinks()
+    {
+        return link::where(['user_id',Auth::id()]);
+    }
+    public function userfiles()
+    {
+        return file::where(['user_id',Auth::id()]);
+    }
     public function TodayLinkEarnings()
     {   $link = new link();
         $links = $link->where(
@@ -47,7 +55,7 @@ class Earn extends Model
     public function TotalLinkEarnings()
     {   $link = new link();
         $earn = 0;
-        $links = $link->where([['user_id',Auth::id()]])->get();
+        $links = $link->userlinks()->get();
         foreach($links as $linkk)
         {
             $earn += $linkk->earnings;
@@ -57,7 +65,7 @@ class Earn extends Model
     public function TotalFileEarnings()
     {   $file = new file();
         $earn = 0;
-        $files = $file->where([['user_id',Auth::id()]])->get();
+        $files = $file->userfiles()->get();
         
         foreach($files as $filee)
         {

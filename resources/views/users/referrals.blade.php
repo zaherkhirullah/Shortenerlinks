@@ -113,6 +113,7 @@
                <div class="text-center">
                 <h4 class="font-thin m-t-xl text-info"><b>My Referrals </b></h4>
                </div>
+               @if(count($refUsers))
                     <table class="table table-striped table-flip-scroll cf">
                         <thead class="cf">
                             <tr>
@@ -122,15 +123,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
+                        @foreach($refUsers as $user)
                             <tr>
-                                <td>benrkia</td>
+                                <td>{{ $user->username }}</td>
                                 <td class="v-middle hidden-xs">$0.00000</td>
                                 <td class="v-middle text-danger">$0
                                 </td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
-
+               @else
+                    <tr>
+                        <center  class="text-danger">
+                        <h3>You don't have any Refferal</h3>
+                        </center> 
+                    </tr>
+                @endif
                 </section>
             </section>
 

@@ -44,12 +44,11 @@ class CreateUsersTable extends Migration
             $table->primary('user_id');
         });
         
-       
         Schema::create('Balances', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->float('avilable_amount')->default(0);
-            $table->float('advertiser_balance')->default(0);
-            $table->float('publisher_balance')->default(0);
+            $table->float('avilable_amount',8,4)->default(0);
+            $table->float('advertiser_balance',8,4)->default(0);
+            $table->float('publisher_balance',8,4)->default(0);
             $table->timestamps();
 
             $table->engine = 'InnoDB';

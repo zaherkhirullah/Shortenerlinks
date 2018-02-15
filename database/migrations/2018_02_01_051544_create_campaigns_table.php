@@ -12,7 +12,7 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('url');
-            $table->float('price');
+            $table->float('price',8,4);
             $table->integer('user_id')->unsigned()->default(0);
             $table->integer('ad_id')->unsigned()->default(0);
             $table->string('transaction_id')->default('-');
