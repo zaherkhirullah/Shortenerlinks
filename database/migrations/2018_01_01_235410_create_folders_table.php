@@ -19,10 +19,14 @@ class CreateFoldersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();
-
             $table->unique(['name','user_id']);
             $table->index('user_id');
         });
+
+        // Schema::table('folders', function ($table) {
+        //     $table->foreign('user_id')->references('id')->on('users');
+        //  });
+         
     }
 
     /**
@@ -32,6 +36,11 @@ class CreateFoldersTable extends Migration
      */
     public function down()
     {
+        
+    //     Schema::table('folders', function ( $table) {
+    //     $table->dropForeign('folders_user_id_foreign');
+    // });
         Schema::dropIfExists('folders');
+        
     }
 }

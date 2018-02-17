@@ -38,13 +38,13 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="form-group {{$errors->has('file_id') ? ' has-error' : ''}}">             
-              <label for="files">files</label>
+            <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
+              <label for="domain_id">domains</label>
 
-              {{Form::select('file_id', $files ,$file->file_id, ['class' => "form-control input-sm ",'id'=>'file_id'])  }}
-              @if ($errors->has('file_id'))
+              {{Form::select('domain_id', $domains ,$file->domain_id, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
+              @if ($errors->has('domain_id'))
               <span class="help-block">
-                <strong>{{ $errors->first('file_id') }}</strong>
+                <strong>{{ $errors->first('domain_id') }}</strong>
               </span>
               @endif
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Models\folder;
 use App\Http\Models\file;
 use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 use Auth;
+use Session;
 class fileController extends Controller
 {
 
@@ -45,15 +47,16 @@ class fileController extends Controller
     public function create()
     {  
         $domains = Domain::pluck('name', 'id');
-        $ads=Adstype::pluck('name', 'id');
-        $files=file::pluck('name', 'id');
-        return view('admin.files.Form',compact('domains','files','ads'));
+        $ads=      Adstype::pluck('name', 'id');
+        $folders=    Folder::pluck('name', 'id');
+
+        return view('admin.files.Form',compact('domains','folders','ads'));
     }
     // build file
         public function store(FileValidation $request)
         { 
         $this->NewItem($request->all());
-        Session::flash('success',' Sucessfully Created the ' .$name . ' file .');
+        Session::flash('success',' Sucessfully Created the ' .$request->slug . ' file .');
         return redirect()->route('files.index')->
                 with( ['message'=>' Sucessfully Created :)']);
         }
@@ -66,13 +69,30 @@ class fileController extends Controller
     // edit file details
     public function edit(file $file)
     {
-        return view('admin.files.Form',compact('file'));
+        $domains = Domain::pluck('name', 'id');
+        $ads=      Adstype::pluck('name', 'id');
+        $folders=    Folder::pluck('name', 'id');
+
+        return view('admin.files.Form',compact('domains','folders','ads','file'));
     }
     // update function
     public function update(Request $request, file $file)
     {     
-        Session::flash('success',' Sucessfully Updated the ' .$name . ' file .');
-        return redirect()->route('files.index');
+         $domain = Domain::find($request->domain_id);
+    
+        $dattitle=($request->title)?: null;
+        $slug =($request->title)?: str_random(10);
+        $shorted_url =( $request->domain_id ==1)? url('/f/'.  $slug ) : $domain->url .'/f/'. $slug;
+        
+        $file->update($request->all());
+        if($file->slug != $slug)
+        $file->slug = $slug;
+        else; 
+        $file->shorted_url = $shorted_url;
+
+        if($file->save())
+            Session::flash('success',' Sucessfully Updated the ' .$slug . ' file .');
+      return redirect()->route('files.index');
     }
     // for hide file    
     public function destroy(file $file)
@@ -86,15 +106,20 @@ class fileController extends Controller
     // for delete file
     public function delete(file $file)
     {
-        Session::flash('success',' Sucessfully hided the ' .$name . ' file .');
-        return redirect()->route('files.index');
+        return $this->Deleteate($file , 1);
     }
+ // for unhide file    
+    public function restore(file $file)
+    {
+        return $this->Deleteate($file , 0);
+    }
+    
 
     // NewItemew for create new item in table(for calling in store).
     protected function NewItem(array $data)
     {
         $domain_id = $data['domain_id'];
-        $file_id = $data['file_id'];
+        $folder_id = $data['folder_id'];
         $path = $data['path'];
         $title=($data['title'])?: null;
         $slug =($data['title'])?: str_random(6);
@@ -111,7 +136,7 @@ class fileController extends Controller
             [
             'user_id'    => $UserId ,
             'domain_id'  => $domain_id,
-            'file_id'  => $file_id,
+            'folder_id'  => $folder_id,
             'slug'       => $slug ,
             'title'      => $title,
             'description'=> $data['description'],
@@ -120,6 +145,45 @@ class fileController extends Controller
             'password'   => $data['password'],
             'shorted_url' =>$shorted_url ,
             ]);
+    }
+     // Deleteate function For change isDeleted (To Active Or UnActive) Restore Or Delete Item in Database .
+     Protected function Deleteate(file $file, $data)
+     {
+        $file = file::find($file->id);
+        $isDeleted = $file->isDeleted;
+        $Message = '';  $class = '';
+         // Not Found Page
+        if (is_null($file))
+            return view('errors.NotFound');
+        else
+        {
+        $class = 'warning';
+        if($isDeleted == 1 && $data == 1 )
+            $Message = ' This item is already Hided :)';
+        else if($isDeleted == 0 && $data == 0 )
+            $Message = ' This item is already restored :)';
+        else
+        {
+        $file->isDeleted = $data;
+            if($file->save())
+            {
+            $class = 'success';
+            if($data == 1)
+            $Message = ' Successfully has been Hided :)';
+            else if($data == 0)
+            $Message = ' Successfully has been restord :)';
+            }
+            else
+            { 
+            $class = 'error';
+            if($data == 1)
+            $Message = ' Error!!  has been filed Hided :(';
+            else if($data == 0)
+            $Message = ' Error!!  has been filed restore :(';
+            }
+        }
+        return redirect()->route('files.index')->with([$class =>   $file->slug .  $Message]);
+        }
     }
 
 }

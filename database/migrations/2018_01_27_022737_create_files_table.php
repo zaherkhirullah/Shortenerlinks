@@ -30,8 +30,19 @@ class CreateFilesTable extends Migration
             $table->boolean('isDeleted')->default(0);
             $table->boolean('isPrivate')->default(0);
             $table->timestamps();
-            $table->index('user_id');
         });
+        
+        Schema::table('files', function($table) {
+            $table->index('user_id');
+            $table->index('domain_id');
+            $table->index('folder_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('domain_id')->references('id')->on('domains')->onDelete('cascade');
+            $table->foreign('folder_id')->references('id')->on('folders')->onDelete('cascade');
+        });
+     
+     
+       
     }
 
     /**
@@ -41,6 +52,16 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::table('files', function ( $table) {
+    
+        $table->dropForeign('files_user_id_foreign'  );
+        $table->dropForeign('files_domain_id_foreign');
+        $table->dropForeign('files_folder_id_foreign');
+        $table->dropIndex('files_user_id_index');
+        $table->dropIndex('files_domain_id_index');
+        $table->dropIndex('files_folder_id_index');
+        }); 
+    Schema::dropIfExists('files');        
+
     }
 }

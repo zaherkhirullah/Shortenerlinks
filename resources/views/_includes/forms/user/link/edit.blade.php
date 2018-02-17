@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-{{ Form::open(array ('route' => ['link.update',$link->id],'method'  => 'post', 'id'=>'shorten_form')) }}
+{{ Form::open(array ('route' => ['link.update',$link->id],'method'  => 'PATCH', 'id'=>'shorten_form')) }}
      <div style="display: none;">
 	{{ method_field('PUT') }}
 	{{ csrf_field() }}

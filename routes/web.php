@@ -56,14 +56,18 @@ Route::prefix('admin')->group(function()
    
     // Admin links
     Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
-    Route::delete( '/links/{link}/restore',array('uses' => 'LinkController@restore',
+    Route::post( '/links/{link}/restore',array('uses' => 'LinkController@restore',
                                                'as' => 'links.restore'));
+    Route::delete( '/links/{link}/delete',array('uses' => 'LinkController@delete',
+                                               'as' => 'links.delete'));
     // Admin Files
     Route::get( '/files/dlist', 'FileController@deletedFiles')->name("files.deletedFiles");
     Route::get( '/files/private', 'FileController@private')->name("files.private");
     Route::get( '/files/public', 'FileController@public')->name("files.public");
-    Route::delete( '/files/{file}/restore',array('uses' => 'FileController@restore', 
+    Route::post( '/files/{file}/restore',array('uses' => 'FileController@restore', 
                                                'as'   => 'files.restore'));
+    Route::delete( '/files/{file}/delete',array('uses' => 'FileController@delete', 
+    'as'   => 'files.delete'));
     // Admin Folders
     Route::get( '/folders/dlist', 'FolderController@deletedFolders')->name("folders.deletedFolders");
     Route::delete( '/folders/{folder}/restore',array('uses' => 'FolderController@restore', 

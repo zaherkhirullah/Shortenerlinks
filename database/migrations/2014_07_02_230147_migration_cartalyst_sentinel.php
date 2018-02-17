@@ -104,7 +104,7 @@ class MigrationCartalystSentinel extends Migration
         // Schema::drop('activations');
         // Schema::drop('persistences');
         // Schema::drop('reminders');
-        Schema::drop('roles');
+        Schema::dropIfExists('roles');
         // Schema::drop('role_users');
         // Schema::drop('throttle');
     }

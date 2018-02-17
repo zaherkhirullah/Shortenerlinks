@@ -62,7 +62,6 @@ class LinkController extends Controller
     public function update(LinkValidation $request, link $link)
     {   
         $domain = Domain::find($request->domain_id);
-
         $datalias=($request->alias)?: null;
         $slug =($request->slug)?: str_random(7);
 
@@ -142,7 +141,7 @@ class LinkController extends Controller
     {
       $class = 'warning';
      if($isDeleted == 1 && $data == 1 )
-        $Message = ' This item is already deleted :)';
+        $Message = ' This item is already hidden :)';
      else if($isDeleted == 0 && $data == 0 )
         $Message = ' This item is already restored :)';
      else
@@ -152,7 +151,7 @@ class LinkController extends Controller
        {
           $class = 'success';
          if($data == 1)
-          $Message = ' Successfully has been deleted :)';
+          $Message = ' Successfully has been hidden :)';
         else if($data == 0)
           $Message = ' Successfully has been restord :)';
        }
@@ -160,7 +159,7 @@ class LinkController extends Controller
        { 
           $class = 'error';
          if($data == 1)
-          $Message = ' Error!!  has been filed delete :(';
+          $Message = ' Error!!  has been filed hidden :(';
         else if($data == 0)
           $Message = ' Error!!  has been filed restore :(';
        }

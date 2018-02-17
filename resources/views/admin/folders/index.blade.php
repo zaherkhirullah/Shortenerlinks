@@ -57,7 +57,7 @@
 							</a>
 							<a href="#delete-folder-{{$folder->id}}" data-toggle="modal" class=" text-danger" >
 								<span class="text">
-									<i class="fa fa-2x fa-eye-slash"></i> 
+									<i class="fa fa-2x fa-trash"></i> 
 								</span>	
 							</a>
 						</td>
@@ -70,16 +70,16 @@
 										{!! Form::open(array('route' =>['folders.destroy',$folder->id],
 										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Hide Shorten folder</h4>
+											<h4 id="msg-shorten ">Delete folder</h4>
 										</div>
-										<p class="text-danger">Are You Sure You Want Hide
+										<p class="text-danger">Are You Sure You Want Delete
 											<b class="text-success">{{$folder->slug}}</b> folder ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
 													cancle
 												</button>
 												<button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-													<i class="fa fa-eye-slash"></i> Hide
+													<i class="fa fa-trash"></i> Delete
 												</button>
 											</div>
 											{!! Form::close() !!}
@@ -95,15 +95,17 @@
 				@else
 				<div class="col-md-8 col-md-offset-2">
 					<center> 
-						<h2 class="text-danger alert alert-info"> You don't have folders</h2>
+						<h2 class="text-danger alert alert-warning"> You don't have folders</h2>
 					</center>
 				</div>
-				<div class="text-clear col-md-12">  </div>
-				<div class="col-md-12 text-center">
-					<a href="{{route('folders.create')}}" class="btn btn-success"> 
-						Click to Add New folder
-					</a>
-				</div>
+				@if(Route::is('folders.index'))
+					<div class="text-clear col-md-12">  </div>
+					<div class="col-md-12 text-center">
+						<a href="{{route('folders.create')}}" class="btn btn-success"> 
+							Click to Add New folder
+						</a>
+					</div>
+				@endif 
 				@endif 
 				</section>
 				</section>

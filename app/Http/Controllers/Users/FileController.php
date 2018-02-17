@@ -73,7 +73,7 @@ public function update(Request $request, file $file)
     
     $file->update($request->all());
     if($file->slug != $slug)
-      $file->slug = $slug;
+    $file->slug = $slug;
     else; 
     $file->shorted_url = $shorted_url;
 
@@ -83,42 +83,23 @@ public function update(Request $request, file $file)
 
 }
 // for hide file    
-public function destroy(file $file)
-{
-   return $this->Deleteate($file , 1);
-}
+    public function destroy(file $file)
+    {
+    return $this->Deleteate($file , 1);
+    }
  // for unhide file    
- public function restore(file $file)
- {
+    public function restore(file $file)
+    {
     return $this->Deleteate($file , 0);
- }
+    }
  
 // for delete file
-public function delete(file $file)
-{
-    Session::flash('success',' Sucessfully deleted the ' .$file->slug . ' file .');
-    return redirect()->route('file.index');
-}
+    public function delete(file $file)
+    {
+        Session::flash('success',' Sucessfully deleted the ' .$file->slug . ' file .');
+        return redirect()->route('file.index');
+    }
 
-/*
-|------------------------
-|  private Functions
-|------------------------
-*/
-    private function deleteForm()
-    {
-        return array ('url' => 'user/files/destroy',
-                               'method'  => 'delete',
-                               'class'  => 'form-delete',
-                               'id'  => 'form-delete' );
-    }
-    private function editForm()
-    {
-        return array ('url' => 'user/files/update',
-                               'method'  => 'Post',
-                               'class'  => 'form-edit'  ,
-                               'id'  => 'form-edit' );
-    }
  // NewItemew for create new item in table(for calling in store).
        protected function NewItem(array $data)
        {
@@ -159,9 +140,9 @@ public function delete(file $file)
             $file = file::find($file->id);
             $isDeleted = $file->isDeleted;
             $Message = '';  $class = '';
-  // Not Found Page
-        if (is_null($file))
-            return view('errors.NotFound');
+             // Not Found Page
+            if (is_null($file))
+                return view('errors.NotFound');
             else
             {
             $class = 'warning';

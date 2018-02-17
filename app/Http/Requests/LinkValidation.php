@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Validator;
 
 use Auth;
+use App\Http\Models\link;
 class LinkValidation extends FormRequest
 {
 
@@ -16,13 +17,41 @@ class LinkValidation extends FormRequest
 
     public function rules()
     {
-        return [
-            'domain_id'=>  'required|integer',
-            'ad_id'=>  'required|integer',
-            'folder_id'=>  'required|integer',
-            'slug'=>  'unique:links',
-            'url'=>  'required|url|string|unique:links,url,NULL,id,user_id,' . Auth::id(),
-        ];
+
+        $link = link::find($this->link);
+
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'domain_id'=>  'required|integer',
+                    'ad_id'=>  'required|integer',
+                    'folder_id'=>  'required|integer',
+                    'slug'=>  'unique:links',
+                    'url'=>  'required|url|string|unique:links,url,NULL,id,user_id,' . Auth::id(),
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'domain_id'=>  'required|integer',
+                    'ad_id'=>  'required|integer',
+                    'folder_id'=>  'required|integer',
+                    'slug'=>  'unique:links,slug,' .$this->link->id,
+                    'url'=>  'required|url|string|unique:links,url,NULL,id,user_id,'.$this->link->user_id,
+                ];
+            }
+            default:break;
+        }
+
+        
     }
      public function messages()
     {

@@ -21,11 +21,21 @@ class CreateWithdrawsTable extends Migration
             $table->string('status',256)
                   ->comment('active','pending','cancled');
             $table->timestamps();
+            
         });  
+        Schema::table('withdraws', function ($table) {
+            $table->foreign('user_id')->references('id')->on('users')
+            ->onDelete('cascade');
+        });
+        
     }
 
     public function down()
     {
+        Schema::table('withdraws', function ($table) {
+        $table->dropForeign('withdraws_user_id_foreign');
+    });
         Schema::dropIfExists('withdraws');
+
     }
 }

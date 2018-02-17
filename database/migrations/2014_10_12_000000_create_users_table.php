@@ -31,6 +31,9 @@ class CreateUsersTable extends Migration
             $table->unique('email');
             $table->engine = 'InnoDB';
         });
+        Schema::table('users', function ( $table) {
+         $table->foreign('role_id')->references('id')->on('roles');
+        });
 
         Schema::create('profile', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
@@ -57,7 +60,11 @@ class CreateUsersTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function ( $table) {
+            $table->dropForeign('users_role_id_foreign');
+        });
+           
+        Schema::dropIfExists('users'); 
         Schema::dropIfExists('profile'); 
         Schema::dropIfExists('Balances');
     }

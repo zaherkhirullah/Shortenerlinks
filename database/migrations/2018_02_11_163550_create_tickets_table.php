@@ -22,11 +22,21 @@ class CreateTicketsTable extends Migration
             $table->boolean('isClosed')->default(0);
             $table->boolean('isDeleted')->default(0);
             $table->timestamps();
+           
         });
+        
+        Schema::table('tickets', function ( $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+         });
+         
     }
     
     public function down()
     {
+        Schema::table('tickets', function ( $table) {
+            $table->dropForeign('tickets_user_id_foreign');        
+         });
         Schema::dropIfExists('tickets');
+       
     }
 }

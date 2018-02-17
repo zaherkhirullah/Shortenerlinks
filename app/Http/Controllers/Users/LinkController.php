@@ -26,9 +26,9 @@ class LinkController extends Controller
          return view('users.links.index')->withLinks($links);
    }
     // Show list of deleted links
-    public function UserDeletedLinks(link $link)
+    public function deletedLinks(link $link)
     {
-          $links = $link->deletedLinks()->paginate(20);
+          $links = $link-> UserDeletedLinks()->paginate(20);
           return view('users.links.index')->withLinks($links);
     }
 
@@ -140,7 +140,7 @@ class LinkController extends Controller
       {
         $class = 'warning';
        if($isDeleted == 1 && $data == 1 )
-          $Message = ' This item is already deleted :)';
+          $Message = ' This item is already hidden :)';
        else if($isDeleted == 0 && $data == 0 )
           $Message = ' This item is already restored :)';
        else
@@ -150,7 +150,7 @@ class LinkController extends Controller
          {
             $class = 'success';
            if($data == 1)
-            $Message = ' Successfully has been deleted :)';
+            $Message = ' Successfully has been hidden :)';
           else if($data == 0)
             $Message = ' Successfully has been restord :)';
          }
@@ -158,7 +158,7 @@ class LinkController extends Controller
          { 
             $class = 'error';
            if($data == 1)
-            $Message = ' Error!!  has been filed delete :(';
+            $Message = ' Error!!  has been filed hide :(';
           else if($data == 0)
             $Message = ' Error!!  has been filed restore :(';
          }

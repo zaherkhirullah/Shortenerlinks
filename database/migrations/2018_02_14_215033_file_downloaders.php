@@ -4,25 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LinkVisitors extends Migration
+class FileDownloaders extends Migration
 {
-   
-/**
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('linkVisitors', function (Blueprint $table) {
+        Schema::create('fileDownloaders', function (Blueprint $table) {
             $table->increments('id');
-            $table->ipAddress('ip_visitor');	            
+            $table->ipAddress('ip_Downloader');	
             $table->string('country')->nullable();
-            $table->integer('link_id')->unsigned();
+            $table->integer('file_id')->unsigned();
             $table->timestamps();
         });
-        // Schema::table('linkVisitors', function ( $table) {
-        //     $table->foreign('link_id')->references('id')->on('links');
+        // Schema::table('fileDownloaders', function ( $table) {
+        //     $table->foreign('file_id')->references('id')->on('files');
         //  });
     }
 
@@ -33,7 +32,8 @@ class LinkVisitors extends Migration
      */
     public function down()
     {
-        // $table->dropForeign('linkVisitors_link_id_foreign');                
-        Schema::dropIfExists('linkVisitors');
+        // $table->dropForeign('fileDownloaders_file_id_foreign');                
+        
+        Schema::dropIfExists('fileDownloaders');
     }
 }

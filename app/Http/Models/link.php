@@ -22,16 +22,16 @@ class link extends Model
     |  Public Functions
     |------------------------
     */
- 
+    public function AllLinks()
+    {
+    return $this::all();
+    }
     /* list All Links  */      
     public function links()
     {
      return $this->where('isDeleted','0')->orderBy('created_at','desc');
     }
-    public function AllLinks()
-    {
-    return $this::all();
-    }
+   
     /* list of  Links has been deleted and list (Desc) by create date */
     public function deletedLinks()
     {

@@ -19,13 +19,12 @@
           <table id="DataTable" class="mdl-data-table  table-hover" cellspacing="0" width="100%">
             <div class="col-md-3 " style="top:10px;">
                 <a href="{{route('files.create')}}" type="button" class="btn btn-success btn-md">
-                    <i class="fa fa-link"></i>
-                    Add New file
+                    <i class="fa fa-plus"></i>   Add New file
                 </a>
             </div>
             <thead>
                 <tr>
-                    <th>Link</th>
+                    <th>file</th>
                     <!-- <th>Title</th> -->
                     <th>Description</th>
                     <!-- <th>Views</th> -->
@@ -40,7 +39,7 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Link</th>
+                    <th>file</th>
                     <!-- <th>Title</th> -->
                     <th>Description</th>
                     <!-- <th>Views</th> -->
@@ -107,61 +106,143 @@
                     <td>{{$file->created_at }}</td>
                     <!-- <td>{{$file->updated_at }}</td>                   -->
 
-                    <td>
-                        <a href="{{route('files.edit',$file->id)}}" data-toggle="modal" class="text-success" >
-                            <span class="text">
+                    <td class="text-center">
+                            <dt>
+                              <a href="{{route('files.edit',$file->id)}}" title="Edit" class="text-info" >
+                                <span class="text text-md" >
                                 <i class="fa fa-edit"></i> 
-                            </span>
-                        </a>
-                        <a href="#delete-link-{{$file->id}}" data-toggle="modal" class=" text-danger" >
-                            <span class="text">
-                                <i class="fa fa-eye-slash"></i> 
-                            </span>
-                        </a>
-                    </td>
-                </tr>
-                <div class="modal fade" id="delete-link-{{$file->id}}">
-                    <div class="modal-dialog modal-shorten">
-                        <div class="modal-content bg-default">
-                            <div class="modal-body">
-                                <div class="padder">
-                                    {!! Form::open(array('route' =>['files.destroy',$file->id],
-                                    'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
-                                    <div class="text-center">
-                                        <h4 id="msg-shorten ">Hide Shorten link</h4>
-                                    </div>
-                                    <p class="text-danger">Are You Sure You Want Hide
-                                        <b class="text-success">{{$file->slug}}</b> link ?</p> 
-                                        <div class="modal-footer">
+                                </span>
+                              </a>
+                              @if(Route::is('files.index'))
+                                <a href="#hide-file-{{$file->id}}" title="Hide" data-toggle="modal" class=" text-primary" >
+                                  <span class="text text-md" >
+                                    <i class="fa  fa-eye-slash"></i> 
+                                  </span>	
+                                </a>
+                                
+                              @elseif(Route::is('files.deletedFiles'))
+                                  <a href="#restore-file-{{$file->id}}" title="UnHide" data-toggle="modal" class=" text-warning" >
+                                  <span class="text text-md" >
+                                    <i class="fa  fa-eye"></i> 
+                                  </span>	
+                                </a>
+                              @endif  
+                                <a href="#delete-file-{{$file->id}}" title="Delete" data-toggle="modal" class=" text-danger" >
+                                  <span class="text text-md" >
+                                    <i class="fa  fa-trash"></i> 
+                                  </span>	
+                                </a>
+                            </dt>
+                          </td>   
+                        </tr>
+                                <div class="modal fade" id="delete-file-{{$file->id}}">
+                                  <div class="modal-dialog modal-shorten">
+                                    <div class="modal-content bg-default">
+                                    <div class="modal-body">
+                                      <div class="padder">
+                                        {{Form::open(array('route' =>['files.destroy',$file->id],
+                                        'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
+                      
+                                        <div class="text-center">
+                                          <h4 id="msg-shorten ">Delete file</h4>
+                                        </div>
+                                        <p class="text-danger">Are You Sure You Want Delete
+                                          <b class="text-success">{{$file->slug}}</b> file ?</p> 
+                                          <div class="modal-footer">
                                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                cancle
+                                              cancle
                                             </button>
                                             <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                                <i class="fa fa-eye-slash"></i> Hide
+                                              <i class="fa fa-trash"></i> Delete
                                             </button>
+                                          </div>
+                                          {{Form::close() }}
                                         </div>
-                                        {!! Form::close() !!}
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                                @if(Route::is('files.index'))
+                                  <div class="modal fade" id="hide-file-{{$file->id}}">
+                                    <div class="modal-dialog modal-shorten">
+                                      <div class="modal-content bg-default">
+                                      <div class="modal-body">
+                                        <div class="padder">
+                                          {{Form::open(array('route' =>['files.delete',$file->id],
+                                          'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
+                      
+                                          <div class="text-center">
+                                            <h4 id="msg-shorten ">Hidden Shorten file</h4>
+                                          </div>
+                                          <p class="text-danger">Are You Sure You Want Hidden
+                                            <b class="text-success">{{$file->slug}}</b> file ?</p> 
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+                                                cancle
+                                              </button>
+                                              <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
+                                                <i class="fa fa-eye-slash"></i> Hide
+                                              </button>
+                                            </div>
+                                            {{Form::close() }}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                @elseif(Route::is('files.deletedFiles'))
+                                <div class="modal fade" id="restore-file-{{$file->id}}">
+                                  <div class="modal-dialog modal-shorten">
+                                    <div class="modal-content bg-default">
+                                      <div class="modal-body">
+                                        <div class="padder">
+                                          {{Form::open(array('route' =>['files.restore',$file->id], 'method'=>'post',
+                                          'class'=>'form-restore','id'=>'form-restore' ))
+                                          }}
+                                          <div class="text-center">
+                                            <h4 id="msg-shorten ">UnHidden file</h4>
+                                          </div>
+                                          <hr>
+                                          <p>Are You Sure You Want UnHidden
+                                            <b class="text-info">
+                                              {{$file->slug}} </b> file ?
+                                            </p> 
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+                                                cancle
+                                              </button>
+                                              <button id="btn-restore" class="btn btn-rounded  pull-right btn-success" type="submit">
+                                                <i class="fa fa-eye"></i> UnHide
+                                              </button>
+                                            </div>
+                                            {{Form::close() }}
+                                          </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @endif
                     @endforeach
                 </tbody>
             </table>
-         
             @else
             <div class="col-md-8 col-md-offset-2">
             <center> 
-                <h2 class="text-danger alert alert-warning"> You don't have files</h2>
+                @if(Route::is('files.index'))
+                    <h2 class="text-danger alert alert-warning"> You don't have files</h2>
+                @else
+                    <h2 class="text-danger alert alert-warning"> You don't have Hidden files</h2>
+                @endif
             </center>
             </div>
+            @if(Route::is('files.index'))
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
                 <a href="{{route('files.create')}}" class="btn btn-success"> 
-                    Click to Add New file
+                <i class="fa fa-plus"></i>  Click to Add New file
                 </a>
             </div>
+            @endif 
             @endif 
         </section>
     </section>

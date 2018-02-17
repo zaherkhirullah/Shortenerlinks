@@ -8,9 +8,9 @@
     </div>
 @endif
 {{ Form::open(array ('route' =>  ['links.update',$link->id],
-     'method'  => 'POST', 'id'=>'shorten_form' )) }}
+     'method'  => 'PATCH', 'id'=>'shorten_form' )) }}
      <div style="display: none;">
-	{{ method_field('PUT') }}
+	{{ method_field('PATCH') }}
 	{{ csrf_field() }}
 </div>
 <div class="col-md-12">
