@@ -23,5 +23,10 @@ class OptionsSeed extends Seeder
         $option->name='Captcha_secret_Key';
         $option->value='';
         $option->save();
+        $option = new \App\Http\Models\Options();
+        $option->name='Link_Timer';
+        $option->intV=5;
+        $option->save();
+        
     }
 }

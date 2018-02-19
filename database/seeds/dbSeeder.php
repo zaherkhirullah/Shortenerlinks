@@ -52,6 +52,10 @@ class dbSeeder extends Seeder
         $role->name='admin';
         $role->slug='Admin';
         $role->save();
+        $role = new \App\Http\Models\role();
+        $role->name='manager';
+        $role->slug='Manager';
+        $role->save();
 
         $user = new \App\User();
         $user->first_name='zaher';
@@ -63,15 +67,6 @@ class dbSeeder extends Seeder
         $user->password=bcrypt('Zz96321//');
         $user->save();
         
-        $profile = new \App\Profile();
-        $profile->user_id=1;
-        $profile->withdrawal_method_id=1;
-        $profile->withdrawal_email='zahir.hayrallah@gmail.com';
-        $profile->save();
-        
-        $balance = new \App\Balance();
-        $balance->user_id=1;
-        $balance->save();
     
         $user = new \App\User();
         $user->first_name='The';
@@ -83,6 +78,16 @@ class dbSeeder extends Seeder
         $user->password=bcrypt('admin');
         $user->save();
 
+        $profile = new \App\Profile();
+        $profile->user_id=1;
+        $profile->withdrawal_method_id=1;
+        $profile->withdrawal_email='zahir.hayrallah@gmail.com';
+        $profile->save();
+        
+        $balance = new \App\Balance();
+        $balance->user_id=1;
+        $balance->save();
+        
         $profile = new \App\Profile();
         $profile->user_id=2;
         $profile->withdrawal_method_id=1;
