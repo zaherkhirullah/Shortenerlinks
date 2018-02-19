@@ -23,10 +23,6 @@
     <!-- /.box-header -->
     
     <section class="box-body"> 
-        @php 
-        $x = geoip(Request::ip())->country;
-        @endphp
-      "ip country : "  {{$x}}
         
       @if(count($links))
       <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
