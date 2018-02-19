@@ -12,6 +12,26 @@ use Carbon\Carbon ;
 
 class HomeController extends Controller
 {
+    public  function get_ip_env() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        return $ipaddress;
+    }
+  
     public function index()
     {
         return view('home.home');
@@ -48,36 +68,10 @@ class HomeController extends Controller
 
     public function getLink(Request $request)
     {
-        $ipv =$request->proxy();
-        return $ipv;
         $link = $this->llink($request->slug);
         return view('home.link',compact('link'));
     }
-    public  function get_ip_env() {
-        $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-            $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        else
-            $ipaddress = 'UNKNOWN';
-     
-        return $ipaddress;
-    }
-    public function getClientIp()
-    {
-        $ipAddresses = $this->getClientIps();
-
-        return $ipAddresses[0];
-    }
+   
     public function goToLink(Request $request)
     {   
         $link = $this->llink($request->slug);

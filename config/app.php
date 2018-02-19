@@ -168,6 +168,8 @@ return [
         // Monarobase\CountryList\CountryListServiceProvider::class,
         'Fideloper\Proxy\TrustedProxyServiceProvider',
          'Collective\Html\HtmlServiceProvider',
+         \Torann\GeoIP\GeoIPServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -235,6 +237,8 @@ return [
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         // 'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         // 'Countries' => Monarobase\CountryList\CountryListFacade::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+
     ],
 
 ];
