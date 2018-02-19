@@ -36,8 +36,8 @@
             echo "Your IP address is : $ipaddress";
         }
         $country = getenv('GEOIP_COUNTRY_NAME');
-        echo "Your country : ". $country;
-        ?>  
+        echo "Your country : $country";
+    ?>  
       @if(count($links))
       <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
            <div class="col-sm-3 " style="top:10px;">
