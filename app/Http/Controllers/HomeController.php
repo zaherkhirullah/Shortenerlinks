@@ -68,7 +68,9 @@ class HomeController extends Controller
 
     public function getLink(Request $request)
     { $ip = $request->ip();
-        $x = geoip($ip)->country;
+        $x ="Country:" . geoip($ip)->country .
+        " ip:" .geoip($ip)->ip
+        ." State : " . geoip($ip)->state;
         return  $x ;
         $link = $this->llink($request->slug);
         return view('home.link',compact('link'));
