@@ -34,7 +34,7 @@ class LinkVisitors extends Migration
     public function down()
     { 
         Schema::table('linkVisitors', function ( $table) {
-        //  $table->dropForeign('linkVisitors_link_id_foreign');                
+         $table->dropForeign('linkVisitors_link_id_foreign');                
         });
         Schema::dropIfExists('linkVisitors');
     }

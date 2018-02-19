@@ -34,7 +34,7 @@ class FileDownloaders extends Migration
     {
 
         Schema::table('fileDownloaders', function ( $table) {
-        // $table->dropForeign('fileDownloaders_file_id_foreign');                         
+            $table->dropForeign('fileDownloaders_file_id_foreign');                         
         });
         
         Schema::dropIfExists('fileDownloaders');

@@ -32,9 +32,9 @@ class CreateWithdrawsTable extends Migration
 
     public function down()
     {
-        // Schema::table('withdraws', function ($table) {
-        //     $table->dropForeign('withdraws_user_id_foreign');
-        //  });
+        Schema::table('withdraws', function ($table) {
+            $table->dropForeign('withdraws_user_id_foreign');
+         });
         Schema::dropIfExists('withdraws');
 
     }

@@ -53,17 +53,17 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        // Schema::table('links', function ( $table) {
-        //     $table->dropForeign('links_user_id_foreign');
-        //     $table->dropForeign('links_domain_id_foreign');
-        //     $table->dropForeign('links_folder_id_foreign');
-        //     $table->dropForeign('links_ad_id_foreign');
-        //     $table->dropIndex  ('links_user_id_index');
-        //     $table->dropIndex  ('links_domain_id_index');
-        //     $table->dropIndex  ('links_folder_id_index');
-        //     $table->dropIndex  ('links_ad_id_index');
+        Schema::table('links', function ( $table) {
+            $table->dropForeign('links_user_id_foreign');
+            $table->dropForeign('links_domain_id_foreign');
+            $table->dropForeign('links_folder_id_foreign');
+            $table->dropForeign('links_ad_id_foreign');
+            $table->dropIndex  ('links_user_id_index');
+            $table->dropIndex  ('links_domain_id_index');
+            $table->dropIndex  ('links_folder_id_index');
+            $table->dropIndex  ('links_ad_id_index');
 
-        // });
+        });
 
         
         Schema::dropIfExists('links');

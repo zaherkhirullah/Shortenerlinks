@@ -52,15 +52,15 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        // Schema::table('files', function ( $table) {
+        Schema::table('files', function ( $table) {
     
-        // $table->dropForeign('files_user_id_foreign'  );
-        // $table->dropForeign('files_domain_id_foreign');
-        // $table->dropForeign('files_folder_id_foreign');
-        // $table->dropIndex('files_user_id_index');
-        // $table->dropIndex('files_domain_id_index');
-        // $table->dropIndex('files_folder_id_index');
-        // }); 
+        $table->dropForeign('files_user_id_foreign'  );
+        $table->dropForeign('files_domain_id_foreign');
+        $table->dropForeign('files_folder_id_foreign');
+        $table->dropIndex('files_user_id_index');
+        $table->dropIndex('files_domain_id_index');
+        $table->dropIndex('files_folder_id_index');
+        }); 
     Schema::dropIfExists('files');        
 
     }
