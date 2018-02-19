@@ -1,4 +1,9 @@
 <?php
+// Route::get('ip', function () {
+// 	$ip = '66.102.0.0';
+//     $data = \Location::get($ip);
+//     dd($data);
+// });
 
 /*
 |=============================
@@ -16,7 +21,7 @@ Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store'
 // captcha link
 Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
 Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
 Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
 // captcha file

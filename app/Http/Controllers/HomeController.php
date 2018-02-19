@@ -30,6 +30,12 @@ class HomeController extends Controller
             $ipaddress = 'UNKNOWN';
      
         return $ipaddress;
+
+        // $ip = $request->ip();
+        // $x ="Country:" . geoip($ip)->country .
+        // " ip:" .geoip($ip)->ip
+        // ." State :" . geoip($ip)->state;
+        // return  $x ;
     }
   
     public function index()
@@ -67,11 +73,7 @@ class HomeController extends Controller
     }
 
     public function getLink(Request $request)
-    { $ip = $request->ip();
-        $x ="Country:" . geoip($ip)->country .
-        " ip:" .geoip($ip)->ip
-        ." State : " . geoip($ip)->state;
-        return  $x ;
+    {
         $link = $this->llink($request->slug);
         return view('home.link',compact('link'));
     }
@@ -81,12 +83,12 @@ class HomeController extends Controller
         $link = $this->llink($request->slug);
         $ip = $request->ip();
         $link_id =$link->id;
-    $link_visitorr = linkVisitor::where([
-            ['ip_visitor',$ip],['link_id',$link_id],
-            ['created_at',">",Today()],
-            ['created_at',"<",Carbon::today()->addDay(1)]
-        ]
-        )->first();
+        $link_visitorr = linkVisitor::where([
+                ['ip_visitor',$ip],['link_id',$link_id],
+                ['created_at',">",Today()],
+                ['created_at',"<",Carbon::today()->addDay(1)]
+            ]
+            )->first();
         return $link_visitorr ;
             if($link_visitorr == null){
             $link->clicks += 1;

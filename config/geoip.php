@@ -127,7 +127,7 @@ return [
     */
 
     'default_location' => [
-        'ip' => '232.223.11.11',
+        'ip' => '88.230.177.243',
         'iso_code' => 'US',
         'country' => 'United States',
         'city' => 'New Haven',
