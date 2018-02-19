@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\link;
 use App\Http\Models\file;
 use Auth ;
-use Carbon\Carbon ;
+use Carbon\Carbon;
 class Earn extends Model
 {
     // Today()->Format('Y-m-d')

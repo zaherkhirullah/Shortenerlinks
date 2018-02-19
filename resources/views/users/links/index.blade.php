@@ -22,7 +22,22 @@
     </header>
     <!-- /.box-header -->
     
-    <section class="box-body">   
+    <section class="box-body"> 
+        
+      <?php
+ 
+        if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $pipaddress = getenv('HTTP_X_FORWARDED_FOR');
+            $ipaddress = getenv('REMOTE_ADDR');
+    echo "Your Proxy IP address is : ".$pipaddress. "(via $ipaddress)" ;
+        } 
+        else {
+            $ipaddress = getenv('REMOTE_ADDR');
+            echo "Your IP address is : $ipaddress";
+        }
+        $country = getenv('GEOIP_COUNTRY_NAME');
+        echo "Your country : ". $country;
+        ?>  
       @if(count($links))
       <table id="DataTable" class="mdl-data-table table-hover table" cellspacing="0" width="100%">
            <div class="col-sm-3 " style="top:10px;">

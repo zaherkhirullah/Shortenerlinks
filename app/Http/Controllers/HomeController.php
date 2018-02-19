@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Models\link;
 use App\Http\Models\file;
+use App\Http\Models\linkVisitor;
+use App\Http\Models\fileDownloader;
+use Carbon\Carbon ;
+
 
 class HomeController extends Controller
 {
-    
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
     public function index()
     {
         return view('home.home');
@@ -49,17 +48,59 @@ class HomeController extends Controller
 
     public function getLink(Request $request)
     {
+        $ipv =$request->proxy();
+        return $ipv;
         $link = $this->llink($request->slug);
         return view('home.link',compact('link'));
     }
-    
+    public  function get_ip_env() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        return $ipaddress;
+    }
+    public function getClientIp()
+    {
+        $ipAddresses = $this->getClientIps();
+
+        return $ipAddresses[0];
+    }
     public function goToLink(Request $request)
     {   
         $link = $this->llink($request->slug);
+        $ip = $request->ip();
+        $link_id =$link->id;
+    $link_visitorr = linkVisitor::where([
+            ['ip_visitor',$ip],['link_id',$link_id],
+            ['created_at',">",Today()],
+            ['created_at',"<",Carbon::today()->addDay(1)]
+        ]
+        )->first();
+        return $link_visitorr ;
+            if($link_visitorr == null){
             $link->clicks += 1;
             $link->earnings += 0.004;
             $link->save();
-            return redirect($link->url);
+            $linkVisitor = new linkVisitor();
+            $linkVisitor->ip_visitor = $ip;
+            $linkVisitor->link_id = $link_id;
+            $linkVisitor->save();
+        }
+            
+        return redirect($link->url);
     }
     // file
     public function visitFile($slug)
