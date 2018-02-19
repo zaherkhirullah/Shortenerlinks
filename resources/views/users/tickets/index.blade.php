@@ -56,17 +56,18 @@
                         <i class="fa fa-eye"></i></a> {{$ticket->subject}}
                         </td>
                     <td class="v-middle hidden-xs" >{{$ticket->message}}</td>
-                    <td class="v-middle hidden-xs">
-                     {{$ticket->isClosed}} <span class="btn-xs text-success text-xs"> $</span> 
-                    </td>
+                    
 
                     <td class="v-middle hidden-xs">
-                            @if($ticket->isClosed == 1)
-                            <i class="fa fa-lock"></i> 
-                            <b class="text-danger">Closed</b>
-                        @else 
-                        <i class="fa fa-unlock"></i> 
-                        <b class="text-danger">Open</b>
+                        @if($ticket->isClosed == 1)
+                            <b class="text-danger">
+                                <i class="fa fa-lock"></i> 
+                                Closed
+                            </b>
+                        @else
+                            <b class="text-success">
+                                <i class="fa fa-unlock"></i> Open
+                            </b>
                         @endif
                         </td>
                     <td class="v-middle hidden-xs">{{$ticket->created_at}}</td>

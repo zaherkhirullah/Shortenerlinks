@@ -33,9 +33,9 @@ class CreateTicketsTable extends Migration
     
     public function down()
     {
-        Schema::table('tickets', function ( $table) {
-            $table->dropForeign('tickets_user_id_foreign');        
-         });
+        // Schema::table('tickets', function ( $table) {
+        //     $table->dropForeign('tickets_user_id_foreign');        
+        //  });
         Schema::dropIfExists('tickets');
        
     }

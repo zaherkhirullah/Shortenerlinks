@@ -60,9 +60,9 @@ class CreateUsersTable extends Migration
     }
     public function down()
     {
-        Schema::table('users', function ( $table) {
-            $table->dropForeign('users_role_id_foreign');
-        });
+        // Schema::table('users', function ( $table) {
+        //     $table->dropForeign('users_role_id_foreign');
+        // });
            
         Schema::dropIfExists('users'); 
         Schema::dropIfExists('profile'); 

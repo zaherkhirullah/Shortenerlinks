@@ -50,16 +50,17 @@ class TicketController extends Controller
     // show Ticket details
     public function show(Ticket $ticket)
     {
-        return view('users.tickets.show',compact('Ticket'));
+        return view('users.tickets.show',compact('ticket'));
     }
     // edit Ticket details
     public function edit(Ticket $ticket)
     {
-        return view('users.tickets.Form',compact('Ticket'));
+        return view('users.tickets.Form',compact('ticket'));
     }
     // update function
     public function update(Request $request, Ticket $ticket)
     {    
+        $ticket->update($request->all());
         Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' Ticket :)');
         return redirect()->route('ticket.index');
     }

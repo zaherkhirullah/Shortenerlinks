@@ -21,9 +21,9 @@ class LinkVisitors extends Migration
             $table->integer('link_id')->unsigned();
             $table->timestamps();
         });
-        // Schema::table('linkVisitors', function ( $table) {
-        //     $table->foreign('link_id')->references('id')->on('links');
-        //  });
+        Schema::table('linkVisitors', function ( $table) {
+            $table->foreign('link_id')->references('id')->on('links');
+         });
     }
 
     /**
@@ -32,8 +32,10 @@ class LinkVisitors extends Migration
      * @return void
      */
     public function down()
-    {
-        // $table->dropForeign('linkVisitors_link_id_foreign');                
+    { 
+        Schema::table('linkVisitors', function ( $table) {
+        //  $table->dropForeign('linkVisitors_link_id_foreign');                
+        });
         Schema::dropIfExists('linkVisitors');
     }
 }

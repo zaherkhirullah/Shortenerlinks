@@ -158,14 +158,37 @@
 					</li>
 					<!-- Contatcs -->
 					<li>
-						<a href="/admin/contacts">
+						<a href="#Contacts">
 							<i class="fa fa-phone">
-							<b class="bg-warning dker"></b>
+								<b class="bg-warning"></b>
 							</i>
-							<span>Contatcs</span>
+							<span class="pull-right">
+								<i class="fa fa-angle-down text"></i>
+								<i class="fa fa-angle-up text-active"></i>
+							</span>
+							<span>Tickets & Wallets</span>
 						</a>
-						</li>
-						
+						<ul class="nav lt">
+							<li>
+								<a href='{{route('contacts.index')}}'>
+									<i class="fa fa-phone">
+									</i>
+									<span>Contatcs</span>
+								</a>
+								</li>
+								
+							<li>
+								<li>
+									<a href='{{route('tickets.index')}}' >
+										<i class="fa fa-phone">
+										</i>
+										<span>Tickets</span>
+									</a>
+								</li>
+							<li>
+						</ul>
+					</li>
+
 					<li>
 						<a href="#Tools">
 							<i class="fa fa-flask">

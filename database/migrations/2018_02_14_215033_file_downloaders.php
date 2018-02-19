@@ -20,9 +20,9 @@ class FileDownloaders extends Migration
             $table->integer('file_id')->unsigned();
             $table->timestamps();
         });
-        // Schema::table('fileDownloaders', function ( $table) {
-        //     $table->foreign('file_id')->references('id')->on('files');
-        //  });
+        Schema::table('fileDownloaders', function ( $table) {
+            $table->foreign('file_id')->references('id')->on('files');
+         });
     }
 
     /**
@@ -32,7 +32,10 @@ class FileDownloaders extends Migration
      */
     public function down()
     {
-        // $table->dropForeign('fileDownloaders_file_id_foreign');                
+
+        Schema::table('fileDownloaders', function ( $table) {
+        // $table->dropForeign('fileDownloaders_file_id_foreign');                         
+        });
         
         Schema::dropIfExists('fileDownloaders');
     }
