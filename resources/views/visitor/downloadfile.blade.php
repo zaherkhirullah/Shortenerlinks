@@ -26,7 +26,7 @@
                 {!! $ad->value !!}
                 @endforeach
                 </div>
-                <form method="POST" id="form_post" action="{{route('downloadFile',$file->slug)}}" accept-charset="UTF-8">
+                <form method="POST" id="form_post" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
 
                 <button type="submit" id="btn-main" class="btn btn-main" disabled="true" >Get file</button>

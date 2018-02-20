@@ -9,9 +9,9 @@
               <div class="text-center">
                 <h4>Your link is almost ready.</h4>
                 <div style="width: 300px; margin: 0 auto;">
-                    @foreach($ads->take(1)>get() as $ad)
-                    {!! $ad->value !!}
-                    @endforeach
+                        @foreach($ads->take(1)->get() as $ad)
+                        {!! $ad->value !!}
+                        @endforeach
                 </div>
                 <span id="countdown" class="countdown end">
                 <span id="timer" class="timer">{{$timer}}</span>
