@@ -10,8 +10,13 @@
                         <div class="afs_ads">&nbsp;</div>
                         <h4>Please check the captcha box to proceed to the destination page.</h4>
                         <span id="msg-adblock" class="msg-adblock">Nothing.</span>
-                    
+                        <div style="width: 300px; margin: 0 auto;">
+                            @foreach($ads->take(1)->get() as $ad)
+                            {!! $ad->value !!}
+                            @endforeach
+                        </div>
                         @if(Route::is('visitLink'))
+                        
                         <form method="POST" action="{{route('getLink',$link->slug)}}" accept-charset="UTF-8" id="captcha-form">    
                         @elseif(Route::is('visitFile'))
                         <form method="POST" action="{{route('getFile',$file->slug)}}" accept-charset="UTF-8" id="captcha-form">    
@@ -24,8 +29,8 @@
                                 <div class="center-captcha" class="centCaptcha">
                                     <div class="centCaptcha relative">
                                         <div class="centCaptcha  absolute">
-                                            <div class="g-recaptcha" data-sitekey="6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5"></div> 
-                                            <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k=6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5" frameborder="0" scrolling="no"
+                                            <div class="g-recaptcha" data-sitekey="{{$site_key}}"></div> 
+                                            <iframe class="banner centCaptcha" src="https://www.google.com/recaptcha/api/fallback?k={{$site_key}}" frameborder="0" scrolling="no"
                                             style="border-style: none;">
                                             </iframe>
                                                         </div>
@@ -39,6 +44,11 @@
                                 <input type="submit">
                             </noscript>
                         </form>
+                        <div style="width: 300px; margin: 0 auto;">
+                                @foreach($ads->take(2)->skip(1)->get() as $ad)
+                                {!! $ad->value !!}
+                                @endforeach
+                        </div>
                         <script type="text/javascript" src="https://toro-tags.com/_tags/jstags.js?s=mx/ouo/300250">
                         </script>
                          @if(Route::is('visitLink'))

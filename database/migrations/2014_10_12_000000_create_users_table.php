@@ -36,7 +36,8 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('profile', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('avatar',255)->nullable();
             $table->string('phone_number',255)->default(0);
             $table->string('withdrawal_email',255)->nullable();
@@ -44,18 +45,18 @@ class CreateUsersTable extends Migration
             $table->string('location')->nullable();     
             $table->timestamps();
             $table->engine = 'InnoDB';
-            $table->primary('id');
         });
         
         Schema::create('Balances', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->float('avilable_amount',8,4)->default(0);
             $table->float('advertiser_balance',8,4)->default(0);
             $table->float('publisher_balance',8,4)->default(0);
             $table->timestamps();
 
             $table->engine = 'InnoDB';
-            $table->primary(['id']);
+            // $table->primary('id' ,'user_id');
         });
     }
     public function down()

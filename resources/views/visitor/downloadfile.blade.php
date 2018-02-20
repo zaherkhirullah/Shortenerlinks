@@ -8,23 +8,36 @@
             <div class="skip-container">
               <div class="text-center">
                 <h4>Your file is almost ready.</h4>
+                <div style="width: 300px; margin: 0 auto;">                
+                @foreach($ads->take(1)->get() as $ad)
+                {!! $ad->value !!}
+                @endforeach
+                </div>
                 <span id="countdown" class="countdown end">
-                <span id="timer" class="timer">2</span>
+                <span id="timer" class="timer">{{$timer}}</span>
                 <br>Seconds
                 </span>
-                <span class="desc"><a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
-                <a href="{{route('rates')}}">$15 / 10000</a> views.
+                <span class="desc">
+                    <a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
+                    <a href="{{route('rates')}}">$15 / 10000</a> views.
                 </span>
-                <form method="POST" id="form_post" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
+                <div style="width: 300px; margin: 0 auto;">
+                @foreach($ads->take(1)->skip(1)->get() as $ad)
+                {!! $ad->value !!}
+                @endforeach
+                </div>
+                <form method="POST" id="form_post" action="{{route('downloadFile',$file->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
-              
+
                 <button type="submit" id="btn-main" class="btn btn-main" disabled="true" >Get file</button>
                 <!-- <noscript disabled="true">&lt;button type="submit" class="btn btn-main"&gt;Get file&lt;/button&gt;</noscript> -->
                 </form>
 
                 <div style="width: 300px; margin: 0 auto;">
-                    <script data-cfasync="false" type="text/javascript" src="//p220333.clksite.com/adServe/banners?tid=IF1OUO_300X250"></script>
-                 </div>
+                        @foreach($ads->take(1)->skip(2)->get() as $ad)
+                        {!! $ad->value !!}
+                        @endforeach
+                        </div>
                 </div>
             </div>
         </div>

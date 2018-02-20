@@ -79,23 +79,23 @@ class dbSeeder extends Seeder
         $user->save();
 
         $profile = new \App\Profile();
-        $profile->id=1;
+        $profile->user_id=1;
         $profile->withdrawal_method_id=1;
         $profile->withdrawal_email='zahir.hayrallah@gmail.com';
         $profile->save();
         
         $balance = new \App\Balance();
-        $balance->id=1;
+        $balance->user_id=1;
         $balance->save();
         
         $profile = new \App\Profile();
-        $profile->id=2;
+        $profile->user_id=2;
         $profile->withdrawal_method_id=1;
         $profile->withdrawal_email='admin@admin.com';
         $profile->save();
        
         $balance = new \App\Balance();
-        $balance->id=2;
+        $balance->user_id=2;
         $balance->save();
     }
 }

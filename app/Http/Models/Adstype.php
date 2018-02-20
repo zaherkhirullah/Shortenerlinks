@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adstype extends Model
 {
-   protected $table = 'ads_types';
-   protected $fillable = ['name','description','isDeleted',];
+    protected $table = 'ads_types';
+    protected $fillable = ['name','description','isDeleted',];
     
     // list All Adstype
     public function Adstypes()

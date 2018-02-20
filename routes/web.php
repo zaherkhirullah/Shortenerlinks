@@ -27,7 +27,8 @@ Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 // captcha file
 Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
 Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
 Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 
 
@@ -112,11 +113,11 @@ Route::prefix('user')->group(function()
     
      // Users Links
      Route::get( '/link/dlist', 'LinkController@deletedLinks')->name("link.deletedLinks");
-     Route::post( '/link/restore/{link}',array('uses' => 'LinkController@restore', 
+     Route::delete( '/link/restore/{link}',array('uses' => 'LinkController@restore', 
                                                'as' => 'link.restore'));
      // Users Files
      Route::get( '/file/dlist', 'FileController@deletedFiles')->name("file.deletedFiles");
-     Route::post( '/file/restore/{file}',array('uses' => 'FileController@restore', 
+     Route::delete( '/file/restore/{file}',array('uses' => 'FileController@restore', 
                                                'as' => 'file.restore'));
      // Users Recources
      Route::resource( '/folder', 'FolderController'); 

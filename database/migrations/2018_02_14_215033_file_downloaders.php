@@ -15,7 +15,7 @@ class FileDownloaders extends Migration
     {
         Schema::create('fileDownloaders', function (Blueprint $table) {
             $table->increments('id');
-            $table->ipAddress('ip_Downloader');	
+            $table->ipAddress('ip_downloader');	
             $table->string('country')->nullable();
             $table->integer('file_id')->unsigned();
             $table->timestamps();

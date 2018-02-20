@@ -8,22 +8,34 @@
             <div class="skip-container">
               <div class="text-center">
                 <h4>Your link is almost ready.</h4>
+                <div style="width: 300px; margin: 0 auto;">
+                    @foreach($ads->take(1)>get() as $ad)
+                    {!! $ad->value !!}
+                    @endforeach
+                </div>
                 <span id="countdown" class="countdown end">
-                <span id="timer" class="timer">2</span>
+                <span id="timer" class="timer">{{$timer}}</span>
                 <br>Seconds
                 </span>
                 <span class="desc">
                 <a href="{{url('/')}}">Join now</a> and earn on every link you shorten. Up to
-                <a href="{{route('rates')}}">$5 / 10000</a> views.
+                <a href="{{route('rates')}}"> $5 / 1000</a> views.
                 </span>
+                <div style="width: 300px; margin: 0 auto;">
+                        @foreach($ads->take(1)->skip(1)->get() as $ad)
+                        {!! $ad->value !!}
+                        @endforeach
+                </div>
                 <form method="POST" action="{{route('goLink',$link->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <button type="submit" disabled="true" id="btn-main" class="btn btn-main" data-single-click="" target="_blank">Get Link</button>
                 </form>
 
-                <!-- <div style="width: 300px; margin: 0 auto;">
-                    <script data-cfasync="false" type="text/javascript" src="//p220333.clksite.com/adServe/banners?tid=IF1OUO_300X250"></script>
-                 </div> -->
+                <div style="width: 300px; margin: 0 auto;">
+                    @foreach($ads->take(1)->skip(2)->get() as $ad)
+                    {!! $ad->value !!}
+                    @endforeach
+                </div>
                 </div>
             </div>
         </div>

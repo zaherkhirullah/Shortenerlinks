@@ -149,7 +149,7 @@
                   <div class="modal-content bg-default">
                     <div class="modal-body">
                       <div class="padder">
-                        {!! Form::open(array('route' =>['links.restore',$link->id], 'method'=>'delete',
+                        {!! Form::open(array('route' =>['link.restore',$link->id], 'method'=>'delete',
                         'class'=>'form-restore','id'=>'form-restore' ))
                         !!}
                         <div class="text-center">

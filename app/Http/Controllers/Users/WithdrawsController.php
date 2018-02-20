@@ -18,6 +18,15 @@ class WithdrawsController extends Controller
 
     public function index(withdraw $withdraw)
     {
+        $User= Auth::user();
+        $method_id = $User->profile->withdrawal_method_id;
+        $method = PayMethod::where('id',$method_id)->first();
+        $Balance=  $User->Balance->avilable_amount;
+        $PaymentMethod = $method->name;
+
+        $withdraws = $withdraw->Withdraws()->paginate(20);
+        return view('users.withdraws.index ',compact('withdraws','PaymentMethod','Balance') );
+   
           $withdraws = $withdraw->Withdraws()->paginate(20);
           return view('users.withdraws.index ',compact('withdraws'));
     }
