@@ -13,14 +13,14 @@ class FileDownloaders extends Migration
      */
     public function up()
     {
-        Schema::create('fileDownloaders', function (Blueprint $table) {
+        Schema::create('file_downloaders', function (Blueprint $table) {
             $table->increments('id');
             $table->ipAddress('ip_downloader');	
             $table->string('country')->nullable();
             $table->integer('file_id')->unsigned();
             $table->timestamps();
         });
-        Schema::table('fileDownloaders', function ( $table) {
+        Schema::table('file_downloaders', function ( $table) {
             $table->foreign('file_id')->references('id')->on('files');
          });
     }
@@ -33,10 +33,10 @@ class FileDownloaders extends Migration
     public function down()
     {
 
-        Schema::table('fileDownloaders', function ( $table) {
-            $table->dropForeign('fileDownloaders_file_id_foreign');                         
+        Schema::table('file_downloaders', function ( $table) {
+            $table->dropForeign('file_downloaders_file_id_foreign');                         
         });
         
-        Schema::dropIfExists('fileDownloaders');
+        Schema::dropIfExists('file_downloaders');
     }
 }

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class fileDownloader extends Model
 {
-    protected $table = 'fileDownloaders';    
+    protected $table = 'file_downloaders';    
     protected $fillable =   ['ip_downloader','file_id','country',  ];
 }
