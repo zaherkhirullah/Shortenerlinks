@@ -27,7 +27,7 @@ Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 // captcha file
 Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
 Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
 Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
 Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 
