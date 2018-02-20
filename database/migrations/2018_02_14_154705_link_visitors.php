@@ -14,14 +14,14 @@ class LinkVisitors extends Migration
      */
     public function up()
     {
-        Schema::create('linkVisitors', function (Blueprint $table) {
+        Schema::create('link_visitors', function (Blueprint $table) {
             $table->increments('id');
             $table->ipAddress('ip_visitor');	            
             $table->string('country')->nullable();
             $table->integer('link_id')->unsigned();
             $table->timestamps();
         });
-        Schema::table('linkVisitors', function ( $table) {
+        Schema::table('link_visitors', function ( $table) {
             $table->foreign('link_id')->references('id')->on('links');
          });
     }
@@ -33,9 +33,9 @@ class LinkVisitors extends Migration
      */
     public function down()
     { 
-        Schema::table('linkVisitors', function ( $table) {
-         $table->dropForeign('linkVisitors_link_id_foreign');                
+        Schema::table('link_visitors', function ( $table) {
+         $table->dropForeign('link_visitors_link_id_foreign');                
         });
-        Schema::dropIfExists('linkVisitors');
+        Schema::dropIfExists('link_visitors');
     }
 }
