@@ -133,22 +133,7 @@
 				</span>
 			</div>
 		</div>
-<script src="{{ asset('styles/home/js/jquery.min.js') }}"></script>
-<script src="{{ asset('styles/home/js/bootstrap.min.js') }}"></script>
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-24098524-7', 'auto');
-			ga('require', 'linkid', 'linkid.js');
-			ga('send', 'pageview');
-		</script>
-		<script type='text/javascript'>
-			var adParams = {p: '70728218', text: 'Skip the captcha and Get to the shorten URL.', btnText: 'Ok', barColor: '#fbecad', btnBgColor: '#FFFFFF',direction: 'LTR',position :'top',popOnClose:'true'  , serverdomain: 'wmedia'  ,addPuzzleImage:true };
-		</script>
-		<script type='text/javascript' src='https://wmedia.adk2.co/wmedia/tags/xnotificationbar/xnotificationbar.js?ap=1317'>
-		</script>
+		@include('_includes.visitor.scripts')
 	</body>
 	</html>
 	

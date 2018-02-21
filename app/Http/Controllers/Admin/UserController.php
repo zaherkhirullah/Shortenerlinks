@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Http\Models\link;
+use App\Http\Models\file;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -34,8 +36,10 @@ class UserController extends Controller
     
     public function show(User $user)
     {
-        
-        return view('admin.users.show',compact('user'));
+        $user_id =$user->id;
+        $links = link::where('user_id',$user_id)->get();
+        $files = file::where('user_id',$user_id)->get();
+        return view('admin.users.show',compact('user','links','files'));
     }
 
   

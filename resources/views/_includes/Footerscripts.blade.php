@@ -18,14 +18,26 @@
 <script type="text/javascript"> 
 
 	$(document).ready(function() {
-    $('#DataTable').DataTable( 
+        $('#DataTable').DataTable( 
 		{
         "order": [[ 3, "desc" ]],
         "scrollY":        "",
         "scrollCollapse": false,
         "paging":         true
-        } );
-
+        });
         new Clipboard('.btn-copy');
+} );
+    </script>
+    
+<script type="text/javascript"> 
+
+	$(document).ready(function() {
+        $('#DataTable_1').DataTable( 
+		{
+        "order": [[ 3, "desc" ]],
+        "scrollY":        "",
+        "scrollCollapse": false,
+        "paging":         true
+        });
 } );
 	</script>

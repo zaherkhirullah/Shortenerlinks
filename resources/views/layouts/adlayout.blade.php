@@ -102,5 +102,6 @@
 		</div>	
 		<!-- Scripts  -->
 		@include('_includes.Footerscripts')
+		
 	</body>
 	</html>
