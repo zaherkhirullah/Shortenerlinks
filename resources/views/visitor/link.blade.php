@@ -42,51 +42,29 @@
     </div>
 </div>
 
-<script>
-$(document).ready(function(){
+@endsection
+@section('scripts')
 
-    $('#btn-main').click(function() {
-    $('#form_post').attr('href','');
-    $(this).attr('disabled','disabled');
-});
-});
-</script>
-<script>
-
-var myVar = setInterval(myTimer, 1000);
-function myTimer()
-{
-    document.getElementById("btn-main").disabled = true;
-    if( document.getElementById("timer").innerHTML > 0){
-        document.getElementById("timer").innerHTML -=1;
-    }
-    else{
-        document.getElementById("btn-main").disabled = false;
-    }
-}
-</script>
-<!-- 
-<script>
-$(document).ready(function(){
-    $('#btn-main').disabled = true;
-        $myVar = setInterval(myTimer, 1000);
-      
-
+    <script>
+        $(document).ready(function(){
+        
+            $('#btn-main').click(function() {
+            $('#form_post').attr('href','');
+            $(this).attr('disabled','disabled');
+        });
+        });
+    </script>
+    <script>
+        var myVar = setInterval(myTimer, 1000);
         function myTimer()
         {
-         if( $('#timer').innerHTML > 0)
-         {
-            $('#timer').innerHTML -=1;
-         }
-         else
-         {
-            $('#btn-main').disabled = false;
-         }
+            document.getElementById("btn-main").disabled = true;
+            if( document.getElementById("timer").innerHTML > 0){
+                document.getElementById("timer").innerHTML -=1;
+            }
+            else{
+                document.getElementById("btn-main").disabled = false;
+            }
         }
-    $('#btn-main').click(function() {
-        $('#form_post').attr('disabled','disabled');
-        $(this).attr('disabled','disabled');
-    });
-});
-</script> -->
+    </script>
 @endsection

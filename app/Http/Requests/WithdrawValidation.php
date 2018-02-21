@@ -27,7 +27,7 @@ class WithdrawValidation extends FormRequest
             
             'amount'=>'integer|required',
             'withdraw_address'=>'string|required|max:500',
-            'withdrawal_method_id'=>'integer|required',
+            'withdrawal_method_id'=>'integer',
             'transaction_id' => 'string|max:500',
         ];
     }

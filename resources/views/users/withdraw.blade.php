@@ -19,6 +19,7 @@
         </header>
         <!-- /.box-header -->
         <section class="box-body scrollable hover">
+                
             <div class="row text-center m-b-xl">
                 <div class="col-xs-6 b-r b-light">
                     <span class="h3 text-danger font-bold m-t-xs m-b-xs block">$0.015</span>
@@ -33,6 +34,7 @@
                 <b>automatically paid on 1st day and 15th day of each month</b> 
                 but only if your earnings have reached a total of $5.00 or more for the previous day(s). In order to receive the payment you must fill up all the required fields in the settings section.
             </p>
+           
             <div class="row text-center padder-v m-b-xl b-t b-b b-light bg-light lter pull-in">
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">Payment processor</span>
@@ -71,6 +73,15 @@
                     <small class="h5 text-success m-b-xs block">2018-02-01</small>
                 </div>
             </div>
+            <div class="col-md-12">
+                    <div class=" text-center">
+                        <form action="{{route('withdraw.store')}}" method="post">
+                            {{ csrf_field() }}  
+                            
+                            <button type="submit" class="btn btn-success"> Withdraw </button>
+                            </form>
+                        </div>
+                    </div>
             <h4 class="font-thin">Transaction
                 <b>History</b>
             </h4>

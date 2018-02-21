@@ -2,6 +2,17 @@
 
 @section('content')
 <section class="col-md-8">
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
     <section class="vbox lter box box-info">
         <header class="box-header with-border text-center">
             <h3 class="box-title">
@@ -71,19 +82,83 @@
                     <small class="h5 text-success m-b-xs block">2018-02-01</small>
                 </div>
             </div>
+            <div class="col-md-12">
+                    <div class="form-group text-center">
+      {{ Form::open(array('route' => 'withdraw.store' , 'method'  => 'POST','id'=>'withdraw_form')) }}
+
+                            {{ csrf_field() }}  
+                        <div class="col-md-3">
+                            <div class="form-group {{$errors->has('amount') ? ' has-error' : ''}}">
+                                    {{ Form::text('amount','',
+                                    ['id'=>'path','placeholder'=>'amount','class' => "form-control ",'required' => 'required',])  
+                                    }}
+                                    @if ($errors->has('amount'))
+                                    <span class="help-block">
+                                      <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                                    @endif
+                            </div> 
+                        </div>  
+                        <div class="col-md-3">
+                                <div class="form-group {{$errors->has('withdraw_address') ? ' has-error' : ''}}">
+                                        {{ Form::text('withdraw_address','',
+                                        ['id'=>'path','placeholder'=>'withdraw address','class' => "form-control ",'required' => 'required',])  
+                                        }}
+                                        @if ($errors->has('withdraw_address'))
+                                        <span class="help-block">
+                                          <strong>{{ $errors->first('withdraw_address') }}</strong>
+                                        </span>
+                                        @endif
+                                </div>   
+                        </div> 
+                                     
+                            <button type="submit" class="btn btn-success"> Withdraw </button>
+                {{Form::close()}}
+                        </div>
+                    </div>
             <h4 class="font-thin">Transaction
                 <b>History</b>
             </h4>
             <table class="table table-striped table-flip-scroll cf">
                 <thead class="cf">
                     <tr>
-                        <th>Transaction ID</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Amount</th>
+                            <th>Date</th>                        
+                            <th>Transaction ID</th>
+                            <th>Method</th>
+                            <th>Amount</th>
+                            <th>Status</th>    
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($withdraws as $withdraw)
+                        <tr>
+                            <td>{{$withdraw->created_at}}  </td>                            
+                             @if($withdraw->transaction_id)
+                             <td>{{$withdraw->transaction_id}}  </td>                            
+                            @else
+                            <td> null  </td>                            
+                            @endif
+
+                            <td>{{$withdraw->withdrawal_method_id}}  </td>
+                            <td>{{$withdraw->amount}}  $</td>
+                            <td>
+                            @if($withdraw->status ==1)
+                            <dt> <b class="text-warning"><i class="fa fa-spinner"></i> Pending</b></dt>
+                            <dt>
+                                    {{ Form::open(array('route' =>  ['withdraw.destroy',$withdraw->id], 'method'  => 'delete','id'=>'withdraw_form')) }}
+                                    {{Form::submit('Cancle',['class'=> 'text text-danger'])}}
+                                    {{Form::close()}}                                      
+                            </dt>   
+                            @elseif($withdraw->status ==2)
+                            <b class="text-info"><i class="fa fa-check"></i> Accepted </b>
+                            @elseif($withdraw->status ==3)
+                                <b class="text-success"><i class="fa fa-lock"></i> Paid</b>
+                            @elseif($withdraw->status ==4)
+                                <b class="text-danger"><i class="fa fa-times"></i> cancled</b>
+                            @endif                                               
+                            </td>
+                            </tr>
+                    @endforeach        
                 </tbody>
             </table>
         </section>

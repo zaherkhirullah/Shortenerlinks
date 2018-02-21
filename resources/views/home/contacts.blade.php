@@ -25,11 +25,12 @@
 					</span>
 					thus you will be benefiting from all your traffic.
 				</p>
-		    	{{ Form::open(array('route' => 'home.contacts.store' , 'id'=>'Contacts_form')) }}
+		    	{{ Form::open(array('route' => 'home.contacts.store' , 'id'=>'contacts_form')) }}
+				
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('name') ? ' has-error' : ''}}">
-							{!!  Form::label('name','Name *')   !!}
+							{{  Form::label('name','Name *')   }}
 				  <input id="name" type="text" class="form-control " placeholder="Add name *" name="name" required>
 				  
                     @if ($errors->has('name'))
@@ -42,7 +43,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('email') ? ' has-error' : ''}}">
-							{!!  Form::label('email','Email *')   !!}
+							{{  Form::label('email','Email *')   }}
 							{{Form::email('email','', ['class' =>
 							"form-control input-sm  ",
 							'id'=>'email','placeholder'=>'Add Email'])  }}
@@ -57,7 +58,7 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('subject') ? ' has-error' : ''}}">
-							{!!  Form::label('subject','Subject *')   !!}
+							{{  Form::label('subject','Subject *')   }}
 							{{Form::text('subject','', ['class' =>"form-control input-sm" ,
 							'id'=>'subject','required'=>'true','placeholder'=>'Add subject'])  
 						     }}
@@ -72,7 +73,7 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('Message') ? ' has-error' : ''}}">
-							{!!  Form::label('Message','Message *')   !!}
+							{{  Form::label('Message','Message *')   }}
 							{{Form::textarea('Message','', ['class' =>
 							"form-control input-sm ",
 							'id'=>'Message','required'=>'true','placeholder'=>'Add Message'])  }}
@@ -87,21 +88,39 @@
 				</div>
 				<div class="join-us text-center">
 					<p>
-						{!! Form::submit('Send',['class' => 'btn btn-cta btn-cta-secondary',
-						'onclick'=>'submitForm()'])   !!}
+						{{ Form::submit('Send',[
+							'class' => 'btn btn-cta btn-cta-secondary',
+							'id'=>'send_btn'])   }}
 					</p>
 				</div>
-				{!! Form::close() !!}
+				{{ Form::close() }}
 			</div>
 		</div>
 	</div>
 </section>
-<script>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	
 	$(document).ready(function(){
-		$('Contacts_form').onclick.reset();
-	}
-});
+		$('#send_btn').click(function(e){
+			e.preventDefault();	
+			console.log('Hello');
+			$.ajax({
+				url:"{{route('home.contacts.store')}}",
+				datatype:'html',
+				type:'POST',
+				data: {'_token':"{{ csrf_token() }}"},
+				success: function(result){
+					// console.log(result);
+					document.getElementById('contacts_form').reset(),	
+					alert(result),
+				}
+			});
+				
+		});
+	});
 
 </script>
-
 @endsection

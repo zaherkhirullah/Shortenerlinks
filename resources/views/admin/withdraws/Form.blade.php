@@ -10,10 +10,10 @@
 					<div class="box-header with-border text-center">
 						<h3 class="box-title ">
 							<i class="fa fa-send"></i> 
-							@if(Route::is('tickets.create'))
-                              Add New ticket 
-							@elseif(Route::is('tickets.edit'))
-								Edit This ticket
+							@if(Route::is('withdraws.create'))
+                              Add New withdraw 
+							@elseif(Route::is('withdraws.edit'))
+								Edit This withdraw
 							@endif 
 							
 						</h3>
@@ -29,11 +29,10 @@
 						<div class="box-short" id="uploadFileNew" >
 							<div class="box box-solid shorten-member">
 								<div class="box-body">
-								@include('_includes.forms.admin.ticket.create')
-								@if(Route::is('tickets.create'))
-                                  @include('_includes.forms.admin.ticket.create')
-                                @elseif(Route::is('tickets.edit'))
-                                  @include('_includes.forms.admin.ticket.edit')
+								@if(Route::is('withdraws.create'))
+                                  @include('_includes.forms.admin.withdraw.create')
+                                @elseif(Route::is('withdraws.edit'))
+                                  @include('_includes.forms.admin.withdraw.edit')
                                 @endif
 								</div>
 							</div>

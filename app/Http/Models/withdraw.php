@@ -2,8 +2,10 @@
 
 namespace App\Http\Models;
 
+use App\Http\Models\PayMethod;
 use Illuminate\Database\Eloquent\Model;
 use Auth ;
+use App\User ;
 class withdraw extends Model
 {
     protected $table = 'withdraws';
@@ -20,5 +22,14 @@ class withdraw extends Model
     {
     return $this->where('isDeleted','1')->orderBy('updated_at','desc');
     }
+    public function PayMethod()
+    {
+      return $this->belongsTo(PayMethod::class); 
+    }
+    public function User()
+    {
+      return $this->belongsTo(User::class); 
+    }
+   
     
 }

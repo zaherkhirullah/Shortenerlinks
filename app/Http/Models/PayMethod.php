@@ -3,6 +3,7 @@
 namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\withdraw;
 
 class PayMethod extends Model
 {
@@ -19,6 +20,9 @@ class PayMethod extends Model
      {
          return view('admin.PayMethods.Form');
      }
- 
+     public function withdraws()
+     {
+         return $this ->hasMany( withdraw::class );
+     }
    
 }

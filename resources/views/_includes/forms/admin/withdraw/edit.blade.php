@@ -1,4 +1,4 @@
-{{ Form::open(array('route' =>  ['tickets.update',$ticket->id] , 'method'  => 'POST','id'=>'upload_form','tickets'=>true)) }}
+{{ Form::open(array('route' =>  ['withdraws.update',$withdraw->id] , 'method'  => 'POST','id'=>'upload_form','withdraws'=>true)) }}
 <div style="display: none;">
 	{{ method_field('PUT') }}
 	{{ csrf_field() }}
@@ -8,8 +8,8 @@
     <div class="card card-body">
     <div class="form-group {{$errors->has('subject') ? ' has-error' : ''}}">
       {{  Form::label('subject', 'subject')   }}
-      {{ Form::text('subject',$ticket->subject,
-      ['id'=>'subject','placeholder'=>'ticket subject','class' => "form-control ",'required' => 'required',])  
+      {{ Form::text('subject',$withdraw->subject,
+      ['id'=>'subject','placeholder'=>'withdraw subject','class' => "form-control ",'required' => 'required',])  
       }}
       @if ($errors->has('subject'))
       <span class="help-block">
@@ -19,8 +19,8 @@
     </div>
     <div class="form-group {{$errors->has('message') ? ' has-error' : ''}}">
       {{  Form::label('message', 'message')   }}
-      {{ Form::textarea('message',$ticket->message,
-      ['id'=>'path','placeholder'=>'Insert define to your ticket','class' => "form-control ",'required' => 'required',])  
+      {{ Form::textarea('message',$withdraw->message,
+      ['id'=>'path','placeholder'=>'Insert define to your withdraw','class' => "form-control ",'required' => 'required',])  
       }}
       @if ($errors->has('message'))
       <span class="help-block">
@@ -32,39 +32,39 @@
 
   <div class="col-md-8">
   <div class="form-group {{$errors->has('path') ? ' has-error' : ''}}">
-   @if(!isset($ticket->path))
+   @if(!isset($withdraw->path))
 
-<div class="ticketinput ticketinput-new input-group m-b-none" data-provides="ticketinput">
-    <div class="form-control" data-trigger="ticketinput">
+<div class="withdrawinput withdrawinput-new input-group m-b-none" data-provides="withdrawinput">
+    <div class="form-control" data-trigger="withdrawinput">
     <i class="fa fa-image m-r-xs"></i> 
-    <span class="ticketinput-ticketname">No ticket selected</span>
+    <span class="withdrawinput-withdrawname">No withdraw selected</span>
     </div>
-    <span class="input-group-addon btn btn-default btn-ticket">
-    <span class="ticketinput-new">Select ticket</span>
-    <span class="ticketinput-exists">Change</span>
+    <span class="input-group-addon btn btn-default btn-withdraw">
+    <span class="withdrawinput-new">Select withdraw</span>
+    <span class="withdrawinput-exists">Change</span>
     <input type="hidden">
-    <input type="ticket" name="path" value=""></span>
-    <a href="#" class="input-group-addon btn btn-default ticketinput-exists" data-dismiss="ticketinput">
+    <input type="withdraw" name="path" value=""></span>
+    <a href="#" class="input-group-addon btn btn-default withdrawinput-exists" data-dismiss="withdrawinput">
        Remove
     </a>
 </div>
 
 @else
 
-<div class="ticketinput input-group m-b-none ticketinput-exists" data-provides="ticketinput">
-    <div class="form-control" data-trigger="ticketinput">
+<div class="withdrawinput input-group m-b-none withdrawinput-exists" data-provides="withdrawinput">
+    <div class="form-control" data-trigger="withdrawinput">
     <i class="fa fa-image m-r-xs"></i>
-     <span class="ticketinput-ticketname">{{$ticket->path}}</span>
+     <span class="withdrawinput-withdrawname">{{$withdraw->path}}</span>
      </div>
-    <input type="hidden" name="path_name" value="{{$ticket->path}}"/>
-    <span class="input-group-addon btn btn-default btn-ticket">
-    <span class="ticketinput-new">Select ticket</span>
-    <span class="ticketinput-exists">Change</span>
+    <input type="hidden" name="path_name" value="{{$withdraw->path}}"/>
+    <span class="input-group-addon btn btn-default btn-withdraw">
+    <span class="withdrawinput-new">Select withdraw</span>
+    <span class="withdrawinput-exists">Change</span>
     <input type="hidden">
     <input type="hidden" value="" name="">
-    <input type="ticket" name="path" value="{{$ticket->path}}"></span>
-    <a href="#" class="remove-img input-group-addon btn btn-default ticketinput-exists" 
-    data-dismiss="ticketinput">Remove
+    <input type="withdraw" name="path" value="{{$withdraw->path}}"></span>
+    <a href="#" class="remove-img input-group-addon btn btn-default withdrawinput-exists" 
+    data-dismiss="withdrawinput">Remove
     </a>
    
 </div>                                      
@@ -79,8 +79,8 @@
 
     <div class="form-group {{$errors->has('description') ? ' has-error' : ''}}">
       <!-- {{  Form::label('description', 'description')   }} -->
-      {{ Form::textarea('description',$ticket->description,
-      ['id'=>'path','placeholder'=>'Insert define to your ticket','class' => "form-control ",'required' => 'required',])  
+      {{ Form::textarea('description',$withdraw->description,
+      ['id'=>'path','placeholder'=>'Insert define to your withdraw','class' => "form-control ",'required' => 'required',])  
       }}
      
     </div>
@@ -104,17 +104,17 @@
 </div>
 {{ Form::close() }}
 
-<div class="upload add-ticket-result"></div>
+<div class="upload add-withdraw-result"></div>
 <div class="row">
             <div class="col-lg-8">
 
                 <div class="form-group title-block">
 
-                   <input type="text" class="form-control" placeholder="Title" name="title" value="{{ $ticket->title }}" required>
+                   <input type="text" class="form-control" placeholder="Title" name="title" value="{{ $withdraw->title }}" required>
 
               </div>
 
-              <textarea placeholder="Description" name="content" required>{{ $ticket->description }}</textarea>
+              <textarea placeholder="Description" name="content" required>{{ $withdraw->description }}</textarea>
 
             </div>
 
@@ -128,10 +128,10 @@
                       <div class="ibox-content">
 
                           <label class="m-t-xs">SEO Title</label>
-                          <input type="text" placeholder="Seo Title" name="seo_title" class="form-control m-b" value="{{ $ticket->seo_title }}">
+                          <input type="text" placeholder="Seo Title" name="seo_title" class="form-control m-b" value="{{ $withdraw->seo_title }}">
                           
                           <label class="m-t-xs">SEO Description</label>
-                          <textarea placeholder="Seo Description" name="seo_description" class="form-control">{{ $ticket->seo_description }}</textarea>                             
+                          <textarea placeholder="Seo Description" name="seo_description" class="form-control">{{ $withdraw->seo_description }}</textarea>                             
 
                       </div>
 
@@ -140,26 +140,26 @@
                 <div class="ibox">
 
                     <div class="ibox-title">
-                        <h5>Path ticket</h5>
+                        <h5>Path withdraw</h5>
                     </div>
                     <div class="ibox-content">
                         <div style="width:100%;">
 
-                                @if(!isset($ticket->path))
+                                @if(!isset($withdraw->path))
 
-                                    <div class="ticketinput ticketinput-new input-group m-b-none" data-provides="ticketinput">
-                                        <div class="form-control" data-trigger="ticketinput"><i class="fa fa-image m-r-xs"></i> <span class="ticketinput-ticketname">No ticket selected</span></div>
-                                        <span class="input-group-addon btn btn-default btn-ticket"><span class="ticketinput-new">Select ticket</span><span class="ticketinput-exists">Change</span><input type="hidden"><input type="ticket" name="path" value=""></span>
-                                        <a href="#" class="input-group-addon btn btn-default ticketinput-exists" data-dismiss="ticketinput">Remove</a>
+                                    <div class="withdrawinput withdrawinput-new input-group m-b-none" data-provides="withdrawinput">
+                                        <div class="form-control" data-trigger="withdrawinput"><i class="fa fa-image m-r-xs"></i> <span class="withdrawinput-withdrawname">No withdraw selected</span></div>
+                                        <span class="input-group-addon btn btn-default btn-withdraw"><span class="withdrawinput-new">Select withdraw</span><span class="withdrawinput-exists">Change</span><input type="hidden"><input type="withdraw" name="path" value=""></span>
+                                        <a href="#" class="input-group-addon btn btn-default withdrawinput-exists" data-dismiss="withdrawinput">Remove</a>
                                     </div>
                                     
                                 @else
                                 
-                                    <div class="ticketinput input-group m-b-none ticketinput-exists" data-provides="ticketinput">
-                                        <div class="form-control" data-trigger="ticketinput"><i class="fa fa-image m-r-xs"></i> <span class="ticketinput-ticketname"><?=$ticket->path;?></span></div>
-                                        <input type="hidden" name="path_name" value="<?=$ticket->path;?>"/>
-                                        <span class="input-group-addon btn btn-default btn-ticket"><span class="ticketinput-new">Select ticket</span><span class="ticketinput-exists">Change</span><input type="hidden"><input type="hidden" value="" name=""><input type="ticket" name="path" value="<?=$ticket->path;?>"></span>
-                                        <a href="#" class="remove-img input-group-addon btn btn-default ticketinput-exists" data-dismiss="ticketinput">Remove</a>
+                                    <div class="withdrawinput input-group m-b-none withdrawinput-exists" data-provides="withdrawinput">
+                                        <div class="form-control" data-trigger="withdrawinput"><i class="fa fa-image m-r-xs"></i> <span class="withdrawinput-withdrawname"><?=$withdraw->path;?></span></div>
+                                        <input type="hidden" name="path_name" value="<?=$withdraw->path;?>"/>
+                                        <span class="input-group-addon btn btn-default btn-withdraw"><span class="withdrawinput-new">Select withdraw</span><span class="withdrawinput-exists">Change</span><input type="hidden"><input type="hidden" value="" name=""><input type="withdraw" name="path" value="<?=$withdraw->path;?>"></span>
+                                        <a href="#" class="remove-img input-group-addon btn btn-default withdrawinput-exists" data-dismiss="withdrawinput">Remove</a>
                                     </div>                                      
                             
                                 @endif

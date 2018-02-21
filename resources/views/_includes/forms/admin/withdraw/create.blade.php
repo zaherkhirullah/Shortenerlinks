@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'tickets.store' , 'method'  => 'POST','id'=>'upload_form','tickets'=>true)) }}
+{{ Form::open(array('route' => 'withdraws.store' , 'method'  => 'POST','id'=>'upload_form','withdraws'=>true)) }}
 
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
@@ -8,7 +8,7 @@
   <div class="form-group {{$errors->has('subject') ? ' has-error' : ''}}">
       {{  Form::label('subject', 'subject')   }}
       {{ Form::text('subject','',
-      ['id'=>'subject','placeholder'=>'ticket subject','class' => "form-control ",'required' => 'required',])  
+      ['id'=>'subject','placeholder'=>'withdraw subject','class' => "form-control ",'required' => 'required',])  
       }}
       @if ($errors->has('subject'))
       <span class="help-block">
@@ -19,7 +19,7 @@
     <div class="form-group {{$errors->has('message') ? ' has-error' : ''}}">
       {{  Form::label('message', 'message')   }}
       {{ Form::textarea('message','',
-      ['id'=>'path','placeholder'=>'Insert define to your ticket','class' => "form-control ",'required' => 'required',])  
+      ['id'=>'path','placeholder'=>'Insert define to your withdraw','class' => "form-control ",'required' => 'required',])  
       }}
       @if ($errors->has('message'))
       <span class="help-block">
@@ -61,4 +61,4 @@
 </div>
 {{ Form::close() }}
 
-<div class="upload add-ticket-result"></div>
+<div class="upload add-withdraw-result"></div>

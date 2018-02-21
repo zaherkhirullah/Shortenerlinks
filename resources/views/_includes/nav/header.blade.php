@@ -23,7 +23,7 @@
             </li>
             <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
-                                <i class="fa fa-language" aria-hidden="true"></i> Languages
+                                <i class="fa fa-language" aria-hidden="true"></i> 
                                 <span class="caret"></span>
                             </a> 
 

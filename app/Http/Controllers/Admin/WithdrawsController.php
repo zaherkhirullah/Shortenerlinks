@@ -54,6 +54,15 @@ class WithdrawsController extends Controller
     // update function
     public function update(Request $request, withdraw $withdraw)
     {    
+        if($request->status == 3 && $request->transaction_id ==null){
+            Session::flash('error' , 'must be input  transiction number for paid   ' .$request->name .' proccess :(');
+            return redirect()->route('withdraws.index');
+        
+        }
+         $withdraw->transaction_id = $request->transaction_id;
+         $withdraw->save();
+        $withdraw->update($request->all());
+        
         Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' withdraw :)');
         return redirect()->route('withdraws.index');
     }

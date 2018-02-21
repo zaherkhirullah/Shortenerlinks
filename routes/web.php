@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function()
      // Admin 
     Route::get( '/', 'AdminController@dashboard')->name("admin");
     Route::get( '/dashboard', 'AdminController@dashboard')->name("admin.dashboard");
-    Route::get( '/withdraws', 'AdminController@withdraws')->name("admin.withdraws");
+    // Route::get( '/withdraws', 'AdminController@withdraws')->name("admin.withdraws");
    
     // Admin links
     Route::get( '/links/dlist', 'LinkController@deletedLinks')->name("links.deletedLinks");
@@ -90,6 +90,7 @@ Route::prefix('admin')->group(function()
     Route::resource( '/links',      'LinkController');
     Route::resource( '/files',      'FileController');
     Route::resource( '/tickets',      'TicketController');
+    Route::resource( '/withdraws',      'WithdrawsController');
    
   });
  
@@ -124,7 +125,7 @@ Route::prefix('user')->group(function()
      Route::resource( '/link',   'LinkController');  
      Route::resource( '/file',   'FileController');
      Route::resource( '/ticket',  'TicketController');
-     Route::resource( '/withdraw','WithdrawsController');
+     Route::resource( '/withdraw','WithdrawController');
 
     });
 });

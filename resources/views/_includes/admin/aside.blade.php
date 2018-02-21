@@ -149,7 +149,7 @@
 						
 				<!-- Withdraw -->
 				<li>
-					<a href="{{route('admin.withdraws')}}">
+					<a href="{{route('withdraws.index')}}">
 						<i class="fa fa-money">
 						<b class="bg-success dker"></b>
 						</i>

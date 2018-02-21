@@ -13,15 +13,15 @@ use App\Balance;
 use Session;
 use Auth;
 
-class WithdrawsController extends Controller
+class WithdrawController extends Controller
 {
 
     public function index(withdraw $withdraw)
     {
         $User= Auth::user();
+        $Balance=  $User->Balance->avilable_amount;        
         $method_id = $User->profile->withdrawal_method_id;
         $method = PayMethod::where('id',$method_id)->first();
-        $Balance=  $User->Balance->avilable_amount;
         $PaymentMethod = $method->name;
 
         $withdraws = $withdraw->Withdraws()->paginate(20);
@@ -39,14 +39,10 @@ class WithdrawsController extends Controller
     {
         return view('users.withdraws.Form');
     }
-
-  
-    public function store(withdrawValidation $request)
+    public function store(withdrawValidation $request )
     {
-        $this>NewItem($request->all());
-        $ticket->save();
-        Session::flash('success' , 'Sucessfully has been created the ' .$request->name .' withdraw :)');
-     
+        $this->NewItem($request->all());
+        // Session::flash('success' , 'Sucessfully has been created the ' .$request->name .' withdraw :)');
        return redirect()->route('withdraw.index');
     }
     
@@ -63,21 +59,28 @@ class WithdrawsController extends Controller
     // update function
     public function update(Request $request, withdraw $withdraw)
     {    
+        $withdraw->update($request->all());
         Session::flash('success' , 'Sucessfully has been edited the ' .$request->name .' withdraw :)');
         return redirect()->route('withdraw.index');
     }
     // for hide withdraw    
     public function destroy(withdraw $withdraw)
     {
+        $amount =  $withdraw->amount;
+        if( $withdraw->delete()){
+            $Balance = Balance::where('user_id',Auth::id() )->first();
+            $Balance->avilable_amount += $amount;
+            $Balance->save();
+        }
 
-        Session::flash('success' , 'Sucessfully has been hided the ' .$withdraw->name .' withdraw :)');
+        Session::flash('success' , 'Sucessfully has been hided the ' .$withdraw->amount .' withdraw :)');
         return redirect()->route('withdraw.index');
     }
     // for delete withdraw
     public function delete(withdraw $withdraw)
     {
-        $name= $withdraw->name;
-        Session::flash('success' , 'Sucessfully has been deleted the ' .$name .' withdraw :)');
+        $name= $withdraw->amount;
+        Session::flash('success' , 'Sucessfully has been deleted the ' .$amount .' withdraw :)');
         return redirect()->route('withdraw.index');
     }
 
@@ -85,11 +88,13 @@ class WithdrawsController extends Controller
   protected function NewItem(array $data)
   {   
        $user_id  = Auth::id();
+       $User  = Auth::user();
        $amount = $data['amount'];
-       $withdrawal_method_id = $data['withdrawal_method_id'];
-       $Balance = Balance::where(['user_id',$user_id ])->first();
-       $payMethod = PayMethod::find($withdrawal_method_id)->first();
-       $payMethod_min_amount = $payMethod->min_amount;
+       $withdrawal_method_id = $User->profile->withdrawal_method_id;
+    //    $withdrawal_method_id = $data['withdrawal_method_id'];
+        $Balance = Balance::where('user_id',$user_id )->first();
+        $payMethod = PayMethod::find($withdrawal_method_id)->first();
+        $payMethod_min_amount = $payMethod->min_amount;
         $avilableBalance = $Balance->avilable_amount;
     //  if($amount>$avilableBalance || $amount < $payMethod_min_amount ||$amount <= 0)
     //  {
@@ -106,13 +111,18 @@ class WithdrawsController extends Controller
             [
               'user_id'    => $user_id,
               'amount'  => $amount,
-              'withdrawal_method_id'  => $data['withdrawal_method_id'],
+              'status'  => 1,
+              'withdrawal_method_id'  => $withdrawal_method_id,
               'withdraw_address'      => $data['withdraw_address'],
             ]);
-            Session::flash('success',' Sucessfully created the ' .$amount . ' link .');
-  
-    //   }
-  return $withdraw ;
+            Session::flash('success',' Sucessfully created your request (' .$amount . ') and Pending we will return message on email  .');
+    if($withdraw)
+    {
+        $Balance->avilable_amount -= $amount;
+        $Balance->save();
+    }
+            //   }
+    return $withdraw ;
   }
   
 }

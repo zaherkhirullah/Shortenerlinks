@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/landing.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('styles/home/css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('styles/member/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/font.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/flexslider.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/member/css/font-awesome.min.css') }}">
@@ -59,7 +59,7 @@
                         </li>
                         <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
-                                <i class="fa fa-language" aria-hidden="true"></i> Languages
+                                <i class="fa fa-language" aria-hidden="true"></i> 
                                 <span class="caret"></span>
                             </a> 
 
@@ -146,6 +146,7 @@
 
     <!-- Scripts -->
     @include('_includes.home.scripts')
+    @yield('scripts')
     <div id="topcontrol" title="Scroll Back to Top" style="position: fixed; bottom: 5px; right: 5px; opacity: 0; cursor: pointer;">
         <i class="ion ion-chevron-up">
         </i>

@@ -58,7 +58,7 @@
 							</div>
 							@endif
 							@if (session('error'))
-							<div class="alert alert-success">
+							<div class="alert alert-danger">
 								{{ session('error') }}
 							</div>
 							@endif
@@ -102,6 +102,7 @@
 		</div>	
 		<!-- Scripts  -->
 		@include('_includes.Footerscripts')
+		@yield('scripts')
 		
 	</body>
 	</html>

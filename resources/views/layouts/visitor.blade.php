@@ -134,6 +134,7 @@
 			</div>
 		</div>
 		@include('_includes.visitor.scripts')
+		@yield('scripts')
 	</body>
 	</html>
 	
