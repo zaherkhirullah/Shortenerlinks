@@ -82,7 +82,7 @@
                     <span class="arrow top">
                     </span>
                     <li>
-                        <a href="/account/profile">Settings</a>
+                        <a href="{{route('account.profile')}}">Settings</a>
                     </li>
                         <!-- <li class="divider">
                         </li> -->

@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.accountLayout')
 
 @section('content')
 <section class="vbox" data-pjax="true">

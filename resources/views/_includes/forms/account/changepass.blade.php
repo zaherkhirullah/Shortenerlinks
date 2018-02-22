@@ -1,9 +1,9 @@
 
-{{ Form::open(array ('route' => 'account.changePassword', 'method'  => 'POST',
+{{ Form::open(array ('route' => 'account.PchangePassword', 'method'  => 'POST',
 'accept-charset'=>'utf-8','class'  => 'form-horizontal')) }}
 
 <div style="display: none;">
-	{{ method_field('PUT') }}
+	{{ method_field('POST') }}
 	{{ csrf_field() }}
 </div>
 <legend class="text-center">
@@ -11,21 +11,7 @@
 </legend>
 
 <div class="row">
-	<div class="col-md-12">	
-		@if (session('error'))
-		<div class="alert alert-danger">
-			{{ session('error') }}
-		</div>
-		@endif
-		{{ session('error') }}
-		</div>
-		@if (session('success'))
-		<div class="alert alert-success">
-			{{ session('success') }}
-		</div>
-		@endif
-		
-	</div> 
+	
 	<div class="col-sm-8 col-sm-offset-2">
 		<div class="form-group {{ $errors->has('current_password') ? ' has-error' : '' }} required">
 			{{ Form::label('current_password', 'Old Password',['class'=>'col-md-4 control-label']) }}

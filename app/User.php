@@ -27,12 +27,12 @@ class User extends Authenticatable
     
       public function Profile()
       {
-          return $this->hasOne('App\Profile');
+          return $this->hasOne('App\Profile','user_id');
       }
 
       public function Balance()
       {
-          return $this->hasOne('App\Balance');
+          return $this->hasOne('App\Balance','user_id');
       }
       
       public function Role()
