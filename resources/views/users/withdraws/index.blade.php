@@ -36,8 +36,9 @@
                     <small class="h5 text-muted m-b-xs block">Available Earnings</small>
                 </div>
                 <div class="col-xs-6">
-                    <span class="h3 text-danger font-bold m-t-xs m-b-xs block">$0</span>
+                    <span class="h3 text-danger font-bold m-t-xs m-b-xs block">{{$withdraws->first()->amount}} $</span>
                     <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
+                    <small>{{$withdraws->first()->created_at}}  </small>
                 </div>
             </div>
             <p class="h5 text-muted m-b-xl clearfix">Your earnings will be 
@@ -78,8 +79,8 @@
                         @endif
                 </div>
                 <div class="col-md-4">
-                    <span class="h4 font-bold m-t-xs m-b-xs block">Next Payment date</span>
-                    <small class="h5 text-success m-b-xs block">2018-02-01</small>
+                    <span class="h4 font-bold m-t-xs m-b-xs block">Last Payment date</span>
+                    <small class="h5 text-success m-b-xs block">{{$withdraws->first()->created_at}} </small>
                 </div>
             </div>
             <div class="col-md-12">
