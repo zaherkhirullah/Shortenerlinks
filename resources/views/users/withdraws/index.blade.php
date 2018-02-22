@@ -36,9 +36,15 @@
                     <small class="h5 text-muted m-b-xs block">Available Earnings</small>
                 </div>
                 <div class="col-xs-6">
-                    <span class="h3 text-danger font-bold m-t-xs m-b-xs block">{{$withdraws->first()->amount}} $</span>
-                    <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
-                    <small>{{$withdraws->first()->created_at}}  </small>
+                  @if(count($withdraws) > 0)
+                        <span class="h3 text-danger font-bold m-t-xs m-b-xs block">{{$withdraws->first()->amount}} $</span>
+                        <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
+                        <small>{{$withdraws->first()->created_at}}  </small>
+                        @else
+                        <span class="h3 text-danger font-bold m-t-xs m-b-xs block">0 $</span>
+                        <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
+                   
+                     @endif
                 </div>
             </div>
             <p class="h5 text-muted m-b-xl clearfix">Your earnings will be 
@@ -80,7 +86,11 @@
                 </div>
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">Last Payment date</span>
+                    @if(count($withdraws) > 0)
                     <small class="h5 text-success m-b-xs block">{{$withdraws->first()->created_at}} </small>
+                    @else
+                    <small class="h5 text-danger m-b-xs block">No payments </small>
+                    @endif
                 </div>
             </div>
             <div class="col-md-12">
