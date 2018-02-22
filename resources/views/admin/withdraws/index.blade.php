@@ -50,7 +50,9 @@
                 <tr>
                     <td><a href="{{route('users.show',$withdraw->user->id)}}"> {{$withdraw->user->username }}</a></td>
                     <td>{{$withdraw->transaction_id }} </td>
-                    <td>{{$withdraw->withdrawl_Method_id }}</td>
+                    <td>{{$withdraw->paymethod->name}} 
+                            <dt class="text-info">{{$withdraw->withdraw_address}} </dt>
+                         </td>
                     <td>{{$withdraw->amount }} $</td>
                     <td>
                     <b class="text-success">

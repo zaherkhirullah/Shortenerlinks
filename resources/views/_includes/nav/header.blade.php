@@ -17,10 +17,16 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right nav-user m-n hidden-xs">
-
+            @if(Auth::user()->role->name=="admin" ||Auth::user()->role->name=="it")
             <li>
-                <a href="/admin/dashboard"> Admin</a>
+                <a href="{{route('admin.dashboard')}}"> Admin Area</a>
             </li>
+            @endif
+            @auth
+            <li>
+                 <a href="{{route('user.dashboard')}}"> User Area</a>
+            </li>
+            @endauth
             <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
                                 <i class="fa fa-language" aria-hidden="true"></i> 

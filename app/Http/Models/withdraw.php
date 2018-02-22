@@ -22,9 +22,9 @@ class withdraw extends Model
     {
     return $this->where('isDeleted','1')->orderBy('updated_at','desc');
     }
-    public function PayMethod()
+    public function paymethod()
     {
-      return $this->belongsTo(PayMethod::class); 
+      return $this->belongsTo('App\Http\Models\PayMethod','withdrawal_method_id'); 
     }
     public function User()
     {

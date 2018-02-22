@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Profile;
 use App\Balance;
+use App\Http\Models\address;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,11 +53,15 @@ class RegisterController extends Controller
     {    
         // $referred_by = Cookie::get('referral');
 
-        $code = $data['referred_by'];
-        $userr = User::where([['affiliate_id',$code]])->first();
-        $referred_by =  $userr->id;
-        
-        return $referred_by;
+        $code =null;
+        $referred_by =null;
+        if($code!=null)
+        {
+            $code = $data['referred_by'];
+            $userr = User::where([['affiliate_id',$code]])->first();
+            $referred_by =  $userr->id;
+            return $referred_by;
+        }
         $user =  User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -65,9 +71,15 @@ class RegisterController extends Controller
             'affiliate_id' => str_random(10),
             'referred_by'   => $referred_by,
         ]);
-        
-        $user->profile()->save(new Profile);
-        $user->Balance()->save(new Balance);
+        $profile=$user->profile()->save(new Profile);
+        if(!$profile)
+             $user->delete();
+       $Balance= $user->Balance()->save(new Balance);
+        if(!$Balance)
+            $user->delete();
+       $address= $profile->address()->save(new address);
+        if(!$address)
+        $user->delete();
 
      return $user;
     }

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Http\Models\link;
 use App\Http\Models\file;
+use App\Http\Models\withdraw;
 use App\Http\Models\Ticket;
 use Auth;
 
@@ -72,7 +73,12 @@ class User extends Authenticatable
      public function files()
      {
          return $this->hasMany(file::class)->orderBy('created_at','desc');
+     } 
+     public function withdraws()
+     {
+         return $this->hasMany(withdraw::class)->orderBy('created_at','desc');
      }
+     
      public function Userlinks()
      {
          return $this->links()->where([['user_id',UserId()]]);

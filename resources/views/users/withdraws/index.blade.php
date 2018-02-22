@@ -133,14 +133,16 @@
                 <tbody>
                     @foreach($withdraws as $withdraw)
                         <tr>
-                            <td>{{$withdraw->created_at}}  </td>                            
+                            <td>{{$withdraw->created_at}}  </td>  
+                                                      
                              @if($withdraw->transaction_id)
                              <td>{{$withdraw->transaction_id}}  </td>                            
                             @else
                             <td> null  </td>                            
                             @endif
-
-                            <td>{{$withdraw->withdrawal_method_id}}  </td>
+                            <td>{{$withdraw->paymethod->name}} 
+                                    <dt class="text-info">{{$withdraw->withdraw_address}} </dt>
+                                 </td>
                             <td>{{$withdraw->amount}}  $</td>
                             <td>
                             @if($withdraw->status ==1)

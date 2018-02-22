@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Http\Models\link;
 use App\Http\Models\file;
+use App\Http\Models\withdraw;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,8 +39,9 @@ class UserController extends Controller
     {
         $user_id =$user->id;
         $links = link::where('user_id',$user_id)->get();
+        $withdraws = withdraw::where('user_id',$user_id)->get();
         $files = file::where('user_id',$user_id)->get();
-        return view('admin.users.show',compact('user','links','files'));
+        return view('admin.users.show',compact('user','links','files','withdraws'));
     }
 
   

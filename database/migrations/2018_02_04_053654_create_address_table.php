@@ -45,9 +45,9 @@ class CreateAddressTable extends Migration
             $table->increments('id');
             $table->integer('city_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
-            $table->string('state');
-            $table->string('city');
-            $table->string('Address1');
+            $table->string('state')->default('-');
+            $table->string('city')->default('-');
+            $table->string('Address1')->default('-');
             $table->string('Address2')->nullable();
             $table->string('zip_code')->nullable();
             $table->boolean('isDeleted')->default(0);
