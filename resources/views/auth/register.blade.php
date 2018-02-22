@@ -87,7 +87,7 @@
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <div class="input-group">
-                                    <span for="last_name" title="password"   class="input-group-addon"> 
+                                    <span for="password" title="password"   class="input-group-addon"> 
                                         <i class="ion ion-android-lock" ></i>
                                     </span>
 

@@ -11,11 +11,12 @@
 </legend>
 
 <div class="row">
-	
-	<div class="col-sm-8 col-sm-offset-2">
+	<div class="col-sm-6 col-sm-offset-3">
 		<div class="form-group {{ $errors->has('current_password') ? ' has-error' : '' }} required">
-			{{ Form::label('current_password', 'Old Password',['class'=>'col-md-4 control-label']) }}
-			<div class="col-md-8">
+				<div class="input-group">
+						<span for="current_password" title="current_password"   class="input-group-addon"> 
+							<i class="ion ion-android-lock" ></i>
+						</span>
 				{{ Form::password('current_password', 
 					['class' => 'form-control',
 					'id' => 'current_password',
@@ -30,46 +31,32 @@
 			</span>
 			@endif   
 		</div> 
-    </div>
-	<div class="col-sm-8 col-sm-offset-2">
-		<div class="form-group {{ $errors->has('new_password') ? ' has-error' : '' }} required">
-			{{ Form::label('new_password', 'New Password',['class'=>'col-md-4 control-label']) }}
-			<div class="col-md-8">
-				{{ Form::password('new_password', 
-				['class' => 'form-control',
-				'id' => 'new_password',
-				'maxlength'=>'256' ,
-				'placeholder'=>'New Password *'
-				,'autofocus'
-				]) 
-				}}
+	</div>
+	<div class="col-sm-6 col-sm-offset-3">
+	<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+			<div class="input-group">
+				<span for="password" title="password"   class="input-group-addon"> 
+					<i class="ion ion-android-unlock" ></i>
+				</span>
+				<input id="password" type="password" placeholder="Password" class="form-control" name="password" required>
+				@if ($errors->has('password'))
+				<span class="help-block">
+					<strong>{{ $errors->first('password') }}</strong>
+				</span>
+				@endif
+
 			</div>
-			@if ($errors->has('new_password'))
-			<span class="help-block">
-				<strong>{{ $errors->first('new_password') }}</strong>
-			</span>
-			@endif   
-		</div> 
-	</div>  
-	<div class="col-sm-8 col-sm-offset-2">
-		<div class="form-group  {{ $errors->has('new_password_confirm') ? ' has-error' : '' }} required">
-			{{ Form::label('new_password_confirm', 'Confirm New Password',['class'=>'col-md-4 control-label']) }}
-				<div class="col-md-8">
-					{{ Form::password('new_password_confirm', 
-					['class' => 'form-control',
-					'id' => 'new_password_confirm',
-					'maxlength'=>'256' ,
-					'placeholder'=>'Confirm New Password *'
-					,'autofocus'
-					]) 
-					}}
-				</div>
-					@if ($errors->has('new_password_confirm'))
-					<span class="help-block">
-						<strong>{{ $errors->first('new_password_confirm') }}</strong>
-					</span>
-					@endif   	
-		</div> 
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<span for="password-confirm" title="password-confirm"  class="input-group-addon">
+					<i class="ion ion-android-unlock" ></i>
+				</span>
+				<input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Repeat Password" required>
+
+			</div>
+		</div>
+	</div>
 	</div>   
 </div>
 <footer class="text-center bg-light lter">

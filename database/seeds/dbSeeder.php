@@ -83,7 +83,9 @@ class dbSeeder extends Seeder
         $profile->withdrawal_method_id=1;
         $profile->withdrawal_email='zahir.hayrallah@gmail.com';
         $profile->save();
-        
+        $address = new \App\Http\Models\address();
+        $address->user_id=1;
+        $address->save();
         $balance = new \App\Balance();
         $balance->user_id=1;
         $balance->save();
@@ -93,9 +95,12 @@ class dbSeeder extends Seeder
         $profile->withdrawal_method_id=1;
         $profile->withdrawal_email='admin@admin.com';
         $profile->save();
-       
+        $address = new \App\Http\Models\address();
+        $address->user_id=2;
+        $address->save();
         $balance = new \App\Balance();
         $balance->user_id=2;
         $balance->save();
+        
     }
 }
