@@ -88,6 +88,7 @@ class dbSeeder extends Seeder
         $address->save();
         $balance = new \App\Balance();
         $balance->user_id=1;
+        $balance->avilable_amount=500;
         $balance->save();
         
         $profile = new \App\Profile();
@@ -100,6 +101,7 @@ class dbSeeder extends Seeder
         $address->save();
         $balance = new \App\Balance();
         $balance->user_id=2;
+        $balance->avilable_amount=500;        
         $balance->save();
         
     }

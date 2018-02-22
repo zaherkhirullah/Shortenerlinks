@@ -98,8 +98,8 @@ class WithdrawController extends Controller
         $avilableBalance = $Balance->avilable_amount;
     //  if($amount>$avilableBalance || $amount < $payMethod_min_amount ||$amount <= 0)
     //  {
-        if($amount>$avilableBalance)
-        return   Session::flash('error','  The Withdraw amount must be equal or a little then avilableBalance ' .$avilableBalance . ' to withdraw your money .');
+        if($amount > $avilableBalance)
+        return   Session::flash('error','  The Withdraw amount must be little then and must be big than zero  avilableBalance ' .$avilableBalance . ' to withdraw your money .');
         if($amount <= 0)
         return   Session::flash('error','  The Withdraw amount must be big than zero you are wanted (' .$amount . ') to withdraw your money .');
         if($amount < $payMethod_min_amount)
