@@ -7,7 +7,7 @@
     <header class="box-header with-border text-center">
       <h3 class="box-title">
         <i class="fa fa-adstype">
-        </i> All Your adstypes
+        </i> @lang('lang.all') @lang('lang.ads_types')
       </h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -21,7 +21,8 @@
       <div class="col-md-3 " style="top:10px;">
         <a href="{{route('adstypes.create')}}" type="button" class="btn btn-success btn-md">
           <i class="fa fa-adstype"></i>
-          Add New adstype
+          @lang('lang.add') @lang('lang.new_ads_type')
+          
         </a>
       </div>
       <div class="col-md-5 pull-right">
@@ -59,10 +60,10 @@
                       data-toggle="button">
                       <span class="text">
                         <i style="font-size: 20px" class="ion ion-ios-copy-outline">
-                        </i> COPY
+                        </i>  @lang('lang.copy')
                       </span>
                       <span class="text-active">
-                      COPIED
+                          @lang('lang.copied')
                     </span>
                   </button>
 
@@ -96,16 +97,16 @@
                         {{ method_field('DELETE') }}
 
                       <div class="text-center">
-                        <h4 id="msg-hidden ">Hide  adstype</h4>
+                        <h4 id="msg-hidden ">@lang('lang.hide')  @lang('lang.ads_types')</h4>
                       </div>
-                      <p class="text-danger">Are You Sure You Want Hide
-                      <b class="text-success">{{$adstype->slug}}</b> adstype ?</p> 
+                      <p class="text-danger">Are You Sure You Want @lang('lang.hide')
+                      <b class="text-success">{{$adstype->slug}}</b> @lang('lang.ads_types') ?</p> 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                        cancle
+                            @lang('lang.cancle') 
                       </button>
                       <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                        <i class="fa fa-eye-slash"></i> Hide
+                        <i class="fa fa-eye-slash"></i> @lang('lang.hide')
                       </button>
                     </div>
                     {{ Form::close() }}
@@ -120,13 +121,13 @@
       @else
       <div class="col-md-8 col-md-offset-2">
         <center> 
-          <h2 class="text-danger alert alert-warning"> You don't have adstypes</h2>
+          <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have')@lang('lang.ads_type')</h2>
         </center>
       </div>
       <div class="text-clear col-md-12">  </div>
       <div class="col-md-12 text-center">
         <a href="{{route('adstypes.create')}}" class="btn btn-success"> 
-          Click to Add New adstype
+            @lang('lang.click_to') @lang('lang.add') @lang('lang.new_ads_type')
         </a>
       </div>
       @endif 

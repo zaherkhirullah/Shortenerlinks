@@ -19,12 +19,12 @@
         <ul class="nav navbar-nav navbar-right nav-user m-n hidden-xs">
             @if(Auth::user()->role->name=="admin" ||Auth::user()->role->name=="it")
             <li>
-                <a href="{{route('admin.dashboard')}}"> Admin Area</a>
+                <a href="{{route('admin.dashboard')}}"> @lang('lang.admin_area')</a>
             </li>
             @endif
             @auth
             <li>
-                 <a href="{{route('user.dashboard')}}"> User Area</a>
+                 <a href="{{route('user.dashboard')}}"> @lang('lang.user_area') </a>
             </li>
             @endauth
             <li class="dropdown nav-item">
@@ -34,8 +34,8 @@
                             </a> 
 
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="lang()" id="en">English</a></li>
-                                <li><a href="#" onclick="lang()" d="ar">العربية</a></li>
+                                <li><a href="{{route('lang','en')}}" id="en">English</a></li>
+                                <li><a href="{{route('lang','ar')}}" id="ar">العربية</a></li>
                             </ul>
 
                         </li>
@@ -53,10 +53,10 @@
                 <div class="dropdown-menu aside-xl">
                     <section class="panel bg-white">
                         <header class="panel-heading b-light bg-light">
-                            <strong>You have
+                            <strong> 
                                 <span class="count">
-                                    No
-                                </span> notifications
+                                        @lang('lang.no_notification')
+                                </span> 
                             </strong>
                         </header>
                     </section>
@@ -65,15 +65,15 @@
 
             @guest
             <li>
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}">@lang('lang.login')</a>
             </li>
             <li>
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('register') }}">@lang('lang.register')</a>
             </li>
             @else
 
             <li class="dropdown">
-                <a href="/manage/home#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{route('account.profile')}}" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="thumb-sm avatar pull-left">
                         @if(Auth::user()->avatar==null)
                         <img src="{{ asset('styles/member/images/avatar.jpg') }}">
@@ -88,15 +88,14 @@
                     <span class="arrow top">
                     </span>
                     <li>
-                        <a href="{{route('account.profile')}}">Settings</a>
+                        <a href="{{route('account.profile')}}">@lang('lang.profile')</a>
                     </li>
                         <!-- <li class="divider">
                         </li> -->
-                        <li>
-                            <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                        <li class="active ">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            Logout
+                          <i class="fa fa-sign-out text-danger"></i>      @lang('lang.logout')
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

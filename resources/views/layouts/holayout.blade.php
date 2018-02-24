@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+    @if (App::isLocale('ar'))
+    <html dir="ltr" lang="{{ app()->getLocale() }}" >
+    @else
+    <html dir="ltr"  lang="{{ app()->getLocale() }}">
+    @endif
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +30,7 @@
 </head>
 <body class="home-page" style="">
 
+ 
     <header id="header" class="header">
         <div class="container">
             <h1 class="logo">

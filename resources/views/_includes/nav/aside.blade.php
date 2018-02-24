@@ -11,7 +11,7 @@
                 <span class="hidden-nav-xs clear">
                     <span class="block m-t-xs">
                         <strong class="h5 font-bold text-success ">
-                            <span class="hidden-xs">Shorter </span>New Link</strong>
+                            <span class="hidden-xs">@lang('lang.shorter') </span>@lang('lang.new_link')</strong>
                     </span>
                 </span>
             </a>
@@ -23,8 +23,7 @@
                 <span class="hidden-nav-xs clear">
                     <span class="block m-t-xs">
                         <strong class="h5 font-bold text-info">
-                            <span class="hidden-xs">Upload </span> New File
-                        </strong>
+                            <span class="hidden-xs">@lang('lang.upload') </span> @lang('lang.new_file')             </strong>
                     </span>
                 </span>
             </a>
@@ -35,7 +34,7 @@
                                 <b class="bg-info">
                                 </b>
                             </i>
-                            <span>Dashboard</span>
+                            <span> @lang('lang.dashboard')</span>
                         </a>
                     </li>
                     <li>
@@ -50,7 +49,7 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span>Links</span>
+                        <span> @lang('lang.links')</span>
                     </a>
                     <ul class="nav lt">
                     <li>
@@ -59,7 +58,7 @@
                                 <b class="bg-info dker">
                                 </b>
                             </i>
-                            <span>active Links</span>
+                            <span>@lang('lang.active_links')</span>
                         </a>
                     </li>
                     <li>
@@ -68,13 +67,13 @@
                                 <b class="bg-warning dker">
                                 </b>
                             </i>
-                            <span>Hide Links</span>
+                            <span> @lang('lang.hidden_links') </span>
                         </a>
                     </li>
                         </ul>
                     </li>
                     <li>
-                    <a href="#files">
+                    <a href="#@lang('lang.files')">
                         <i class="fa fa-file-o">
                             <b class="bg-info">
                             </b>
@@ -85,7 +84,7 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span>Files</span>
+                        <span>@lang('lang.files')</span>
                     </a>
                     <ul class="nav lt">
                     <li>
@@ -94,7 +93,7 @@
                                 <b class="bg-info dker">
                                 </b>
                             </i>
-                            <span>active Files</span>
+                            <span>@lang('lang.active_files')</span>
                         </a>
                     </li>
                     <li>
@@ -103,7 +102,7 @@
                                 <b class="bg-warning dker">
                                 </b>
                             </i>
-                            <span>Hide Files</span>
+                            <span>@lang('lang.hidden_files')</span>
                         </a>
                     </li>
                         </ul>
@@ -114,7 +113,7 @@
                                 <b class="bg-primary dker">
                                 </b>
                             </i>
-                            <span>Referrals</span>
+                            <span>@lang('lang.referrals')</span>
                         </a>
                     </li>
                     <li>
@@ -122,7 +121,7 @@
                         <i class="fa fa-dollar">
                             <b class="bg-success"></b>
                         </i>
-                        <span>Withdraws</span>
+                        <span>@lang('lang.withdraws')</span>
                     </a>
                     </li>
                     <li>
@@ -137,14 +136,14 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span>Support</span>
+                        <span>@lang('lang.support')</span>
                     </a>
                     <ul class="nav lt">
                         <li>
                             <a href="{{route('ticket.create')}}">
                                 <i class="fa fa-send">
                                 </i>
-                                <span>Open Ticket</span>
+                                <span>@lang('lang.open') @lang('lang.ticket')</span>
                             </a>
                         </li>
                         <li>
@@ -152,13 +151,13 @@
                                 <i class="fa fa-envelope
 ">
                                 </i>
-                                <span>My Tickets</span>
+                                <span>@lang('lang.my_tickets')</span>
                             </a>
                         </li>
                         </ul>
                     </li>
                 <li>
-                    <a href="#settings">
+                    <a href="#@lang('lang.settings')">
                         <i class="fa fa-cog">
                             <b class="bg-danger">
                             </b>
@@ -169,21 +168,21 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span>Settings</span>
+                        <span>@lang('lang.settings')</span>
                     </a>
                     <ul class="nav lt">
                         <li>
                             <a href="{{route('account.profile')}}">
                                 <i class="fa fa-angle-right">
                                 </i>
-                                <span>Profile</span>
+                                <span>@lang('lang.profile')</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('account.changePassword')}}">
                                 <i class="fa fa-angle-right">
                                 </i>
-                                <span>Change Password</span>
+                                <span>@lang('lang.change_password')</span>
                             </a>
                         </li>
                             <!-- <li>

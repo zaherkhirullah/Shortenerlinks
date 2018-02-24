@@ -156,7 +156,9 @@ Route::prefix('account')->group(function()
 Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
 Route::post('/language', array('before' =>'csrf','as'=>'changelang',
                                 'uses'=>'LanguageController@changelang',));
+                      
                                 
+Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
 // Route::get('/{locale}', function ($locale) { 
 //  App::setLocale($locale); 
 //   return view('home.home'); 

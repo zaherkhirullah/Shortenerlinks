@@ -1,6 +1,10 @@
 	<!DOCTYPE html>
 	<!-- Html tag Starts -->
-	<html lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@if (App::isLocale('ar'))
+	<html dir="ltr" lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@else
+	<html dir="ltr" lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@endif
 	<!-- Head tag Starts -->
 	<head>
 		<meta charset="utf-8">
@@ -45,11 +49,6 @@
 			 	</div>
 			    </aside>
 				<section id="content">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-						@endif
 					<section class="vbox">
 						<div class="col-md-12">
 							@if (session('success'))
@@ -73,7 +72,7 @@
 						
 					</section>
 				    <aside class="bg-light lter b-l aside-md hide" id="notes">
-						<div class="wrapper">Notification</div>
+						<div class="wrapper">@lang('lang.notification')</div>
 					</aside>
 		   </section>
 		</section>
@@ -84,7 +83,7 @@
 						<div class="padder">
 							<form method="POST" action="/shorten" accept-charset="UTF-8" id="form-shorten" class="form-shorten">
 								<input name="_token" type="hidden" value="Laa1GkLh9gVhbXTxJHsw9msCWsFuVgNJ1g9jrXcX">
-								<h5 id="msg-shorten">New Shorten Link</h5>
+								<h5 id="msg-shorten">@lang('lang.shorter') @lang('lang.new_link')</h5>
 								<input id="input-shorten" name="url" class="form-control m-b" placeholder="Your URL Here" value="">
 								<button id="btn-shorten" class="btn btn-rounded btn-lg btn-icon btn-danger" type="submit">
 									<i class="fa fa-paper-plane">

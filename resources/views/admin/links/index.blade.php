@@ -9,9 +9,9 @@
         <i class="fa fa-link">
         </i>
         @if(Route::is('links.index'))
-              All Your links
+        @lang('lang.all')  @lang('lang.Links') 
         @elseif(Route::is('links.deletedLinks'))
-              All Your deleted links
+          @lang('lang.all') @lang('lang.hidden_links') 
         @endif  
       </h3>
       <div class="box-tools pull-right">
@@ -28,24 +28,26 @@
   <div class="col-md-3 " style="top:10px;">
   <a href="{{url('admin/links/create')}}" type="button" class="btn btn-success btn-md">
     <i class="fa fa-plus"></i>
-    Add New link
+    @lang('lang.add') @lang('lang.new_link') 
   </a>
   </div>
 
   <thead>
   <tr>
-    <th>Shorted Link</th>
-    <th class="v-middle hidden-xs hidden-sm">Details</th>
-    <th class="v-middle hidden-xs">Created date</th>
-    <th>Options</th>
+    <th> @lang('lang.Link')</th>
+    <th class="v-middle hidden-xs hidden-sm">@lang('lang.Details')</th>
+    <th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+    {{--  <th> @lang('lang.updated_at')</th>  --}}
+    <th> @lang('lang.options')</th>
   </tr>
   </thead>
   <tfoot>
   <tr>
-    <th>Shorted Link</th>
-    <th class="v-middle hidden-xs  hidden-sm">Details</th>
-    <th class="v-middle hidden-xs">Created date</th>
-    <th>Options</th>
+    <th> @lang('lang.Link')</th>
+    <th class="v-middle hidden-xs hidden-sm">@lang('lang.Details')</th>
+    <th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+    {{--  <th> @lang('lang.updated_at')</th>  --}}
+    <th> @lang('lang.options')</th>
   </tr>
   </tfoot>
   <tbody>
@@ -62,11 +64,11 @@
       <a class="btn btn-success btn-copy btn-xs " data-clipboard-text="{{$link->shorted_url}}" data-toggle="button">
           <span class="text ">
               <i style="font-size: 20px" class="ion ion-ios-copy-outline"></i> 
-              <span class="hidden-xs ">copy</span>
+              <span class="hidden-xs ">@lang('lang.copy')</span>
           </span>
           <span class="text-active">
           <i style="font-size: 20px" class="ion ion-android-done-all"></i> 
-            <span class="hidden-xs ">copied</span>
+            <span class="hidden-xs ">@lang('lang.copied')</span>
           </span>
         </a>
       </span>
@@ -208,16 +210,16 @@
   <div class="col-md-8 col-md-offset-2">
   <center>
     @if(Route::is('links.index'))
-    <h2 class="text-danger alert alert-warning"> You don't have links</h2>
+    <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have')  @lang('lang.links')</h2>
         @else
-        <h2 class="text-danger alert alert-warning"> You don't have Hidden links</h2>
+        <h2 class="text-danger alert alert-warning">  @lang('lang.dont_have') @lang('lang.hidden_links')</h2>
         @endif
         </center>
   </div>
   @if(Route::is('links.index'))
   <div class="col-md-12 text-center">
   <a href="{{url('admin/links/create')}}" class="btn btn-success"> 
-    <i class="fa fa-plus"></i>   Click to Add New link
+    <i class="fa fa-plus"></i>  @lang('lang.click_to') @lang('lang.new_link') 
   </a>
   </div>
   @endif 

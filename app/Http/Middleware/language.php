@@ -8,21 +8,16 @@ use Config;
 use App;
 class language
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle($request, Closure $next)
     {
-        if(Session::has('locale'))
-     $locale = Session::get ('locale',Config::get('app.locale'));
-    else
-     $locale ='en';
-
-       App::setlocale($locale);
+        if( Session::has('lang'))
+        {
+            $lang = Session::get('lang',Config::get('app.locale'));
+        }
+        else{
+            $lang ='ar';
+        }
+        App::setLocale($lang);
        return $next($request);  
     }
 }

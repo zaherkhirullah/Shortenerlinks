@@ -5,7 +5,7 @@
         <header class="box-header with-border text-center">
             <h3 class="box-title">
                 <i class="fa fa-file-o">
-                </i> All Your Files
+                </i>  @lang('lang.all')  @lang('lang.Files') 
             </h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -19,36 +19,37 @@
           <table id="DataTable" class="mdl-data-table  table-hover" cellspacing="0" width="100%">
             <div class="col-md-3 " style="top:10px;">
                 <a href="{{route('files.create')}}" type="button" class="btn btn-success btn-md">
-                    <i class="fa fa-plus"></i>   Add New file
+                    <i class="fa fa-plus"></i>   @lang('lang.add')  @lang('lang.new_file') 
                 </a>
             </div>
             <thead>
                 <tr>
-                    <th>file</th>
-                    <!-- <th>Title</th> -->
-                    <th>Description</th>
-                    <!-- <th>Views</th> -->
-                    <th>Downloads</th>
-                    <!-- <th>Privacy</th> -->
-                    <!-- <th>Password</th> -->
-                    <th>Details</th>
-                    <th>Created date</th>
-                    <!-- <th>Update date</th> -->
-                    <th>Options</th>
+                    <th> @lang('lang.File')</th>
+                    {{--  <!-- <th>@lang('title')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.description')</th>
+                    {{--  <!-- <th> @lang('lang.views')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.downloads')</th>
+                    {{--  <!-- <th> @lang('lang.Privacy')</th> -->
+                    <!-- <th> @lang('lang.password')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.Details')</th>
+                    <th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+                    {{--  <th> @lang('lang.updated_at')</th>  --}}
+                    <th> @lang('lang.options')</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>file</th>
-                    <!-- <th>Title</th> -->
-                    <th>Description</th>
-                    <!-- <th>Views</th> -->
-                    <th>Downloads</th>
-                    <!-- <th>Privacy</th> -->
-                    <!-- <th>Password</th> -->
-                    <th>Created date</th>
-                    <!-- <th>Update date</th> -->
-                    <th>Options</th>
+                    <th> @lang('lang.File')</th>
+                    {{--  <!-- <th>@lang('title')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.description')</th>
+                    {{--  <!-- <th> @lang('lang.views')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.downloads')</th>
+                    {{--  <!-- <th> @lang('lang.Privacy')</th> -->
+                    <!-- <th> @lang('lang.password')</th> -->  --}}
+                    <th class="v-middle hidden-xs"> @lang('lang.Details')</th>
+                    <th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+                    {{--  <th> @lang('lang.updated_at')</th>  --}}
+                    <th> @lang('lang.options')</th>
                 </tr>
             </tfoot>
             <tbody>
@@ -62,18 +63,18 @@
                     <small class="text-muted block">
                     <a class="btn btn-xs text-info btn-copy" data-clipboard-text=" {{$file->shorted_url}}"  data-toggle="button">
                       <span class="text">
-                          <i class="ion ion-ios-copy-outline"> </i> Copy
+                          <i class="ion ion-ios-copy-outline"> </i> @lang('lang.copy')
                       </span>
                       <span class="text-active">
-                          Copied
+                          @lang('lang.copied')
                       </span>
                   </a>
                   <a class="btn btn-xs text-info btn-copy" href="{{url($file->path)}}" title="Download"  download>
                       <span class="text">
-                          <i class="fa fa-download"> </i> Download
+                          <i class="fa fa-download"> </i> @lang('lang.download')
                       </span>
                       <span class="text-active">
-                      Downloaded
+                          @lang('lang.downloaded')
                       </span>
                   </a>
                         </small>
@@ -90,9 +91,9 @@
                     <td>
                     <b class="text-success"><i class="fa fa-user"></i></b>  {{$file->user->first_name }} 
                         @if($file->isPrivate == 0)
-                         | <b class="text-success"><i class="fa fa-eye"></i></b> public
+                         | <b class="text-success"><i class="fa fa-eye"></i></b>@lang('lang.public') 
                         @else  
-                         | <b class="text-success"><i class="fa fa-eye-slash"></i></b>  private
+                         | <b class="text-success"><i class="fa fa-eye-slash"></i></b>@lang('lang.private')  
                         @endif
                        
                        @if($file->password)
@@ -108,26 +109,26 @@
 
                     <td class="text-center">
                             <dt>
-                              <a href="{{route('files.edit',$file->id)}}" title="Edit" class="text-info" >
+                              <a href="{{route('files.edit',$file->id)}}" title="@lang('lang.edit') " class="text-info" >
                                 <span class="text text-md" >
                                 <i class="fa fa-edit"></i> 
                                 </span>
                               </a>
                               @if(Route::is('files.index'))
-                                <a href="#hide-file-{{$file->id}}" title="Hide" data-toggle="modal" class=" text-primary" >
+                                <a href="#hide-file-{{$file->id}}" title="@lang('lang.hide') " data-toggle="modal" class=" text-primary" >
                                   <span class="text text-md" >
                                     <i class="fa  fa-eye-slash"></i> 
                                   </span>	
                                 </a>
                                 
                               @elseif(Route::is('files.deletedFiles'))
-                                  <a href="#restore-file-{{$file->id}}" title="UnHide" data-toggle="modal" class=" text-warning" >
+                                  <a href="#restore-file-{{$file->id}}" title="@lang('lang.restore') " data-toggle="modal" class=" text-warning" >
                                   <span class="text text-md" >
                                     <i class="fa  fa-eye"></i> 
                                   </span>	
                                 </a>
                               @endif  
-                                <a href="#delete-file-{{$file->id}}" title="Delete" data-toggle="modal" class=" text-danger" >
+                                <a href="#delete-file-{{$file->id}}" title="@lang('lang.delete') " data-toggle="modal" class=" text-danger" >
                                   <span class="text text-md" >
                                     <i class="fa  fa-trash"></i> 
                                   </span>	
@@ -144,16 +145,16 @@
                                         'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
                       
                                         <div class="text-center">
-                                          <h4 id="msg-shorten ">Delete file</h4>
+                                          <h4 id="msg-shorten ">@lang('lang.delete')  @lang('lang.file') </h4>
                                         </div>
-                                        <p class="text-danger">Are You Sure You Want Delete
-                                          <b class="text-success">{{$file->slug}}</b> file ?</p> 
+                                        <p class="text-danger">Are You Sure You Want @lang('lang.delete')
+                                          <b class="text-success">{{$file->slug}}</b> @lang('lang.file') ?</p> 
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                              cancle
+                                                @lang('lang.cancle')
                                             </button>
                                             <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                              <i class="fa fa-trash"></i> Delete
+                                              <i class="fa fa-trash"></i> @lang('lang.delete')
                                             </button>
                                           </div>
                                           {{Form::close() }}
@@ -172,16 +173,16 @@
                                           'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
                       
                                           <div class="text-center">
-                                            <h4 id="msg-shorten ">Hidden Shorten file</h4>
+                                            <h4 id="msg-shorten "> @lang('lang.hidden_files')</h4>
                                           </div>
-                                          <p class="text-danger">Are You Sure You Want Hidden
-                                            <b class="text-success">{{$file->slug}}</b> file ?</p> 
+                                          <p class="text-danger">Are You Sure You Want  @lang('lang.hide')
+                                            <b class="text-success">{{$file->slug}}</b>  @lang('lang.file') ?</p> 
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                cancle
+                                                  @lang('lang.cancle')
                                               </button>
                                               <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                                <i class="fa fa-eye-slash"></i> Hide
+                                                <i class="fa fa-eye-slash"></i>  @lang('lang.hide')
                                               </button>
                                             </div>
                                             {{Form::close() }}
@@ -200,19 +201,19 @@
                                           'class'=>'form-restore','id'=>'form-restore' ))
                                           }}
                                           <div class="text-center">
-                                            <h4 id="msg-shorten ">UnHidden file</h4>
+                                            <h4 id="msg-shorten "> @lang('lang.restore')  @lang('lang.file')</h4>
                                           </div>
                                           <hr>
-                                          <p>Are You Sure You Want UnHidden
+                                          <p>Are You Sure You Want  @lang('lang.restore')
                                             <b class="text-info">
-                                              {{$file->slug}} </b> file ?
+                                              {{$file->slug}} </b> @lang('lang.file') ?
                                             </p> 
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                cancle
+                                                  @lang('lang.cancle')
                                               </button>
                                               <button id="btn-restore" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                                <i class="fa fa-eye"></i> UnHide
+                                                <i class="fa fa-eye"></i> @lang('lang.restore')
                                               </button>
                                             </div>
                                             {{Form::close() }}
@@ -229,9 +230,9 @@
             <div class="col-md-8 col-md-offset-2">
             <center> 
                 @if(Route::is('files.index'))
-                    <h2 class="text-danger alert alert-warning"> You don't have files</h2>
+                    <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.files')</h2>
                 @else
-                    <h2 class="text-danger alert alert-warning"> You don't have Hidden files</h2>
+                    <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.hidden_files')</h2>
                 @endif
             </center>
             </div>

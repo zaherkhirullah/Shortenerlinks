@@ -7,7 +7,7 @@
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
 				<i class="fa fa-folder">
-				</i> All Your folders
+				</i> @lang('lang.all') @lang('lang.Folders')
 			</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -23,24 +23,25 @@
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('folders.create')}}" type="button" class="btn btn-success btn-md">
 						<i class="fa fa-folder"></i>
-						Add New folder
+						@lang('lang.add') @lang('lang.new_folder')
 					</a>
 				</div>
 
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+						<th> @lang('lang.Name')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
+						<th> @lang('lang.options')</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Name</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+						<th> @lang('lang.Name')</th>
+    					<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+						
+						<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
+						<th> @lang('lang.options')</th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -70,16 +71,16 @@
 										{!! Form::open(array('route' =>['folders.destroy',$folder->id],
 										'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Delete folder</h4>
+											<h4 id="msg-shorten ">@lang('lang.delete') @lang('lang.folder')</h4>
 										</div>
-										<p class="text-danger">Are You Sure You Want Delete
-											<b class="text-success">{{$folder->slug}}</b> folder ?</p> 
+										<p class="text-danger">Are You Sure You Want @lang('lang.delete') 
+											<b class="text-success">{{$folder->slug}}</b> @lang('lang.folder')  ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-													cancle
+														@lang('lang.cancle')
 												</button>
 												<button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-													<i class="fa fa-trash"></i> Delete
+													<i class="fa fa-trash"></i> @lang('lang.delete') 
 												</button>
 											</div>
 											{!! Form::close() !!}
@@ -95,14 +96,14 @@
 				@else
 				<div class="col-md-8 col-md-offset-2">
 					<center> 
-						<h2 class="text-danger alert alert-warning"> You don't have folders</h2>
+						<h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.folders')</h2>
 					</center>
 				</div>
 				@if(Route::is('folders.index'))
 					<div class="text-clear col-md-12">  </div>
 					<div class="col-md-12 text-center">
 						<a href="{{route('folders.create')}}" class="btn btn-success"> 
-							Click to Add New folder
+								@lang('lang.click_to')@lang('lang.add') @lang('lang.new_folder')
 						</a>
 					</div>
 				@endif 

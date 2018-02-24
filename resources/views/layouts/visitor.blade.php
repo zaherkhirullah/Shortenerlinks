@@ -28,7 +28,7 @@
 			};
 			var onloadCallback = function() {
 				grecaptcha.render("captcha", {
-					sitekey: "6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5",
+					sitekey: "{{6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5}}",
 					callback: verifyCallback
 				})
 			};
@@ -121,13 +121,13 @@
 					<span class="dot center">
 					</span>
 					<p>Signup for an account in just 2 minutes. Once you've completed your registration just start creating short URLs and sharing the links with your family and friends.</p>
-					<a class="btn-main" href="http://ouo.io/auth/signup">Join Now</a>
+					<a class="btn-main" href="{{route('register')}}">Join Now</a>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copy">
 			<div class="container">
-				<span>&copy; 2015. URL shorten service by <a href="http://ouo.io" target="_blank">ouo.io</a>.</span>
+			<span>&copy; 2015. URL shorten service by <a href="{{url('/')}}" target="_blank">ouo.io</a>.</span>
 				<span class="pull-right">
 					<a href="http://ouo.io/terms">Terms</a>
 				</span>
@@ -137,4 +137,3 @@
 		@yield('scripts')
 	</body>
 	</html>
-	

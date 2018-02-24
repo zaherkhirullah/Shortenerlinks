@@ -7,7 +7,7 @@
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
 				<i class="fa fa-domain">
-				</i> All Your domains
+				</i>@lang('lang.all') @lang('lang.domains')
 			</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -25,28 +25,28 @@
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('domains.create')}}" type="button" class="btn btn-success btn-md">
 						<i class="fa fa-domain"></i>
-						Add New domain
+                        @lang('lang.add') @lang('lang.new_domain')
 					</a>
 				</div>
 
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Slug</th>
-						<th>Url</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+							<th> @lang('lang.Name')</th>
+							<th> @lang('lang.slug')</th>
+							<th> @lang('lang.url')</th>
+							<th> @lang('lang.created_at')</th>
+							<th> @lang('lang.updated_at')</th>
+							<th> @lang('lang.options')</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Name</th>
-						<th>Slug</th>
-						<th>Url</th>
-						<th>Created date</th>
-						<th>Update date</th>
-						<th>Options</th>
+							<th> @lang('lang.name')</th>
+							<th> @lang('lang.slug')</th>
+							<th class="v-middle hidden-xs"> @lang('lang.url')</th>
+							<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+							<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
+							<th> @lang('lang.options')</th>
 					</tr>
 				</tfoot>
 				<tbody>

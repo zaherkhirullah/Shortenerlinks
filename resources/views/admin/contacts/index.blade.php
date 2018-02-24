@@ -7,7 +7,7 @@
         <header class="box-header with-border text-center">
             <h3 class="box-title">
                 <i class="fa fa-link">
-                </i> All Your contacts
+                </i>  @lang('lang.all') @lang('lang.contacts') 
             </h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -21,22 +21,22 @@
             <table id="DataTable" class="mdl-data-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th>Created date</th>
-                        <th>Options</th>
+                        <th>@lang('lang.name') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.email') </th>
+                        <th>@lang('lang.subject') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.message') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.created_at') </th>
+                        <th>@lang('lang.options') </th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th>Created date</th>
-                        <th>Options</th>
+                        <th>@lang('lang.name') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.email') </th>
+                        <th>@lang('lang.subject') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.message') </th>
+                        <th class="v-middle hidden-xs">@lang('lang.created_at') </th>
+                        <th>@lang('lang.options') </th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -70,16 +70,16 @@
                                         {{ csrf_field() }}
                                      {{ method_field('DELETE') }}
                                         <div class="text-center">
-                                            <h4 id="msg-shorten ">Hide Contatcs</h4>
+                                            <h4 id="msg-shorten ">@lang('lang.hide')  @lang('lang.contacts') </h4>
                                         </div>
-                                        <p class="text-danger">Are You Sure You Want Hide
-                                            <b class="text-success">{{$contact->slug}}</b> link ?</p> 
+                                        <p class="text-danger">Are You Sure You Want @lang('lang.hide')
+                                            <b class="text-success">{{$contact->slug}}</b> @lang('lang.contacts') ?</p> 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                    cancle
+                                                        @lang('lang.cancle')
                                                 </button>
                                                 <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                                    <i class="fa fa-eye-slash"></i> Hide
+                                                    <i class="fa fa-eye-slash"></i> @lang('lang.hide')
                                                 </button>
                                             </div>
                                             {!! Form::close() !!}
@@ -94,7 +94,7 @@
             @else
                 <div class="col-md-8 col-md-offset-2">
                     <center> 
-                    <h2 class="text-danger alert alert-warning"> You don't have contacts</h2>
+                    <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.contacts')</h2>
                     </center>
                 </div>
                 <div class="text-clear col-md-12">  </div>

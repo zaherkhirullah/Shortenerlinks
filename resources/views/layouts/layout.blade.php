@@ -1,6 +1,10 @@
 	<!DOCTYPE html>
 	<!-- Html tag Starts -->
-	<html lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@if (App::isLocale('ar'))
+	<html dir="ltr" lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@else
+	<html dir="ltr" lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+	@endif
 	<!-- Head tag Starts -->
 	<head>
 		<meta charset="utf-8">
@@ -17,14 +21,15 @@
 		<!-- Title -->
 		<title>{{ config('app.name', 'Shortener links') }}</title>
 
-		<!-- Styles -->
-		<link rel="stylesheet" href="{{ asset('styles/member/css/dashboard.css') }}" type="text/css">
-		<link rel="stylesheet" href="{{ asset('styles/member/css/styles.min.css') }}" type="text/css">
-		<link rel="stylesheet" href="{{ asset('styles/member/css/app.min.css') }}" type="text/css">
-		<link rel="stylesheet" href="{{ asset('styles/member/css/nprogress.css') }}" type="text/css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
-		 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css" type="text/css">
-  
+		 
+				<!-- Styles -->
+			<link rel="stylesheet"  href="{{ asset('styles/member/css/dashboard.css') }}" type="text/css">
+			<link rel="stylesheet"  href="{{ asset('styles/member/css/styles.min.css') }}" type="text/css">
+			<link rel="stylesheet"  href="{{ asset('styles/member/css/app.min.css') }}" type="text/css">
+			<link rel="stylesheet"  href="{{ asset('styles/member/css/nprogress.css') }}" type="text/css">
+			<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
+			<link rel="stylesheet"  href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css" type="text/css">
+		
 		<!-- Head Scripts -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 		<style>
@@ -78,7 +83,7 @@
 						
 					</section>
 				    <aside class="bg-light lter b-l aside-md hide" id="notes">
-						<div class="wrapper">Notification</div>
+						<div class="wrapper">@lang('lang.notification')</div>
 					</aside>
 		   </section>
 		</section>
