@@ -9,9 +9,9 @@
                     <h3 class="box-title">
                         <i class="fa fa-link"></i>
                         @if(Route::is('link.create'))
-                              Add New link 
+                             @lang('lang.shorter')   @lang('lang.new_link')  
                         @elseif(Route::is('link.edit'))
-                              Edit This link
+                            @lang('lang.edit')   @lang('lang.Link')  
                         @endif  
                     </h3>
                     <div class="box-tools pull-right">

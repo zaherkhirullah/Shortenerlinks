@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Cake\Controller\Controller;
+use App\Http\Controllers\Controller;
 use Cake\Event\Event;
 
 /**

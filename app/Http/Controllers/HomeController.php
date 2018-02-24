@@ -49,6 +49,10 @@ class HomeController extends Controller
     {
         return view('home.rates');
     }
+    public function terms()
+    {
+        return view('home.terms');
+    }
 
     public function llink($slug)
     {

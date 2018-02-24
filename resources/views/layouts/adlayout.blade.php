@@ -19,7 +19,7 @@
 		<meta name="description" content="{{ config('app.name', 'Shortener links') }} Publisher Backend">
 
 		<!-- Title -->
-		<title>{{ config('app.name', 'Shorter links') }}</title>
+		<title>{{ config('app.name', 'Shorterlinks') }}</title>
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="{{ asset('styles/member/css/dashboard.css') }}" type="text/css">
@@ -83,15 +83,13 @@
 						<div class="padder">
 							<form method="POST" action="/shorten" accept-charset="UTF-8" id="form-shorten" class="form-shorten">
 								<input name="_token" type="hidden" value="Laa1GkLh9gVhbXTxJHsw9msCWsFuVgNJ1g9jrXcX">
-								<h5 id="msg-shorten">@lang('lang.shorter') @lang('lang.new_link')</h5>
+								<h5 id="msg-shorten"> @lang('lang.shorter') @lang('lang.new_link')</h5>
 								<input id="input-shorten" name="url" class="form-control m-b" placeholder="Your URL Here" value="">
 								<button id="btn-shorten" class="btn btn-rounded btn-lg btn-icon btn-danger" type="submit">
-									<i class="fa fa-paper-plane">
-									</i>
+									<i class="fa fa-paper-plane"></i>
 								</button>
 								<button id="btn-copy" class="hidden btn btn-rounded btn-lg btn-icon btn-success" type="button" data-clipboard-action="cut" data-clipboard-target="#input-shorten">
-									<i class="fa fa-copy">
-									</i>
+									<i class="fa fa-copy"></i>
 								</button>
 							</form>
 						</div>

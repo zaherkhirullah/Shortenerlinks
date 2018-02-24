@@ -3,6 +3,7 @@
 return [ 
     'welcome'           => 'welcome',
     'register'          => 'register',
+    'sign_up_free'      => 'Signup Free',
     'login'             => 'login',
     'logout'            => 'logout',    
     'home'              => 'home',
@@ -99,20 +100,16 @@ return [
     'hidden_links'      => 'hidden links'  ,
     'hidden_files'      => 'hidden files'  ,
     'profile'           => 'profile' ,
-    'change'            => 'change',
     'change_password'   => 'change password',
-   
+    'change'            => 'change',    
+    'are_you_want'      =>'Are You Sure You Want',
     'users'             => 'Users',
     'hidden_folders'    => 'hidden Folders',
     'not_active_users'  => 'Not Active Users',
-    
     'roles'             => 'Roles',
     'change_email'      => 'Change Email',
-    
-     
     'copy'               => 'copy',
     'copied'             => 'copied',
-   
     'all'                => 'All',
     'search'             => 'search',
     'cancle'             => 'cancle',
@@ -139,13 +136,42 @@ return [
     'canceld'            => 'canceld',
     'pending'            => 'pending',
     'paid'               => 'paid',
+    'get_started'        => 'Start',
+    'my_account'         => 'My Account',
+    'payout_rates'       => 'Payout rates',
+    'earn'               => 'earn',
+    'money'              => 'money',
+    'terms'              => 'Terms',
+    'our_terms'          => 'Our Terms',   
+    'number'             => 'number',   
+    'term'               => 'The Term',   
+    'shorten_urls'       => 'Shorten URLs and earn Money ',
+    'address'            => 'address',
+    'address1'           => 'first address',
+    'address2'           => 'second address',
+    'state'              => 'state',
+    'city'               => 'city',
+    'country'            => 'country',
+    'avilable_earnings'  => 'Available Earnings ',
+    'avilable'           => 'Available',
+    'last_pay_period'    => 'Last Pay Period',
+    'payment_proccessor' => 'Payment processor',
+    'payment'            => 'payment',
+    'no_payment_way'     => ' No Payment way',
+    'no_payments'        => ' No Payments',
+    'last_payment'       => 'Last Payment',
+    'last_payment_date'  => 'Last Payment Date',
+    'date'               => 'date',
+    'first_payment'      => 'First payment',
+    'transaction_history'=> 'Transaction  <b>History</b>',
+    'transaction_id'     => 'Transaction Id',
+    'amount'             => 'amount',
+    'pay_method'         => 'Pay method',
+    
+    
+    
 
-    ''=>'',
-    ''=>'',
-    ''=>'',
-    ''=>'',
-   
-   
+
    
     'no'                => 'no' ,
     'yes'               => 'yes',

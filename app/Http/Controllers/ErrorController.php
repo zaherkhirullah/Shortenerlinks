@@ -12,7 +12,7 @@
  * @since         3.3.4
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller;
+namespace App\Http\Controllers;
 
 use Cake\Event\Event;
 
@@ -23,32 +23,42 @@ use Cake\Event\Event;
  */
 class ErrorController extends AppController
 {
-    /**
-     * Initialization hook method.
-     *
-     * @return void
-     */
+    public function error()
+    {
+        $value = "";
+        return view('error.error',compact('value')); 
+    }
+
+    public function Notfound()
+    {
+        $value = "";        
+        return view('error.Notfound',compact('value')); 
+    }
+    public function error_v( $value )
+    {  
+        return view('error.error',compact('value')); 
+    }
+    public function Notfound_v( $value )
+    {
+        return view('error.Notfound',compact('value')); 
+    }
+
+    
+
+
+
+
     public function initialize()
     {
         $this->loadComponent('RequestHandler');
     }
 
-    /**
-     * beforeFilter callback.
-     *
-     * @param \Cake\Event\Event $event Event.
-     * @return \Cake\Network\Response|null|void
-     */
+    
     public function beforeFilter(Event $event)
     {
     }
 
-    /**
-     * beforeRender callback.
-     *
-     * @param \Cake\Event\Event $event Event.
-     * @return \Cake\Network\Response|null|void
-     */
+   
     public function beforeRender(Event $event)
     {
         parent::beforeRender($event);
@@ -56,12 +66,7 @@ class ErrorController extends AppController
         $this->viewBuilder()->templatePath('Error');
     }
 
-    /**
-     * afterFilter callback.
-     *
-     * @param \Cake\Event\Event $event Event.
-     * @return \Cake\Network\Response|null|void
-     */
+   
     public function afterFilter(Event $event)
     {
     }

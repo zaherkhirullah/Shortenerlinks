@@ -7,11 +7,11 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <i class="fa fa-link"></i>
-                        @if(Route::is('link.create'))
-                              Add New link 
-                        @elseif(Route::is('link.edit'))
-                              Edit This link
+                        <i class="fa fa-folder"></i>
+                        @if(Route::is('folder.create'))
+                             @lang('lang.add')   @lang('lang.new_folder')  
+                        @elseif(Route::is('folder.edit'))
+                            @lang('lang.edit')   @lang('lang.folder')
                         @endif  
                     </h3>
                     <div class="box-tools pull-right">
@@ -25,10 +25,10 @@
                     <div class="box-short" id="shorterNew" >
                         <div class="box box-solid shorten-member">
                             <div class="box-body">
-                            @if(Route::is('link.create'))
-                                @include('_includes.forms.user.link.create')
-                            @elseif(Route::is('link.edit'))
-                                 @include('_includes.forms.user.link.edit')
+                            @if(Route::is('folder.create'))
+                                @include('_includes.forms.user.folder.create')
+                            @elseif(Route::is('folder.edit'))
+                                 @include('_includes.forms.user.folder.edit')
                             @endif 
                             </div>
                         </div>

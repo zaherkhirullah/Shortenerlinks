@@ -17,7 +17,7 @@
 		<!-- Title -->
 		<title>Earn money on short links. Make short links Or upload your files and earn the biggest money - {{ config('app.name', 'Shortener links') }} </title>
 
-		<title> Make short links and earn the biggest money - ouo.io</title>
+		<title> Make short links and earn the biggest money - {{ config('app.name', 'Shorter links') }}</title>
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Questrial" type="text/css" />
 		<link rel="stylesheet" href="{{ asset('styles/member/css/bootstrap.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ asset('styles/member/css/link.css') }}" type="text/css">
@@ -28,7 +28,7 @@
 			};
 			var onloadCallback = function() {
 				grecaptcha.render("captcha", {
-					sitekey: "{{6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5}}",
+					sitekey: "{{$site_key}}",
 					callback: verifyCallback
 				})
 			};
@@ -74,7 +74,7 @@
 				<div class="container">
 					<div class="col-md-12">
 						<div class="navbar-header page-scroll">
-							<a class="navbar-brand" href="/">
+							<a class="navbar-brand" href="{{url('/')}}">
 							<i class="ion ion-ios-rose-outline" ></i>
                        Shorter Links
        					<i class="ion ion-ios-rose-outline" ></i>
@@ -104,7 +104,7 @@
 						<img class="img-responsive" src="{{asset('/styles/member/images/world.png')}}">
 					</div>
 					<div class="col-md-6">
-						<h2>Know a little about ouo.io</h2>
+						<h2>Know a little about {{ config('app.name', 'Shorter links') }}</h2>
 						<span class="dot">
 						</span>
 						<p>{{ url('/') }}is a URL shortening service that allows users to get paid whenever they share links and someone clicks.</p>
@@ -127,9 +127,9 @@
 		</div>
 		<div class="footer-copy">
 			<div class="container">
-			<span>&copy; 2015. URL shorten service by <a href="{{url('/')}}" target="_blank">ouo.io</a>.</span>
+			<span>&copy; 2015. URL shorten service by <a href="{{url('/')}}" target="_blank">ShortenerLinks</a>.</span>
 				<span class="pull-right">
-					<a href="http://ouo.io/terms">Terms</a>
+					<a href="{{route('terms')}}">Terms</a>
 				</span>
 			</div>
 		</div>

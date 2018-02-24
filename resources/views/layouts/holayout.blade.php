@@ -1,9 +1,9 @@
 <!doctype html>
-    @if (App::isLocale('ar'))
-    <html dir="ltr" lang="{{ app()->getLocale() }}" >
-    @else
-    <html dir="ltr"  lang="{{ app()->getLocale() }}">
-    @endif
+@if (App::isLocale('ar'))
+<html dir="rtl" lang="{{ app()->getLocale() }}" >
+@else
+<html dir="ltr"  lang="{{ app()->getLocale() }}">
+@endif
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,13 +28,11 @@
     <link rel="stylesheet" href="{{ asset('styles/member/css/font-awesome.min.css') }}">
 
 </head>
-<body class="home-page" style="">
-
- 
+<body class="home-page" >
     <header id="header" class="header">
         <div class="container">
             <h1 class="logo">
-                <a href="/">
+                <a href="{{url('/')}}">
                      <i class="ion ion-ios-rose-outline" ></i>
                        Shorter Links
                      <i class="ion ion-ios-rose-outline" ></i>
@@ -52,15 +50,15 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item">
-                            <a href="/">  <i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+                            <a href="{{url('/')}}">  <i class="fa fa-home" aria-hidden="true"></i>  @lang('lang.home')</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/rates">
-                              <i class="ion ion-cash" aria-hidden="true"></i>  Payout Rates</a>
+                            <a href="{{url('/rates')}}">
+                              <i class="ion ion-cash" aria-hidden="true"></i> @lang('lang.payout_rates')</a>
                         </li>
                          <li class="nav-item">
-                            <a href="/contacts">
-                              <i class="fa fa-phone" aria-hidden="true"></i>  Contact us</a>
+                            <a href="{{url('/contacts')}}">
+                              <i class="fa fa-phone" aria-hidden="true"></i> @lang('lang.contact_us')</a>
                         </li>
                         <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
@@ -69,8 +67,8 @@
                             </a> 
 
                             <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">العربية</a></li>
+                            <li>    <a href="{{route('lang','en')}}">English</a></li>
+                                <li><a href="{{route('lang','ar')}}">العربية</a></li>
                             </ul>
 
                         </li>
@@ -78,19 +76,20 @@
                         @if (Route::has('login'))
                         @auth
                         <li class="nav-item nav-item-cta last">
-                            <a class="btn btn-cta btn-cta-secondary" href="{{ url('user/dashboard') }}"> My Account
+                            <a class="btn btn-cta btn-cta-secondary" href="{{ url('user/dashboard') }}"> @lang('lang.my_account')
                             </a>
                         </li>
                         @else
                         <li class="nav-item">
                             <a href="{{ route('login') }}"> 
                               <i class="ion ion-log-in" aria-hidden="true"></i> 
-                          Login</a>
+                              @lang('lang.login')
+                            </a>
                         </li>
                         <li class="nav-item nav-item-cta last">
                             <a class="btn btn-cta btn-cta-secondary" href="{{ route('register') }}">
                                <i class="ion ion-person-add" aria-hidden="true"></i> 
-                                 Sign Up Free
+                               @lang('lang.sign_up_free')
                             </a>
                         </li>
                         @endauth
@@ -135,14 +134,19 @@
         </div>
         <div class="bottom-bar">
             <div class="container">
-                <small class="copyright">Copyright @ 2015-2018 <a href="http://Shortenerlinks/">Shortener links</a>
+                <small class="copyright">Copyright @ 2018-2019
+                     <a href="{{url('/')}}">Shortener links</a>
                 </small>
+                @if (App::isLocale('ar'))
+                <span class="pull-left">
+                @else
                 <span class="pull-right">
-                    <small class="links">
+                @endif
+                    {{--  <small class="links">
                         <a href="mailto:info@Shortener links">DMCA</a>
-                    </small>
+                    </small>  --}}
                     <small class="links">
-                        <a href="http://Shortenerlinks/terms">Terms</a>
+                        <a href="{{route('terms')}}">@lang('lang.terms')</a>
                     </small>
                 </span>
             </div>

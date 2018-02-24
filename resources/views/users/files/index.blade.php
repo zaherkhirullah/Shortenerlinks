@@ -9,9 +9,9 @@
                     <i class="fa fa-file-o">
                     </i>   
                     @if(Route::is('file.index'))
-                        All Your Files
+                        @lang('lang.all') @lang('lang.Files')
                     @elseif(Route::is('file.deletedFiles'))
-                         All Your deleted Files
+                        @lang('lang.all') @lang('lang.hidden_files')
                     @endif
                 </h3>
                 <div class="box-tools pull-right">
@@ -27,33 +27,33 @@
           <div class="col-sm-3 " style="top:10px;">
            <a href="{{route('file.create')}}" type="button" class="btn btn-info btn-md">
             <i class="fa fa-file"></i>
-              Add New File
+            @lang('lang.add') @lang('lang.new_file')
            </a>
            </div>
              <thead>
              <tr>
-              <th>Link</th>
-              <th>views</th>
-              <th>Downloads</th>
-              <th>Earnings</th>
-              <th>Password</th>
-              <th>Privacy</th>
-              <th>ceated date</th>
-              <th>Options</th>
+                    <th>@lang('lang.Link')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.views')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.downloads')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.password')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.privacy')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.created_at')</th>
+                    <th>@lang('lang.options')</th>
              </tr>
              </thead>
-<tfoot>
-<tr>
-              <th>Link</th>
-              <th>views</th>
-              <th>Downloads</th>
-              <th>Earnings</th>
-              <th>Password</th>
-              <th>Privacy</th>
-              <th>ceated date</th>
-              <th>Options</th>
-             </tr>
-</tfoot>
+                <tfoot>
+                <tr>
+                        <th>@lang('lang.Link')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.views')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.downloads')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.password')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.privacy')</th>
+                        <th class="v-middle hidden-xs">@lang('lang.created_at')</th>
+                        <th>@lang('lang.options')</th>
+                            </tr>
+                </tfoot>
                 <tbody>
                  @foreach ($files as $file)
                     <tr>
@@ -65,10 +65,10 @@
                       {{$file->description}}
                       <button class="btn btn-xs text-info btn-copy pull-right" data-clipboard-text=" {{$file->shorted_url}}"  data-toggle="button">
                         <span class="text">
-                        <i class="ion ion-ios-copy-outline"> </i> Copy
+                        <i class="ion ion-ios-copy-outline"> </i> @lang('lang.copy')
                         </span>
                         <span class="text-active">
-                        <i class="fa fa-check"> </i> Copied
+                        <i class="fa fa-check"> </i> @lang('lang.copied')
                         </span>
                     </button>
                       </small>
@@ -99,9 +99,9 @@
                         </td>
                         <td class="v-middle hidden-xs">
                              @if($file->isPrivate == 1)
-                             <i class="fa fa-eye-slash"></i> Private
+                             <i class="fa fa-eye-slash"></i> @lang('lang.private')
                             @else 
-                            <i class="fa fa-eye"></i> Public
+                            <i class="fa fa-eye"></i> @lang('lang.public')
                             @endif
                             </td>
                         <td class="v-middle hidden-xs">{{$file->created_at}}</td>
@@ -123,7 +123,7 @@
                                      </span>
                                  </a>
                                  @elseif(Route::is('file.deletedFiles'))
-                                 <a href="#restore-file-{{$file->id}}" title="Unhide"  data-toggle="modal"
+                                 <a href="#restore-file-{{$file->id}}" title="@lang('lang.restore')"  data-toggle="modal"
                                      class=" text-warning" >
                                      <span class="text text-sm">
                                          <i class="fa  fa-eye"> </i> 
@@ -145,30 +145,30 @@
                                 @if(Route::is('file.index'))
                                 {!! Form::open(array('route' =>['file.destroy',$file->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
                                 <div class="text-center">
-                                        <h4 id="msg-shorten ">Hide File</h4>
+                                        <h4 id="msg-shorten ">@lang('lang.hide') @lang('lang.file')</h4>
                                     </div>
                                     <hr>
-                                    <p>Are You Sure You Want Hide <b class="text-info">
+                                    <p>   @lang('lang.are_you_want')  @lang('lang.hide') <b class="text-info">
                                     @elseif(Route::is('file.deletedFiles'))
                                 <div class="text-center">
-                                        <h4 id="msg-shorten ">UnHide File</h4>
+                                        <h4 id="msg-shorten ">   @lang('lang.restore')   @lang('lang.file')</h4>
                                     </div>
                                     <hr>
-                                    <p>Are You Sure You Want UnHide <b class="text-info">
+                                    <p>   @lang('lang.are_you_want') @lang('lang.restore') <b class="text-info">
                                     {!! Form::open(array('route' =>['file.restore',$file->id], 'method'=>'delete','class'=>'form-restore','id'=>'form-restore' ))!!}
                                 @endif  
-                                {{$file->slug}} </b> file ?</p> 
+                                {{$file->slug}} </b>   @lang('lang.file') ?</p> 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
                                             cancle
                                         </button>
                                         @if(Route::is('file.index'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                        <i class="fa fa-eye-slash"></i> hide
+                                        <i class="fa fa-eye-slash"></i> @lang('lang.hide')
                                     </button>
                                         @elseif(Route::is('file.deletedFiles'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                            <i class="fa fa-eye"></i> UnHide
+                                            <i class="fa fa-eye"></i> @lang('lang.restore')
                                         </button>
                                         @endif  
                                     </div>
@@ -184,13 +184,13 @@
               @else
             <div class="col-md-8 col-md-offset-2">
              <center> 
-                <h2 class="text-danger alert alert-info"> You don't have files</h2>
+                <h2 class="text-danger alert alert-info"> @lang('lang.dont_have') @lang('lang.Files')</h2>
              </center>
             </div>
            <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
                 <a href="{{route('file.create')}}" class="btn btn-success"> 
-                  <i class="fa fa-plus"></i>  Click to Add New file
+                  <i class="fa fa-plus"></i>  Click to Add New@lang('lang.file')
                  </a>
             </div>
             @endif 

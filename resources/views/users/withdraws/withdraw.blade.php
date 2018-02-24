@@ -5,8 +5,7 @@
     <section class="vbox lter box box-info">
         <header class="box-header with-border text-center">
             <h3 class="box-title">
-                <i class="fa fa-users">
-                </i> Withdraw
+                <i class="fa fa-dollar"></i> @lang('lang.withdraw')
             </h3>
 
             <div class="box-tools pull-right">

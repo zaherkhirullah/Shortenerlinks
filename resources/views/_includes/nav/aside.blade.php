@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li>
-                    <a href="#links">
+                    <a href="#Links">
                         <i class="fa fa-link">
                             <b class="bg-success">
                             </b>
@@ -49,7 +49,7 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span> @lang('lang.links')</span>
+                        <span> @lang('lang.Links')</span>
                     </a>
                     <ul class="nav lt">
                     <li>
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li>
-                    <a href="#@lang('lang.files')">
+                    <a href="#@lang('lang.Files')">
                         <i class="fa fa-file-o">
                             <b class="bg-info">
                             </b>
@@ -84,7 +84,7 @@
                             <i class="fa fa-angle-up text-active">
                             </i>
                         </span>
-                        <span>@lang('lang.files')</span>
+                        <span>@lang('lang.Files')</span>
                     </a>
                     <ul class="nav lt">
                     <li>

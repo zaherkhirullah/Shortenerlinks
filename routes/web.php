@@ -163,3 +163,11 @@ Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
 //  App::setLocale($locale); 
 //   return view('home.home'); 
 // });
+
+Route::get('/terms', 'HomeController@terms')->name('terms');
+
+Route::get('/error', 'ErrorController@error')->name('error');
+Route::get('/Notfound', 'ErrorController@Notfound')->name('Notfound');
+
+Route::get('/error/{value}', 'ErrorController@error_v')->name('error_v');
+Route::get('/Notfound/{value}', 'ErrorController@Notfound_v')->name('Notfound_v');

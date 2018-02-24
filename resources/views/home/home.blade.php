@@ -11,16 +11,16 @@
     </div>
     <section class="promo section section-on-bg">
         <div class="container text-center">
-            <h2 class="title">Shorten URLs <br> and <span class="highlight">earn</span> money</h2>
+            <h2 class="title"> @lang('lang.shorten_urls')</h2>
             <p class="intro">Sharing links on the internet<br>Get paid for every person who visits your URLs</p>
             <p>  
                 @guest
                     <a class="btn btn-cta btn-cta-primary" href="{{ url('user/dashboard') }}">
-                        Get Started
+                        @lang('lang.get_started')
                     </a>
                 @else
                      <a class="btn btn-cta btn-cta-primary" href="{{ url('user/dashboard') }}">
-                        My Account
+                     @lang('lang.my_account')
                     </a>
                 @endguest
             </p>

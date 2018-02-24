@@ -16,8 +16,7 @@
     <section class="vbox lter box box-info">
         <header class="box-header with-border text-center">
             <h3 class="box-title">
-                <i class="fa fa-users">
-                </i> Withdraw
+                <i class="fa fa-money"></i> @lang('lang.withdraws')
             </h3>
 
             <div class="box-tools pull-right">
@@ -33,16 +32,20 @@
             <div class="row text-center m-b-xl">
                 <div class="col-xs-6 b-r b-light">
                     <span class="h3 text-danger font-bold m-t-xs m-b-xs block">${{$Balance}}</span>
-                    <small class="h5 text-muted m-b-xs block">Available Earnings</small>
+                    <small class="h5 text-muted m-b-xs block">
+                            @lang('lang.avilable_earnings')
+                    </small>
                 </div>
                 <div class="col-xs-6">
                   @if(count($withdraws) > 0)
                         <span class="h3 text-danger font-bold m-t-xs m-b-xs block">{{$withdraws->first()->amount}} $</span>
-                        <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
+                        <small class="h5 text-muted m-b-xs block">
+                                @lang('lang.last_pay_period')
+                        </small>
                         <small>{{$withdraws->first()->created_at}}  </small>
                         @else
                         <span class="h3 text-danger font-bold m-t-xs m-b-xs block">0 $</span>
-                        <small class="h5 text-muted m-b-xs block">Last Pay Period</small>
+                        <small class="h5 text-muted m-b-xs block"> @lang('lang.last_pay_period')</small>
                    
                      @endif
                 </div>
@@ -53,7 +56,7 @@
             </p>
             <div class="row text-center padder-v m-b-xl b-t b-b b-light bg-light lter pull-in">
                 <div class="col-md-4">
-                    <span class="h4 font-bold m-t-xs m-b-xs block">Payment processor</span>
+                    <span class="h4 font-bold m-t-xs m-b-xs block"> @lang('lang.payment_proccessor')</span>
                     @if(($PaymentMethod) != null )
                         <small class="h5 text-success m-b-xs block">
                             {{ $PaymentMethod }}
@@ -61,8 +64,8 @@
                         @else
                         <small class="h5 text-danger m-b-xs block">
                             <i class="fa fa-times-circle"></i>
-                            <a href="{{route('account.profile')}}" title="Click To add email">
-                              No Payment way 
+                            <a href="{{route('account.profile')}}" title="@lang('lang.click_to')@lang('lang.add') @lang('lang.email')">
+                                    @lang('lang.no_payment_way')
                               </a>
                         </small>
                         @endif
@@ -70,7 +73,7 @@
                  
                 </div>
                 <div class="col-md-4">
-                    <span class="h4 font-bold m-t-xs m-b-xs block">Payment email</span>
+                    <span class="h4 font-bold m-t-xs m-b-xs block">@lang('lang.payment') @lang('lang.email')</span>
                         @if((Auth::user()->Profile->withdrawal_email) != "-")
                         <small class="h5 text-success m-b-xs block">
                             {{Auth::user()->Profile->withdrawal_email}}
@@ -79,17 +82,17 @@
                         <small class="h5 text-danger m-b-xs block">
                             <i class="fa fa-times-circle"></i>
                             <a href="{{route('account.profile')}}" title="Click To add email">
-                            No Email 
+                             @lang('lang.dont_have') @lang('lang.email')
                             </a>
                         </small>
                         @endif
                 </div>
                 <div class="col-md-4">
-                    <span class="h4 font-bold m-t-xs m-b-xs block">Last Payment date</span>
+                    <span class="h4 font-bold m-t-xs m-b-xs block">@lang('lang.last_payment_date')</span>
                     @if(count($withdraws) > 0)
                     <small class="h5 text-success m-b-xs block">{{$withdraws->first()->created_at}} </small>
                     @else
-                    <small class="h5 text-danger m-b-xs block">No payments </small>
+                    <small class="h5 text-danger m-b-xs block">@lang('lang.no_payments')</small>
                     @endif
                 </div>
             </div>
@@ -123,21 +126,21 @@
                                 </div>   
                         </div> 
                                      
-                            <button type="submit" class="btn btn-success"> Withdraw </button>
+                            <button type="submit" class="btn btn-success"> @lang('lang.withdraw') </button>
                 {{Form::close()}}
                         </div>
                     </div>
-            <h4 class="font-thin">Transaction
-                <b>History</b>
+            <h4 class="font-thin">@lang('lang.transaction_history')
+              
             </h4>
             <table class="table table-striped table-flip-scroll cf">
                 <thead class="cf">
                     <tr>
-                            <th>Date</th>                        
-                            <th>Transaction ID</th>
-                            <th>Method</th>
-                            <th>Amount</th>
-                            <th>Status</th>    
+                            <th>@lang('lang.date')</th>                        
+                            <th>@lang('lang.transaction_id')</th>
+                            <th>@lang('lang.pay_method')</th>
+                            <th>@lang('lang.amount')</th>
+                            <th>@lang('lang.status')</th>    
                     </tr>
                 </thead>
                 <tbody>
@@ -156,18 +159,18 @@
                             <td>{{$withdraw->amount}}  $</td>
                             <td>
                             @if($withdraw->status ==1)
-                            <dt> <b class="text-warning"><i class="fa fa-spinner"></i> Pending</b></dt>
+                            <dt> <b class="text-warning"><i class="fa fa-spinner"></i>@lang('lang.pending') </b></dt>
                             <dt>
                                     {{ Form::open(array('route' =>  ['withdraw.destroy',$withdraw->id], 'method'  => 'delete','id'=>'withdraw_form')) }}
-                                    {{Form::submit('Cancle',['class'=> 'text text-danger'])}}
+                                    <input type="submit" class="text text-danger"  value="@lang('lang.cancle')">
                                     {{Form::close()}}                                      
                             </dt>   
                             @elseif($withdraw->status ==2)
-                            <b class="text-info"><i class="fa fa-check"></i> Accepted </b>
+                            <b class="text-info"><i class="fa fa-check"></i> @lang('lang.accepted') </b>
                             @elseif($withdraw->status ==3)
-                                <b class="text-success"><i class="fa fa-lock"></i> Paid</b>
+                                <b class="text-success"><i class="fa fa-lock"></i>@lang('lang.paid') </b>
                             @elseif($withdraw->status ==4)
-                                <b class="text-danger"><i class="fa fa-times"></i> cancled</b>
+                                <b class="text-danger"><i class="fa fa-times"></i>@lang('lang.cancled') </b>
                             @endif                                               
                             </td>
                             </tr>

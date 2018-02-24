@@ -6,13 +6,12 @@
   <section class="lter box box-success">
     <header class="box-header with-border text-center">
       <h3 class="box-title">
-        <i class="fa fa-link">
-        </i>
+        <i class="fa fa-link"></i>
         @if(Route::is('link.index'))
-        All Your links
-    @elseif(Route::is('link.deletedLinks'))
-         All Your deleted links
-    @endif 
+          @lang('lang.all') @lang('lang.Links')
+        @elseif(Route::is('link.deletedLinks'))
+          @lang('lang.all') @lang('lang.hidden_links')
+        @endif 
       </h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -29,27 +28,27 @@
            <div class="col-sm-3 " style="top:10px;">
             <a href="{{route('link.create')}}" type="button" class="btn btn-success btn-md">
              <i class="fa fa-link"></i>
-               Add New link
+             @lang('lang.add') @lang('lang.new_link')
             </a>
             </div>
               <thead>
-              <tr>
-               <th>Link</th>
-               <th>views</th>
-               <th>Earnings</th>
-               <th>ceated date</th>
-               <th>Options</th>
-              </tr>
+                <tr>
+                    <th>@lang('lang.Link')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.views')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.created_at')</th>
+                    <th>@lang('lang.options')</th>
+                </tr>
               </thead>
-<tfoot>
-<tr>
-               <th>Link</th>
-               <th>views</th>
-               <th>Earnings</th>               
-               <th>ceated date</th>
-               <th>Options</th>
-              </tr>
-</tfoot>
+              <tfoot>
+                  <tr>
+                    <th>@lang('lang.Link')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.views')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
+                    <th class="v-middle hidden-xs">@lang('lang.created_at')</th>
+                    <th>@lang('lang.options')</th>
+                </tr>
+              </tfoot>
         <tbody>
           @foreach ($links as $link)
           <tr>
@@ -62,10 +61,10 @@
                   data-toggle="button">
                   <span class="text">
                     <i class="ion ion-ios-copy-outline text-md">
-                    </i> Copy
+                    </i> @lang('lang.copy')
                   </span>
                   <span class="text-active">
-                  <i class="fa fa-check"> </i> Copied
+                  <i class="fa fa-check"> </i> @lang('lang.copied')
                   </span>
                 </button>
                 </span>
@@ -121,19 +120,19 @@
                   <div class="padder">
                     {!! Form::open(array('route' =>['link.destroy',$link->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
                     <div class="text-center">
-                      <h4 id="msg-shorten ">Hide link</h4>
+                      <h4 id="msg-shorten ">@lang('lang.hide') @lang('lang.link')</h4>
                     </div>
                     <hr>
-                    <p>Are You Sure You Want Hide 
+                    <p> @lang('lang.are_you_want')  @lang('lang.hide') 
                       <b class="text-info">
-                        {{$link->slug}} </b> link ?</p> 
+                        {{$link->slug}} </b> @lang('lang.link') ?</p> 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                            cancle
+                              @lang('lang.cancle')
                           </button>
 
                           <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                            <i class="fa fa-eye-slash"></i> hide
+                            <i class="fa fa-eye-slash"></i> @lang('lang.hide')
                           </button>
                         </div>
 
@@ -153,19 +152,19 @@
                         'class'=>'form-restore','id'=>'form-restore' ))
                         !!}
                         <div class="text-center">
-                          <h4 id="msg-shorten ">UnHidden link</h4>
+                          <h4 id="msg-shorten ">@lang('lang.restore') @lang('lang.link')</h4>
                         </div>
                         <hr>
-                        <p>Are You Sure You Want UnHidden
+                        <p>@lang('lang.are_you_want')  @lang('lang.restore')
                           <b class="text-info">
-                            {{$link->slug}} </b> link ?
+                            {{$link->slug}} </b> @lang('lang.link') ?
                           </p> 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                              cancle
+                                @lang('lang.cancle')
                             </button>
                             <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                              <i class="fa fa-eye"></i> UnHide
+                              <i class="fa fa-eye"></i> @lang('lang.restore')
                             </button>
                           </div>
                           {!! Form::close() !!}
@@ -182,13 +181,14 @@
             @else
             <div class="col-md-8 col-md-offset-2">
               <center> 
-                <h2 class="text-danger alert alert-info"> You don't have links</h2>
+                <h2 class="text-danger alert alert-info"> @lang('lang.dont_have') @lang('lang.links')</h2>
               </center>
             </div>
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
               <a href="{{route('link.create')}}" class="btn btn-success"> 
-              <i class="fa fa-plus"></i>  Click to Add New link
+              <i class="fa fa-plus"></i> 
+              @lang('lang.click_to') @lang('lang.add') @lang('lang.new_link')
               </a>
             </div>
             @endif 

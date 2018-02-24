@@ -17,8 +17,8 @@ class FolderController extends Controller
 
     public function index(folder $folder)
     {
-        $folders = $folder->folder()->paginate(20);
-        return view('users.folders.index')->withfolder($folders);
+        $folders = $folder->folders()->paginate(20);
+        return view('users.folders.index',compact('folders'));
     }
   
     public function create()

@@ -15,7 +15,10 @@ use Auth;
 
 class WithdrawController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(withdraw $withdraw)
     {
         $User= Auth::user();
