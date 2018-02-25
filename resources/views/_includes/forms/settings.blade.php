@@ -14,26 +14,25 @@
 <div class="col-sm-12">
 		<div class="row">
 	@foreach($options as $option )	
-				<div class="col-sm-6">
-						<div class="form-group text {{ $errors->has($option->name) ? ' has-error' : '' }} required">
-							{{ Form::label($option->name,$option->name) }}
-						{{ Form::text($option->name,$option->value ? $option->value:$option->intV, 
-							['class' => 'form-control',
-							'id' => 'first_name',
-							'maxlength'=>'256' ,
-							'placeholder'=>$option->name
-							]) 
-							,'autofocus'
-						}}
-						@if ($errors->has($option->name))
-						<span class="help-block">
-							<strong>{{ $errors->first($option->name) }}</strong>
-						</span>
-						@endif   
-					</div> 
-				</div>
-				
-		@endforeach
+		<div class="col-sm-6">
+				<div class="form-group text {{ $errors->has($option->name) ? ' has-error' : '' }} required">
+					{{ Form::label($option->name,$option->name) }}
+				{{ Form::text($option->name,$option->value ? $option->value:$option->intV, 
+					['class' => 'form-control',
+					'id' => 'first_name',
+					'maxlength'=>'256' ,
+					'placeholder'=>$option->name
+					]) 
+					,'autofocus'
+				}}
+				@if ($errors->has($option->name))
+				<span class="help-block">
+					<strong>{{ $errors->first($option->name) }}</strong>
+				</span>
+				@endif   
+			</div> 
+		</div>
+	@endforeach
 	</div>
 	</div>
 		<footer class="row footer">

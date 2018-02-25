@@ -80,7 +80,9 @@ class HomeController extends Controller
     {
         $ads= advertisements::take(3);
         $link = $this->llink($slug);
-        return view('visitor.Fcaptcha',compact('link','ads'));
+        $capatcha_site_key = Options::where('name','captcha_site_key')->first() ;
+        $site_key= $capatcha_site_key->value;
+        return view('visitor.Fcaptcha',compact('link','site_key','ads'));
     }
 
     public function getLink(Request $request)
@@ -88,8 +90,10 @@ class HomeController extends Controller
         $ads= advertisements::take(3);
         $Timer_value = Options::where('name','Link_Timer')->first() ;
         $timer =   $Timer_value->intV;
+        $capatcha_site_key = Options::where('name','captcha_site_key')->first() ;
+        $site_key= $capatcha_site_key->value;
         $link = $this->llink($request->slug);
-        return view('visitor.link',compact('link','timer','ads'));
+        return view('visitor.link',compact('link','site_key','timer','ads'));
     }
    
     public function goToLink(Request $request)
