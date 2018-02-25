@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Models\Contacts;
 use Illuminate\Http\Request;
@@ -9,7 +11,6 @@ use Session;
 
 class ContactsController extends Controller
 {
-    
     public function index(Contacts $contacts)
     {
        // Show list of contacts

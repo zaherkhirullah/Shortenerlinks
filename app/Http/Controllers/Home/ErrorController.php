@@ -12,8 +12,9 @@
  * @since         3.3.4
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\Settings\AppController;
 use Cake\Event\Event;
 
 /**

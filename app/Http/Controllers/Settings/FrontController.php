@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Settings;
 
-use App\Http\Controllers\AppController;
+use App\Http\Controllers\Settings\AppController;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
 

@@ -1,51 +1,25 @@
 <?php
-// Route::get('ip', function () {
-// 	$ip = '66.102.0.0';
-//     $data = \Location::get($ip);
-//     dd($data);
-// });
 
 /*
 |=============================
-|      --/Visitor Area /--      
+|      --/ Settings Area /--      
 |=============================
 */
-
-Route::get('/', 'HomeController@index')->name('homepage');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/rates', 'HomeController@rates')->name('rates');
-
-Route::get('/contacts', 'ContactsController@create')->name('home.contacts.create');
-Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
-
-// captcha link
-Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
-Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
-Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
-
-// captcha file
-Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
-Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
-Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
-Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
-
-
-
-
-/*
-|=============================
-|  --/ Authouraization /-- 
-|=============================
-*/
-
-Auth::routes();
-
-Route::group(['namespace' => 'Auth'], function()
-{
-  Route::post('/register/ref={code}', 'RegisterController@PrefRegister')->name('refRegister');
+Route::prefix('settings')->group(function()
+  {
+  Route::group(['namespace' => 'Settings'], function()
+  {
+    Route::get( '/', 'OptionsController@index')->name("settings");
+    Route::post( '/', 'OptionsController@update')->name("Psettings");
+    Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
+    Route::post('/language', array('before' =>'csrf','as'=>'changelang',
+                                    'uses'=>'LanguageController@changelang',));
+                          
+                                    
+    Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
+  });
 });
+
 /*
 |=============================
 |      --/ Admin Area /--      
@@ -78,7 +52,6 @@ Route::prefix('admin')->group(function()
     Route::get( '/folders/dlist', 'FolderController@deletedFolders')->name("folders.deletedFolders");
     Route::delete( '/folders/{folder}/restore',array('uses' => 'FolderController@restore', 
                                                    'as'   => 'folders.restore'));
-
     // Admin Resources
     Route::resource( '/users',      'UserController');  
     Route::resource( '/roles',      'RoleController');
@@ -132,7 +105,7 @@ Route::prefix('user')->group(function()
 
 /*
 |=============================
-|      --/Settings Area /--      
+|      --/Account Area /--      
 |=============================
 */
 
@@ -148,26 +121,71 @@ Route::prefix('account')->group(function()
   });
 });
 
-/*
-|=============================
-|      --/LanguageContrroler /--      
-|=============================
-*/
-Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
-Route::post('/language', array('before' =>'csrf','as'=>'changelang',
-                                'uses'=>'LanguageController@changelang',));
-                      
-                                
-Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
 // Route::get('/{locale}', function ($locale) { 
 //  App::setLocale($locale); 
 //   return view('home.home'); 
 // });
 
-Route::get('/terms', 'HomeController@terms')->name('terms');
 
-Route::get('/error', 'ErrorController@error')->name('error');
-Route::get('/Notfound', 'ErrorController@Notfound')->name('Notfound');
+/*
+|=============================
+|      --/Visitor Area /--      
+|=============================
+*/
 
-Route::get('/error/{value}', 'ErrorController@error_v')->name('error_v');
-Route::get('/Notfound/{value}', 'ErrorController@Notfound_v')->name('Notfound_v');
+
+Route::group(['namespace' => 'Home'], function()
+{
+  // home page
+  Route::get('/', 'HomeController@index')->name('homepage');
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/rates', 'HomeController@rates')->name('rates');
+  Route::get('/terms', 'HomeController@terms')->name('terms');
+  
+  // error pages
+  Route::get('/error', 'ErrorController@error')->name('error');
+  Route::get('/Notfound', 'ErrorController@Notfound')->name('Notfound');
+  Route::get('/error/{value}', 'ErrorController@error_v')->name('error_v');
+  Route::get('/Notfound/{value}', 'ErrorController@Notfound_v')->name('Notfound_v');
+  
+  // contacts
+  Route::get('/contacts', 'ContactsController@create')->name('home.contacts.create');
+  Route::post('/contacts', 'ContactsController@store')->name('home.contacts.store');
+
+  // captcha link
+  Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
+  Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
+  Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+  Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
+
+  // captcha file
+  Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
+  Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
+  Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+  Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
+  Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
+});
+
+
+
+/*
+|=============================
+|  --/ Authouraization /-- 
+|=============================
+*/
+
+Auth::routes();
+
+Route::group(['namespace' => 'Auth'], function()
+{
+  Route::post('/register/?ref={code}', 'RegisterController@PrefRegister')->name('refRegister');
+});
+
+
+
+
+// Route::get('ip', function () {
+// 	$ip = '66.102.0.0';
+//     $data = \Location::get($ip);
+//     dd($data);
+// });

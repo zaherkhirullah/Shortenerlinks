@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Models\link;
 use App\Http\Models\file;
-use App\Balance;
-use App\User;
-use Auth;
 use App\Http\Models\linkVisitor;
 use App\Http\Models\Options;
 use App\Http\Models\fileDownloader;
 use App\Http\Models\advertisements;
+use App\Balance;
+use App\User;
+use Auth;
 use Carbon\Carbon ;
 class HomeController extends Controller
 {
