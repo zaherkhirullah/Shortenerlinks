@@ -14,9 +14,10 @@ class Options extends Model
     |  Public Functions
     |------------------------
     */
+  
+    /* list All Links  */      
     public function Options()
     {
-    return $this::all();
+     return $this->orderBy('created_at','desc')->get();
     }
-  
 }
