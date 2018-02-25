@@ -32,10 +32,13 @@ class OptionsController extends Controller
         foreach ($options->all() as $value) 
         {
             $options =  Options::where('name',$value->name)->first();
-            $options->value =$request->value;
-            dd($request->all());
-            $options->save();      
+            if($options){
+                $options->value = $request->input($value->name);
+                $options->save();
+            }
+                 
         }
+        // 6LcF5EUUAAAAAJ_qkzlldZkWkKuiTMXErAeM1Nj5
         Session::flash('success','successfuly update all settings');
         return redirect()->back();
         // $project->users()->sync($request->users);
