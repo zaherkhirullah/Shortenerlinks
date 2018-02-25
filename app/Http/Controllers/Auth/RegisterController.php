@@ -9,6 +9,7 @@ use App\Http\Models\address;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Cookie;
 
@@ -34,7 +35,11 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    public function showRegistrationForm($ref =null)
+    {
+            $ref = Input::get('ref');
+            return view('auth.register',compact('ref'));
+    }
     
     protected function validator(array $data)
     {

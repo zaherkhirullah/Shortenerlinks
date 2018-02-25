@@ -181,10 +181,6 @@ Route::group(['namespace' => 'Auth'], function()
   Route::get('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
    Route::post('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
 });
-
-
-
-
 // Route::get('ip', function () {
 // 	$ip = '66.102.0.0';
 //     $data = \Location::get($ip);
