@@ -87,9 +87,10 @@ class HomeController extends Controller
 
     public function getLink(Request $request)
     {   
+
         $ads= advertisements::take(3);
         $Timer_value = Options::where('name','Link_Timer')->first() ;
-        $timer =   $Timer_value->intV;
+        $timer =   $Timer_value->value;
         $capatcha_site_key = Options::where('name','captcha_site_key')->first() ;
         $site_key= $capatcha_site_key->value;
         $link = $this->llink($request->slug);
@@ -99,7 +100,7 @@ class HomeController extends Controller
     public function goToLink(Request $request)
     {   
         $visit_link = Options::where('name','count_visit_link')->first() ;
-        $AllowedCount =  $visit_link->intV;
+        $AllowedCount =  $visit_link->value;
         $link = $this->llink($request->slug);
         $ip = $request->ip();
         $link_id = $link->id;
@@ -155,7 +156,7 @@ class HomeController extends Controller
     {
         $ads= advertisements::skip(3)->take(3);
         $Timer_value = Options::where('name','Link_Timer')->first() ;
-        $timer =   $Timer_value->intV;
+        $timer =   $Timer_value->value;
         $file =$this->flink($request->slug);
         return view('visitor.file',compact('file','timer','ads'));
     }
@@ -163,7 +164,7 @@ class HomeController extends Controller
     {
         $ads= advertisements::skip(3)->take(3);  
         $Timer_value = Options::where('name','Link_Timer')->first() ;
-        $timer =   $Timer_value->intV;
+        $timer =   $Timer_value->value;
         $file = $this->flink($request->slug);
 
         return view('visitor.downloadfile',compact('file','timer','ads'));
@@ -172,10 +173,10 @@ class HomeController extends Controller
     {
         $ads= advertisements::skip(3)->take(3);
         $Timer_value = Options::where('name','Link_Timer')->first() ;
-        $timer =   $Timer_value->intV;  
+        $timer =   $Timer_value->value;  
         $file = $this->flink($request->slug);
         $visit_file = Options::where('name','count_visit_file')->first();
-        $AllowedCount =  $visit_file->intV;
+        $AllowedCount =  $visit_file->value;
         $file = $this->flink($request->slug);
         $ip = $request->ip();
         $file_id =$file->id;
