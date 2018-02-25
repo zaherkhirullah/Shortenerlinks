@@ -24,18 +24,17 @@ class WithdrawController extends Controller
         $User= Auth::user();
         $Balance=  $User->Balance->avilable_amount;        
         $method_id = $User->profile->withdrawal_method_id;
-        $method = PayMethod::where('id',$method_id)->first();
-        $PaymentMethod = $method->name;
+        $withdrawal_email = $User->profile->withdrawal_email;
+        $method = $method_id ? PayMethod::where('id',$method_id)->first():null; 
+        $PaymentMethod = $method ? $method->name : null;
+        $withdraws = $withdraw->UserWithdraws()->paginate(20);
+        
+        return view('users.withdraws.index ',compact('withdraws','withdrawal_email','PaymentMethod','Balance') );
 
-        $withdraws = $withdraw->Withdraws()->paginate(20);
-        return view('users.withdraws.index ',compact('withdraws','PaymentMethod','Balance') );
-   
-          $withdraws = $withdraw->Withdraws()->paginate(20);
-          return view('users.withdraws.index ',compact('withdraws'));
     }
     public function deletedWithdraws(withdraw $withdraw)
     {
-          $withdraws = $withdraw->deletedWithdraws()->paginate(20);
+          $withdraws = $withdraw->UserdeletedWithdraws()->paginate(20);
           return view('users.withdraws.index ',compact('withdraws'));
     }
     public function create()
@@ -94,22 +93,17 @@ class WithdrawController extends Controller
        $User  = Auth::user();
        $amount = $data['amount'];
        $withdrawal_method_id = $User->profile->withdrawal_method_id;
-    //    $withdrawal_method_id = $data['withdrawal_method_id'];
         $Balance = Balance::where('user_id',$user_id )->first();
         $payMethod = PayMethod::find($withdrawal_method_id)->first();
         $payMethod_min_amount = $payMethod->min_amount;
         $avilableBalance = $Balance->avilable_amount;
-    //  if($amount>$avilableBalance || $amount < $payMethod_min_amount ||$amount <= 0)
-    //  {
         if($amount > $avilableBalance)
         return   Session::flash('error','  The Withdraw amount must be little then and must be big than zero  avilableBalance ' .$avilableBalance . ' to withdraw your money .');
         if($amount <= 0)
         return   Session::flash('error','  The Withdraw amount must be big than zero you are wanted (' .$amount . ') to withdraw your money .');
         if($amount < $payMethod_min_amount)
         return    Session::flash('error','  The Withdraw amount must be at least  ' .$payMethod_min_amount . ' to successful create withdraw process.');
-    
-    //  }
-    //   else{
+        
         $withdraw = withdraw::create(
             [
               'user_id'    => $user_id,
@@ -119,12 +113,11 @@ class WithdrawController extends Controller
               'withdraw_address'      => $data['withdraw_address'],
             ]);
             Session::flash('success',' Sucessfully created your request (' .$amount . ') and Pending we will return message on email  .');
-    if($withdraw)
-    {
-        $Balance->avilable_amount -= $amount;
-        $Balance->save();
-    }
-            //   }
+        if($withdraw)
+        {
+            $Balance->avilable_amount -= $amount;
+            $Balance->save();
+        }
     return $withdraw ;
   }
   

@@ -112,8 +112,8 @@
     $(document).ready(function(){
     
         $('#btn-main').click(function() {
-            $('#form_post').attr('disabled','disabled');
-            $(this).attr('disabled','disabled');
+            // $('#form_post').attr('disabled','disabled');
+            // $(this).attr('disabled','disabled');
         });
            
             $Nvar = setInterval(myTimer, 1000);

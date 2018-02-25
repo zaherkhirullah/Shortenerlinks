@@ -9,11 +9,11 @@ use Auth ;
 use Carbon\Carbon;
 class Views extends Model
 {
-    public function TodayLinkViews()
+    public function TodayLinkViews($user_id)
     {   $link = new link();
         $links = $link->where(
             [
-                ['user_id',Auth::id()],
+                ['user_id',$user_id],
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ])->get();
@@ -26,11 +26,11 @@ class Views extends Model
         return $view;
     }
 
-    public function TodayFileViews()
+    public function TodayFileViews($user_id)
     {   $file = new file();
         $files = $file->where(
             [
-                ['user_id',Auth::id()],
+                ['user_id',$user_id],
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ])->get();
@@ -43,20 +43,20 @@ class Views extends Model
         return $view;
     }
 
-    public function TotalLinkViews()
+    public function TotalLinkViews($user_id)
     {   $link = new link();
         $view = 0;
-        $links = $link->where([['user_id',Auth::id()]])->get();
+        $links = $link->where([['user_id',$user_id]])->get();
         foreach($links as $linkk)
         {
             $view += $linkk->clicks;
         }
         return $view;
     }
-    public function TotalFileViews()
+    public function TotalFileViews($user_id)
     {   $file = new file();
         $view = 0;
-        $files = $file->where([['user_id',Auth::id()]])->get();
+        $files = $file->where([['user_id',$user_id]])->get();
         
         foreach($files as $filee)
         {
@@ -64,9 +64,9 @@ class Views extends Model
         }
         return $view;
     }
-    public function TotalViews()
+    public function TotalViews($user_id)
     {   
-        $view =  $this->TotalFileViews() +  $this->TotalLinkViews();
+        $view =  $this->TotalFileViews($user_id) +  $this->TotalLinkViews($user_id);
         return $view;
     } 
 }

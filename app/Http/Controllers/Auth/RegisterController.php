@@ -45,6 +45,7 @@ class RegisterController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'username' => 'required|string|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
+
             ]);
     }
   
@@ -53,14 +54,12 @@ class RegisterController extends Controller
     {    
         // $referred_by = Cookie::get('referral');
 
-        $code =null;
+        $code = $data['ref'];
         $referred_by =null;
         if($code!=null)
         {
-            $code = $data['referred_by'];
             $userr = User::where([['affiliate_id',$code]])->first();
             $referred_by =  $userr->id;
-            return $referred_by;
         }
         $user =  User::create([
             'first_name' => $data['first_name'],

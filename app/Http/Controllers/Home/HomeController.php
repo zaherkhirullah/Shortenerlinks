@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Models\link;
 use App\Http\Models\file;
+use App\Http\Models\Earn;
 use App\Http\Models\linkVisitor;
 use App\Http\Models\Options;
 use App\Http\Models\fileDownloader;
@@ -127,6 +128,12 @@ class HomeController extends Controller
         
                     $user_id = $link->user_id;
                     $User = User::where('id',$user_id)->first();
+                    $ref_id =$User->referred_by;
+                    $ref_User = User::where('id',$ref_id)->first();
+                    if($ref_User)
+                    {   $earn = new Earn();
+                        $earn->add_to_ref_Balance($ref_id);
+                    }
                     $Balance =$User->Balance;
                     $Balance->avilable_amount += 0.004;
                     $Balance->save();

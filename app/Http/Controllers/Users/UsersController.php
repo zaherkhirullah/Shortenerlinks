@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\PayMethod;
 use App\Http\Models\Earn;
 use App\Http\Models\Views;
+use App\Http\Models\Options;
 use App\Http\Models\Downloads;
 use App\User;
 use Auth;
@@ -18,35 +19,47 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function dashboard(Earn $earn ,Views $view,Downloads $download)
-    {   $TodayLinkEarnings= $earn->TodayLinkEarnings();
-        $TodayFileEarnings= $earn->TodayFileEarnings();
-        $TotalLinkEarnings= $earn->TotalLinkEarnings();
-        $TotalFileEarnings= $earn->TotalFileEarnings();
-            $TotalEarnings    = $earn->TotalEarnings();
-        $TodayLinkViews= $view->TodayLinkViews();
-        $TodayFileViews= $view->TodayFileViews();
-        $TotalLinkViews= $view->TotalLinkViews();
-        $TotalFileViews= $view->TotalFileViews();
-            $TotalViews    = $view->TotalViews();
-        $TodayFileDownloads= $download->TodayFileDownloads();
-        $TotalFileDownloads= $download->TotalFileDownloads();
+    {    $user_id = Auth::id();
+        $TodayLinkEarnings= $earn->TodayLinkEarnings($user_id);
+        $TodayFileEarnings= $earn->TodayFileEarnings($user_id);
+        $TotalLinkEarnings= $earn->TotalLinkEarnings($user_id);
+        $TotalFileEarnings= $earn->TotalFileEarnings($user_id);
+            $TotalEarnings    = $earn->TotalEarnings($user_id);
+            $ReferralEarnings = $earn->ReferralEarnings($user_id);
+            $Referral_MyEarnings = $earn->Referral_MyEarnings($user_id);
+            
+        $TodayLinkViews= $view->TodayLinkViews($user_id);
+        $TodayFileViews= $view->TodayFileViews($user_id);
+        $TotalLinkViews= $view->TotalLinkViews($user_id);
+        $TotalFileViews= $view->TotalFileViews($user_id);
+            $TotalViews    = $view->TotalViews($user_id);
+        $TodayFileDownloads= $download->TodayFileDownloads($user_id);
+        $TotalFileDownloads= $download->TotalFileDownloads($user_id);
+        
         
         $DayTime = Carbon::today()->Format('Y-m-d');
         $NowTime = Carbon::now();     
          
      return view('users.dashboard',
-     compact('TodayLinkEarnings','TodayFileEarnings','TotalLinkEarnings','TotalFileEarnings','TotalEarnings',
+     compact('TodayLinkEarnings','TodayFileEarnings','TotalLinkEarnings','TotalFileEarnings','TotalEarnings','ReferralEarnings','Referral_MyEarnings',
      'TodayLinkViews','TodayFileViews','TotalLinkViews','TotalFileViews','TotalViews',
      'TodayFileDownloads','TotalFileDownloads',
      'NowTime', 'DayTime'));
     }
-    public function referrals()
+   
+    public function referrals(Earn $earn)
     {
-        $refUsers=User::where('referred_by',Auth::id())->get();
-        return view('users.referrals',compact('refUsers'));
+        $user_id = Auth::id();
+        $refUsers=User::where('referred_by',$user_id)->get();
+         if(count($refUsers)){
+             $user_earnings = $earn->ReferralEarnings($user_id);
+             $my_earnings =$earn->Referral_MyEarnings($user_id);
+        }
+
+        return view('users.referrals',compact('refUsers','my_earnings','earn'));
     }
+
     public function withdraw()
     {  
        $User= Auth::user();

@@ -57,16 +57,16 @@
                 <strong>{{$link->shorted_url}}</strong>
               </a>
               <span class="pull-right">
-              <button class="btn btn-sm btn-copy text-success" data-clipboard-text="{{$link->shorted_url}}"
-                  data-toggle="button">
-                  <span class="text">
-                    <i class="ion ion-ios-copy-outline text-md">
-                    </i> @lang('lang.copy')
-                  </span>
-                  <span class="text-active">
-                  <i class="fa fa-check"> </i> @lang('lang.copied')
-                  </span>
-                </button>
+                  <button class="btn btn-sm btn-copy text-success" data-clipboard-text="{{$link->shorted_url}}"
+                      data-toggle="button">
+                      <span class="text">
+                        <i class="ion ion-ios-copy-outline text-md">
+                        </i> @lang('lang.copy')
+                      </span>
+                      <span class="text-active">
+                      <i class="fa fa-check"> </i> @lang('lang.copied')
+                      </span>
+                    </button>
                 </span>
               <small class="text-muted block">
             
@@ -135,7 +135,6 @@
                             <i class="fa fa-eye-slash"></i> @lang('lang.hide')
                           </button>
                         </div>
-
                         {!! Form::close() !!}
                       </div>
                     </div>

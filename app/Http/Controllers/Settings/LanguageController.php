@@ -13,19 +13,27 @@ use App ;
 use Lang ;
 class LanguageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('language');
+    }
+
 	public function index($lang)
 	{
 	 $langs = ['en','ar'];
 	 if (in_array($lang , $langs))
 	 {
-		Session([['lang' => $lang]]);
-		
-		Session::flash('success','dil degistirdi '.Session::get('lang'));
+		Session(['language' => $lang]);
+// return Session::forget('languages');		
+// return Session::all();
+		Session::flash('success', Lang::get('lang.change_language',['name'=>Session::get('language')]));
 		return Redirect::back();
 	 } 
-	 return Redirect::back()->with('error','dil not fund '.Session::get('lang'));
-
+	 return Redirect::back()->with('error', Lang::get('lang.not_found' , ['name' => Lang::get('lang.language')]) . ' ' .$lang);
 	}
+
+
    public function changelang(Request $request)
    {
    	if($request->ajax())

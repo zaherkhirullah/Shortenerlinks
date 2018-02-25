@@ -8,7 +8,7 @@
         <header class="box-header with-border text-center">
             <h3 class="box-title">
                 <i class="fa fa-users">
-                </i> Referals 
+                </i> @lang('lang.referrals') 
             </h3>
 
             <div class="box-tools pull-right">
@@ -29,15 +29,25 @@
                     <code class="text-primary">
                         @if(Auth::user()->affiliate_id)
                         {{url('/register').'/?ref='.Auth::user()->affiliate_id}}
+                        <button class="btn btn-xs btn-copy text-primary" data-clipboard-text="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"
+                            data-toggle="button">
+                            <span class="text">
+                              <i class="ion ion-ios-copy-outline text-md">
+                              </i> @lang('lang.copy')
+                            </span>
+                            <span class="text-active">
+                            <i class="fa fa-check"> </i> @lang('lang.copied')
+                            </span>
+                          </button>
                         @endif
                     </code>
                 </div>
 <section class="text-center">
-      <h4 class="font-thin m-t-xl text-primary">Referral Banners</h4>
+      <h4 class="font-thin m-t-xl text-primary"> @lang('lang.referral_banners') </h4>
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch Referral Banners
+            @lang('lang.launch')  @lang('lang.referral_banners')
         </button>
 
         <!-- Modal -->
@@ -45,7 +55,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Referral Banners</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">  @lang('lang.referral_banners')</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -53,7 +63,7 @@
                     <div class="modal-body">
                         <div class="nav-tabs-alt">
                             <ul class="nav nav-tabs">
-                                <li class="">
+                                <li class="active">
                                     <a href="#720x90" data-toggle="tab">720 x 90</a>
                                 </li>
                                 <li class="">
@@ -62,7 +72,7 @@
                                 <li class="">
                                     <a href="#336x280" data-toggle="tab">336 x 280</a>
                                 </li>
-                                <li class="active">
+                                <li class="">
                                     <a href="#300x250" data-toggle="tab">300 x 250</a>
                                 </li>
                                 <li class="">
@@ -73,11 +83,12 @@
                                 </li>
                             </ul>
                             <div class="tab-content wrapper-md">
-                                <div id="720x90" class="tab-pane">
+                                <div id="720x90" class="tab-pane active">
                                     <img class="center-block m-b" src="https://{{url('/')}}/images/banners/r1.jpg" style="display: none !important;">
                                     <pre>&lt;!-- Start of 720x90 {{url('/')}} banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://{{url('/')}}/images/banners/r1.jpg" title="{{url('/')}} - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of 720x90 {{url('/')}} banner code --&gt;</pre>
                                 </div>
-                                <div id="480x60" class="tab-pane">
+                                
+                                <div id="480x60" class="tab-pane  ">
                                     <img class="center-block m-b" src="https://{{url('/')}}/images/banners/r2.jpg" style="display: none !important;">
                                     <pre>&lt;!-- Start of 480x60 {{url('/')}} banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://{{url('/')}}/images/banners/r2.jpg" title="{{url('/')}} - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of 480x60 {{url('/')}} banner code --&gt;</pre>
                                 </div>
@@ -85,7 +96,7 @@
                                     <img class="center-block m-b" src="https://{{url('/')}}/images/banners/r3.jpg" style="display: none !important;">
                                     <pre>&lt;!-- Start of 336x280 {{url('/')}} banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://{{url('/')}}/images/banners/r3.jpg" title="{{url('/')}} - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of 336x280 {{url('/')}} banner code --&gt;</pre>
                                 </div>
-                                <div id="300x250" class="tab-pane active">
+                                <div id="300x250" class="tab-pane ">
                                     <img class="center-block m-b" src="https://{{url('/')}}/images/banners/r4.jpg" style="display: none !important;">
                                     <pre>&lt;!-- Start of 300x250 {{url('/')}} banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://{{url('/')}}/images/banners/r4.jpg" title="{{url('/')}} - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of 300x250 {{url('/')}} banner code --&gt;</pre>
                                 </div>
@@ -98,6 +109,7 @@
                                     <pre>&lt;!-- Start of 160x600 {{url('/')}} banner code --&gt;<br>&lt;a href="{{url('/register').'/?ref='.Auth::user()->affiliate_id}}"&gt;&lt;img src="http://{{url('/')}}/images/banners/r6.jpg" title="{{url('/')}} - Make short links and earn the biggest money" /&gt;&lt;/a&gt;<br>&lt;!-- End of 160x600 {{url('/')}} banner code --&gt;</pre>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -111,15 +123,15 @@
 </section>
 <hr>
                <div class="text-center">
-                <h4 class="font-thin m-t-xl text-info"><b>My Referrals </b></h4>
+                <h4 class="font-thin m-t-xl text-info"><b>@lang('lang.my_referrals') </b></h4>
                </div>
                @if(count($refUsers))
                     <table class="table table-striped table-flip-scroll cf">
                         <thead class="cf">
                             <tr>
-                                <th>Username</th>
-                                <th>Earnings</th>
-                                <th>My Earnings</th>
+                                <th>@lang('lang.username')</th>
+                                <th>@lang('lang.earnings')</th>
+                                <th>@lang('lang.my_earnings')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,8 +139,8 @@
                         @foreach($refUsers as $user)
                             <tr>
                                 <td>{{ $user->username }}</td>
-                                <td class="v-middle hidden-xs">$0.00000</td>
-                                <td class="v-middle text-danger">$0
+                            <td class="v-middle hidden-xs">{{$earn->TotalEarnings($user->id)}} $</td>
+                                <td class="v-middle text-danger">{{$my_earnings}} $
                                 </td>
                             </tr>
                         @endforeach
@@ -137,7 +149,7 @@
                @else
                     <tr>
                         <center  class="text-danger">
-                        <h3>You don't have any Refferal</h3>
+                        <h3>@lang('lang.dont_have') @lang('lang.referral')</h3>
                         </center> 
                     </tr>
                 @endif

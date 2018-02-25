@@ -190,7 +190,7 @@
            <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
                 <a href="{{route('file.create')}}" class="btn btn-success"> 
-                  <i class="fa fa-plus"></i>  Click to Add New@lang('lang.file')
+                  <i class="fa fa-plus"></i>   @lang('lang.click_to')@lang('lang.add') @lang('lang.new_file')
                  </a>
             </div>
             @endif 

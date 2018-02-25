@@ -155,13 +155,13 @@ Route::group(['namespace' => 'Home'], function()
   // captcha link
   Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
   Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-  Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+  Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
   Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
   // captcha file
   Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
   Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-  Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+  Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
   Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
   Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 });
@@ -178,7 +178,8 @@ Auth::routes();
 
 Route::group(['namespace' => 'Auth'], function()
 {
-  Route::post('/register/?ref={code}', 'RegisterController@PrefRegister')->name('refRegister');
+  Route::get('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
+   Route::post('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
 });
 
 

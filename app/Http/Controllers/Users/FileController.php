@@ -24,13 +24,13 @@ class fileController extends Controller
     public function index(file $file)
     {
           $files = $file->UserFiles()->paginate(20);
-     return view('users.files.index')->withFiles($files);
+     return view('users.files.index',compact('files'));
     }
 // Show list of deleted files
-     public function UserDeletedFiles(file $file)
+     public function deletedFiles(file $file)
      {
-           $files = $file->deletedFiles()->paginate(20);
-           return view('users.files.index')->withfiles($files);
+           $files = $file->UserDeletedFiles()->paginate(20);
+           return view('users.files.index',compact('files'));
      }
 // upload new file
     public function create()

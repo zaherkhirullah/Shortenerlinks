@@ -17,6 +17,15 @@ class withdraw extends Model
      {
       return $this->where('isDeleted','0')->orderBy('created_at','desc');
      }
+     public function UserWithdraws()
+     {
+      return $this->where([['isDeleted','0'],['user_id',Auth::id()]])->orderBy('created_at','desc');
+     }
+     
+     public function UserdeletedWithdraws()
+    {
+    return $this->where([['isDeleted','1'],['user_id',Auth::id()]])->orderBy('updated_at','desc');
+    }
     /* list of  Withdraws has been deleted and list (Desc) by create date */
     public function deletedWithdraws()
     {

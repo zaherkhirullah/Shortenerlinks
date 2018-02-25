@@ -56,13 +56,13 @@
                             <!-- small box -->
                             <div class="small-box1">
                                 <div class="inner">
-                                    <p>Downloads Today
+                                    <p>@lang('lang.today_downloads') 
                                          <b class="text-danger pull-right">: 
                                              {{$TodayFileDownloads}}
                                         </b>
                                     </p>
                                     <p>eCPM <b class="text-danger pull-right">: 0$</b></p>
-                                    <p>Earnings Today <b class="text-danger pull-right">: {{$TodayFileEarnings}}$</b></p>
+                                    <p>@lang('lang.today_earnings') <b class="text-danger pull-right">: {{$TodayFileEarnings}}$</b></p>
                                 </div>
                             </div>
                         </div>
@@ -71,9 +71,9 @@
                             <!-- small box -->
                             <div class="small-box1">
                                 <div class="inner">
-                                    <p>Views Today <b class="text-danger pull-right">: {{$TodayLinkViews}}</b></p>
+                                    <p>@lang('lang.today_views')  <b class="text-danger pull-right">: {{$TodayLinkViews}}</b></p>
                                     <p>eCPM <b class="text-danger pull-right">: 0$</b></p>
-                                    <p>Earnings Today <b class="text-danger pull-right">: {{$TodayLinkEarnings}}$</b></p>
+                                    <p>@lang('lang.today_earnings')  <b class="text-danger pull-right">: {{$TodayLinkEarnings}}$</b></p>
                                 </div>
                                 
                             </div>
@@ -83,10 +83,10 @@
                             <!-- small box -->
                             <div class="small-box1">
                                 <div class="inner">
-                                    <p class="text-center">Total Downloads <br>
+                                    <p class="text-center">@lang('lang.total_downloads')<br>
                                         <span class="text-danger"> {{$TotalFileDownloads}}</span >
                                     </p>
-                                    <p class="text-center">Total Earnings <br>
+                                    <p class="text-center">@lang('lang.total_file_earnings') <br>
                                         <span class="text-danger text-center"> {{$TotalFileEarnings}}$</span >
                                     </p>    
                                 </div>
@@ -97,10 +97,10 @@
                             <!-- small box -->
                             <div class="small-box1">
                                 <div class="inner">
-                                    <p class="text-center">Total Views <br>
+                                    <p class="text-center">@lang('lang.total_views') <br>
                                         <span class="text-danger"> {{$TotalLinkViews}}</span >
                                     </p>
-                                    <p class="text-center">Total Earnings <br>
+                                    <p class="text-center">@lang('lang.total_link_earnings') <br>
                                         <span class="text-danger text-center"> {{$TotalLinkEarnings}}$</span >
                                     </p> 
                                 </div>
@@ -111,8 +111,8 @@
                         <div class="boxx col-xs-6">
                             <!-- small box -->
                             <div class="inner topp">
-                                <p class="text-center">Referral Earnings <br>
-                                    <span class="text-danger text-center"> 0 $</span >
+                                <p class="text-center">@lang('lang.referrals_earnings')  <br>
+                                    <span class="text-danger text-center">{{$Referral_MyEarnings}} $</span > 
                                 </p>    
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                         <!-- ./col -->
                         <div class="boxx col-xs-6">
                             <div class="inner topp">
-                                <p class="text-center">Total Avilable Earnings <br>
+                                <p class="text-center"> @lang('lang.total_avilable_earnings')<br>
                                     <span class="text-success"> {{$TotalEarnings}} $</span >
                                 </p>    
                             </div>
@@ -148,7 +148,7 @@
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
                         <i class="fa fa-link">
-                        </i> Your Links 15
+                        </i>@lang('lang.all') @lang('lang.Links') 
                     </h3>
 
                     <div class="box-tools pull-right">
@@ -170,7 +170,7 @@
 
                                     </sup>
                                 </h3>
-                                <p>Views Today</p>
+                                <p>@lang('lang.today_views') </p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-eye"> </i>
@@ -189,7 +189,7 @@
                                     <span class="sum color1">{{$TotalLinkViews}}</span>
                                     <sup style="font-size: 20px"></sup>
                                 </h3>
-                                <p>Total Views</p>
+                                <p>@lang('lang.total_views') </p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-eye-outline">
@@ -209,7 +209,7 @@
                                     <span class="sum color1">{{$TodayLinkEarnings}}</span>
                                     <sup style="font-size: 25px">$</sup>
                                 </h3>
-                                <p>Today Earnings</p>
+                                <p>@lang('lang.today_earnings') </p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-social-usd">
@@ -230,7 +230,8 @@
                                     <span class="sum color1">{{$TotalLinkEarnings}}</span>
                                     <sup style="font-size: 25px">$</sup>
                                 </h3>
-                                <p>Total Earnings</p>
+                                <p>@lang('lang.total_earnings') </p>
+                                
                             </div>
                             <div class="icon">
                                 <i class="ion ion-social-usd">
@@ -267,7 +268,7 @@
                 </div>
                     <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="/user/links" class="uppercase">View All links</a>
+                    <a href="/user/links" class="uppercase">@lang('lang.view') @lang('lang.all') @lang('lang.links')</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -279,7 +280,7 @@
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
                         <i class="fa fa-file-o"> 
-                        </i> Your Files 15
+                        </i> @lang('lang.all') @lang('lang.Files') 
                     </h3>
 
                     <div class="box-tools pull-right">
@@ -398,7 +399,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="/user/files" class="uppercase">View All Files</a>
+                    <a href="/user/files" class="uppercase">@lang('lang.view') @lang('lang.all') Files</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -406,7 +407,7 @@
         </div>
         <!-- /.col-md-12  -->
         <div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="box box-info">
                     <div class="box-header with-border text-center">
                         <h3 class="box-title ">
@@ -441,15 +442,15 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.col-md-6  -->
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="box box-success">
                     <div class="box-header with-border text-center">
                         <h3 class="box-title">
-                                <i class="fa fa-link"> </i> links
+                                <i class="fa fa-link"> </i> @lang('lang.Links')
                                 <sup>&</sup>
                                 <sub>&</sub>
                                 <sup>&</sup>
-                                <i class="fa fa-file-o"> </i>  Files
+                                @lang('lang.Files')  <i class="fa fa-file-o"> </i> 
                                 
                         </h3>
 
@@ -472,64 +473,8 @@
             </div>
             <!-- /.col-md-6  -->
         </div> 
-        <!--/col-md-12 -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-            <div class="small-box bg-olive">
-                <div class="inner">
-                    <h3>
-                        <span class="sum color1">{{$TotalLinkEarnings}} </span>
-                        <sup style="font-size: 25px">$</sup>
-                    </h3>
-                    <p>Total Link Earnings</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-ios-cog-outline"></i>
-                </div>
-                <a href="balance/wallets" class="small-box-footer">More info
-                    <i class="fa fa-arrow-circle-right"> </i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-olive">
-                <div class="inner">
-                    <h3>
-                        <span class="sum color1">{{$TotalFileEarnings}} </span>
-                        <sup style="font-size: 25px">$</sup>
-                    </h3>
-                    <p>Total File Earnings</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-ios-cog-outline"></i>
-                </div>
-                <a href="balance/wallets" class="small-box-footer">More info
-                    <i class="fa fa-arrow-circle-right"> </i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-olive">
-                <div class="inner">
-                    <h3>
-                        <span class="sum color1">{{$TotalEarnings}} </span>
-                        <sup style="font-size: 25px">$</sup>
-                    </h3>
-                    <p>Total Earnings</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-ios-cog-outline"></i>
-                </div>
-                <a href="balance/wallets" class="small-box-footer">More info
-                    <i class="fa fa-arrow-circle-right"> </i>
-                </a>
-            </div>
-        </div>
-
-
-
+        
+        
     <script>
     var myVar = setInterval(myTimer, 1000);
 

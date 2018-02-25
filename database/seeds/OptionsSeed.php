@@ -25,20 +25,25 @@ class OptionsSeed extends Seeder
         $option->save();
         $option = new \App\Http\Models\Options();
         $option->name='Link_Timer';
-        $option->intV=5;
+        $option->value=5;
         $option->save();
         $option = new \App\Http\Models\Options();
         $option->name='count_visit_link';
-        $option->intV=1;
+        $option->value=1;
         $option->save();
         $option = new \App\Http\Models\Options();
         $option->name='count_visit_file';
-        $option->intV=1;
+        $option->value=1;
         $option->save();
         $option = new \App\Http\Models\Options();
         $option->name='count_download_file';
-        $option->intV=3;
+        $option->value=3;
         $option->save();
+        $option = new \App\Http\Models\Options();
+        $option->name='ref_earnings';
+        $option->value=3;
+        $option->save();
+        
 
     }
 }

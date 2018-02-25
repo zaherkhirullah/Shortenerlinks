@@ -27,8 +27,8 @@
                         @endforeach
                 </div>
                 <form method="POST" action="{{route('goLink',$link->slug)}}" accept-charset="UTF-8">
-                {{ csrf_field() }}
-                <button type="submit" disabled="true" id="btn-main" class="btn btn-main" data-single-click="" target="_blank">Get Link</button>
+                    {{ csrf_field() }}
+                    <button type="submit" disabled="true" id="btn-main" class="btn btn-main" target="_blank">Get Link</button>
                 </form>
 
                 <div style="width: 300px; margin: 0 auto;">
@@ -49,8 +49,8 @@
         $(document).ready(function(){
         
             $('#btn-main').click(function() {
-            $('#form_post').attr('href','');
-            $(this).attr('disabled','disabled');
+            // $('#form_post').attr('href','');
+            // $(this).attr('disabled','disabled');
         });
         });
     </script>

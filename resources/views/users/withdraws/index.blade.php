@@ -57,31 +57,29 @@
             <div class="row text-center padder-v m-b-xl b-t b-b b-light bg-light lter pull-in">
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block"> @lang('lang.payment_proccessor')</span>
-                    @if(($PaymentMethod) != null )
+                    @if($PaymentMethod )
                         <small class="h5 text-success m-b-xs block">
                             {{ $PaymentMethod }}
                         </small>
                         @else
                         <small class="h5 text-danger m-b-xs block">
                             <i class="fa fa-times-circle"></i>
-                            <a href="{{route('account.profile')}}" title="@lang('lang.click_to')@lang('lang.add') @lang('lang.email')">
+                            <a href="{{route('account.profile')}}" title="@lang('lang.click_to')@lang('lang.add') @lang('lang.pay_method')">
                                     @lang('lang.no_payment_way')
                               </a>
                         </small>
                         @endif
-
-                 
                 </div>
                 <div class="col-md-4">
                     <span class="h4 font-bold m-t-xs m-b-xs block">@lang('lang.payment') @lang('lang.email')</span>
-                        @if((Auth::user()->Profile->withdrawal_email) != "-")
+                        @if($withdrawal_email)
                         <small class="h5 text-success m-b-xs block">
-                            {{Auth::user()->Profile->withdrawal_email}}
+                            {{$withdrawal_email}}
                         </small>
                         @else
                         <small class="h5 text-danger m-b-xs block">
                             <i class="fa fa-times-circle"></i>
-                            <a href="{{route('account.profile')}}" title="Click To add email">
+                            <a href="{{route('account.profile')}}" title="@lang('lang.click_to')@lang('lang.add') @lang('lang.email')">
                              @lang('lang.dont_have') @lang('lang.email')
                             </a>
                         </small>
@@ -96,12 +94,12 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 form-group">
                     <div class="form-group text-center">
-      {{ Form::open(array('route' => 'withdraw.store' , 'method'  => 'POST','id'=>'withdraw_form')) }}
+                    {{ Form::open(array('route' => 'withdraw.store' , 'method'  => 'POST','id'=>'withdraw_form')) }}
 
                             {{ csrf_field() }}  
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <div class="form-group {{$errors->has('amount') ? ' has-error' : ''}}">
                                     {{ Form::text('amount','',
                                     ['id'=>'path','placeholder'=>'amount','class' => "form-control ",'required' => 'required',])  
@@ -113,7 +111,7 @@
                                     @endif
                             </div> 
                         </div>  
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                                 <div class="form-group {{$errors->has('withdraw_address') ? ' has-error' : ''}}">
                                         {{ Form::text('withdraw_address','',
                                         ['id'=>'path','placeholder'=>'withdraw address','class' => "form-control ",'required' => 'required',])  
@@ -130,9 +128,11 @@
                 {{Form::close()}}
                         </div>
                     </div>
-            <h4 class="font-thin">@lang('lang.transaction_history')
-              
-            </h4>
+           <center>
+                <h4 class="font-thin">@lang('lang.transaction_history') </h4> 
+            </center>   
+               
+           @if(count($withdraws))
             <table class="table table-striped table-flip-scroll cf">
                 <thead class="cf">
                     <tr>
@@ -177,6 +177,13 @@
                     @endforeach        
                 </tbody>
             </table>
+            @else
+            <tr>
+                <center  class="text-danger">
+                <h3>@lang('lang.dont_have') @lang('lang.withdraw')</h3>
+                </center> 
+            </tr>
+        @endif
         </section>
     </section>
 </section>     

@@ -18,7 +18,7 @@
                     <div class="panel-body">
                     <!-- <input id="referred_by" type="hiiden" name="referred_by" value=""> -->
                         <div class="col-md-12">
-                    
+                        <input type="hidden" name="ref" id="ref" for="ref" value="{{$ref}}">
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                 
                                 <div class="input-group">

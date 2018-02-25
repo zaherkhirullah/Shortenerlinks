@@ -4,9 +4,9 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Domain;
-use App\User;
 use App\Http\Models\Adstype;
 use App\Http\Models\folder;
+use App\User;
 use Auth ;
 class file extends Model
 {
@@ -30,6 +30,15 @@ class file extends Model
     {
      return $this->where('isDeleted','1')->orderBy('updated_at','desc');
     }
+     // list all files for a user
+     public function UserFiles()
+     {
+       return $this->files()->where([['user_id',Auth::id()]]);
+     }
+     public function UserDeletedFiles()
+     {
+         return $this->deletedFiles()->where([['user_id',Auth::id()]]);
+     }
 // list of  files has been deleted and list (Desc) by create date
      public function private()
      {
@@ -41,15 +50,7 @@ class file extends Model
        return $this->where([['isDeleted','0'],['isPrivate','0']])->orderBy('updated_at','desc');
       }
       
- // list all files for a user
-      public function UserFiles()
-      {
-        return $this->files()->where([['user_id',Auth::id()]]);
-      }
-      public function UserDeletedFiles()
-      {
-          return $this->deletedFiles()->where('user_id',Auth::id());
-      }
+
       public function domain()
       {
         return $this->belongsTo(Domain::class); 

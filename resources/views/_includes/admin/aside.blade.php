@@ -244,6 +244,12 @@
 						</a>
 						<ul class="nav lt">
 							<li>
+								<a href="{{route('settings')}}">
+									<i class="fa fa-angle-right"></i>
+									<span>@lang('lang.settings')</span>
+								</a>
+							</li>
+							<li>
 								<a href="{{route('account.profile')}}">
 									<i class="fa fa-angle-right"></i>
 									<span>@lang('lang.profile')</span>

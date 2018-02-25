@@ -10,11 +10,11 @@ use Carbon\Carbon;
 class Downloads extends Model
 {
 
-    public function TodayFileDownloads()
+    public function TodayFileDownloads($user_id)
     {   $file = new file();
         $files = $file->where(
             [
-                ['user_id',Auth::id()],
+                ['user_id',$user_id],
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ])->get();
@@ -26,10 +26,10 @@ class Downloads extends Model
         }
         return $Download;
     }
-    public function TotalFileDownloads()
+    public function TotalFileDownloads($user_id)
     {   $file = new file();
         $Download = 0;
-        $files = $file->where([['user_id',Auth::id()]])->get();
+        $files = $file->where([['user_id',$user_id]])->get();
         
         foreach($files as $filee)
         {

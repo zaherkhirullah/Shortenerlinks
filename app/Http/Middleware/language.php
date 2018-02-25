@@ -4,18 +4,19 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
-use Config;
+
 use App;
 class language
 {
     public function handle($request, Closure $next)
     {
-        if( Session::has('lang'))
-        {
-            $lang = Session::get('lang',Config::get('app.locale'));
+        if( $lang = Session::get('language'))
+		{
+            $lang =  Session::get('language');
         }
-        else{
-            $lang ='ar';
+        else 
+        {
+            $lang ="ar";
         }
         App::setLocale($lang);
        return $next($request);  

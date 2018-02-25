@@ -15,7 +15,11 @@ use Auth;
 
 class WithdrawsController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+   
     public function index(withdraw $withdraw)
     {
           $withdraws = $withdraw->Withdraws()->paginate(20);
