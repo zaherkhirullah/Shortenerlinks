@@ -7,7 +7,7 @@
 	{{ csrf_field() }}
 </div>
 <legend class="text-center">
-	<i class="fa fa-fw fa-key"></i> Change Password
+	<i class="fa fa-fw fa-key"></i>@lang('lang.change') @lang('lang.password')
 </legend>
 
 <div class="row">
@@ -21,7 +21,7 @@
 					['class' => 'form-control',
 					'id' => 'current_password',
 					'maxlength'=>'256' ,
-					'placeholder'=>'Old Password *'
+					'placeholder'=> Lang::get('lang.old_password')
 					,'autofocus']) 
 			  }}
 		  	</div>
@@ -35,10 +35,10 @@
 	<div class="col-sm-6 col-sm-offset-3">
 	<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 			<div class="input-group">
-				<span for="password" title="password"   class="input-group-addon"> 
+				<span for="password" title="@lang('lang.password')"   class="input-group-addon"> 
 					<i class="ion ion-android-unlock" ></i>
 				</span>
-				<input id="password" type="password" placeholder="Password" class="form-control" name="password" required>
+				<input id="password" type="password" placeholder="@lang('lang.new_password')" class="form-control" name="password" required>
 				@if ($errors->has('password'))
 				<span class="help-block">
 					<strong>{{ $errors->first('password') }}</strong>
@@ -49,10 +49,10 @@
 		</div>
 		<div class="form-group">
 			<div class="input-group">
-				<span for="password-confirm" title="password-confirm"  class="input-group-addon">
+				<span for="password-confirm" title="@lang('lang.password')-confirm"  class="input-group-addon">
 					<i class="ion ion-android-unlock" ></i>
 				</span>
-				<input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Repeat Password" required>
+				<input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="@lang('lang.confirm_password')" required>
 
 			</div>
 		</div>

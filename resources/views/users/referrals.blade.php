@@ -139,8 +139,9 @@
                         @foreach($refUsers as $user)
                             <tr>
                                 <td>{{ $user->username }}</td>
-                            <td class="v-middle hidden-xs">{{$earn->TotalEarnings($user->id)}} $</td>
-                                <td class="v-middle text-danger">{{$my_earnings}} $
+                            <td class="v-middle">{{$earn->TotalEarnings($user->id)}} $</td>
+                                <td class="v-middle text-success">
+                                    {{$my_earnings}} $
                                 </td>
                             </tr>
                         @endforeach

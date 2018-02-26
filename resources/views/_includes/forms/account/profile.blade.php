@@ -10,11 +10,11 @@
 <input type="hidden" name="id" value="3">
 <legend class="text-center">
 	<i class="fa fa-fw fa-file-text-o"></i> 
-	User Profile Info 
+	@lang('lang.edit')	@lang('lang.profile')
 </legend>
 <div class="col-sm-12">
 		<div class="form-group text {{ $errors->has('avatar') ? ' has-error' : '' }} required">
-			{{ Form::label('avatar', 'Profile image') }}
+			{{ Form::label('avatar', Lang::get('lang.profile').' '.Lang::get('lang.image')) }}
 			{{ Form::file('avatar',['class' => 'form-control','id' => 'avatar',]) }}
 		@if ($errors->has('avatar'))
 		<span class="help-block">

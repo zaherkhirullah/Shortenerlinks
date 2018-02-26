@@ -424,18 +424,14 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body" style="display: block;">
-                    <div class="col-md-5 col-sm-5 margin">
-                <div class="titile">
-                    <p>استخدام التخزين السحابي</p>
-                </div>
-                <div class="chart">
-                    <canvas id="countries" width="699" height="349" style="width: 699px; height: 349px;"></canvas> 
-                </div>
-                <a href="#">
-                    <div class="footer-section color-5">
-                        <span>مشاهدة ملفاتي</span><i class="fa fa-chevron-left"></i>
-                    </div>
-                </a>
+                        <div id="chart-div"></div>
+                            {{--  // With Lava class alias  --}}
+                         {!! $lava->render('DonutChart', 'IMDB', 'chart-div') !!} 
+                        <a href="{{route('file.index')}}">
+                            <div class="footer-section">
+                                <span>مشاهدة ملفاتي</span><i class="fa fa-chevron-right"></i>
+                            </div>
+                        </a>
             </div>
                     </div>
                 </div>
@@ -463,8 +459,9 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body" style="display: block;">
-
-
+                            <div id="temps_div"></div>
+                            {{--  // With Lava class alias  --}}
+                            <?= $lava->render('LineChart', 'Temps', 'temps_div') ?>
                     </div>
                     <!-- /.box-body -->
 
@@ -472,9 +469,14 @@
                 <!-- /.box -->
             </div>
             <!-- /.col-md-6  -->
+            <div class="col-md-8">
+                    <div id="pop-div"></div>
+                    {{--  // With Lava class alias  --}}
+                    <?=$lava->render('GeoChart', 'Popularity', 'pop-div') ?>
+            </div>
         </div> 
         
-        
+       
     <script>
     var myVar = setInterval(myTimer, 1000);
 

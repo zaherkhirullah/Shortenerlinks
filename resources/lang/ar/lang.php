@@ -196,7 +196,10 @@ return [
     'total_file_earnings'=> 'جميع أرباح الملفات',
     'total_avilable_earnings' => 'جميع الأرباح المتاحة',
     'total_file_views'   => 'جميع مشاهدات الملفات',
-    'total_file_downloads' => 'كل تحميلات الملفات',
+    'total_file_downloads' => 'جمسع تحميلات الملفات',
+    'old_password'        => 'كلمة المرور القديمة',
+    'new_password'        => 'كلمة المرور الجديدة',
+    'confirm_password'    => 'تأكيد كلمة المرور ',
     
     'change_language'    => 'تم تغيير اللغة  إلى :name بنجاح',
     'suceess_create'     => 'لقد تم إنشاء  :name بنجاح',
@@ -211,6 +214,11 @@ return [
     'error_changed'      => 'لقد حدث خطأ أثناء تغيير :name',
     'not_found'          => 'لم يتم العثور على  :name المطلوبة',
     'language'           => 'اللغة',
+    'use_cloud_space'    => 'استخدام التخزين السحابي',
+    'all_space'          => 'المساحة الكلية',
+    'used_space'         => 'المساحة المستحدمة',
+    'space'              => 'المساحة',
+    
    
   
     

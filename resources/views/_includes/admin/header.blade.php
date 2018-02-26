@@ -18,10 +18,10 @@
 
     <ul class="nav navbar-nav navbar-right nav-user m-n hidden-xs">
 
-        <li>
-            <a href="/user/dashboard"> User Area</a>
-        </li>
-
+            <li>
+                    <a href="{{route('user.dashboard')}}"> @lang('lang.user_area')</a>
+                </li>
+        
         <li class="hidden-xs">
             <a href="/manage/home" class="dropdown-toggle dk" data-toggle="dropdown">
                 <i class="fa fa-bell">
@@ -30,10 +30,10 @@
             <div class="dropdown-menu aside-xl">
                 <section class="panel bg-white">
                     <header class="panel-heading b-light bg-light">
-                        <strong>You have
+                        <strong>@lang('lang.dont_have')
                             <span class="count">
-                                No
-                            </span> notifications</strong>
+                                
+                            </span> @lang('lang.notifications')</strong>
                         </header>
                     </section>
                 </div>
@@ -41,10 +41,10 @@
 
             @guest
             <li>
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}">@lang('lang.login')</a>
             </li>
             <li>
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('register') }}">@lang('lang.register')</a>
             </li>
             @else
 
@@ -64,7 +64,7 @@
                     <span class="arrow top">
                     </span>
                     <li>
-                        <a href="{{route('account.profile')}}">Settings</a>
+                        <a href="{{route('account.profile')}}">@lang('lang.settings')</a>
                     </li>
                 <!-- <li class="divider">
                 </li> -->
@@ -72,7 +72,7 @@
                     <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                    Logout
+                    @lang('lang.logout')
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

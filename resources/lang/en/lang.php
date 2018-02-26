@@ -202,10 +202,14 @@ return [
     'error_hided'        => 'has failed hide :name ',
     'error_changed'      => 'has failed change :name ',
     'not_found'          => 'The :name not found',
-    'language'          => 'Language',
-    
-    
-    
+    'language'           => 'Language',
+    'old_password'       => 'old password',
+    'new_password'       => 'new password',
+    'confirm_password'   => 'confirm password',
+    'use_cloud_space'    => 'Use Cloud Space',
+    'all_space'          => 'All space',
+    'used_space'         => 'Used Space',
+    'space'              => 'Space',
     
 
 
