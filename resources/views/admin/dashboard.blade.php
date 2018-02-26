@@ -27,7 +27,73 @@
                     </form> 
                 </div>
             </div>
+            
             <div class="row">
+                    <div>
+                            <div class="col-md-4">
+                                <div class="box box-info">
+                                    <div class="box-header with-border text-center">
+                                        <h3 class="box-title ">
+                                            <i class="fa fa-leaf">
+                                            </i> used Space  15
+                                        </h3>
+                
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body" style="display: block;">
+                                        <div id="chart-div"></div>
+                                            {{--  // With Lava class alias  --}}
+                                         {!! $lava->render('DonutChart', 'IMDB', 'chart-div') !!} 
+                                        <a href="{{route('file.index')}}">
+                                            <div class="footer-section">
+                                                <span>مشاهدة ملفاتي</span><i class="fa fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                            </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.col-md-6  -->
+                            <div class="col-md-8">
+                                <div class="box box-success">
+                                    <div class="box-header with-border text-center">
+                                        <h3 class="box-title">
+                                                <i class="fa fa-link"> </i> @lang('lang.Links')
+                                                <sup>&</sup>
+                                                <sub>&</sub>
+                                                <sup>&</sup>
+                                                @lang('lang.Files')  <i class="fa fa-file-o"> </i> 
+                                                
+                                        </h3>
+                
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body" style="display: block;">
+                                            <div id="temps_div"></div>
+                                            {{--  // With Lava class alias  --}}
+                                            <?= $lava->render('LineChart', 'Temps', 'temps_div') ?>
+                                    </div>
+                                    <!-- /.box-body -->
+                
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.col-md-6  -->
+                           
+                        </div> 
                 <div class="col-lg-3 col-xs-6">
                    <div class="small-box bg-yellow">
                     <div class="inner">
@@ -180,6 +246,11 @@
                 </i>
             </div>
         </div>
+    </div>
+    <div class="col-md-8">
+            <div id="pop-div"></div>
+            {{--  // With Lava class alias  --}}
+            <?=$lava->render('GeoChart', 'Popularity', 'pop-div') ?>
     </div>
 </div>
 <aside class="bg-light lter b-l aside-md hide" id="notes">
