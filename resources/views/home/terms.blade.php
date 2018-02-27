@@ -4,7 +4,11 @@
 
 
 <div class="headline-bg rates-headline-bg"></div>
-
+<section class="row">
+        <span class="col-md-4 pull-right">    
+                @include('tools.partials.flash_message') 
+        </span>
+</section>
 <section class="common-section section section-on-bg">
 <h2 class="title container text-center">Our Terms</h2>
 <div class="container text-center">

@@ -9,8 +9,13 @@
             </ul>
         </div>
     </div>
+    <section class="row">
+            <span class="col-md-4 pull-right">    
+                    @include('tools.partials.flash_message') 
+            </span>
+    </section>
     <section class="promo section section-on-bg">
-        <div class="container text-center">
+        <div class="container text-center ">           
             <h2 class="title"> @lang('lang.shorten_urls')</h2>
             <p class="intro">Sharing links on the internet<br>Get paid for every person who visits your URLs</p>
             <p>  
@@ -27,7 +32,7 @@
         </div>
     </section>
     <div class="sections-wrapper">
-
+        
         <section id="why" class="section why">
             <div class="container">
                 <h2 class="title text-center">Earn with Shortener links</h2>

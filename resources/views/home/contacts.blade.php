@@ -3,10 +3,15 @@
 @section('content')
 
 <div class="headline-bg rates-headline-bg"></div>
+<section class="row">
+		<span class="col-md-4 pull-right">    
+				@include('tools.partials.flash_message') 
+		</span>
+</section>
 <section class="common-section section section-on-bg">
-	<h2 class="name container text-center">
+	<h1 class="title container text-center">
 		Contact us Formu
-	</h2>
+	</h1>
 	<div class="container text-center" >
 		<div class="container-inner" style="border:1px solid #eee; box-shadow: 1px 30px 30px -5px rgba(0, 60,70, 0.5)">
 			<div class="about " >

@@ -20,20 +20,23 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/landing.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/member/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/font.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/home/css/flexslider.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('styles/member/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body class="home-page" >
     @include('_includes.home.header')  
 <div>
-    @include('tools.partials.flash_message')      
+
     <!--Start Content-->
     @yield('content')
+    
 </div>
     <footer class="footer">
         <div class="footer-content">

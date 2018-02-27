@@ -197,9 +197,9 @@
                 
                 </ul>
                 <h5 class="text-center">
-                        <span>Plan :
-                             <b class="text-success">{{Auth::user()->plan->name}}</b>
-                        </span>
+                    <span>Plan :
+                            <b class="text-success">{{Auth::user()->plan->name}}</b>
+                    </span>
                 </h5>
             </nav>
 
