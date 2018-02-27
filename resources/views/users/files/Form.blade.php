@@ -11,9 +11,9 @@
 						<h3 class="box-title">
 							<i class="fa fa-file"></i> 
 							@if(Route::is('file.create'))
-                              Add New file 
+							@lang('lang.create') @lang('lang.new_file') 
                         @elseif(Route::is('file.edit'))
-                              Edit This file
+						@lang('lang.edit') @lang('lang.File') 
                         @endif 
 						</h3>
 						<div class="box-tools pull-right">

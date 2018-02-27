@@ -43,10 +43,6 @@ class dbSeeder extends Seeder
         $role->name='it';
         $role->slug='It';
         $role->save();
-        $role = new \App\Http\Models\role();
-        $role->name='user';
-        $role->slug='User';
-        $role->save();
         $role->save();
         $role = new \App\Http\Models\role();
         $role->name='admin';
@@ -56,6 +52,29 @@ class dbSeeder extends Seeder
         $role->name='manager';
         $role->slug='Manager';
         $role->save();
+        $role = new \App\Http\Models\role();
+        $role->name='user';
+        $role->slug='User';
+        $role->save();
+
+        $plan = new \App\Http\Models\plan();
+        $plan->name='free';
+        $plan->display_name='Free';
+        $plan->space_size=1000;
+        $plan->price=0;
+        $plan->save();
+        $plan = new \App\Http\Models\plan();
+        $plan->name='advanced';
+        $plan->display_name='Advanced';
+        $plan->space_size=10000;
+        $plan->price=0;
+        $plan->save();
+        $plan = new \App\Http\Models\plan();
+        $plan->name='advanced';
+        $plan->display_name='Advanced';
+        $plan->space_size=100000;
+        $plan->price=0;
+        $plan->save();
 
         $user = new \App\User();
         $user->first_name='zaher';
@@ -63,6 +82,7 @@ class dbSeeder extends Seeder
         $user->username='zaherkhirullah';
         $user->email='zahir.hayrallah@gmail.com';
         $user->role_id= 1;
+        $user->plan_id= 3;
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('Zz96321//');
         $user->save();
@@ -73,7 +93,8 @@ class dbSeeder extends Seeder
         $user->last_name='admin';
         $user->username='TheAdmin';
         $user->email='admin@admin.com';
-        $user->role_id= 3;
+        $user->role_id= 2;
+        $user->plan_id= 3;
         $user->affiliate_id= str_random(7);
         $user->password=bcrypt('admin');
         $user->save();

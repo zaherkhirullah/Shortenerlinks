@@ -1,6 +1,6 @@
 @extends('layouts.holayout')
 
-@section('homeContent')
+@section('content')
     <div class="bg-slider-wrapper">
         <div class="flexslider bg-slider">
             <ul class="slides">

@@ -11,6 +11,7 @@ use App\Http\Models\link;
 use App\Http\Models\Options;
 use App\Http\Models\Downloads;
 use App\User;
+use Charts;
 use Auth;
 use Carbon\Carbon;
 use Khill\Lavacharts\Lavacharts;
@@ -23,16 +24,17 @@ class UsersController extends Controller
 
 public function chart_space()
 {   
+    $lava = new Lavacharts(); 
    
 }
 function chart_files_links()
 {   
-    $lava1 = new Lavacharts();
-   
+    $lava = new Lavacharts(); 
 }
 
     public function dashboard(Earn $earn ,Views $view,Downloads $download)
-    {    $user_id = Auth::id();
+    {   
+         $user_id = Auth::id();
         $TodayLinkEarnings= $earn->TodayLinkEarnings($user_id);
         $TodayFileEarnings= $earn->TodayFileEarnings($user_id);
         $TotalLinkEarnings= $earn->TotalLinkEarnings($user_id);
@@ -52,7 +54,7 @@ function chart_files_links()
         
         $DayTime = Carbon::today()->Format('Y-m-d');
         $NowTime = Carbon::now(); 
-        
+       
         $lava = new Lavacharts; // See note below for Laravel
     
         $reasons = $lava->DataTable();

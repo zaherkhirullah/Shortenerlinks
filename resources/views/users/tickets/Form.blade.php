@@ -11,9 +11,9 @@
 						<h3 class="box-title">
 							<i class="fa fa-ticket"></i> 
 							@if(Route::is('ticket.create'))
-                              Add New ticket 
+							@lang('lang.create') @lang('lang.new_ticket') 
                         @elseif(Route::is('ticket.edit'))
-                              Edit This ticket
+							@lang('lang.edit') @lang('lang.ticket') 
                         @endif 
 						</h3>
 						<div class="box-tools pull-right">

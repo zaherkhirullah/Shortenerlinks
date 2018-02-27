@@ -166,7 +166,7 @@
 								<i class="fa fa-angle-down text"></i>
 								<i class="fa fa-angle-up text-active"></i>
 							</span>
-							<span>@lang('lang.tickets') & @lang('lang.contacts') </span>
+							<span>@lang('lang.Tickets') & @lang('lang.contacts') </span>
 						</a>
 						<ul class="nav lt">
 							<li>

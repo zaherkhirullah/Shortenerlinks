@@ -185,6 +185,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        
+
     ],
 
     /*
@@ -241,7 +244,7 @@ return [
         // 'Countries' => Monarobase\CountryList\CountryListFacade::class,
         'GeoIP'         => \Torann\GeoIP\Facades\GeoIP::class,
         'Lava'          => Khill\Lavacharts\Laravel\LavachartsFacade::class,
-        
+        'Charts'        => ConsoleTVs\Charts\Facades\Charts::class,
 
 
     ],

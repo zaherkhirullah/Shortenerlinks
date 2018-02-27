@@ -14,7 +14,7 @@
 </legend>
 <div class="col-sm-12">
 		<div class="form-group text {{ $errors->has('avatar') ? ' has-error' : '' }} required">
-			{{ Form::label('avatar', Lang::get('lang.profile').' '.Lang::get('lang.image')) }}
+			{{ Form::label('avatar', Lang::get('lang.profile_image')) }}
 			{{ Form::file('avatar',['class' => 'form-control','id' => 'avatar',]) }}
 		@if ($errors->has('avatar'))
 		<span class="help-block">
@@ -117,7 +117,6 @@
 		@endif   
 	</div> 
 </div> 
-
 <div class="col-sm-6">
 	<div class="form-group text {{ $errors->has('Address2') ? ' has-error' : '' }} required">
 		{{ Form::label('Address2', 'Address 2') }}
@@ -275,7 +274,6 @@
 	</div> 
 </div> 
 </div>
-
 <footer class="row footer">
 	<hr>
 	<center>

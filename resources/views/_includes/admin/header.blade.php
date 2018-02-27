@@ -17,15 +17,25 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right nav-user m-n hidden-xs">
-
             <li>
-                    <a href="{{route('user.dashboard')}}"> @lang('lang.user_area')</a>
-                </li>
-        
+                <a href="{{route('user.dashboard')}}"> @lang('lang.user_area')</a>
+            </li>
+            
+            <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
+                    <i class="fa fa-language" aria-hidden="true"></i> 
+                    <span class="caret"></span>
+                </a> 
+
+                <ul class="dropdown-menu">
+                    <li><a href="{{route('lang','en')}}" id="en">English</a></li>
+                    <li><a href="{{route('lang','ar')}}" id="ar">العربية</a></li>
+                </ul>
+
+            </li>        
         <li class="hidden-xs">
-            <a href="/manage/home" class="dropdown-toggle dk" data-toggle="dropdown">
-                <i class="fa fa-bell">
-                </i>
+            <a href="#" class="dropdown-toggle dk" data-toggle="dropdown">
+                <i class="fa fa-bell"> </i>
             </a>
             <div class="dropdown-menu aside-xl">
                 <section class="panel bg-white">
@@ -38,52 +48,7 @@
                     </section>
                 </div>
             </li>
-
-            @guest
-            <li>
-                <a href="{{ route('login') }}">@lang('lang.login')</a>
-            </li>
-            <li>
-                <a href="{{ route('register') }}">@lang('lang.register')</a>
-            </li>
-            @else
-
-            <li class="dropdown">
-                <a href="/manage/home#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="thumb-sm avatar pull-left">
-                        @if(Auth::user()->avatar==null)
-                        <img src="{{ asset('styles/member/avatar.jpg') }}">
-                        @else
-                        <img src="{{ asset('user/image/Auth::user()->avatar') }}">
-                        @endif
-                    </span>
-                    {{ Auth::user()->username }}<b class="caret">
-                    </b>
-                </a>
-                <ul class="dropdown-menu animated fadeInRight">
-                    <span class="arrow top">
-                    </span>
-                    <li>
-                        <a href="{{route('account.profile')}}">@lang('lang.settings')</a>
-                    </li>
-                <!-- <li class="divider">
-                </li> -->
-                <li>
-                    <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    @lang('lang.logout')
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </li>
+            @include('tools.partials.auth')        
         </ul>
-    </li>
-    @endguest
-
-
-</ul>
 
 </header>

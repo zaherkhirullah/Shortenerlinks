@@ -23,6 +23,7 @@
 
 		 
 				<!-- Styles -->
+				{{--  {!! Charts::styles() !!}  --}}
 			<link rel="stylesheet"  href="{{ asset('styles/member/css/dashboard.css') }}" type="text/css">
 			<link rel="stylesheet"  href="{{ asset('styles/member/css/styles.min.css') }}" type="text/css">
 			<link rel="stylesheet"  href="{{ asset('styles/member/css/app.min.css') }}" type="text/css">
@@ -42,36 +43,17 @@
 	<!--/ Head-->
 	<body >
 		<section class="vbox">
-			@include("_includes.nav.header")
+			@include("_includes.user.header")
 			<section id="main" class="hbox stretch">
 				<aside class="bg-dark lter aside-md hidden-print" id="nav" data-pjax="true">
 				<div>
-					@include("_includes.nav.aside")
+					@include("_includes.user.aside")
 			 	</div>
 			    </aside>
 				<section id="content">
 					<section class="vbox">
 						<div class="col-md-12">
-						@if (session('success'))
-							<div class="alert alert-success">
-							 <center>{{ session('success') }}</center>
-							<span class="pull-right">
-								<a   data-dismiss="modal">
-									<i class="fa fa-times"></i>
-								</a>
-							</span>
-							</div>
-						@endif
-							@if (session('error'))
-							<div class="alert alert-danger">
-							<center>{{ session('error') }}</center>
-							<span class="pull-right">
-								<a  data-dismiss="Warning">
-									<i class="fa fa-times"></i>
-								</a>
-							</span>
-							</div>
-							@endif
+						   @include('tools.partials.flash_message')  
 						</div>
 						<!--Start  Content-->
 						@yield('content')
@@ -112,5 +94,6 @@
 		</div>	
 		<!-- Scripts  -->
 		@include('_includes.Footerscripts')
+		@yield('scripts')
 	</body>
 	</html>

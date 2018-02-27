@@ -16,7 +16,7 @@
 	@foreach($options as $option )	
 		<div class="col-sm-6">
 				<div class="form-group text {{ $errors->has($option->name) ? ' has-error' : '' }} required">
-					{{ Form::label($option->name,$option->name) }}
+					{{ Form::label($option->name,$option->display_name) }}
 				{{ Form::text($option->name,$option->value ? $option->value:$option->intV, 
 					['class' => 'form-control',
 					'id' => 'first_name',

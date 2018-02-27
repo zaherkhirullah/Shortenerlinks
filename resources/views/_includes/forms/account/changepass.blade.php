@@ -58,7 +58,6 @@
 		</div>
 	</div>
 	</div>   
-</div>
 <footer class="text-center bg-light lter">
 	{{ Form::submit('Change password',['class' => 'btn btn-success btn-md'])   }}
 </footer>

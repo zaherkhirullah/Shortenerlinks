@@ -1,6 +1,6 @@
 @extends('layouts.holayout')
 
-@section('homeContent')
+@section('content')
 
 
 <div class="headline-bg rates-headline-bg"></div>

@@ -17,7 +17,7 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
-              {{  Form::label('password', 'Add password')   }}
+              {{  Form::label('password',  Lang::get('lang.password'))   }}
 
               {{Form::text('password',old('password'), ['class' => "form-control input-sm ",'id'=>'password'])  }}
 
@@ -30,7 +30,7 @@
           </div>
           <div class="col-sm-4">
             <div class="form-group {{$errors->has('folder_id') ? ' has-error' : ''}}">
-              {{  Form::label('folder_id', 'Folder Name')   }}
+              {{  Form::label('folder_id', Lang::get('lang.folder_name'))   }}
 
               {{Form::select('folder_id', $folders ,old('folder_id')?:1, ['class' => "form-control input-sm ",'id'=>'folder_id'])  }}
               @if ($errors->has('folder_id'))
@@ -42,7 +42,7 @@
           </div>
           <div class="col-sm-4">
             <div class="form-group {{$errors->has('domain_id') ? ' has-error' : ''}}">             
-              <label for="domains">domains</label>
+              <label for="domains">@lang('lang.domain_name') </label>
 
               {{Form::select('domain_id', $domains ,old('domain_id')?:1, ['class' => "form-control input-sm ",'id'=>'domain_id'])  }}
               @if ($errors->has('domain_id'))
@@ -55,7 +55,7 @@
    
           <div class="col-sm-4">
             <div class="well well-sm {{$errors->has('title') ? ' has-error' : ''}}">
-              {{Form::text('title',old('title'), ['class' => "form-control input-sm ",'id'=>'title','placeholder'=>'Add Title'])  }}
+              {{Form::text('title',old('title'), ['class' => "form-control input-sm ",'id'=>'title','placeholder'=> Lang::get('lang.title')])  }}
               @if ($errors->has('title'))
               <span class="help-block">
                 <strong>{{ $errors->first('title') }}</strong>
@@ -66,8 +66,8 @@
           <div class="col-sm-4">
             <div class="well well-sm {{$errors->has('isPrivate') ? ' has-error' : ''}}">
              
-             {{ Form::radio('isPrivate','1',FALSE) }} private
-             {{ Form::radio('isPrivate','0',TRUE) }} Public
+             {{ Form::radio('isPrivate','1',FALSE) }} @lang('lang.private')
+             {{ Form::radio('isPrivate','0',TRUE) }} @lang('lang.public')
 
               @if ($errors->has('isPrivate'))
               <span class="help-block">

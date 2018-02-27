@@ -177,13 +177,13 @@
             @else
             <div class="col-md-8 col-md-offset-2">
               <center> 
-                <h2 class="text-danger alert alert-info"> You don't have folders</h2>
+                <h2 class="text-danger alert alert-info"> @lang('lang.dont_have') @lang('lang.folders')</h2>
               </center>
             </div>
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
               <a href="{{route('folder.create')}}" class="btn btn-success"> 
-              <i class="fa fa-plus"></i>  Click to Add New folder
+              <i class="fa fa-plus"></i>  @lang('lang.click_to')@lang('lang.add') @lang('lang.folders')
               </a>
             </div>
             @endif 

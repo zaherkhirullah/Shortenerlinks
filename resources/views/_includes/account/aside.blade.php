@@ -8,6 +8,7 @@
 		<section class="scrollable">
 			<div class="wrapper">
 				<center>
+					@auth
 					<a href="#" class="thumb ">
 						<img src="https://ouo.io/images/avatar.jpg" class="img-circle">
 					</a>
@@ -20,6 +21,7 @@
 							 {{ Auth::user()->email }}
 						</small>
 					</div>
+					@endauth
 				</div>
 			</div>
 			<section class="hidden-xs text-center" id="mail-nav">

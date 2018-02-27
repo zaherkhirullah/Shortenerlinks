@@ -9,9 +9,9 @@
                     <i class="fa fa-ticket-o">
                     </i>   
                     @if(Route::is('ticket.index'))
-                        All Your tickets
+                    @lang('lang.all') @lang('lang.tickets')
                     @elseif(Route::is('ticket.deletedtickets'))
-                         All Your deleted tickets
+                    @lang('lang.all') @lang('lang.hidden_tickets')
                     @endif
                 </h3>
                 <div class="box-tools pull-right">
@@ -27,26 +27,26 @@
             <div class="col-sm-3 " style="top:10px;">
                 <a href="{{route('ticket.create')}}" type="button" class="btn btn-info btn-md">
                     <i class="fa fa-ticket"></i>
-                    Add New ticket
+                    @lang('lang.create')  @lang('lang.new_ticket') 
                 </a>
             </div>
             <thead>
                 <tr>
-                <th>Subject</th>
-                <th class="v-middle hidden-xs">Message</th>
-                <th class="v-middle hidden-xs">Status</th>
-                <th class="v-middle hidden-xs">ceated date</th>
-                <th>Options</th>
-                </tr>
+                    <th> @lang('lang.Subject') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.Message') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.Status') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.created_at') </th>
+                    <th> @lang('lang.options') </th>
+                    </tr>
             </thead>
             <tfoot>
-                <tr>          
-                <th>Subject</th>
-                <th class="v-middle hidden-xs">Message</th>
-                <th class="v-middle hidden-xs">Status</th>
-                <th class="v-middle hidden-xs">ceated date</th>
-                <th>Options</th>
-                </tr>
+                <tr>
+                    <th> @lang('lang.Subject') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.Message') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.Status') </th>
+                    <th class="v-middle hidden-xs"> @lang('lang.created_at') </th>
+                    <th> @lang('lang.options') </th>
+                    </tr>
             </tfoot>
             <tbody>
                  @foreach ($tickets as $ticket)
@@ -62,11 +62,11 @@
                         @if($ticket->isClosed == 1)
                             <b class="text-danger">
                                 <i class="fa fa-lock"></i> 
-                                Closed
+                                @lang('lang.closed')
                             </b>
                         @else
                             <b class="text-success">
-                                <i class="fa fa-unlock"></i> Open
+                                <i class="fa fa-unlock"></i> @lang('lang.opend')
                             </b>
                         @endif
                         </td>
@@ -111,30 +111,30 @@
                                 @if(Route::is('ticket.index'))
                                 {!! Form::open(array('route' =>['ticket.destroy',$ticket->id],'method'=>'delete','class'=>'form-delete','id'=>'form-delete' ))!!}
                                 <div class="text-center">
-                                        <h4 id="msg-shorten ">Hide ticket</h4>
+                                        <h4 id="msg-shorten ">@lang('lang.hide') @lang('lang.ticket')</h4>
                                     </div>
                                     <hr>
-                                    <p>Are You Sure You Want Hide <b class="text-info">
+                                    <p>@lang('lang.are_you_want') @lang('lang.hide') <b class="text-info">
                                     @elseif(Route::is('ticket.deletedtickets'))
                                 <div class="text-center">
-                                        <h4 id="msg-shorten ">UnHide ticket</h4>
+                                        <h4 id="msg-shorten ">@lang('lang.restore') @lang('lang.ticket') </h4>
                                     </div>
                                     <hr>
-                                    <p>Are You Sure You Want UnHide <b class="text-info">
+                                    <p>@lang('lang.are_you_want')  @lang('lang.restore')  <b class="text-info">
                                     {!! Form::open(array('route' =>['ticket.restore',$ticket->id], 'method'=>'delete','class'=>'form-restore','id'=>'form-restore' ))!!}
                                 @endif  
-                                {{$ticket->slug}} </b> ticket ?</p> 
+                                {{$ticket->slug}} </b> @lang('lang.ticket')  ?</p> 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                            cancle
+                                            @lang('lang.cancle') 
                                         </button>
                                         @if(Route::is('ticket.index'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                        <i class="fa fa-eye-slash"></i> hide
+                                        <i class="fa fa-eye-slash"></i> @lang('lang.hide') 
                                     </button>
                                         @elseif(Route::is('ticket.deletedtickets'))
                                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                            <i class="fa fa-eye"></i> UnHide
+                                            <i class="fa fa-eye"></i> @lang('lang.restore') 
                                         </button>
                                         @endif  
                                     </div>
@@ -150,13 +150,13 @@
               @else
             <div class="col-md-8 col-md-offset-2">
              <center> 
-                <h2 class="text-danger alert alert-info"> You don't have tickets</h2>
+                <h2 class="text-danger alert alert-info"> @lang('lang.dont_have')  @lang('lang.ticket') </h2>
              </center>
             </div>
            <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
                 <a href="{{route('ticket.create')}}" class="btn btn-success"> 
-                  <i class="fa fa-plus"></i>  Click to Add New ticket
+                  <i class="fa fa-plus"></i>  @lang('lang.click_to')@lang('lang.add') @lang('lang.new_ticket') 
                  </a>
             </div>
             @endif 

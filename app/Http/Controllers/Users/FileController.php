@@ -24,7 +24,14 @@ class fileController extends Controller
     public function index(file $file)
     {
           $files = $file->UserFiles()->paginate(20);
-     return view('users.files.index',compact('files'));
+        //   foreach($files as $file){
+        //     $size =$file->path ;
+        //     $size= Storage::size($size);
+        //     // $size =file()->getClientSize();
+        //     dd($size);
+        //   }
+         
+          return view('users.files.index',compact('files'));
     }
 // Show list of deleted files
      public function deletedFiles(file $file)

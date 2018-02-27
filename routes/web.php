@@ -186,3 +186,18 @@ Route::group(['namespace' => 'Auth'], function()
 //     $data = \Location::get($ip);
 //     dd($data);
 // });
+
+
+
+
+Route::group(['namespace' => 'Tools'], function()
+{
+// After the line that reads
+  Route::get('/upload', 'UploadController@index');
+
+// Add the following routes
+  Route::post('/upload/file', 'UploadController@uploadFile');
+  Route::delete('/upload/file', 'UploadController@deleteFile');
+  Route::post('/upload/folder', 'UploadController@createFolder');
+  Route::delete('/upload/folder', 'UploadController@deleteFolder');
+});

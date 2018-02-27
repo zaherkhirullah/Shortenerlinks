@@ -37,39 +37,27 @@
 <!--/ Head-->
 <body >
     <section class="vbox">
-        @include("_includes.nav.header")
+        @include("_includes.user.header")
         <section id="main" class="hbox stretch">
-          
             <section id="content">
                 <section class="vbox">
-                    <div class="col-md-12">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                         <center>{{ session('success') }}</center>
-                          <span class="pull-right">
-                            <a   data-dismiss="modal">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </span>
-                        </div>
-                    @endif
-                        @if (session('error'))
-                        <div class="alert alert-danger">
-                        <center>{{ session('error') }}</center>
-                        <span class="pull-right">
-                            <a  data-dismiss="Warning">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </span>
-                        </div>
-                        @endif
-                    </div>
-                    <!--Start  Content-->
-                    @yield('content')
-                    <!--End Content-->	
-                 </section>
+                    <section class="vbox" data-pjax="true">
+                        <section class="scrollable">
+                            <section class="hbox stretch">
+                             <div class="col-sm-12">  
+                                @include('tools.partials.flash_message')
+                            </div>   
+                                 <!--Start  Content-->
+                                @yield('content')
+                                <!--End Content-->	
+                                @include('_includes.account.aside')                                
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
        </section>
     </section>
- 
+    @include('_includes.Footerscripts')    
 </body>
 </html>

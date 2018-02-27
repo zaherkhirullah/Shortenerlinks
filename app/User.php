@@ -38,7 +38,11 @@ class User extends Authenticatable
       
       public function Role()
       {
-          return $this ->belongsTo( 'App\Http\Models\role', 'role_id' );
+          return $this->belongsTo( 'App\Http\Models\role', 'role_id' );
+      }
+      public function Plan()
+      {
+          return $this->belongsTo( 'App\Http\Models\plan', 'plan_id' );
       }
 
       public function referrer()

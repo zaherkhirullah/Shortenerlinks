@@ -90,14 +90,21 @@ class WithdrawController extends Controller
   protected function NewItem(array $data)
   {   
        $user_id  = Auth::id();
-       $User  = Auth::user();
+       $User     = Auth::user();
        $amount = $data['amount'];
        $withdrawal_method_id = $User->profile->withdrawal_method_id;
-        $Balance = Balance::where('user_id',$user_id )->first();
+       $withdrawal_email = $User->profile->withdrawal_email;
+       $Balance   = Balance::where('user_id',$user_id )->first();
+       if(empty($withdrawal_method_id))
+       return   Session::flash('error','please add pay method .');
+       if(empty($withdrawal_email))
+       return   Session::flash('error','please add withdrawl email.');
         $payMethod = PayMethod::find($withdrawal_method_id)->first();
         $payMethod_min_amount = $payMethod->min_amount;
-        $avilableBalance = $Balance->avilable_amount;
-        if($amount > $avilableBalance)
+        
+      
+       $avilableBalance = $Balance->avilable_amount;
+       if($amount > $avilableBalance)
         return   Session::flash('error','  The Withdraw amount must be little then and must be big than zero  avilableBalance ' .$avilableBalance . ' to withdraw your money .');
         if($amount <= 0)
         return   Session::flash('error','  The Withdraw amount must be big than zero you are wanted (' .$amount . ') to withdraw your money .');

@@ -1,32 +1,37 @@
 <section class="vbox">
     <section class="w-f scrollable">
-        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
-        
-
+        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">        
             <nav class="nav-primary hidden-xs">
-                    <a href="{{route('link.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block " style="border-bottom: 1px solid #eee;">
-                <button class="btn btn-rounded btn-md btn-icon btn-success pull-left m-r">
-                    <i class="fa fa-link"></i>
-                </button>
-                <span class="hidden-nav-xs clear">
-                    <span class="block m-t-xs">
-                        <strong class="h5 font-bold text-success ">
-                            <span class="hidden-xs">@lang('lang.shorter') </span>@lang('lang.new_link')</strong>
+                <a href="{{route('link.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block " style="border-bottom: 1px solid #eee;">
+                    <button class="btn btn-rounded btn-md btn-icon btn-success pull-left m-r">
+                        <i class="fa fa-link"></i>
+                    </button>
+                    <span class="hidden-nav-xs clear">
+                        <span class="block m-t-xs">
+                            <strong class="h5 font-bold text-success ">
+                                <span class="hidden-xs">@lang('lang.shorter') </span>@lang('lang.new_link')</strong>
+                        </span>
                     </span>
-                </span>
-            </a>
-            <a href="{{route('file.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block ">
-                <button class="btn btn-rounded btn-md btn-icon btn-info pull-left m-r">
-                    <i class="fa fa-file">
-                    </i>
-                </button>
-                <span class="hidden-nav-xs clear">
-                    <span class="block m-t-xs">
-                        <strong class="h5 font-bold text-info">
-                            <span class="hidden-xs">@lang('lang.upload') </span> @lang('lang.new_file')             </strong>
+                </a>
+                <a href="{{route('file.create')}}" data-toggle="modal" class="clearfix wrapper dk nav-user block ">
+                    <button class="btn btn-rounded btn-md btn-icon btn-info pull-left m-r">
+                        <i class="fa fa-file">
+                        </i>
+                    </button>
+                    <span class="hidden-nav-xs clear">
+                        <span class="block m-t-xs">
+                            <strong class="h5 font-bold text-info">
+                                <span class="hidden-xs">@lang('lang.upload') </span> @lang('lang.new_file')             </strong>
+                        </span>
                     </span>
-                </span>
-            </a>
+                </a>
+                <h4 class=" dker text-center">
+                        <span> 
+                            <i class="fa fa-credit-card	"></i>  :    
+                                <b class="text-success">{{Auth::user()->Balance->avilable_amount}} $</b>
+                        </span>
+                    </h4>
+               
                 <ul class="nav">
                     <li class="active">
                         <a href="{{route('user.dashboard')}}">
@@ -38,7 +43,7 @@
                         </a>
                     </li>
                     <li>
-                    <a href="#Links">
+                    <a href="#Links" >
                         <i class="fa fa-link">
                             <b class="bg-success">
                             </b>
@@ -79,10 +84,8 @@
                             </b>
                         </i>
                         <span class="pull-right">
-                            <i class="fa fa-angle-down text">
-                            </i>
-                            <i class="fa fa-angle-up text-active">
-                            </i>
+                            <i class="fa fa-angle-down text"></i>
+                            <i class="fa fa-angle-up text-active"></i>
                         </span>
                         <span>@lang('lang.Files')</span>
                     </a>
@@ -127,14 +130,11 @@
                     <li>
                     <a href="#settings">
                         <i class="fa fa-cogs">
-                            <b class="bg-warning">
-                            </b>
+                            <b class="bg-warning"></b>
                         </i>
                         <span class="pull-right">
-                            <i class="fa fa-angle-down text">
-                            </i>
-                            <i class="fa fa-angle-up text-active">
-                            </i>
+                            <i class="fa fa-angle-down text"></i>
+                            <i class="fa fa-angle-up text-active"></i>
                         </span>
                         <span>@lang('lang.support')</span>
                     </a>
@@ -148,15 +148,14 @@
                         </li>
                         <li>
                             <a href="{{route('ticket.index')}}">
-                                <i class="fa fa-envelope
-">
+                                <i class="fa fa-envelope">
                                 </i>
                                 <span>@lang('lang.my_tickets')</span>
                             </a>
                         </li>
                         </ul>
                     </li>
-                <li>
+                 <li>
                     <a href="#@lang('lang.settings')">
                         <i class="fa fa-cog">
                             <b class="bg-danger">
@@ -194,48 +193,21 @@
                         </ul>
                     </li>
                     
-                <!-- 	<li>
-                        <a href="#Tools">
-                            <i class="fa fa-flask">
-                                <b class="bg-info"></b>
-                            </i>
-                            <span class="pull-right">
-                                <i class="fa fa-angle-down text"></i>
-                                <i class="fa fa-angle-up text-active"></i>
-                            </span>
-                            <span>Tools</span>
-                        </a>
-                        <ul class="nav lt">
-                            <li>
-                                <a href="/user/tools/multi-links">
-                                    <i class="fa fa-angle-right"></i>
-                                    <span>Mass Shrinker</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/tools/quick-link">
-                                    <i class="fa fa-angle-right"></i>
-                                    <span>Quick Link</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="user/tools/full-page-script">
-                                    <i class="fa fa-angle-right"></i>
-                                    <span>Full Page Script</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                -->
+               
                 
                 </ul>
+                <h5 class="text-center">
+                        <span>Plan :
+                             <b class="text-success">{{Auth::user()->plan->name}}</b>
+                        </span>
+                </h5>
             </nav>
 
         </div>
     </section>
     <footer class="footer lt hidden-xs b-t b-dark">
-        @guest
-        @else
+        @auth
+  
         <div class="btn-group hidden-nav-xs pull-right">
             <a href="{{ route('logout') }}" class=" btn btn-icon btn-sm btn-danger"
             onclick="event.preventDefault();
@@ -246,7 +218,7 @@
             {{ csrf_field() }}
         </form>
     </div>
-    @endguest
+    @endauth
         <a href="{{route('user.dashboard')}}" data-toggle="class:nav-xs" class="pull-left btn btn-sm btn-dark btn-icon">
             <i class="fa fa-angle-left text"></i>
             <i class="fa fa-angle-right text-active"></i>

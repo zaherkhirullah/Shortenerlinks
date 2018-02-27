@@ -14,7 +14,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name',50);
             $table->string('username',255);
             $table->string('email',255);
-            $table->integer('role_id')->unsigned()->default(2);
+            $table->integer('role_id')->unsigned()->default(4);
+            $table->integer('plan_id')->unsigned()->default(1);
             $table->boolean('confirm_email')->default(0);
             $table->string('password',255);
             $table->integer('referred_by')->unsigned()->nullable();
@@ -33,6 +34,7 @@ class CreateUsersTable extends Migration
         });
         Schema::table('users', function ( $table) {
          $table->foreign('role_id')->references('id')->on('roles');
+         $table->foreign('plan_id')->references('id')->on('plans');
         });
 
         Schema::create('profile', function (Blueprint $table) {
@@ -63,6 +65,7 @@ class CreateUsersTable extends Migration
     {
         Schema::table('users', function ( $table) {
             $table->dropForeign('users_role_id_foreign');
+            $table->dropForeign('users_plan_id_foreign');
         });
            
         Schema::dropIfExists('users'); 
