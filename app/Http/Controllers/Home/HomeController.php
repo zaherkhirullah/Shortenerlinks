@@ -43,13 +43,15 @@ class HomeController extends Controller
         // " ip:" .geoip($ip)->ip
         // ." State :" . geoip($ip)->state;
         // return  $x ;
+
+         //  $ip = \Request::ip();
+        // // dd(geoip()->getLocation($ip));
+        // dd(geoip($ip)->ip);
     }
     
+
     public function index()
     {
-        $ip = \Request::ip();
-        // dd(geoip()->getLocation($ip));
-        dd(geoip($ip));
         return view('home.home');
     }
     public function rates()
@@ -125,6 +127,7 @@ class HomeController extends Controller
         $AllowedCount =  $visit_link->value;
         $link = $this->llink($request->slug);
         $ip = $request->ip();
+        $ip =geoip($ip)->ip;
         // $ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
         $country = null;
@@ -229,27 +232,40 @@ public function download_file(Request $request)
     $file = $this->flink($request->slug);
     $site_key = $this->site_key();
     $ip = $request->ip();
+    $ip =geoip($ip)->ip;
+    // $ip = $_SERVER['REMOTE_ADDR'];
+    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+    $country = null;
+    if(!empty($details->country))
+    {
+        $country=$details->country;
+        $country= Country::where('name', 'like','%'.$country. '%')->first();       
+    }
+    $country_id = $country ? $country->id : 1;
+    $country= Country::where('id',  $country_id )->first();                           
+    $file_price = $country->file_price;
+
     $file_id =$file->id;
     $file_visitorr = fileDownloader::where([
             ['ip_downloader',$ip],['file_id',$file_id],
             ['created_at',">",Today()],
             ['created_at',"<",Carbon::today()->addDay(1)]
         ])->get();         
-        // if(count($file_visitorr) < $AllowedCount )
-        if(count($file_visitorr) < 100 )
+        if(count($file_visitorr) < $AllowedCount )
+        // if(count($file_visitorr) < 100 )
         {
             $fileDownloader = new fileDownloader();
             $fileDownloader->ip_downloader = $ip;
             $fileDownloader->file_id = $file_id;
             if($fileDownloader->save()){
                 $file->views += 1;
-                $file->earnings += 0.004;
+                $file->earnings +=$file_price;
                 $file->save();
     
                 $user_id = $file->user_id;
                 $User = User::where('id',$user_id)->first();
                 $Balance =$User->Balance;
-                $Balance->avilable_amount += 0.004;
+                $Balance->avilable_amount += $file_price;
                 $Balance->save();
                  //PDF file is stored under project/public/download/info.pdf
                 $filee= public_path(). "/uploads/files/". $file->file_name;
