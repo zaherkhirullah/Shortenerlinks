@@ -47,6 +47,9 @@ class HomeController extends Controller
     
     public function index()
     {
+        $ip = \Request::ip();
+        dd(geoip()->getLocation($ip));
+        dd(geoip($ip));
         return view('home.home');
     }
     public function rates()
