@@ -47,7 +47,6 @@ class HomeController extends Controller
     
     public function index()
     {
-        dd(\Request::ip());
         return view('home.home');
     }
     public function rates()
