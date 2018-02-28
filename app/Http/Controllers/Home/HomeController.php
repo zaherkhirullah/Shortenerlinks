@@ -145,12 +145,12 @@ class HomeController extends Controller
             // )->first(); 
             // if($link_visitorr == null)
             // count allow visit same user to link            
-            if(count($link_visitorr) < $AllowedCount ){
+            if(count($link_visitorr) < $AllowedCount){
             
                 $linkVisitor = new linkVisitor();
                 $linkVisitor->ip_visitor = $ip;
                 $linkVisitor->link_id = $link_id;
-                $linkVisitor->country = $country;
+                $linkVisitor->country = $country->name;
                 if($linkVisitor->save()){
                     $link->clicks += 1;
                     $link->earnings += $link_price;
