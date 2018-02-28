@@ -53,7 +53,7 @@ class LinkController extends Controller
     {
       $visitors = DB::table('link_visitors')->where('link_id',$link->id)->get();
 
-        return view('users.links.show',compact('link','$visitors'));
+        return view('users.links.show',compact('link','visitors'));
     }
     // edit link details
     public function edit(link $link)
