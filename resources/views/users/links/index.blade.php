@@ -187,7 +187,7 @@
             <div class="col-md-12 text-center">
               <a href="{{route('link.create')}}" class="btn btn-success"> 
               <i class="fa fa-plus"></i> 
-              @lang('lang.click_to') @lang('lang.add') @lang('lang.new_link')
+                @lang('lang.click_to') @lang('lang.add') @lang('lang.new_link')
               </a>
             </div>
             @endif 

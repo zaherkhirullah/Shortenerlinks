@@ -11,6 +11,7 @@ use App\Http\Models\Adstype;
 use App\Http\Models\link;
 use Session;
 use Auth;
+use DB;
 class LinkController extends Controller
 {
     
@@ -50,7 +51,9 @@ class LinkController extends Controller
     // show link details
     public function show(link $link)
     {
-        return view('users.links.show',compact('link'));
+      $visitors = DB::table('link_visitors')->where('link_id',$link->id)->get();
+
+        return view('users.links.show',compact('link','$visitors'));
     }
     // edit link details
     public function edit(link $link)
