@@ -170,8 +170,6 @@ return [
          'Collective\Html\HtmlServiceProvider',
          \Torann\GeoIP\GeoIPServiceProvider::class,
          Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
-
-
         /*
          * Package Service Providers...
          */

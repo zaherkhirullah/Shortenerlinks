@@ -13,7 +13,7 @@ class file extends Model
   protected $table = 'files';
 
     protected $fillable = ['user_id','domain_id','folder_id','slug','path','title','description',
-                            'isDeleted','downloads','views' ,'isPrivate','password','shorted_url',
+                            'isDeleted','downloads','file_name','views' ,'isPrivate','password','shorted_url',
                           ];
      
 // list All files
@@ -31,24 +31,33 @@ class file extends Model
      return $this->where('isDeleted','1')->orderBy('updated_at','desc');
     }
      // list all files for a user
-     public function UserFiles()
-     {
-       return $this->files()->where([['user_id',Auth::id()]]);
+     public function UserFiles($user_id=null)
+     {  
+      $user_id = $user_id ? : $user_id=Auth::id();   
+       return $this->files()->where([['user_id',$user_id]]);
      }
+
      public function UserDeletedFiles()
      {
          return $this->deletedFiles()->where([['user_id',Auth::id()]]);
      }
 // list of  files has been deleted and list (Desc) by create date
-     public function private()
-     {
-      return $this->where([['isDeleted','0'],['isPrivate','1']])->orderBy('updated_at','desc');
-     }
+public function private()
+{
+ return $this->where([['isDeleted','0'],['isPrivate','1']])->orderBy('updated_at','desc');
+}
  // list of  files has been deleted and list (Desc) by create date
-      public function public()
-      {
-       return $this->where([['isDeleted','0'],['isPrivate','0']])->orderBy('updated_at','desc');
-      }
+ public function public()
+ {
+  return $this->where([['isDeleted','0'],['isPrivate','0']])->orderBy('updated_at','desc');
+ }
+  // list of  files has been deleted and list (Desc) by create date
+  public function user_public_files($user_id=null)
+  {
+    $user_id = $user_id ? : $user_id=Auth::id(); 
+   return $this->where([['isDeleted','0'],['isPrivate','0'],['user_id',$user_id]])->orderBy('updated_at','desc');
+  }
+
       
 
       public function domain()

@@ -11,7 +11,7 @@ class Country extends Model
     protected $fillable =  ['name','link_price','file_price','sembol'];
 
      /* list All Countries  */      
-     public function Countries()
+     public function countries()
      {
       return $this->where('isDeleted','0')->orderBy('created_at','desc');
      }

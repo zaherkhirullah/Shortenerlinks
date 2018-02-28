@@ -13,25 +13,30 @@
                         {!! $ad->value !!}
                         @endforeach
                 </div>
+            <h3>
+                @lang('lang.download') @lang('lang.file')
+                <dt class="text-success"> {{$file->slug}}</dt>
+            </h3>
+                
                 <div class="row">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <td>
                                     <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>
-                                    رفع بتاريخ
+                                    @lang('lang.created_at')
                                 </td>
                                 <td>
-                                    2016-01-27 - 20:27:54
+                                        {{ $file->created_at}}
                                 </td>
                             </tr>
                             <tr>
                                 <td><i class="fa fa-fw fa-user" aria-hidden="true"></i>
-                                    رفع من قبل
+                                    @lang('lang.username')
                                 </td>
                                 <td>
-                                    <a href="https://www.file-upload.com/users/Karim5595" style="text-decoration: none;">
-                                        Karim5595
+                                    <a href="{{route('user.files',$file->user->username)}}" style="text-decoration: none;">
+                                        {{ $file->user->username}}
                                     </a>
                                 </td>
                             </tr>
@@ -43,30 +48,17 @@
                                 <td>
                                     318 KB&nbsp;
                                         <i class="fa fa-fw fa-flag" aria-hidden="true"></i>
-                                        <a href="https://www.file-upload.com/?op=report_file&amp;id=n53nxp4dvwkg">
+                                        <a href="{{url('/contacts')}}">
                                             إرسال تقرير
                                         </a>
                                 </td>
                             </tr>  
                             <tr>
                                 <td><i class="fa fa-fw fa-download" aria-hidden="true"></i>
-                                    تحميل
+                                    @lang('lang.downloads')
                                 </td>
                                 <td>
-                                    79 times
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-fw fa-share" aria-hidden="true"></i>
-                                    شارك هذا الملف
-                                </td>
-                                <td>
-                                    <ul id="sharebuttons">
-                                        <li><a href="javascript:share_facebook(document.location)" class="fb" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="javascript:share_twitter(document.location)" class="tw" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="javascript:share_vk(document.location)" class="vk" title="Vk"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-                                        <li><a href="javascript:share_gplus(document.location)" class="gplus" title="Google+"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    </ul>
+                                      {{$file->downloads}} times
                                 </td>
                             </tr>
                         

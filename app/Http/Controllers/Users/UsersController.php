@@ -8,6 +8,7 @@ use App\Http\Models\PayMethod;
 use App\Http\Models\Earn;
 use App\Http\Models\Views;
 use App\Http\Models\link;
+use App\Http\Models\file;
 use App\Http\Models\Options;
 use App\Http\Models\Downloads;
 use App\User;
@@ -22,19 +23,65 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
-public function chart_space()
-{   
-    $lava = new Lavacharts(); 
-   
-}
-function chart_files_links()
-{   
-    $lava = new Lavacharts(); 
-}
+    public function chart_space()
+    {   
+        $User = Auth::user();        
+        $all_space_int = $User->plan->space_size;
+        $used_space_int =0.2;
+        $used_space = human_filesize($used_space_int);
+        $all_space =space_size($all_space_int); //  this function in app/helpers/file.php
+        $remining_space = $all_space_int - $used_space_int;
+        if( $remining_space < 0){ $remining_space = 0; }
+        $lava = new Lavacharts; // See note below for Laravel
+         $reasons = $lava->DataTable();
+         return $reasons->addStringColumn('Reasons')
+            ->addNumberColumn('Percent')
+            ->addRow([\Lang::get('lang.remaining_space'),  $remining_space])
+            ->addRow([\Lang::get('lang.used_space'), $used_space_int]);               
+    }
+    function chart_files_links()
+    {   
+        $lava = new Lavacharts;
+        $view = new Views;
+        $download = new Downloads;
+        $link = new link;
+        $file = new file;
+        $user_id =Auth::id();
+        $links = $link->UserLinks($user_id)->get();
+        $files = $file->UserFiles($user_id)->get();
+        $files_links_count = $lava->DataTable();
+        $files_links_count ->addDateColumn('Date')
+                            ->addNumberColumn(\Lang::get('lang.Links').' '.\Lang::get('lang.visit'))
+                            ->addNumberColumn(\Lang::get('lang.Files').' '.\Lang::get('lang.download'));                        
+                            $date = Carbon::now(); 
+        for($i=1 ; $i<31;$i++)
+        {   
+            $i = $i<10 ? '0'.$i : $i;
+            $date->month = $date->month< 10 ? '0'.$date->month : $date->month;
+            $link_views = $view->dateLinkViews($date->year.'-'.$date->month.'-'.$i);
+            $file_downloads = $download->dateFileDownloads( $date);
+            $files_links_count->addRow([$date->year.'-'.$date->month.'-'.$i, $link_views , $file_downloads]); 
+        }
+        return $files_links_count;
+    }
+    public function visitors()
+    { 
+        $lava = new Lavacharts;
+        $visitors = $lava->DataTable();
+        return $visitors->addStringColumn('Country')
+                   ->addNumberColumn('visitors')
+                   ->addRow(array('Germany', 10))
+                   ->addRow(array('United States', 300))
+                   ->addRow(array('Brazil', 400))
+                   ->addRow(array('Canada', 500))
+                   ->addRow(array('France', 600))
+                   ->addRow(array('Sy', 600))
+                   ->addRow(array('RU', 700));
+    }
 
     public function dashboard(Earn $earn ,Views $view,Downloads $download)
     {   
-         $user_id = Auth::id();
+        $user_id = Auth::id();
         $TodayLinkEarnings= $earn->TodayLinkEarnings($user_id);
         $TodayFileEarnings= $earn->TodayFileEarnings($user_id);
         $TotalLinkEarnings= $earn->TotalLinkEarnings($user_id);
@@ -50,73 +97,26 @@ function chart_files_links()
             $TotalViews    = $view->TotalViews($user_id);
         $TodayFileDownloads= $download->TodayFileDownloads($user_id);
         $TotalFileDownloads= $download->TotalFileDownloads($user_id);
-        $links = link::all();
-        
+
         $DayTime = Carbon::today()->Format('Y-m-d');
         $NowTime = Carbon::now(); 
-       
+              
         $lava = new Lavacharts; // See note below for Laravel
-    
-        $reasons = $lava->DataTable();
-            $reasons->addStringColumn('Reasons')
-            ->addNumberColumn('Percent')
-            ->addRow([\Lang::get('lang.all_space'), 100])
-            ->addRow([\Lang::get('lang.used_space'), 5]);
+        $files_links= $this->chart_files_links();
+        $visitors =          $this->visitors();
+        $reasons =          $this->chart_space();
+        $lava->DonutChart('IMDB', $reasons,     ['title' => \Lang::get('lang.use_cloud_space'),]);
+        $lava->LineChart('Temps', $files_links, ['title' => \Lang::get('lang.Files') .' & '.  \Lang::get('lang.Links')]);
+        $lava->GeoChart('visitors', $visitors);
 
-        $lava->DonutChart('IMDB', $reasons, [
-            'title' => \Lang::get('lang.use_cloud_space'),
-            ]);
-        $temperatures = $lava->DataTable();
-        $temperatures
-                     ->addDateColumn('Date')
-                     ->addNumberColumn(\Lang::get('lang.Files'))
-                     ->addNumberColumn('Max Temp')
-                     ->addNumberColumn(\Lang::get('lang.Links'))
-                     ->addRow(['2014-10-1',  67, 65, 62])
-                     ->addRow(['2014-10-2',  68, 65, 61])
-                     ->addRow(['2014-10-3',  68, 62, 55])
-                     ->addRow(['2014-10-4',  72, 62, 52])
-                     ->addRow(['2014-10-5',  61, 54, 47])
-                     ->addRow(['2014-10-6',  70, 58, 45])
-                     ->addRow(['2014-10-7',  74, 70, 65])
-                     ->addRow(['2014-10-8',  75, 69, 62])
-                     ->addRow(['2014-10-9',  69, 63, 56])
-                     ->addRow(['2014-10-10', 64, 58, 52])
-                     ->addRow(['2014-10-11', 59, 55, 50])
-                     ->addRow(['2014-10-12', 65, 56, 46])
-                     ->addRow(['2014-10-13', 66, 56, 46])
-                     ->addRow(['2014-10-14', 75, 70, 64])
-                     ->addRow(['2014-10-15', 76, 72, 68])
-                     ->addRow(['2014-10-16', 71, 66, 60])
-                     ->addRow(['2014-10-17', 72, 66, 60])
-                     ->addRow(['2014-10-18', 63, 62, 62]);
-            
-             $lava->LineChart('Temps', $temperatures, [
-                'title' => \Lang::get('lang.Files') .' & '.  \Lang::get('lang.Links')
-            ]);
-                
-        $popularity = $lava->DataTable();
-
-        $popularity->addStringColumn('Country')
-                ->addNumberColumn('visitors')
-                ->addRow(array('Germany', 10))
-                ->addRow(array('United States', 300))
-                ->addRow(array('Brazil', 400))
-                ->addRow(array('Canada', 500))
-                ->addRow(array('France', 600))
-                ->addRow(array('Sy', 600))
-                ->addRow(array('RU', 700));
-
-        $lava->GeoChart('Popularity', $popularity);
-        $array = array([
+    $array = array([
         'TodayLinkEarnings','TodayFileEarnings','TotalLinkEarnings','TotalFileEarnings','TotalEarnings','ReferralEarnings','Referral_MyEarnings',
         'TodayLinkViews','TodayFileViews','TotalLinkViews','TotalFileViews','TotalViews',
         'TodayFileDownloads','TotalFileDownloads',
-        'NowTime', 'DayTime','lava',
+        'NowTime', 'DayTime','lava','all_space',
       ]);
      return view('users.dashboard', compact($array));
     }
-   
     public function referrals(Earn $earn)
     {
         $user_id = Auth::id();

@@ -58,6 +58,6 @@
             </section>
        </section>
     </section>
-    @include('_includes.Footerscripts')    
+    @include('_includes.Footerscripts')  
 </body>
 </html>

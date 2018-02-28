@@ -31,6 +31,7 @@ class AccountController extends Controller
   {
     $profile =profile::where('user_id',Auth::id())->first();
     $countries = Country::pluck('name', 'id');
+    // $countries = \Countries::all()->pluck('name.common');
     $withdrawMethods = PayMethod::pluck('name', 'id');
 
     return view('account.profile',compact('countries',
@@ -55,6 +56,7 @@ class AccountController extends Controller
     $address->state = $request->state ;
     $address->Address1 = $request->Address1 ;
     $address->Address2 = $request->Address2 ;
+    $address->country_id = $request->country ;
     $address->zip_code = $request->zip_code ;
     $address->save();
     $countries = Country::pluck('name', 'id');

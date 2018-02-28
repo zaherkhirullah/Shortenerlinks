@@ -117,7 +117,7 @@ public function update(Request $request, file $file)
            $slug =($data['title'])?: str_random(7);
            if($path !=null)
            {
-               $file_name='file_' . $slug .'_'.time(). '.' . $data['path']->getClientOriginalExtension();
+            $file_name='file_' . $slug .'_'.time(). '.' . $data['path']->getClientOriginalExtension();
                $destination_path ='uploads/files/';
                $I_path=   $path->move($destination_path, $file_name);
            }
@@ -132,6 +132,7 @@ public function update(Request $request, file $file)
             'folder_id'  => $folder_id,
             'slug'       => $slug ,
             'title'      => $title,
+            'file_name'   => $file_name,
             'description'=> $data['description'],
             'path'       => $I_path,
             'isPrivate'  => $data['isPrivate'],

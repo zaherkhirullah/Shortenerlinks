@@ -199,7 +199,7 @@
     <div class="col-md-8">
         <div id="pop-div"></div>
         {{--  // With Lava class alias  --}}
-        <?=$lava->render('GeoChart', 'Popularity', 'pop-div') ?>
+        <?=$lava->render('GeoChart', 'visitors', 'pop-div') ?>
     </div>
     <!-- /.col-md-8  -->
     <div class="col-md-12">

@@ -95,6 +95,11 @@
 			</nav>
 		</header>
 		<section class="content">
+			<section class="row">
+			<span class="col-md-6 pull-right">    
+					@include('tools.partials.flash_message') 
+			</span>
+		</section>
 			@yield('content')
 		</section>
 		<div class="about">

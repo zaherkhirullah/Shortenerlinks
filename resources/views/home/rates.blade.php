@@ -10,10 +10,10 @@
         </span>
 </section>
 <section class="common-section section section-on-bg">
-<h2 class="title container text-center">Payout Rates</h2>
-<div class="container text-center">
-<div class="container-inner">
-<div class="about">
+        <h2 class="title container text-center">Payout Rates</h2>
+        <div class="container text-center">
+        <div class="container-inner">
+        <div class="about">
 <p>We pay for <span class="highlight">ALL</span> legitimate visitor you bring to your links and payout <span class="highlight">at least $1.5</span> per 1000 views.
 Multiple views from the same viewer are <span class="highlight">also counted</span> thus you will be benefiting from all your traffic.</p>
     <table class="table table-striped">

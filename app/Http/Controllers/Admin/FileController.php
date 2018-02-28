@@ -139,6 +139,7 @@ class fileController extends Controller
             'folder_id'  => $folder_id,
             'slug'       => $slug ,
             'title'      => $title,
+            'file_name'   => $file_name,
             'description'=> $data['description'],
             'path'       => $I_path,
             'isPrivate'  => $data['isPrivate'],

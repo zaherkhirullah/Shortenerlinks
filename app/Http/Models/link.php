@@ -38,10 +38,12 @@ class link extends Model
      return $this->where('isDeleted','1')->orderBy('updated_at','desc');
     }
     /* list all Links for a user */
-    public function UserLinks()
+    public function UserLinks($user_id=null)
     {
-      return $this->links()->where('user_id',Auth::id());
+        $user_id = $user_id ? : $user_id=Auth::id();   
+        return $this->links()->where('user_id',$user_id);
     }
+ 
     /* list of  Links has been deleted and list (Desc) by create date */
     public function UserDeletedLinks()
     {

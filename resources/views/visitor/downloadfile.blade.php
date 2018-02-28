@@ -28,8 +28,10 @@
                 </div>
                 <form method="POST" id="form_post" action="{{route('goFile',$file->slug)}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
-
-                <button type="submit" id="btn-main" class="btn btn-main" disabled="true" >Get file</button>
+                    @if($file->password)
+                    <input type="text" name="password" for="password" placeholder="@lang('lang.password')"> 
+                    @endif   
+                <button type="submit" id="btn-main" class="btn btn-main" disabled="true" download>download file</button>
                 <!-- <noscript disabled="true">&lt;button type="submit" class="btn btn-main"&gt;Get file&lt;/button&gt;</noscript> -->
                 </form>
 
@@ -52,8 +54,8 @@
     $(document).ready(function(){
     
         $('#btn-main').click(function() {
-            $('#form_post').attr('disabled','disabled');
-            $(this).attr('disabled','disabled');
+            // $('#form_post').attr('disabled','disabled');
+            // $(this).attr('disabled','disabled');
         });
            
             $Nvar = setInterval(myTimer, 1000);

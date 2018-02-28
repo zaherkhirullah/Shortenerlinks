@@ -13,7 +13,7 @@ class CountryValidation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class CountryValidation extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|min:3|max:50',
+            'link_price' => 'required|integer',
+            'file_price' => 'required|integer',
         ];
     }
 }

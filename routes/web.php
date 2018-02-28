@@ -11,6 +11,8 @@ Route::prefix('settings')->group(function()
   {
     Route::get( '/', 'OptionsController@index')->name("settings");
     Route::post( '/', 'OptionsController@update')->name("Psettings");
+    Route::get( '/countries', 'CountriesController@index')->name("countries");
+    Route::post( '/countries', 'CountriesController@update')->name("Pcountries");
     Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
     Route::post('/language', array('before' =>'csrf','as'=>'changelang',
                                     'uses'=>'LanguageController@changelang',));
@@ -141,7 +143,9 @@ Route::group(['namespace' => 'Home'], function()
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/rates', 'HomeController@rates')->name('rates');
   Route::get('/terms', 'HomeController@terms')->name('terms');
-  
+
+  Route::get('/{user}/files', 'HomeController@user_files')->name('user.files');
+  Route::get('/{user}/links', 'HomeController@user_links')->name('user.links');
   // error pages
   Route::get('/error', 'ErrorController@error')->name('error');
   Route::get('/Notfound', 'ErrorController@Notfound')->name('Notfound');
@@ -155,13 +159,13 @@ Route::group(['namespace' => 'Home'], function()
   // captcha link
   Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
   Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-  Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+  Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
   Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
   // captcha file
   Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
   Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-  Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+  Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
   Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
   Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 });
@@ -178,7 +182,7 @@ Auth::routes();
 
 Route::group(['namespace' => 'Auth'], function()
 {
-  Route::get('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
+   Route::get('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
    Route::post('/register/?ref={ref}', 'RegistersUsers@showRegistrationForm')->name('refRegister');
 });
 // Route::get('ip', function () {

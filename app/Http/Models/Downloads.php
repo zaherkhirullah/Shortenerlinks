@@ -8,15 +8,14 @@ use App\Http\Models\file;
 use Auth ;
 use Carbon\Carbon;
 class Downloads extends Model
-{
-
-    public function TodayFileDownloads($user_id)
-    {   $file = new file();
+{    
+    public function AlldateFileDownloads($date)
+    { 
+         $file = new file();
         $files = $file->where(
             [
-                ['user_id',$user_id],
-                ['created_at',">",Today()],
-                ['created_at',"<",Carbon::today()->addDay(1)]
+                ['created_at',">",$date],
+                ['created_at',"<",Carbon::parse($date)->addDay(1)]
             ])->get();
     
         $Download = 0;
@@ -25,6 +24,29 @@ class Downloads extends Model
             $Download += $filee->downloads;
         }
         return $Download;
+    }
+    public function dateFileDownloads($date,$user_id = null)
+    { 
+        $user_id =$user_id ? $user_id: Auth::id();  
+         $file = new file();
+        $files = $file->where(
+            [
+                ['user_id',$user_id],
+                ['created_at',">",$date],
+                ['created_at',"<",Carbon::parse($date)->addDay(1)]
+            ])->get();
+    
+        $Download = 0;
+        foreach($files as $filee)
+        {
+            $Download += $filee->downloads;
+        }
+        return $Download;
+    }
+    public function TodayFileDownloads($user_id=null)
+    {   
+        $date = Today();
+        return $this->dateFileDownloads($date,$user_id);
     }
     public function TotalFileDownloads($user_id)
     {   $file = new file();

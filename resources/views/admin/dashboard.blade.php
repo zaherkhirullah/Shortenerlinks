@@ -247,7 +247,7 @@
     <div class="col-md-8">
             <div id="pop-div"></div>
             {{--  // With Lava class alias  --}}
-            <?=$lava->render('GeoChart', 'Popularity', 'pop-div') ?>
+            <?=$lava->render('GeoChart', 'visitors', 'pop-div') ?>
     </div>
 </div>
 <aside class="bg-light lter b-l aside-md hide" id="notes">

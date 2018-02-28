@@ -29,21 +29,22 @@ class CreateAddressTable extends Migration
             $table->engine = 'InnoDB';
         });
         
-          Schema::create('city', function (Blueprint $table) {
-              $table->increments('id');
-            $table->integer('country_id')->unsigned();
-            $table->string('name');
-            $table->string('zip_code')->nullable();
-            $table->timestamps();
-            $table->boolean('isDeleted')->default(0);
-            $table->unique('zip_code');
-            $table->engine = 'InnoDB';
-        });
+        //   Schema::create('city', function (Blueprint $table) {
+        //       $table->increments('id');
+        //     $table->integer('country_id')->unsigned();
+        //     $table->string('name');
+        //     $table->string('zip_code')->nullable();
+        //     $table->timestamps();
+        //     $table->boolean('isDeleted')->default(0);
+        //     $table->unique('zip_code');
+        //     $table->engine = 'InnoDB';
+        // });
 
        Schema::create('address', function (Blueprint $table)
         {
             $table->increments('id');
             $table->integer('city_id')->unsigned()->nullable();
+            $table->integer('country_id')->unsigned()->default(1);
             $table->integer('user_id')->unsigned();
             $table->string('state')->default('-');
             $table->string('city')->default('-');
@@ -66,7 +67,7 @@ class CreateAddressTable extends Migration
     public function down()
     {
         Schema::dropIfExists('address');
-        Schema::dropIfExists('city');
+        // Schema::dropIfExists('city');
         Schema::dropIfExists('country');
     }
 }

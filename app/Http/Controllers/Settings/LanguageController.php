@@ -25,8 +25,9 @@ class LanguageController extends Controller
 	 if (in_array($lang , $langs))
 	 {
 		Session(['language' => $lang]);
-// return Session::forget('languages');		
-// return Session::all();
+		App::setLocale($lang);
+	// return Session::forget('languages');		
+	// return Session::all();
 		Session::flash('success', Lang::get('lang.change_language',['name'=>Session::get('language')]));
 		return Redirect::back();
 	 } 
