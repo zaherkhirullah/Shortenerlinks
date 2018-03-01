@@ -77,7 +77,6 @@ class UsersController extends Controller
     
     foreach($links as $link)
     {   
-        
         $linkVisitors =linkVisitor::where('link_id',$link->id)->get();
         //        
         foreach($linkVisitors as $visitor)
