@@ -7,7 +7,7 @@
 <header class="box-header with-border text-center">
 <h3 class="box-title">
 <i class="fa fa-user">
-</i> All Your users
+</i> @lang('lang.all')  @lang('lang.users')
 </h3>
 <div class="box-tools pull-right">
 <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -19,34 +19,34 @@
 <section class="box-body">   
 @if(count($users))
 <table id="DataTable" class="mdl-data-table table-bordered table-hover" cellspacing="0" width="100%">
-<!-- 
+{{--  <!-- 
 <div class="col-md-3 " style="top:10px;">
 <a href="{{route('users.create')}}" type="button" class="btn btn-success btn-md">
 <i class="fa fa-user"></i>
 Add New user
 </a>
-</div> -->
+</div> -->  --}}
 
-<thead>
-<tr>
-<th>Full Name</th>
-<th>Username</th>
-<th> Email </th>
-<th> Role </th>
-<th>Created date</th>
-<th>Options</th>
-</tr>
-</thead>
-<tfoot>
-<tr>
-<th>Full Name</th>
-<th>Username</th>
-<th> Email </th>
-<th> Role </th>
-<th>Created date</th>
-<th>Options</th>
-</tr>
-</tfoot>
+    <thead>
+    <tr>
+        <th> @lang('lang.Name')</th>
+        <th> @lang('lang.username')</th>
+        <th> @lang('lang.email')</th>
+        <th> @lang('lang.role')</th>
+        <th>@lang('lang.created_at')</th>                        
+        <th>@lang('lang.options')</th>
+    </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th> @lang('lang.Name')</th>
+            <th> @lang('lang.username')</th>
+            <th> @lang('lang.email')</th>
+            <th> @lang('lang.role')</th>
+            <th>@lang('lang.created_at')</th>                        
+            <th>@lang('lang.options')</th>>
+        </tr>
+    </tfoot>
 <tbody>
 @foreach ($users as $user)
 <tr>
@@ -62,7 +62,7 @@ Add New user
 <i class="fa fa-edit"></i> 
 </span>
 </a>
-<a href="#delete-user-{{$user->id}}" title="Hide" data-toggle="modal" class=" text-danger" >
+<a href="#delete-user-{{$user->id}}" title="@lang('lang.hide') " data-toggle="modal" class=" text-danger" >
 <span class="text" style="font-size:18px;">
 <i class="fa  fa-eye-slash"></i> 
 </span>	
@@ -78,16 +78,16 @@ Add New user
 {!! Form::open(array('route' =>['users.destroy',$user->id],
   'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) !!}
   <div class="text-center">
-  <h4 id="msg-shorten ">Hide Shorten user</h4>
+  <h4 id="msg-shorten ">@lang('lang.hide') @lang('lang.user')</h4>
   </div>
-  <p class="text-danger">Are You Sure You Want Hide
-  <b class="text-success">{{$user->slug}}</b> user ?</p> 
+  <p class="text-danger">@lang('lang.are_you_want') @lang('lang.hide')
+  <b class="text-success">{{$user->username}}</b> @lang('lang.user') ?</p> 
   <div class="modal-footer">
   <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-  cancle
+  @lang('lang.cancle') 
   </button>
   <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-  <i class="fa fa-eye-slash"></i> Hide
+  <i class="fa fa-eye-slash"></i> @lang('lang.hide') 
   </button>
   </div>
   {!! Form::close() !!}
@@ -102,15 +102,15 @@ Add New user
   @else
   <div class="col-md-8 col-md-offset-2">
   <center> 
-  <h2 class="text-danger alert alert-warning"> You don't have users</h2>
+  <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have')  @lang('lang.users')</h2>
   </center>
   </div>
-  <div class="text-clear col-md-12">  </div>
+  {{--  <div class="text-clear col-md-12">  </div>
   <div class="col-md-12 text-center">
   <a href="{{route('users.create')}}" class="btn btn-success"> 
-  Click to Add New user
+  @lang('lang.click_to') @lang('lang.add') @lang('lang.new_user')  
   </a>
-  </div>
+  </div>  --}}
   @endif 
   </section>
   </section>

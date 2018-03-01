@@ -72,7 +72,7 @@
                                         <div class="text-center">
                                             <h4 id="msg-shorten ">@lang('lang.hide')  @lang('lang.contacts') </h4>
                                         </div>
-                                        <p class="text-danger">Are You Sure You Want @lang('lang.hide')
+                                        <p class="text-danger">@lang('lang.are_you_want')  @lang('lang.hide')
                                             <b class="text-success">{{$contact->slug}}</b> @lang('lang.contacts') ?</p> 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">

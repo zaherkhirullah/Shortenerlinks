@@ -19,7 +19,8 @@
           <table id="DataTable" class="mdl-data-table  table-hover" cellspacing="0" width="100%">
             <div class="col-md-3 " style="top:10px;">
                 <a href="{{route('files.create')}}" type="button" class="btn btn-success btn-md">
-                    <i class="fa fa-plus"></i>   @lang('lang.add')  @lang('lang.new_file') 
+                    <i class="fa fa-plus-circle"></i>
+                      @lang('lang.add')  @lang('lang.new_file') 
                 </a>
             </div>
             <thead>
@@ -147,7 +148,7 @@
                                         <div class="text-center">
                                           <h4 id="msg-shorten ">@lang('lang.delete')  @lang('lang.file') </h4>
                                         </div>
-                                        <p class="text-danger">Are You Sure You Want @lang('lang.delete')
+                                        <p class="text-danger">@lang('lang.are_you_wont')  @lang('lang.delete')
                                           <b class="text-success">{{$file->slug}}</b> @lang('lang.file') ?</p> 
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
@@ -175,7 +176,7 @@
                                           <div class="text-center">
                                             <h4 id="msg-shorten "> @lang('lang.hidden_files')</h4>
                                           </div>
-                                          <p class="text-danger">Are You Sure You Want  @lang('lang.hide')
+                                          <p class="text-danger">@lang('lang.are_you_wont')   @lang('lang.hide')
                                             <b class="text-success">{{$file->slug}}</b>  @lang('lang.file') ?</p> 
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
@@ -204,7 +205,7 @@
                                             <h4 id="msg-shorten "> @lang('lang.restore')  @lang('lang.file')</h4>
                                           </div>
                                           <hr>
-                                          <p>Are You Sure You Want  @lang('lang.restore')
+                                          <p>@lang('lang.are_you_wont')   @lang('lang.restore')
                                             <b class="text-info">
                                               {{$file->slug}} </b> @lang('lang.file') ?
                                             </p> 
@@ -240,7 +241,7 @@
             <div class="text-clear col-md-12">  </div>
             <div class="col-md-12 text-center">
                 <a href="{{route('files.create')}}" class="btn btn-success"> 
-                <i class="fa fa-plus"></i>  Click to Add New file
+                <i class="fa fa-plus"></i>  @lang('lang.click_to') @lang('lang.add')  New file
                 </a>
             </div>
             @endif 

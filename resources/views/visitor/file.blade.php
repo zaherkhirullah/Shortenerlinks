@@ -7,7 +7,7 @@
             <div class="skip-container">
               <div class="text-center">
                   
-                <h4>Your file is almost ready.</h4>
+                <h4>@lang('lang.your_file_ready')</h4>
                 <div style="width: 300px; margin: 0 auto;">                
                         @foreach($ads->take(1)->get() as $ad)
                         {!! $ad->value !!}
@@ -43,10 +43,10 @@
                             <tr>
                                 <td>
                                     <i class="fa fa-fw fa-hdd-o" aria-hidden="true"></i>
-                                    الحجم
+                                    @lang('lang.file_size')
                                 </td>
                                 <td>
-                                    318 KB&nbsp;
+                                    {{$file->size}}
                                         <i class="fa fa-fw fa-flag" aria-hidden="true"></i>
                                         <a href="{{url('/contacts')}}">
                                             إرسال تقرير
@@ -68,11 +68,11 @@
                 <div class="row" >
                     <span id="countdown" class="countdown end">
                      <span id="timer" class="timer">{{$timer}}</span>
-                        <br>Seconds
+                        <br>   @lang('lang.seconds')
                     </span>
                     <span class="desc">
-                        <a href="{{url('/')}}">Join now</a> and earn on every file you shorten. Up to
-                        <a href="{{route('rates')}}">$15 / 10000</a> views.
+                        <a href="{{url('/')}}">@lang('lang.join_now')</a>@lang('lang.join_now') @lang('lang.earn_on_every') @lang('lang.up_to') 
+                        <a href="{{route('rates')}}">$5 /1000</a> @lang('lang.view').
                     </span>
                     <div style="width: 300px; margin: 0 auto;">
                         @foreach($ads->take(1)->skip(1)->get() as $ad)

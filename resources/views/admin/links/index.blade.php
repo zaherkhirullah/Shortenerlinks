@@ -27,7 +27,7 @@
 
   <div class="col-md-3 " style="top:10px;">
   <a href="{{url('admin/links/create')}}" type="button" class="btn btn-success btn-md">
-    <i class="fa fa-plus"></i>
+    <i class="fa fa-plus-circle"></i>
     @lang('lang.add') @lang('lang.new_link') 
   </a>
   </div>
@@ -127,11 +127,11 @@
                   <div class="text-center">
                     <h4 id="msg-shorten ">Delete Shorten link</h4>
                   </div>
-                  <p class="text-danger">Are You Sure You Want Delete
+                  <p class="text-danger">@lang('lang.are_you_wont')  Delete
                     <b class="text-success">{{$link->slug}}</b> link ?</p> 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                        cancle
+                        @lang('lang.cancle') 
                       </button>
                       <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
                         <i class="fa fa-trash"></i> Delete
@@ -155,11 +155,11 @@
                     <div class="text-center">
                       <h4 id="msg-shorten ">Hidden Shorten link</h4>
                     </div>
-                    <p class="text-danger">Are You Sure You Want Hidden
+                    <p class="text-danger">@lang('lang.are_you_wont')  Hidden
                       <b class="text-success">{{$link->slug}}</b> link ?</p> 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                          cancle
+                          @lang('lang.cancle') 
                         </button>
                         <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
                           <i class="fa fa-eye-slash"></i> Hide
@@ -184,13 +184,13 @@
                       <h4 id="msg-shorten ">UnHidden link</h4>
                     </div>
                     <hr>
-                    <p>Are You Sure You Want UnHidden
+                    <p>@lang('lang.are_you_wont')  UnHidden
                       <b class="text-info">
                         {{$link->slug}} </b> link ?
                       </p> 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                          cancle
+                          @lang('lang.cancle') 
                         </button>
                         <button id="btn-restore" class="btn btn-rounded  pull-right btn-success" type="submit">
                           <i class="fa fa-eye"></i> UnHide

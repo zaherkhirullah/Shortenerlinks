@@ -24,7 +24,7 @@
 
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('domains.create')}}" type="button" class="btn btn-success btn-md">
-						<i class="fa fa-domain"></i>
+							<i class="fa fa-plus-circle"></i>
                         @lang('lang.add') @lang('lang.new_domain')
 					</a>
 				</div>
@@ -80,16 +80,16 @@
 										{{ csrf_field() }}
                      					 {{ method_field('DELETE') }}
 										<div class="text-center">
-											<h4 id="msg-shorten ">Hide  domain</h4>
+											<h4 id="msg-shorten ">@lang('lang.hide')   @lang('lang.domain') </h4>
 										</div>
-										<p class="text-danger">Are You Sure You Want Hide
-											<b class="text-success">{{$domain->slug}}</b> domain ?</p> 
+										<p class="text-danger">@lang('lang.are_you_want')  @lang('lang.hide') 
+											<b class="text-success">{{$domain->slug}}</b> @lang('lang.domain') ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-													cancle
+													@lang('lang.cancle') 
 												</button>
 												<button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-													<i class="fa fa-eye-slash"></i> Hide
+													<i class="fa fa-eye-slash"></i> @lang('lang.hide') 
 												</button>
 											</div>
 											{!! Form::close() !!}
@@ -105,13 +105,13 @@
 				@else
 				<div class="col-md-8 col-md-offset-2">
 					<center> 
-						<h2 class="text-danger alert alert-warning"> You don't have domains</h2>
+						<h2 class="text-danger alert alert-warning"> @lang('lang.dont_have')@lang('lang.domains')</h2>
 					</center>
 				</div>
 				<div class="text-clear col-md-12">  </div>
 				<div class="col-md-12 text-center">
 					<a href="{{route('domains.create')}}" class="btn btn-success"> 
-						Click to Add New domain
+							@lang('lang.click_to')@lang('lang.add') @lang('lang.new_domain')
 					</a>
 				</div>
 				@endif 

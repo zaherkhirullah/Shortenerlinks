@@ -9,9 +9,9 @@
                     <h3 class="box-title">
                         <i class="fa fa-role"></i> 
                         @if(Route::is('roles.create'))
-                              Add New role 
+                        @lang('lang.add')  @lang('lang.new_role')
                         @elseif(Route::is('roles.edit'))
-                              Edit This role
+                        @lang('lang.edit')  @lang('lang.role')
                         @endif  
                     </h3>
                     <div class="box-tools pull-right">

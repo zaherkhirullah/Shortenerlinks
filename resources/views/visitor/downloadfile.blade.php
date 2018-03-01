@@ -18,8 +18,8 @@
                 <br>@lang('lang.seconds')
                 </span>
                 <span class="desc">
-                    <a href="{{url('/')}}">@lang('lang.join_now') </a>@lang('lang.join_now') @lang('lang.earn_on_every') @lang('lang.up_to') 
-                    <a href="{{route('rates')}}">${{$country->link_price}} /1000</a> @lang('lang.view').
+                        <a href="{{url('/')}}">@lang('lang.join_now')</a>@lang('lang.join_now') @lang('lang.earn_on_every') @lang('lang.up_to') 
+                        <a href="{{route('rates')}}">$5 /1000</a> @lang('lang.view').
                 </span>
                 <div style="width: 300px; margin: 0 auto;">
                 @foreach($ads->take(1)->skip(1)->get() as $ad)

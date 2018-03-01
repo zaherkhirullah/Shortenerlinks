@@ -10,9 +10,9 @@
                         <i class="fa fa-PayMethod">
                         </i>
                         @if(Route::is('PayMethods.create'))
-                             Add New PayMethod
+                        @lang('lang.add')  @lang('lang.new_pay_method') 
                         @elseif(Route::is('PayMethods.edit'))
-                             Edit This PayMethod
+                        @lang('lang.edit')  @lang('lang.pay_method') 
                         @endif 
                              
                     </h3>

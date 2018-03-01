@@ -5,7 +5,7 @@
 <header class="box-header with-border text-center">
     <h3 class="box-title">
         <i class="fa fa-withdraw-o">
-        </i> All Your withdraws
+        </i> @lang('lang.all')  withdraws
     </h3>
     <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -17,33 +17,37 @@
 <section class="box-body ">   
     @if(count($withdraws))
     <table id="DataTable" class="mdl-data-table  table-hover" cellspacing="0" width="100%">
-        <div class="col-md-3 " style="top:10px;">
+        {{--  <div class="col-md-3 " style="top:10px;">
             <a href="{{route('withdraws.create')}}" type="button" class="btn btn-success btn-md">
-                <i class="fa fa-link"></i>
+                <i class="fa fa-plus-circle"></i>
                 Add New withdraw
             </a>
-        </div>
+        </div>  --}}
         <thead>
-            <tr>
-                <th><b class="text-muted"><i class="fa fa-user"></i></b>  User Name </th>
-                <th>Transaction ID</th>
-                <th>withdraw Method </th>
-                <th>Amount</th>                       
-                <th>Status</th>
-                <th>Created date</th>                        
-                <th>Options</th>
-            </tr>
+                <tr>
+                        <th><b class="text-muted">
+                            <i class="fa fa-user"></i>
+                        </b>  @lang('lang.username') </th>
+                        <th>@lang('lang.transaction_id')</th>
+                        <th>@lang('lang.pay_method')</th>
+                        <th>@lang('lang.amount')</th>                       
+                        <th>@lang('lang.status')</th>
+                        <th>@lang('lang.created_at')</th>                        
+                        <th>@lang('lang.options')</th>
+                    </tr>
         </thead>
         <tfoot>
-            <tr>
-                <th><b class="text-muted"><i class="fa fa-user"></i></b>  User Name </th>
-                <th>Transaction ID</th>
-                <th>withdraw Method </th>
-                <th>Amount</th>                        
-                <th>Status</th>
-                <th>Created date</th>                        
-                <th>Options</th>
-            </tr>
+                <tr>
+                        <th><b class="text-muted">
+                            <i class="fa fa-user"></i>
+                        </b>  @lang('lang.username') </th>
+                        <th>@lang('lang.transaction_id')</th>
+                        <th>@lang('lang.pay_method')</th>
+                        <th>@lang('lang.amount')</th>                       
+                        <th>@lang('lang.status')</th>
+                        <th>@lang('lang.created_at')</th>                        
+                        <th>@lang('lang.options')</th>
+                    </tr>
         </tfoot>
         <tbody>
             @foreach ($withdraws as $withdraw)
@@ -57,13 +61,13 @@
                     <td>
                     <b class="text-success">
                             @if($withdraw->status ==1)
-                            <b class="text-warning"><i class="fa fa-spinner"></i> Pending</b>
+                            <b class="text-warning"><i class="fa fa-spinner"></i>  @lang('lang.pending')</b>
                             @elseif($withdraw->status ==2)
-                            <b class="text-info"><i class="fa fa-check"></i> Accepted </b>
+                            <b class="text-info"><i class="fa fa-check"></i>  @lang('lang.accepte') </b>
                             @elseif($withdraw->status ==3)
-                                <b class="text-success"><i class="fa fa-lock"></i> Paid</b>
+                                <b class="text-success"><i class="fa fa-lock"></i>  @lang('lang.paid')</b>
                             @elseif($withdraw->status ==4)
-                                <b class="text-danger"><i class="fa fa-times"></i> cancled</b>
+                                <b class="text-danger"><i class="fa fa-times"></i> @lang('lang.cancled')</b>
                             @endif
                     </td>
                     <td>{{$withdraw->created_at }}</td>
@@ -110,12 +114,12 @@
                                             <h4 id="msg-shorten ">Accept This withdraw Request</h4>
                                         </div>
 
-                                        <p class="text-danger">Are You Sure You Want Accept This 
+                                        <p class="text-danger">@lang('lang.are_you_want')  Accept This 
                                         <b class="text-success">{{$withdraw->amount }}</b> Request 
                                          for <b class="text-success">{{$withdraw->user->username }}</b> ?</p> 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                cancle
+                                                @lang('lang.cancle') 
                                             </button>
                                             <button id="btn-accept" class="btn btn-rounded  pull-right btn-success" type="submit">
                                                 <i class="fa fa-check"></i> confirm
@@ -184,15 +188,15 @@
                                         {{Form::hidden('user_id',$withdraw->user_id)}}
                                     
                                         <div class="text-center">
-                                            <h4 id="msg-shorten ">Cancle This withdraw Request</h4>
+                                            <h4 id="msg-shorten ">@lang('lang.cancle')  This withdraw Request</h4>
                                         </div>
 
-                                        <p class="text-danger">Are You Sure You Want Cancle This 
+                                        <p class="text-danger">@lang('lang.are_you_want')  @lang('lang.cancle')  This 
                                         <b class="text-success">{{$withdraw->amount }}</b> Request 
                                         thats for <b class="text-success">{{$withdraw->user->username }}</b> ?</p> 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                cancle
+                                                @lang('lang.cancle') 
                                             </button>
                                             <button id="btn-cancle" class="btn btn-rounded  pull-right btn-success" type="submit">
                                                 <i class="fa fa-trash"></i> confirm
@@ -210,15 +214,10 @@
     @else
     <div class="col-md-8 col-md-offset-2">
     <center> 
-        <h2 class="text-danger alert alert-warning"> You don't have withdraws</h2>
+        <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have')  withdraws</h2>
     </center>
     </div>
-    <div class="text-clear col-md-12">  </div>
-    <div class="col-md-12 text-center">
-        <a href="{{route('withdraws.create')}}" class="btn btn-success"> 
-            Click to Add New withdraw
-        </a>
-    </div>
+  
     @endif 
 </section>
 </section>

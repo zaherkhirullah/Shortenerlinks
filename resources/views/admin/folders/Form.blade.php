@@ -9,9 +9,9 @@
                     <h3 class="box-title">
                         <i class="fa fa-plus"> </i>
                         @if(Route::is('folders.create'))
-                              Add New Folder 
+                        @lang('lang.add')  @lang('lang.folder')  
                         @elseif(Route::is('folders.edit'))
-                              Edit This Folder
+                        @lang('lang.edit')  @lang('lang.folder') 
                         @endif  
                     </h3>
                     <div class="box-tools pull-right">

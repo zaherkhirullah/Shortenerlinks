@@ -1,8 +1,8 @@
             @extends('layouts.adlayout')
-            @section('title','{{$user->username}}  Details')
+            @section('title','{{$user->username}}  @lang('lang.Details') ')
 
             @section('content')
-            <h3> {{$user->username}}  Details</h3>
+            <h3> {{$user->username}}  @lang('lang.Details') </h3>
             <div class="col-md-12">
             <div class="col-md-3">
             <div class="panel panel-default">

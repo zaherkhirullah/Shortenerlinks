@@ -8,7 +8,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-plus"> </i> 
-                           Edit This Contacts
+                           @lang('lang.edit')   @lang('lang.contact')
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -41,10 +41,10 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('email') ? ' has-error' : ''}}">
-							{!!  Form::label('email','Email *')   !!}
+							{!!  Form::label('email',\lang::get('lang.email'))   !!}
 							{{Form::email('email',$contact->email, ['class' =>
 							"form-control input-sm  ",
-							'id'=>'email','placeholder'=>'Add Email'])  }}
+							'id'=>'email','placeholder'=>\lang::get('lang.email')])  }}
 							
 							@if ($errors->has('email'))
 							<span class="help-block">
@@ -56,9 +56,9 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('subject') ? ' has-error' : ''}}">
-							{!!  Form::label('subject','Subject *')   !!}
+							{!!  Form::label('subject',\lang::get('lang.Subject'))   !!}
 							{{Form::text('subject',$contact->subject, ['class' =>"form-control input-sm" ,
-							'id'=>'subject','required'=>'true','placeholder'=>'Add subject'])  
+							'id'=>'subject','required'=>'true','placeholder'=>\lang::get('lang.Subject')])  
 						     }}
 							@if ($errors->has('subject'))
 							<span class="help-block">
@@ -71,7 +71,7 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('Message') ? ' has-error' : ''}}">
-							{!!  Form::label('Message','Message *')   !!}
+							{!!  Form::label('Message',\lang::get('lang.Message'))   !!}
 							{{Form::textarea('Message',$contact->Message, ['class' =>
 							"form-control input-sm ",
 							'id'=>'Message','required'=>'true','placeholder'=>'Add Message'])  }}

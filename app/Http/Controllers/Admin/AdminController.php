@@ -9,6 +9,7 @@ use App\Http\Models\Earn;
 use App\Http\Models\Views;
 use App\Http\Models\file;
 use App\Http\Models\link;
+use App\Http\Models\linkVisitor;
 use App\Http\Models\Options;
 use App\Http\Models\Downloads;
 use App\User;
@@ -22,8 +23,25 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
    
-    public function dashboard()
-    {
+    public function dashboard(Earn $earn ,Views $view,Downloads $download)
+    {   
+        $user_id = Auth::id();
+        $TodayLinkEarnings= $earn->TodayLinkEarnings($user_id);
+        $TodayFileEarnings= $earn->TodayFileEarnings($user_id);
+        $TotalLinkEarnings= $earn->TotalLinkEarnings($user_id);
+        $TotalFileEarnings= $earn->TotalFileEarnings($user_id);
+            $TotalEarnings    = $earn->TotalEarnings($user_id);
+            $ReferralEarnings = $earn->ReferralEarnings($user_id);
+            $Referral_MyEarnings = $earn->Referral_MyEarnings($user_id);
+            
+        $TodayLinkViews= $view->TodayLinkViews($user_id);
+        $TodayFileViews= $view->TodayFileViews($user_id);
+        $TotalLinkViews= $view->TotalLinkViews($user_id);
+        $TotalFileViews= $view->TotalFileViews($user_id);
+            $TotalViews    = $view->TotalViews($user_id);
+        $TodayFileDownloads= $download->TodayFileDownloads($user_id);
+        $TotalFileDownloads= $download->TotalFileDownloads($user_id);
+
         $lava = new Lavacharts; // See note below for Laravel
         $files_links= $this->chart_files_links();
         $visitors =  $this->visitors();
@@ -34,8 +52,7 @@ class AdminController extends Controller
         $array = array([
         'TodayLinkEarnings','TodayFileEarnings','TotalLinkEarnings','TotalFileEarnings','TotalEarnings','ReferralEarnings','Referral_MyEarnings',
         'TodayLinkViews','TodayFileViews','TotalLinkViews','TotalFileViews','TotalViews',
-        'TodayFileDownloads','TotalFileDownloads',
-        'NowTime', 'DayTime','lava',
+        'TodayFileDownloads','TotalFileDownloads','lava',
       ]);
      return view('admin.dashboard', compact($array));
     }
@@ -82,17 +99,23 @@ class AdminController extends Controller
         return $files_links_count;
     }
     public function visitors()
-    { 
+    {  
         $lava = new Lavacharts;
+        $link = new link;
         $visitors = $lava->DataTable();
-        return $visitors->addStringColumn('Country')
-                   ->addNumberColumn('visitors')
-                   ->addRow(array('Germany', 10))
-                   ->addRow(array('United States', 300))
-                   ->addRow(array('Brazil', 400))
-                   ->addRow(array('Canada', 500))
-                   ->addRow(array('France', 600))
-                   ->addRow(array('Sy', 600))
-                   ->addRow(array('RU', 700));
+     $visitors->addStringColumn('Country')
+                   ->addNumberColumn('visitors');
+    $links = $link->all();
+    foreach($links as $link)
+    {   
+        $linkVisitors =linkVisitor::where('link_id',$link->id)->get();
+        //        
+        foreach($linkVisitors as $visitor)
+        {
+            $links_count =linkVisitor::where('country',$visitor->country)->count();
+            $visitors->addRow(array($visitor->country, $links_count ));
+        }
+    }
+    return $visitors;
     }   
 }

@@ -7,11 +7,11 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <i class="fa fa-user"></i> 
+                        <i class="fa fa-plus-circle"></i> 
                         @if(Route::is('users.create'))
-                              Add New user 
+                        @lang('lang.add') @lang('lang.new_user')
                         @elseif(Route::is('users.edit'))
-                              Edit This user
+                        @lang('lang.edit') @lang('lang.user')
                         @endif  
                     </h3>
                     <div class="box-tools pull-right">

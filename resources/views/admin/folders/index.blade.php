@@ -22,7 +22,7 @@
 
 				<div class="col-md-3 " style="top:10px;">
 					<a href="{{route('folders.create')}}" type="button" class="btn btn-success btn-md">
-						<i class="fa fa-folder"></i>
+							<i class="fa fa-plus-circle"></i>
 						@lang('lang.add') @lang('lang.new_folder')
 					</a>
 				</div>
@@ -73,7 +73,7 @@
 										<div class="text-center">
 											<h4 id="msg-shorten ">@lang('lang.delete') @lang('lang.folder')</h4>
 										</div>
-										<p class="text-danger">Are You Sure You Want @lang('lang.delete') 
+										<p class="text-danger">@lang('lang.are_you_wont')  @lang('lang.delete') 
 											<b class="text-success">{{$folder->slug}}</b> @lang('lang.folder')  ?</p> 
 											<div class="modal-footer">
 												<button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">

@@ -99,7 +99,7 @@
                       <div class="text-center">
                         <h4 id="msg-hidden ">@lang('lang.hide')  @lang('lang.ads_types')</h4>
                       </div>
-                      <p class="text-danger">Are You Sure You Want @lang('lang.hide')
+                      <p class="text-danger">@lang('lang.are_you_want')  @lang('lang.hide')
                       <b class="text-success">{{$adstype->slug}}</b> @lang('lang.ads_types') ?</p> 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">

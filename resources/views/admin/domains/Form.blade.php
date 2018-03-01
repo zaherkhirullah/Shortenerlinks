@@ -10,9 +10,9 @@
                         <i class="fa fa-domain">
                         </i>
                         @if(Route::is('domains.create'))
-                             Add New Domain
+                        @lang('lang.add')   @lang('lang.new_domain')
                         @elseif(Route::is('domains.edit'))
-                             Edit This Domain
+                        @lang('lang.edit')    @lang('lang.domain')
                         @endif 
                              
                     </h3>

@@ -245,28 +245,34 @@
 						<ul class="nav lt">
 							<li>
 								<a href="{{route('settings')}}">
-									<i class="fa fa-angle-right"></i>
+									<i class="fa fa-cogs"></i>
 									<span>@lang('lang.settings')</span>
 								</a>
 							</li>
 							<li>
+								<a href="{{route('countries')}}">
+									<i class="fa fa-dollar"></i>
+									<span>@lang('lang.all_prices')</span>
+								</a>
+							</li>
+							<li>
 								<a href="{{route('account.profile')}}">
-									<i class="fa fa-angle-right"></i>
+									<i class="fa fa-user"></i>
 									<span>@lang('lang.profile')</span>
 								</a>
 							</li>
 							<li>
 								<a href="{{route('account.changePassword')}}">
-									<i class="fa fa-angle-right"></i>
+									<i class="fa fa-lock"></i>
 									<span>@lang('lang.change_password')</span>
 								</a>
 							</li>
-							<li>
+							{{--  <li>
 								<a href="/admin/account/change-email">
 									<i class="fa fa-angle-right"></i>
 									<span>@lang('lang.change_email')</span>
 								</a>
-							</li>
+							</li>  --}}
 						</ul>
 					</li>
 					
