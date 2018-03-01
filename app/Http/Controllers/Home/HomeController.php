@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         $user= User::where('username',$user)->first();
         if($user)   
-        {
+        { 
             $files = $file->user_public_files($user->id)->paginate(10);
         return view('home.user_files',compact('files','user'));
         }

@@ -16,7 +16,7 @@
         <div class="col-md-4">
                 <div  class="panel panel-body">
                     <ul>
-                        <li> <b class="text-success"> link:</b>  {{$link->shortde_url}}</li>
+                        <li> <b class="text-success"> link:</b>  {{$link->shorted_url}}</li>
                         <li> <b class="text-success"> visits:</b>  {{$link->clicks}}</li>
                         <li> <b class="text-success"> Created date</b>  {{$link->created_at}}</li>
                     </ul>

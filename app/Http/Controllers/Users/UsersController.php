@@ -10,6 +10,8 @@ use App\Http\Models\Views;
 use App\Http\Models\link;
 use App\Http\Models\file;
 use App\Http\Models\Options;
+use App\Http\Models\linkVisitor;
+use App\Http\Models\fileDownloader;
 use App\Http\Models\Downloads;
 use App\User;
 use Charts;
@@ -67,17 +69,26 @@ class UsersController extends Controller
     public function visitors()
     { 
         $lava = new Lavacharts;
+        $link = new link;
         $visitors = $lava->DataTable();
-        return $visitors->addStringColumn('Country')
-                   ->addNumberColumn('visitors')
-                   ->addRow(array('Germany', 10))
-                   ->addRow(array('United States', 300))
-                   ->addRow(array('Brazil', 400))
-                   ->addRow(array('Canada', 500))
-                   ->addRow(array('France', 600))
-                   ->addRow(array('Sy', 600))
-                   ->addRow(array('RU', 700));
+     $visitors->addStringColumn('Country')
+                   ->addNumberColumn('visitors');
+    $links = $link->userLinks(Auth::id())->get();
+    
+    foreach($links as $link)
+    {   
+        
+        $linkVisitors =linkVisitor::where('link_id',$link->id)->get();
+        //        
+        foreach($linkVisitors as $visitor)
+        {
+            $links_count =linkVisitor::where('country',$visitor->country)->count();
+            $visitors->addRow(array($visitor->country, $links_count ));
+        }
     }
+    return $visitors;
+}
+    
 
     public function dashboard(Earn $earn ,Views $view,Downloads $download)
     {   
