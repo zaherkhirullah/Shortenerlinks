@@ -8,6 +8,7 @@ return [
     'logout'              => ' logout',    
     'home'                => ' home',
     'dashboard'           => ' dashboard',
+    'home_page'         => ' HomePage',    
     'create'              => ' create',
     'edit'                => ' edit',
     'show'                => ' show',    
@@ -231,14 +232,43 @@ return [
     'country'            => ' country',
     'Price'              =>' Price ',
     'price'              =>' price ',
-    
-    
-   
+    'usd'                =>' usd ',
     'no'                => 'no' ,
     'yes'               => 'yes',
     'you'               => 'you',
     'me'                => 'me' ,
     'we'                => 'we' ,
     'I'                 => 'I'  ,
+    
+    'click_here'             => ' click here' ,
+    'here'             => ' here' ,
+    'join_now'         => ' Join now' ,
+    'seconds'          => ' Seconds' ,
+    'up_to'            => ' Up to' ,
+    'file_name'        => ' file name' ,
+    'file_size'        => ' file size' ,
+    'file_path'        => ' file path' ,
+    'file_downloads'   => ' file downloads' ,
+    'file_download'    => ' file download' ,
+    'all_prices'       => ' All Prices' ,
+    
+    'here'             => ' here' ,
+    'here'             => ' here' ,
+    'here'             => ' here' ,
+    'here'             => ' here' ,
+    'here'             => ' here' ,
+    'here'             => ' here' ,
+    
+    'm_check_capatcha' => 'Please check the captcha box to proceed to the destination page.'  ,
+    'm_select_download_type' =>'select the download type ',
+    'm_cant_verfy_capatcha' =>'if you cannot submit the recaptcha.', 
+    'earn_on_every' =>'and earn on every :name you shorten.',
+    'your_file_ready' =>'Your file is almost ready.',
+    'm_check_capatcha' =>'',
+    'm_check_capatcha' =>'',
+    'm_check_capatcha' =>'',
+    'm_check_capatcha' =>'',
+    'm_check_capatcha' =>'',
+
 
 ];

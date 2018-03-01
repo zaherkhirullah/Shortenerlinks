@@ -8,8 +8,9 @@ return [
     'sign_up_free'      => ' التسجيل مجانا',    
     'login'             => ' تسجيل الدخول ',
     'logout'            => ' تسجيل الخروج ',
+    'home_page'         => ' الصفحة الرئيسية',
     'home'              => ' الرئيسية',
-    'dashboard'         => ' الصفحة الرئيسية',
+    'dashboard'         => ' الرئيسية',
     'create'            => ' إنشاء',
     'edit'              => ' تعديل',
     'show'              => ' عرض',        
@@ -225,8 +226,9 @@ return [
     'country'           => ' البلد',
     'Price'             => ' السعر',
     'price'             => ' سعر',
-    'link_price'             => ' سعر للرابط',
-    'file_price'             => ' سعر للملف',
+    'link_price'        => ' السعر للرابط',
+    'file_price'        => ' السعر للملف',
+    'usd'               =>' دولار ',
     
     'statistics'         => ' الإحصائيات',
     'change_language'    => ' تم تغيير اللغة  إلى :name بنجاح',
@@ -242,14 +244,30 @@ return [
     'error_hided'        => ' لقد حدث خطأ أثناء إخفاء :name',
     'error_changed'      => ' لقد حدث خطأ أثناء تغيير :name',
     'not_found'          => ' لم يتم العثور على  :name المطلوبة',
-   
-  
-    
-
     'no'                => ' لا' ,
     'yes'               => ' نعم',
     'you'               => ' أنت',
     'me'                => ' لي',
     'we'                => ' نحن',
     'I'                 => ' أنا',
+
+    'click_here'       => ' اضغط هنا' ,
+    'here'             => ' هنا' ,
+    'join_now'         => ' انضم الأن' ,
+    'seconds'          => ' ثوان' ,
+    'up_to'            => ' أكثر من' ,
+    'file_name'        => ' اسم الملف' ,
+    'file_size'        => ' حجم الملف' ,
+    'file_path'        => ' مسار الملف' ,
+    'file_downloads'   => ' تحميلات الملف' ,
+    'file_download'    => ' تحميل الملف' ,
+    'all_prices'       => 'جميع الاسعار' ,
+    // 'here'             => ' here' ,
+    // 'here'             => ' here' ,
+    
+    'm_check_capatcha' => 'من فضلك اضغط لتخطي كود الكابتشا للانتقال الى الصفحة التالية.'  ,
+    'm_select_download_type' =>'أختر نوع التحميل ',
+    'm_cant_verfy_capatcha' =>'اذا لم تستطع تخطي كود الكاباتشا هذا .', 
+    'earn_on_every' =>'واربح المال لكل  :name تختصره.',
+    'your_file_ready' =>'ملفك الذي طلبته جاهز للتحميل.',
 ];

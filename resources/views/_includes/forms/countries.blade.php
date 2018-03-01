@@ -33,36 +33,36 @@
             </div>
     @foreach($countries as $country)     
     <div class="col-sm-6">
-            {{ Form::label('Name', $country->name) }}
+            {{ Form::label($country->name, $country->name) }}
             <div class="col-sm-3">               
-                <div class="form-group text {{ $errors->has('link_price') ? ' has-error' : '' }} required">
-                    {{ Form::text('link_price',$country->link_price, 
+                <div class="form-group text {{ $errors->has('link_price_'.$country->id) ? ' has-error' : '' }} required">
+                    {{ Form::text('link_price_'.$country->id,$country->link_price, 
                         ['class' => 'form-control',
                         'maxlength'=>'256' ,
-                        'placeholder'=>'link_price'
+                        'placeholder'=>\Lang::get('lang.link_price')
                         ]) 
                         ,'autofocus'
                     }}
-                    @if ($errors->has('link_price'))
+                    @if ($errors->has('link_price_'.$country->id))
                     <span class="help-block">
-                        <strong>{{ $errors->first('link_price') }}</strong>
+                        <strong>{{ $errors->first('link_price_'.$country->id) }}</strong>
                     </span>
                     @endif 
                 </div> 
             </div>
             <div class="col-sm-3">
                                             
-                <div class="form-group text {{ $errors->has('file_price') ? ' has-error' : '' }} required">
-                    {{ Form::text('file_price',$country->file_price, 
+                <div class="form-group text {{ $errors->has('file_price_'.$country->id) ? ' has-error' : '' }} required">
+                    {{ Form::text('file_price_'.$country->id,$country->file_price, 
                         ['class' => 'form-control',
                         'maxlength'=>'256' ,
-                        'placeholder'=>'file_price'
+                        'placeholder'=>\Lang::get('lang.file_price')
                         ]) 
                         ,'autofocus'
                     }}
-                    @if ($errors->has('file_price'))
+                    @if ($errors->has('file_price_'.$country->id))
                     <span class="help-block">
-                        <strong>{{ $errors->first('file_price') }}</strong>
+                        <strong>{{ $errors->first('file_price_'.$country->id) }}</strong>
                     </span>
                     @endif 
                 </div> 

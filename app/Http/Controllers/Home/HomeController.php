@@ -57,8 +57,11 @@ class HomeController extends Controller
     }
     public function rates()
     {
-        return view('home.rates');
+        $country = new Country();
+        $countries =$country->countries()->paginate(20);
+        return view ('home.rates',compact('countries'));
     }
+
     public function terms()
     {
         return view('home.terms');
@@ -263,17 +266,19 @@ public function download_file(Request $request)
             $fileDownloader->file_id = $file_id;
             if($fileDownloader->save()){
                 $file->views += 1;
-                $file->earnings +=$file_price;
                 $file->save();
-    
+
                 $user_id = $file->user_id;
                 $User = User::where('id',$user_id)->first();
                 $Balance =$User->Balance;
-                $Balance->avilable_amount += $file_price;
-                $Balance->save();
                  //PDF file is stored under project/public/download/info.pdf
                 $filee= public_path(). "/uploads/files/". $file->file_name;
                  Session::flash('download.in.the.next.request', $filee);
+                 $file->downloads += 1;
+                 $file->earnings +=$file_price; 
+                 $file->save();                   
+                 $Balance->avilable_amount += $file_price;
+                 $Balance->save();
                 return response()->download($filee, $file->file_name);
             }
         }      

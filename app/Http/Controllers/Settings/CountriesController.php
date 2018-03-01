@@ -24,12 +24,12 @@ class CountriesController extends Controller
     {   
         foreach ($countries->all() as $value) 
         {
-            $countries =  Country::where('name',$value->name)->first();
-            if($countries){
+            $country =  Country::where('name',$value->name)->first();
+                if($country){
                 // $countries->ecmp = $request->input($value->ecmp);                
-                $countries->file_price = $request->input($value->file_price);
-                $countries->link_price = $request->input($value->link_price);
-                $countries->save();
+                $country->file_price = $request->input('file_price_'.$value->id);
+                $country->link_price = $request->input('link_price_'.$value->id);
+                $country->save();
             }
         }
         Session::flash('success','successfuly update all countries');

@@ -76,17 +76,17 @@
 						<div class="navbar-header page-scroll">
 							<a class="navbar-brand" href="{{url('/')}}">
 							<i class="ion ion-ios-rose-outline" ></i>
-                       Shorter Links
+                       			Shorter Links
        					<i class="ion ion-ios-rose-outline" ></i>
 							</a>
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li>
-									<a href="{{url('/')}}">Home</a>
+									<a class="text-success" href="{{url('/')}}">@lang('lang.home_page')</a>
 								</li>
 								<li>
-									<a href="{{route('rates')}}">Payout Rates</a>
+									<a  href="{{route('rates')}}">@lang('lang.payout_rates') </a>
 								</li>
 							</ul>
 						</div>

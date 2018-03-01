@@ -10,17 +10,11 @@
         </span>
 </section>
 <section class="common-section section section-on-bg">
-<h2 class="title container text-center">Our Terms</h2>
+<h2 class="title container text-center">@lang('lang.our_terms')</h2>
 <div class="container text-center">
 <div class="container-inner">
 <div class="about">
-<p>We pay for 
-    <span class="highlight">ALL</span> 
-    legitimate visitor you bring to your links and payout <span class="highlight">at least $1.5</span> per 1000 views.
-    Multiple views from the same viewer are 
-    <span class="highlight">also counted</span> 
-    thus you will be benefiting from all your traffic.
-</p>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -32,9 +26,15 @@
             @for($x=0 ;$x< 10;$x++)
             <tr>
                     <td>{{$x}}</td>
-                    <td>term description for our site</td>
+                    <td>term description for our site.</td>
             </tr>
             @endfor
+            {{--  @for($terms as $term)
+            <tr>
+                    <td>{{$term->title}}</td>
+                    <td>{{$term->description}}</td>
+            </tr>
+            @endfor  --}}
     </tbody>
 </table>
 </div>

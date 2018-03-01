@@ -7,25 +7,25 @@
                 @include('tools.partials.flash_message') 
         </span>
 </section>
-<section class="common-section section section-on-bg">
+<div class="section section-on-bg">
 <h2 class="title container text-center">@lang('lang.files') {{$user->username}}</h2>
-<div class="container text-center">
-    <div class="container-inner">
-        <div class="about">
-        @foreach($files as $file)
-        <div class="col-md-4">
-                <div  class="panel panel-body">
-                    <ul>
-                        <li> <b class="text-success"> Slug:</b>  {{$file->slug}}</li>
-                        <li> <b class="text-success"> Filename:</b>  {{$file->file_name}}</li>
-                        <li> <b class="text-success"> File Size</b>  {{$file->size}}</li>
-                        <li> <b class="text-success">File Downloads</b> {{$file->downloads}}</li>
-                    </ul>
+    <div class="container text-center">
+        <div class="container-inner">
+            <div class="about">
+            @foreach($files as $file)
+            <div class="col-md-4">
+                    <div class="panel panel-body">
+                        <ul>
+                            <li> <b class="text-success"> @lang('lang.Name'): </b>  {{$file->slug}}</li>
+                            <li> <b class="text-success"> @lang('lang.file_name'): </b>  <small>{{$file->file_name}}</small></li>
+                            <li> <b class="text-success">@lang('lang.file_size'): </b>    {{$file->size}}</li>
+                            <li> <b class="text-success">@lang('lang.file_downloads'): </b> {{$file->downloads}}</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+            </div> 
         </div> 
     </div> 
-</div> 
-</section>
+</div>
 @endsection

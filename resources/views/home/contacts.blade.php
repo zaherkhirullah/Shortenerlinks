@@ -10,7 +10,7 @@
 </section>
 <section class="common-section section section-on-bg">
 	<h1 class="title container text-center">
-		Contact us Formu
+			@lang('lang.contact_us')
 	</h1>
 	<div class="container text-center" >
 		<div class="container-inner" style="border:1px solid #eee; box-shadow: 1px 30px 30px -5px rgba(0, 60,70, 0.5)">
@@ -35,8 +35,8 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('name') ? ' has-error' : ''}}">
-							{{  Form::label('name','Name *')   }}
-				  <input id="name" type="text" class="form-control " placeholder="Add name *" name="name" required>
+							{{  Form::label('name',\Lang::get('lang.Name') )   }}
+				  <input id="name" type="text" class="form-control " placeholder="@lang('lang.Name')" name="name" required>
 				  
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -48,10 +48,10 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group  {{$errors->has('email') ? ' has-error' : ''}}">
-							{{  Form::label('email','Email *')   }}
+							{{  Form::label('email',\Lang::get('lang.email'))   }}
 							{{Form::email('email','', ['class' =>
 							"form-control input-sm  ",
-							'id'=>'email','placeholder'=>'Add Email'])  }}
+							'id'=>'email','placeholder'=>\Lang::get('lang.email')])  }}
 							
 							@if ($errors->has('email'))
 							<span class="help-block">
@@ -63,9 +63,9 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('subject') ? ' has-error' : ''}}">
-							{{  Form::label('subject','Subject *')   }}
+							{{  Form::label('subject',\Lang::get('lang.Subject'))   }}
 							{{Form::text('subject','', ['class' =>"form-control input-sm" ,
-							'id'=>'subject','required'=>'true','placeholder'=>'Add subject'])  
+							'id'=>'subject','required'=>'true','placeholder'=>\Lang::get('lang.Subject')])  
 						     }}
 							@if ($errors->has('subject'))
 							<span class="help-block">
@@ -78,10 +78,10 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group  {{$errors->has('Message') ? ' has-error' : ''}}">
-							{{  Form::label('Message','Message *')   }}
+							{{  Form::label('Message',\Lang::get('lang.Message'))   }}
 							{{Form::textarea('Message','', ['class' =>
 							"form-control input-sm ",
-							'id'=>'Message','required'=>'true','placeholder'=>'Add Message'])  }}
+							'id'=>'Message','required'=>'true','placeholder'=>\Lang::get('lang.add').' '.\Lang::get('lang.Message')])  }}
 							@if ($errors->has('Message'))
 							<span class="help-block">
 								<strong>{{ $errors->first('Message') }}

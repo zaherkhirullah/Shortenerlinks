@@ -19,40 +19,40 @@
 </script>
 <script src='https://cdn.jsdelivr.net/npm/fuckadblock@3.2.1/fuckadblock.min.js'>
 </script>
-<script>
+{{--  <script>
 	// Function called if AdBlock is not detected
-function adBlockNotDetected() {
-	var msg = document.getElementById('msg-adblock');
-	alert('AdBlock is not enabled');
-	msg.text() ='AdBlock is not enabled';
-}
-// Function called if AdBlock is detected
-function adBlockDetected() {
-	var msg = document.getElementById('msg-adblock');
-	alert('AdBlock is enabled');
-	msg.text() ='AdBlock is enabled';
-}
+	function adBlockNotDetected() {
+		var msg = document.getElementById('msg-adblock');
+		alert('AdBlock is not enabled');
+		msg.text() ='AdBlock is not enabled';
+	}
+	// Function called if AdBlock is detected
+	function adBlockDetected() {
+		var msg = document.getElementById('msg-adblock');
+		alert('AdBlock is enabled');
+		msg.text() ='AdBlock is enabled';
+	}
 
-// We look at whether FuckAdBlock already exists.
-if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
-	adBlockDetected();
-}
- else {
-	// Otherwise, you import the script FuckAdBlock
-	var importFAB = document.createElement('script');
-	importFAB.onload = function() {
-		// If all goes well, we configure FuckAdBlock
-		fuckAdBlock.onDetected(adBlockDetected)
-		fuckAdBlock.onNotDetected(adBlockNotDetected);
-	};
-	importFAB.onerror = function() {
-		// If the script does not load (blocked, integrity error, ...)
-		// Then a detection is triggered
-		adBlockDetected(); 
-	};
-	importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
-	importFAB.crossOrigin = 'anonymous';
-	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
-	document.head.appendChild(importFAB);
-}
-</script>
+	// We look at whether FuckAdBlock already exists.
+	if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+		adBlockDetected();
+	}
+	else {
+		// Otherwise, you import the script FuckAdBlock
+		var importFAB = document.createElement('script');
+		importFAB.onload = function() {
+			// If all goes well, we configure FuckAdBlock
+			fuckAdBlock.onDetected(adBlockDetected)
+			fuckAdBlock.onNotDetected(adBlockNotDetected);
+		};
+		importFAB.onerror = function() {
+			// If the script does not load (blocked, integrity error, ...)
+			// Then a detection is triggered
+			adBlockDetected(); 
+		};
+		importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+		importFAB.crossOrigin = 'anonymous';
+		importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+		document.head.appendChild(importFAB);
+	}
+</script>  --}}

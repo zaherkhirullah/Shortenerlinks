@@ -29,20 +29,19 @@
                 
                     <!--[/GoogleAdvert]-->
                     <div class="dareaname">
-                        <span>  {{$file->slug}}  تحميل الملف </span>
+                        <span>  {{$file->slug}}  @lang('lang.download_file') </span>
                         <p>
-                            (318 KB)
+                                {{$file->size}}
                            <font color="red">{{$file->shorted_url}}</font> 
-                            لقد طلبت
                         </p>
                     </div>
 
-                    <div class="stdt"> select the download type</div>
+                    <div class="stdt"> @lang('lang.m_select_download_type')</div>
                         <form method="POST" action="">
                             <input type="hidden" name="op" value="download1">
                             <input type="hidden" name="usr_login" value="">
-                            <input type="hidden" name="id" value="n53nxp4dvwkg">
-                            <input type="hidden" name="fname" value="Bon_Font.zip">
+                            <input type="hidden" name="id" value="{{$file->id}}">
+                            <input type="hidden" name="fname" value="{{$file->filename}}">
                             <input type="hidden" name="referer" value="">
                             <input type="submit" class="btn btn-xs btn-success mnbt1" name="method_premium" value="تحميل مميز">
                             <input type="submit" class="btn btn-xs btn-primary mnbt1" name="method_free" value="تحميل مجاني">
@@ -50,7 +49,7 @@
                     </div>
                     <form method="POST" action="{{route('getFile',$file->slug)}}" accept-charset="UTF-8" id="captcha-form">    
                         @endif
-                        <h4>Please check the captcha box to proceed to the destination page.</h4>
+                        <h4>@lang('lang.m_check_capatcha')</h4>
                         
                         <div id="captcha" class="center-captcha"></div>
                             {{ csrf_field() }}
@@ -82,12 +81,12 @@
                     </div>
                     <script type="text/javascript" src="https://toro-tags.com/_tags/jstags.js?s=mx/ouo/300250"></script>
                     @if(Route::is('visitLink'))
-                    <span class="desc">Click
-                    <a href="{{route('Fc_visitLink',$link->slug)}}">here</a> if you cannot submit the recaptcha.
+                    <span class="desc">@lang('lang.click')
+                    <a href="{{route('Fc_visitLink',$link->slug)}}">@lang('lang.here')</a> @lang('lang.m_cant_verfy_capatcha')
                     </span>
                     @elseif(Route::is('visitFile'))
-                    <span class="desc">Click
-                        <a href="{{route('Fc_visitFile',$file->slug)}}">here</a> if you cannot submit the recaptcha.
+                    <span class="desc">@lang('lang.click')
+                        <a href="{{route('Fc_visitFile',$file->slug)}}">@lang('lang.here')</a> @lang('lang.m_cant_verfy_capatcha')
                         </span>
                     @endif  
                 </div>

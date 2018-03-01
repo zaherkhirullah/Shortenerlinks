@@ -42,7 +42,7 @@ class fileController extends Controller
 // upload new file
     public function create()
     {  
-     $domains = Domain::pluck('name', 'id');
+        $domains = Domain::pluck('name', 'id');
         $ads=Adstype::pluck('name', 'id');
         $folders=folder::pluck('name', 'id');
 
@@ -107,19 +107,36 @@ public function update(Request $request, file $file)
         return redirect()->route('file.index');
     }
 
+    protected function upload_file($file  = null ,$path = null,$filename=null)
+    {
+        $filename = $filename ? $filename :'file';
+        $path = $path ? $path :'uploads/files/';
+        if(!empty($file)){
+            $bytes = \File::size($file );
+            $file_size =human_filesize($bytes);
+            $file_name= $filename.'_'.time().'.'.$file ->getClientOriginalExtension();
+            $file_path=   $file->move($path, $file_name);
+            $array = array([
+                 'file_path' => $file_path,
+                 'file_name' => $file_name,
+                 'file_size' => $file_size]);
+            return $array;
+           }
+    }
  // NewItemew for create new item in table(for calling in store).
-       protected function NewItem(array $data)
-       {
+ protected function NewItem(array $data)
+ {
            $domain_id = $data['domain_id'];
            $folder_id = $data['folder_id'];
            $path = $data['path'];
            $title=($data['title'])?: null;
            $slug =($data['title'])?: str_random(7);
-           if($path !=null)
-           {
-            $file_name='file_' . $slug .'_'.time(). '.' . $data['path']->getClientOriginalExtension();
-               $destination_path ='uploads/files/';
-               $I_path=   $path->move($destination_path, $file_name);
+           if(!empty($path))
+           { 
+            $upload_file = $this->upload_file($path,null,$slug );
+             $file_name = $upload_file[0]['file_name'];             
+             $file_path = $upload_file[0]['file_path'];
+             $file_size = $upload_file[0]['file_size'];
            }
           $domain = Domain::find($domain_id);
           $shorted_url =($domain_id ==1)?url('/f/'. $slug) : $domain->url ."/f/". $slug;
@@ -132,9 +149,10 @@ public function update(Request $request, file $file)
             'folder_id'  => $folder_id,
             'slug'       => $slug ,
             'title'      => $title,
-            'file_name'   => $file_name,
             'description'=> $data['description'],
-            'path'       => $I_path,
+            'file_name'  => $file_name,
+            'path'       => $file_path,
+            'size'       => $file_size,
             'isPrivate'  => $data['isPrivate'],
             'password'   => $data['password'],
             'shorted_url' =>$shorted_url ,
