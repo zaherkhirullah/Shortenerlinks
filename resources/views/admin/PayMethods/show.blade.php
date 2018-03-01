@@ -1,5 +1,5 @@
 @extends('layouts.adlayout')
-@section('title','{{$PayMethod->name}}  @lang('lang.Details') ')
+@section('title',"{{$PayMethod->name}}  @lang('lang.Details')")
 
 @section('content')
 <div class="col-md-12">

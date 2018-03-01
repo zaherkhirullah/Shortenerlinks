@@ -1,5 +1,5 @@
             @extends('layouts.adlayout')
-            @section('title','{{$user->username}}  @lang('lang.Details') ')
+            @section('title'," {{$user->username}} @lang('lang.Details')")
 
             @section('content')
             <h3> {{$user->username}}  @lang('lang.Details') </h3>
