@@ -16,8 +16,9 @@ class LinkVisitors extends Migration
     {
         Schema::create('link_visitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->ipAddress('ip_visitor');	            
+            $table->ipAddress('ip');	            
             $table->string('country')->nullable();
+            $table->string('city')->nullable();
             $table->integer('link_id')->unsigned();
             $table->timestamps();
         });

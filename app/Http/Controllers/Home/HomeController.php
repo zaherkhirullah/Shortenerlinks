@@ -52,6 +52,7 @@ class HomeController extends Controller
 
     public function index()
     {
+   
         return view('home.home');
     }
     public function rates()
@@ -131,11 +132,10 @@ class HomeController extends Controller
         // $ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
         $country = null;
-        dd($details);
         if(!empty($details->country))
         {
             $country=$details->country;
-            $country= Country::where('name', 'like','%'.$country. '%')->first();       
+            $country= Country::where('cca2', 'like','%'.$country. '%')->first();       
         }
         $country_id = $country ? $country->id : 1;
         $country= Country::where('id',  $country_id )->first();                           
@@ -143,7 +143,7 @@ class HomeController extends Controller
 
         $link_id = $link->id;
         $link_visitorr = linkVisitor::where([
-                ['ip_visitor',$ip],['link_id',$link_id],
+                ['ip',$ip],['link_id',$link_id],
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ]
@@ -155,9 +155,10 @@ class HomeController extends Controller
             if(count($link_visitorr) < $AllowedCount){
             
                 $linkVisitor = new linkVisitor();
-                $linkVisitor->ip_visitor = $ip;
+                $linkVisitor->ip = $ip;
                 $linkVisitor->link_id = $link_id;
                 $linkVisitor->country = $country->name;
+                $linkVisitor->city = geoip($ip)->city;
                 if($linkVisitor->save()){
                     $link->clicks += 1;
                     $link->earnings += $link_price;
@@ -240,7 +241,7 @@ public function download_file(Request $request)
     if(!empty($details->country))
     {
         $country=$details->country;
-        $country= Country::where('name', 'like','%'.$country. '%')->first();       
+        $country= Country::where('cca2', 'like','%'.$country. '%')->first();       
     }
     $country_id = $country ? $country->id : 1;
     $country= Country::where('id',  $country_id )->first();                           
@@ -248,7 +249,7 @@ public function download_file(Request $request)
 
     $file_id =$file->id;
     $file_visitorr = fileDownloader::where([
-            ['ip_downloader',$ip],['file_id',$file_id],
+            ['ip',$ip],['file_id',$file_id],
             ['created_at',">",Today()],
             ['created_at',"<",Carbon::today()->addDay(1)]
         ])->get();         
@@ -256,7 +257,9 @@ public function download_file(Request $request)
         // if(count($file_visitorr) < 100 )
         {
             $fileDownloader = new fileDownloader();
-            $fileDownloader->ip_downloader = $ip;
+            $fileDownloader->ip = $ip;
+            $fileDownloader->country = $country->name;
+            $fileDownloader->city = geoip($ip)->city;
             $fileDownloader->file_id = $file_id;
             if($fileDownloader->save()){
                 $file->views += 1;

@@ -26,6 +26,7 @@ class CountriesController extends Controller
         {
             $countries =  Country::where('name',$value->name)->first();
             if($countries){
+                // $countries->ecmp = $request->input($value->ecmp);                
                 $countries->file_price = $request->input($value->file_price);
                 $countries->link_price = $request->input($value->link_price);
                 $countries->save();

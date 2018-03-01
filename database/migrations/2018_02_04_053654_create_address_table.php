@@ -16,13 +16,16 @@ class CreateAddressTable extends Migration
 
         Schema::create('country', function (Blueprint $table) {
              $table->increments('id');
-            $table->string('sembol')->nullable();
-            $table->string('name');
-            $table->float('link_price',8,4)
-                  ->scale(6)->default(0.004);
-            $table->float('file_price',8,4)
-                  ->scale(6)->default(0.004);
-                  $table->boolean('isDeleted')->default(0);
+             $table->string('name');             
+             $table->string('sembol')->nullable();
+             $table->string('cca2')->nullable();
+             $table->string('cca3')->nullable();
+             $table->string('flag')->nullable();
+             $table->string('currency')->nullable();
+             $table->integer('ecmp')->nullable();
+             $table->float('link_price',8,4)->scale(6)->default(0.004);
+             $table->float('file_price',8,4)->scale(6)->default(0.004);
+             $table->boolean('isDeleted')->default(0);
             
             $table->timestamps();
 

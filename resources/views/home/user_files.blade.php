@@ -13,11 +13,16 @@
     <div class="container-inner">
         <div class="about">
         @foreach($files as $file)
-            <div class="card ">
-                <div class="card card-body">
-                {{ $file->slug}}
-                </div> 
-            </div> 
+        <div class="col-md-4">
+                <div  class="panel panel-body">
+                    <ul>
+                        <li> <b class="text-success"> Slug:</b>  {{$file->slug}}</li>
+                        <li> <b class="text-success"> Filename:</b>  {{$file->file_name}}</li>
+                        <li> <b class="text-success"> File Size</b>  {{$file->size}}</li>
+                        <li> <b class="text-success">File Downloads</b> {{$file->downloads}}</li>
+                    </ul>
+                </div>
+            </div>
         @endforeach
         </div> 
     </div> 

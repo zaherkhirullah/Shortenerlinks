@@ -21,6 +21,7 @@ class CreateFilesTable extends Migration
             $table->string('slug',255)->unique();
             $table->string('title',255)->nullable();
             $table->string('path',500);
+            $table->string('size',500)->nullable();
             $table->string('file_name',250);
             $table->string('shorted_url',255);
             $table->string('description',1000)->nullable();
