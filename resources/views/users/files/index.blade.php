@@ -33,7 +33,6 @@
              <thead>
              <tr>
                     <th>@lang('lang.Link')</th>
-                    <th class="v-middle hidden-xs">@lang('lang.views')</th>
                     <th class="v-middle hidden-xs">@lang('lang.downloads')</th>
                     <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
                     <th class="v-middle hidden-xs">@lang('lang.password')</th>
@@ -45,8 +44,7 @@
                 <tfoot>
                 <tr>
                         <th>@lang('lang.Link')</th>
-                        <th class="v-middle hidden-xs">@lang('lang.views')</th>
-                        <th class="v-middle hidden-xs">@lang('lang.downloads')</th>
+                        <th >@lang('lang.downloads')</th>
                         <th class="v-middle hidden-xs">@lang('lang.earnings')</th>
                         <th class="v-middle hidden-xs">@lang('lang.password')</th>
                         <th class="v-middle hidden-xs">@lang('lang.privacy')</th>
@@ -73,12 +71,10 @@
                     </button>
                       </small>
                         </td>
-                        <td class="v-middle hidden-xs">
+                        <td class="">
                         <a  href="{{route('file.show',$file->id)}}" class="btn btn-xs text-warning text-sm" target="_blank">
-                        <i class="fa fa-eye"></i></a> {{$file->views}}
-                        </td>
-                        <td class="v-middle hidden-xs" >
-                         {{$file->downloads}}
+                        <i class="fa fa-eye"></i></a>
+                        {{$file->downloads}}
                          <a href="{{url($file->path)}}"  class="btn btn-sm text-info" title="Download" 
                             download>
                                     <span class="text">

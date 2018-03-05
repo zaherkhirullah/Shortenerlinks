@@ -15,9 +15,8 @@ Route::prefix('settings')->group(function()
     Route::post( '/countries', 'CountriesController@update')->name("Pcountries");
     Route::post('/changelang', 'LanguageController@changelang')->name('changelang');
     Route::post('/language', array('before' =>'csrf','as'=>'changelang',
-                                    'uses'=>'LanguageController@changelang',));
-                          
-                                    
+                                   'uses'=>'LanguageController@changelang',));
+                                  
     Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
   });
 });

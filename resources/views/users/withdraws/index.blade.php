@@ -50,9 +50,11 @@
                      @endif
                 </div>
             </div>
-            <p class="h5 text-muted m-b-xl clearfix">Your earnings will be 
-                <b>automatically paid on 1st day and 15th day of each month</b> 
-                but only if your earnings have reached a total of $5.00 or more for the previous day(s). In order to receive the payment you must fill up all the required fields in the settings section.
+            
+
+            <p class="panel panel-body text-danger m-b-xl clearfix">
+                Your earnings will be <b>automatically paid between 1'st day and 7th day after withdraw process</b> 
+                but only if your earnings have reached a total of minimum or more for the previous day(s). In order to receive the payment you must fill up all the required fields in the settings section.
             </p>
             <div class="row text-center padder-v m-b-xl b-t b-b b-light bg-light lter pull-in">
                 <div class="col-md-4">
@@ -99,7 +101,9 @@
                     {{ Form::open(array('route' => 'withdraw.store' , 'method'  => 'POST','id'=>'withdraw_form')) }}
 
                             {{ csrf_field() }}  
-                        <div class="col-md-5">
+                            <div class="col-md-4"></div>
+                            <center>
+                            <div class="col-md-3">
                             <div class="form-group {{$errors->has('amount') ? ' has-error' : ''}}">
                                     {{ Form::text('amount','',
                                     ['id'=>'path','placeholder'=>'amount','class' => "form-control ",'required' => 'required',])  
@@ -110,8 +114,29 @@
                                     </span>
                                     @endif
                             </div> 
-                        </div>  
-                        <div class="col-md-5">
+                            <button type="submit" class="btn btn-lg btn-success"> @lang('lang.withdraw') </button>
+       
+                        </center>
+                    </div>
+                                   {{Form::close()}}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                        <div class="col-md-6">
+                                <ul class="panel panel-body">
+                                    <li><b class="text-warning">Pending:</b> The payment is being checked by our team.</li>
+                                    <li><b class="text-info">Approved:</b> The payment has been approved and is waiting to be sent.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="panel panel-body">
+                                    <li><b class="text-success">Complete: </b> The payment has been successfully sent to your account.</li>
+                                    <li><b class="text-danger">Cancelled:</b>The payment has been cancelled.</li>
+                                </ul>
+                            </div>
+                    </div>
+        </section>                            
+                        {{--  <div class="col-md-5">
                                 <div class="form-group {{$errors->has('withdraw_address') ? ' has-error' : ''}}">
                                         {{ Form::text('withdraw_address','',
                                         ['id'=>'path','placeholder'=>'withdraw address','class' => "form-control ",'required' => 'required',])  
@@ -123,21 +148,26 @@
                                         @endif
                                 </div>   
                         </div> 
-                                     
-                            <button type="submit" class="btn btn-success"> @lang('lang.withdraw') </button>
-                {{Form::close()}}
-                        </div>
-                    </div>
-           <center>
-                <h4 class="font-thin">@lang('lang.transaction_history') </h4> 
-            </center>   
-               
+                                       --}}
+
+                                    
+        <div class="panel panel-primary">
+            <div class="panel panel-heading">
+                <center>
+                    <h4 class="font-thin">@lang('lang.transaction_history') </h4> 
+                </center>   
+            </div>
+                
+        <div class="panel panel-body">  
            @if(count($withdraws))
             <table class="table table-striped table-flip-scroll cf">
                 <thead class="cf">
                     <tr>
+                            <th>Id</th>                        
                             <th>@lang('lang.date')</th>                        
-                            <th>@lang('lang.transaction_id')</th>
+                            <th>@lang('lang.earnings')</th>                        
+                            <th>@lang('lang.referrals_earnings')</th>                        
+                            {{--  <th>@lang('lang.transaction_id')</th>  --}}
                             <th>@lang('lang.pay_method')</th>
                             <th>@lang('lang.amount')</th>
                             <th>@lang('lang.status')</th>    
@@ -146,13 +176,15 @@
                 <tbody>
                     @foreach($withdraws as $withdraw)
                         <tr>
+                            <td>{{$withdraw->id}}  </td>  
                             <td>{{$withdraw->created_at}}  </td>  
-                                                      
-                             @if($withdraw->transaction_id)
-                             <td>{{$withdraw->transaction_id}}  </td>                            
-                            @else
-                            <td> null  </td>                            
-                            @endif
+                            <td>{{$totalEarnings}} </td>  
+                            <td>{{$totalrefEarnings}}  </td>  
+                             {{--  @if($withdraw->transaction_id)  --}}
+                             {{--  <td>{{$withdraw->transaction_id}}  </td> --}}
+                            {{--  @else  --}}
+                            {{--  <td> null  </td> --}}
+                            {{--  @endif  --}}
                             <td>{{$withdraw->paymethod->name}} 
                                     <dt class="text-info">{{$withdraw->withdraw_address}} </dt>
                                  </td>
@@ -184,6 +216,8 @@
                 </center> 
             </tr>
         @endif
+    </div>
+</div>
         </section>
     </section>
 </section>     

@@ -10,11 +10,10 @@ class language
 {
     public function handle($request, Closure $next)
     {
-        if($lang = Session::get('language'))
+        if(Session::has('lang'))
 		{   
-            $lang =  Session::get('language');
+            $lang =  Session::get('lang');           
             App::setLocale($lang);
-            // dd($lang);
         }
        return $next($request);  
     }

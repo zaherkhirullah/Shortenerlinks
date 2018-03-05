@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\WithdrawValidation;
 
 use App\Balance;
+use App\Http\Models\Earn;
 use Session;
 use Auth;
 
@@ -21,6 +22,7 @@ class WithdrawController extends Controller
     }
     public function index(withdraw $withdraw)
     {
+         $earn = new Earn;
         $User= Auth::user();
         $Balance=  $User->Balance->avilable_amount;        
         $method_id = $User->profile->withdrawal_method_id;
@@ -28,8 +30,9 @@ class WithdrawController extends Controller
         $method = $method_id ? PayMethod::where('id',$method_id)->first():null; 
         $PaymentMethod = $method ? $method->name : null;
         $withdraws = $withdraw->UserWithdraws()->paginate(20);
-        
-        return view('users.withdraws.index ',compact('withdraws','withdrawal_email','PaymentMethod','Balance') );
+        $totalEarnings = $earn->totalEarnings($User->id);
+        $totalrefEarnings = $earn->Referral_MyEarnings($User->id);
+        return view('users.withdraws.index ',compact('totalEarnings','totalrefEarnings','withdraws','withdrawal_email','PaymentMethod','Balance') );
 
     }
     public function deletedWithdraws(withdraw $withdraw)

@@ -92,6 +92,7 @@ class Earn extends Model
         }
         return $earn;
     }
+    // calculate user referal earnings
     public function Referral_MyEarnings($user_id)
     {  
         $earn = 0;
@@ -105,7 +106,7 @@ class Earn extends Model
         }
         return $earn;
     }
-    public function add_to_ref_Balance($ref_id)
+    public function add_to_ref_Balance($ref_id, $price)
     {  
         $earn = 0;
         $ref_User = User::where('id',$ref_id)->first();
@@ -114,7 +115,7 @@ class Earn extends Model
         {
             $ref_earnings = Options::where('name','ref_earnings')->first();
             $ref_earnings =$ref_earnings->value;
-            $earn = (0.004 * $ref_earnings)  / 100;
+            $earn = ( $price * $ref_earnings)  / 100;
             $Balance =$ref_User->Balance;
             $Balance->avilable_amount +=   $earn ;
             $Balance->save();

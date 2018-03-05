@@ -146,9 +146,9 @@ class HomeController extends Controller
 
         $link_id = $link->id;
         $link_visitorr = linkVisitor::where([
-                ['ip',$ip],['link_id',$link_id],
-                ['created_at',">",Today()],
-                ['created_at',"<",Carbon::today()->addDay(1)]
+            ['ip',$ip],['link_id',$link_id],
+            ['created_at',">",Today()],
+            ['created_at',"<",Carbon::today()->addDay(1)]
             ]
            )->get();//Count
             //    return count($link_visitorr);
@@ -173,7 +173,7 @@ class HomeController extends Controller
                     $ref_User = User::where('id',$ref_id)->first();
                     if($ref_User)
                     {   $earn = new Earn();
-                        $earn->add_to_ref_Balance($ref_id);
+                        $earn->add_to_ref_Balance($ref_id, $link_price);
                     }
                     $Balance =$User->Balance;
                     $Balance->avilable_amount += $link_price;
@@ -270,6 +270,12 @@ public function download_file(Request $request)
 
                 $user_id = $file->user_id;
                 $User = User::where('id',$user_id)->first();
+                $ref_id =$User->referred_by;
+                $ref_User = User::where('id',$ref_id)->first();
+                if($ref_User)
+                {   $earn = new Earn();
+                    $earn->add_to_ref_Balance($ref_id, $file_price);
+                }
                 $Balance =$User->Balance;
                  //PDF file is stored under project/public/download/info.pdf
                 $filee= public_path(). "/uploads/files/". $file->file_name;

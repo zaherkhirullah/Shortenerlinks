@@ -62,7 +62,6 @@ class LinkController extends Controller
        $ads=Adstype::pluck('name', 'id');
        $folders=folder::pluck('name', 'id');
       return view('users.links.Form',compact('domains','folders','ads'))->withLink($link);
-
     }
     // update function
     public function update(LinkValidation $request, link $link)

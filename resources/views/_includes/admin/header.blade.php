@@ -22,17 +22,17 @@
             </li>
             
             <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
-                    <i class="fa fa-language" aria-hidden="true"></i> 
-                    <span class="caret"></span>
-                </a> 
-
-                <ul class="dropdown-menu">
-                    <li><a href="{{route('lang','en')}}" id="en">English</a></li>
-                    <li><a href="{{route('lang','ar')}}" id="ar">العربية</a></li>
-                </ul>
-
-            </li>        
+                    <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">  
+                        <i class="fa fa-language" aria-hidden="true"></i> 
+                        <span class="caret"></span>
+                    </a> 
+    
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('lang','en')}}" id="en">English</a></li>
+                        <li><a href="{{route('lang','ar')}}" id="ar">العربية</a></li>
+                    </ul>
+    
+                </li>        
         <li class="hidden-xs">
             <a href="#" class="dropdown-toggle dk" data-toggle="dropdown">
                 <i class="fa fa-bell"> </i>
