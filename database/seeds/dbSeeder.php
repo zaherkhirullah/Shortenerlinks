@@ -59,21 +59,24 @@ class dbSeeder extends Seeder
 
         $plan = new \App\Http\Models\plan();
         $plan->name='free';
-        $plan->display_name='Free';
+        $plan->display_name='Visitors';
         $plan->space_size=1;
-        $plan->price=0;
+        $plan->monthly_price=0;
+        $plan->yearly_price=0;
         $plan->save();
         $plan = new \App\Http\Models\plan();
-        $plan->name='advanced';
-        $plan->display_name='Advanced';
+        $plan->name='member';
+        $plan->display_name='Members';
         $plan->space_size=100;
-        $plan->price=0;
+        $plan->monthly_price=0;
+        $plan->yearly_price=0;
         $plan->save();
         $plan = new \App\Http\Models\plan();
-        $plan->name='advanced';
-        $plan->display_name='Advanced';
+        $plan->name='professional';
+        $plan->display_name='Professional';
         $plan->space_size=1000;
-        $plan->price=0;
+        $plan->monthly_price=0;
+        $plan->yearly_price=0;
         $plan->save();
 
         $user = new \App\User();

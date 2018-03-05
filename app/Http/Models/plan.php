@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class plan extends Model
 {
     protected $table = 'plans';
-    protected $fillable = ['name','display_name','space_size','price',];
+    protected $fillable = ['name','display_name','space_size','monthly_price','yearly_price',];
     
     public function users()
     {
@@ -18,4 +18,10 @@ class plan extends Model
       {
        return $this->orderBy('created_at','desc');
       }
+      public function about_plans()
+      {
+          return $this->belongsToMany( 'App\Http\Models\aboutPlan' ,'plans_abouts','plan_id','about_id')
+          ->withPivot('value');
+      }
+      
 }

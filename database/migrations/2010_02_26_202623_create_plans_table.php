@@ -14,7 +14,8 @@ class CreatePlansTable extends Migration
             $table->string('display_name');
             $table->string('icon')->nullable();
             $table->float('space_size');
-            $table->float('price');
+            $table->float('monthly_price');
+            $table->float('yearly_price');
             $table->timestamps();
         });
     }

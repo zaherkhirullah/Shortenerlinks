@@ -58,13 +58,13 @@
                     </a>
                     <ul class="nav lt">
                     <li>
-                        <a href="{{route('link.index')}}">
-                            <i class="fa fa-eye">
-                                <b class="bg-info dker">
-                                </b>
-                            </i>
-                            <span>@lang('lang.active_links')</span>
-                        </a>
+                            <a href="{{route('link.index')}}">
+                                    <i class="fa fa-eye">
+                                        <b class="bg-info dker">
+                                        </b>
+                                    </i>
+                                    <span>@lang('lang.active_links')</span>
+                                </a>
                     </li>
                     <li>
                         <a href="{{route('link.deletedLinks')}}">
@@ -184,6 +184,15 @@
                                 <span>@lang('lang.change_password')</span>
                             </a>
                         </li>
+                        <li>
+                                <a href="{{route('plan.index')}}">
+                                        <i class="fa fa-code">
+                                            <b class="bg-info dker">
+                                            </b>
+                                        </i>
+                                        <span>@lang('lang.Plans')</span>
+                                </a>
+                        </li>
                             <!-- <li>
                                 <a href="/account/change-email">
                                     <i class="fa fa-angle-right"> </i>
@@ -198,9 +207,13 @@
                 </ul>
                 <h5 class="text-center">
                     <span>Plan :
-                            <b class="text-success">{{Auth::user()->plan->name}}</b>
+                <a href="{{route('plan.index')}}">
+                        <b class="text-success">{{Auth::user()->plan->name}}</b>
                     </span>
+                </a>
+                    
                 </h5>
+                
             </nav>
 
         </div>

@@ -209,16 +209,33 @@
 							</i>
 							<span>@lang('lang.pay_methods')</span>
 						</a>
-					</li>
-								<!-- domains -->			
-					<li>
-					<a href="{{route('domains.index')}}">
-						<i class="fa fa-code-fork">
-							<b class="bg-danger dker"></b>
-						</i>
-						<span>@lang('lang.domains')</span>
-					</a>
 				</li>
+				<!-- domains -->			
+				<li>
+						<a href="{{route('domains.index')}}">
+							<i class="fa fa-code-fork">
+								<b class="bg-danger dker"></b>
+							</i>
+							<span>@lang('lang.domains')</span>
+						</a>
+					</li>
+					<!-- plans -->			
+					<li>
+							<a href="{{route('plans.index')}}">
+								<i class="fa fa-code">
+									<b class="bg-info dker"></b>
+								</i>
+								<span>@lang('lang.plans')</span>
+							</a>
+						</li>
+						<li>
+								<a href="{{route('aboutPlans.index')}}">
+									<i class="fa fa-file-text">
+										<b class="bg-success dker"></b>
+									</i>
+									<span>@lang('lang.aboutPlans')</span>
+								</a>
+							</li>
 					<!-- Ads Types -->
 					<li>
 						<a href="{{route('adstypes.index')}}">

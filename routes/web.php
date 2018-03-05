@@ -65,6 +65,8 @@ Route::prefix('admin')->group(function()
     Route::resource( '/files',      'FileController');
     Route::resource( '/tickets',      'TicketController');
     Route::resource( '/withdraws',      'WithdrawsController');
+    Route::resource( '/plans',      'PlansController');
+    Route::resource( '/aboutPlans', 'aboutPlansController');
    
   });
  
@@ -100,6 +102,7 @@ Route::prefix('user')->group(function()
      Route::resource( '/file',   'FileController');
      Route::resource( '/ticket',  'TicketController');
      Route::resource( '/withdraw','WithdrawController');
+     Route::resource( '/plan','PlanController');
 
     });
 });
