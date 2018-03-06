@@ -202,7 +202,14 @@
                         </ul>
                     </li>
                     
-               
+                    <li >
+                        <a href="{{route('plan.index')}}">
+                                <i class="fa fa-refresh">
+                                    <b class="bg-info dker"></b>
+                                </i>
+                                <span>@lang('lang.change') @lang('lang.Plan')</span>
+                        </a>
+                    </li>               
                 
                 </ul>
                 <h5 class="text-center">
