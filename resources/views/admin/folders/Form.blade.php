@@ -4,8 +4,8 @@
 <section class="scrollable padder">
     <section class="content">
         <div class="col-md-12">
-            <div class="box box-info">
-                <div class="box-header with-border">
+	        <div class="panel">
+                    <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-plus"> </i>
                         @if(Route::is('folders.create'))

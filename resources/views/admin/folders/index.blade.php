@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-	<section class="lter box box-success">
+	<section class="lter box panel">
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
 				<i class="fa fa-folder">

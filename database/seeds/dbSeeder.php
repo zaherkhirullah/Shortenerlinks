@@ -13,15 +13,7 @@ class dbSeeder extends Seeder
     {
 
 
-        $PayMethod = new \App\Http\Models\PayMethod();
-        $PayMethod->name='Paypal';
-        $PayMethod->min_amount=5;
-        $PayMethod->save();
-
-        $PayMethod = new \App\Http\Models\PayMethod();
-        $PayMethod->name='Advcash';
-        $PayMethod->min_amount=5;
-        $PayMethod->save();
+      
 
         $folder = new \App\Http\Models\folder();
         $folder->name = 'General';

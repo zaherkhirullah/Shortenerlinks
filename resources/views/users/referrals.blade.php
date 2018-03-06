@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="col-md-8">
-    <section class="vbox lter box box-info">
+    <section class="vbox lter box panel">
 
         <header class="box-header with-border text-center">
             <h3 class="box-title">

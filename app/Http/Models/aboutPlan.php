@@ -16,7 +16,8 @@ class aboutPlan extends Model
       }
       public function plans()
       {
-        return $this->belongsToMany( 'App\Http\Models\plan' ,'plans_abouts','plan_id','about_id');
+        return $this->belongsToMany( 'App\Http\Models\plan' ,'plans_abouts','plan_id','about_id')
+        ->withPivot('value');
           
       }
     }

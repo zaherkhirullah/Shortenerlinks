@@ -45,6 +45,8 @@ return [
     'folder'              => ' folder',
     'folders'             => ' folders',
     'adstypes'            => ' adstypes',
+    'ads_types'         => 'ads Types ',
+    'pay_methods'       => ' Pay Methods',
     'ads'                 => ' ads',
     'manage'              => ' manage',
     'manager'             => ' manager',

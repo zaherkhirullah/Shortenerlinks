@@ -274,7 +274,7 @@
                                         <i class="ion ion-android-download">
                                         </i>
                                     </div>
-                                    <a href="operation?add=CASHIN" class="small-box-footer">More info 
+                                    <a href="#" class="small-box-footer">More info 
                                         <i class="fa fa-arrow-circle-right">
                                         </i>
                                     </a>

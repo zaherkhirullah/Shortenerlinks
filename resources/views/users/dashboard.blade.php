@@ -36,7 +36,7 @@
 <section class="content">
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-info">
+        <div class="box panel">
             <div class="box-header with-border text-center">
                 <h3 class="box-title">
                     <i class="fa fa-briefcase"></i>
@@ -140,7 +140,7 @@
         </div>     
     </div>
     <div class="col-md-4">
-        <div class="box box-info">
+        <div class="box panel">
             <div class="box-header with-border text-center">
                 <h3 class="box-title ">
                     <i class="fa fa-cloud"></i> 
@@ -170,7 +170,7 @@
     </div>
     <!-- /.col-md-4  -->
     <div class="col-md-8">
-        <div class="box box-success">
+        <div class="box panel">
             <div class="box-header with-border text-center">
                 <h3 class="box-title">
                     <i class="fa fa-link"> </i> @lang('lang.Links')
@@ -203,7 +203,7 @@
     </div>
     <!-- /.col-md-8  -->
     <div class="col-md-12">
-            <div class="box box-info">
+            <div class="box panel">
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
                         <i class="fa fa-link">
@@ -335,7 +335,7 @@
         </div>
         <!-- /.col-md-12  -->
         <div class="col-md-12">
-            <div class="box box-success">
+            <div class="box panel">
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
                         <i class="fa fa-file-o"> 
@@ -386,7 +386,7 @@
                                 <i class="ion ion-android-download">
                                 </i>
                             </div>
-                            <a href="operation?add=CASHIN" class="small-box-footer">More info 
+                            <a href="#" class="small-box-footer">More info 
                                 <i class="fa fa-arrow-circle-right">
                                 </i>
                             </a>

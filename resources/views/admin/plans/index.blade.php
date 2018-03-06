@@ -53,7 +53,7 @@
 						<td>{{$plan->name }}</td>
 						<td>
 							@if($plan->about_plans )
-								<ul>
+								<ul class="list-unstyled"> 
 							 @foreach($plan->about_plans as $description)
 								<li>
 									{{$description->name }}  |

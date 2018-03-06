@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-12">
-	<section class="lter box box-success">
+	<section class="box panel">
 		<header class="box-header with-border text-center">
 			<h3 class="box-title">
 				<i class="fa fa-file-text">
@@ -31,37 +31,36 @@
 
 				<thead>
 					<tr>
-							<th> @lang('lang.Name')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.Details')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.plans')</th>							
-							<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
-							<th> @lang('lang.options')</th>
+						<th> @lang('lang.Name')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.Details')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.plans')</th>							
+						<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
+						<th> @lang('lang.options')</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-							<th> @lang('lang.Name')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.Details')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.plans')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
-							<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
-							<th> @lang('lang.options')</th>
+						<th> @lang('lang.Name')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.Details')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.plans')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.created_at')</th>
+						<th class="v-middle hidden-xs"> @lang('lang.updated_at')</th>
+						<th> @lang('lang.options')</th>
 					</tr>
 				</tfoot>
 				<tbody>
 					@foreach ($aboutPlans as $aboutPlan)
 					<tr>
 						<td>{{$aboutPlan->name }}</td>
-					<td>{{$aboutPlan->description}}</td>
+						<td>{{$aboutPlan->description}}</td>
 						<td>
-							
-							@if($aboutPlan->plans )
-								<ul>
+						@if($aboutPlan->plans )
+							<ul class="list-unstyled">
 							 @foreach($aboutPlan->plans as $plan)
 								<li>
 									{{$plan->name }}  |
-									@if($description->pivot->value != 0 )
+									@if($plan->pivot->value != 0 )
 									<b>@lang('lang.yes')</b>
 									@else
 									<b> @lang('lang.no')</b>
