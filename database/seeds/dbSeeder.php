@@ -68,15 +68,15 @@ class dbSeeder extends Seeder
         $plan->name='member';
         $plan->display_name='Members';
         $plan->space_size=100;
-        $plan->monthly_price=0;
-        $plan->yearly_price=0;
+        $plan->monthly_price=6;
+        $plan->yearly_price=72;
         $plan->save();
         $plan = new \App\Http\Models\plan();
         $plan->name='professional';
         $plan->display_name='Professional';
         $plan->space_size=1000;
-        $plan->monthly_price=0;
-        $plan->yearly_price=0;
+        $plan->monthly_price=9.5;
+        $plan->yearly_price=114;
         $plan->save();
 
         $user = new \App\User();
