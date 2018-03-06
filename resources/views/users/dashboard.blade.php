@@ -201,8 +201,9 @@
         {{--  // With Lava class alias  --}}
         <?=$lava->render('GeoChart', 'visitors', 'pop-div') ?>
     </div>
+    <div class="col-md-12 row"><br></div>
     <!-- /.col-md-8  -->
-    <div class="col-md-12">
+    <div class="col-md-6">
             <div class="box panel">
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
@@ -219,7 +220,7 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
     
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
@@ -240,7 +241,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
@@ -260,7 +261,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
@@ -281,7 +282,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
@@ -303,7 +304,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
@@ -334,7 +335,7 @@
             
         </div>
         <!-- /.col-md-12  -->
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="box panel">
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">
@@ -350,7 +351,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-teal">
                             <div class="inner">
@@ -372,7 +373,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
@@ -393,7 +394,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-olive">
                             <div class="inner">
@@ -414,7 +415,7 @@
                         <!-- ./col -->
                     
                     <!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-olive">
                             <div class="inner">
@@ -434,7 +435,7 @@
                     </div>
                     <!-- ./col -->
     
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red-active">
                             <div class="inner">
