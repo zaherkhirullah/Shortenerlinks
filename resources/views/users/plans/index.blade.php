@@ -14,7 +14,7 @@
         <h3>{{$plan->name}}</h3>
         </div>
         <div class="panel-body text-center">
-          <p class="lead" style="font-size:40px"><strong>$ {{$plan->monthly_price}} / month</strong></p>
+          <p class="lead" style="font-size:28px"><strong>$ {{$plan->monthly_price}} / month</strong></p>
         </div>
         <ul class="list-group list-group-flush text-center">
           @php 
@@ -59,7 +59,7 @@
       <h3>@lang('lang.aboutPlans')</h3>
       </div>
       <div class="panel-body text-center">
-        <p class="lead" style="font-size:40px"><strong>@lang('lang.Details')</strong></p>
+        <p class="lead" style="font-size:28px"><strong>@lang('lang.Details')</strong></p>
       </div>
       <ul class="list-group list-group-flush text-center">
           @foreach($about_plans as $about)
