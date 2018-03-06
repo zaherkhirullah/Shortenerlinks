@@ -15,9 +15,10 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('domain_id')->unsigned()->default(1);
             $table->integer('folder_id')->unsigned()->default(1);
+            $table->ipAddress('ip')->nullable();
             $table->string('slug',255)->unique();
             $table->string('title',255)->nullable();
             $table->string('path',500);

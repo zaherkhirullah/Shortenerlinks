@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class aboutPlan extends Model
 {
     protected $table = 'about_plans';
-    protected $fillable = ['name','description',];
+    protected $fillable = ['name','description'];
     
-      // list All users
+      // list All 
       public function aboutPlans()
       {
        return $this->orderBy('created_at','desc');

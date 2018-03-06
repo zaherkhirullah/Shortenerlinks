@@ -15,12 +15,13 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('domain_id')->unsigned()->default(1);
             $table->integer('folder_id')->unsigned()->default(1);
             $table->integer('ad_id')->unsigned()
                                     ->comment('\'Interstitial Advertisement ($$$$$)\',\'Framed Banner ($$$)\',\'No Advert\'');
             $table->string('url',500);
+            $table->ipAddress('ip')->nullable();
             $table->string('shorted_url',500);
             $table->string('alias',256)->nullable();
             $table->string('slug',256)->unique();

@@ -31,5 +31,21 @@ class AboutPlans extends Seeder
        $aboutPlan->name='Edit short link';
        $aboutPlan->description='Edit short link';
        $aboutPlan->save();
+  
+       for ($pl=1; $pl <4; $pl++)
+    {
+       for ($i=1; $i <6; $i++)
+        { 
+            $aboutsPlans = new \App\Http\Models\aboutsPlans();
+            $aboutsPlans->plan_id=$pl;
+            $aboutsPlans->about_id=$i;
+            if($pl >= 2)
+                $aboutsPlans->value=1;
+            else 
+                $aboutsPlans->value=0;              
+            $aboutsPlans->save();
+        }
+    }
+
     }
 }

@@ -274,9 +274,11 @@ return [
     'm_cant_verfy_capatcha' =>'if you cannot submit the recaptcha.', 
     'earn_on_every' =>'and earn on every :name you shorten.',
     'your_file_ready' =>'Your file is almost ready.',
-    '' =>'',
-    '' =>'',
-    '' =>'',
+    
+    
+    'monthly_price'   =>' monthly price',
+    'yearly_price'    =>' yearly price',
+    'space_size'      =>' space size',
     '' =>'',
     '' =>'',
 

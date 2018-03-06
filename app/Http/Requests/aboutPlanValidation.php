@@ -26,6 +26,7 @@ class aboutPlanValidation extends FormRequest
         return [
             'name'=>'required|string|min:3',
             'description'=>'required|string|min:3',
+            'value'=>'required|string',
         ];
     }
 }

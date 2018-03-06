@@ -16,12 +16,15 @@ class plan extends Model
       // list All users
       public function plans()
       {
-       return $this->orderBy('created_at','desc');
+       return $this->orderBy('created_at','asc');
       }
       public function about_plans()
       {
           return $this->belongsToMany( 'App\Http\Models\aboutPlan' ,'plans_abouts','plan_id','about_id')
           ->withPivot('value');
       }
-      
+      public function aboutsPlans()
+      {
+          return $this->hasMany( 'App\Http\Models\aboutsPlans');
+      }
 }

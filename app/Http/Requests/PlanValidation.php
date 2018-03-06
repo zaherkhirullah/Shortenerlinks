@@ -13,7 +13,7 @@ class PlanValidation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class PlanValidation extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|string|min:3',
+            'display_name'=>'required|string|min:3',
+            'space_size'=>'required|integer',
+            // 'description'=>'required|string|min:3',
+            'yearly_price'=>'required|integer',
+            'monthly_price'=>'required|integer',
         ];
     }
 }

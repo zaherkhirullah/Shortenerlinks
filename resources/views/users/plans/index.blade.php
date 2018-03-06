@@ -7,36 +7,44 @@
 </center>
 
   @foreach($plans as $plan)
-  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-				
+  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
       <!-- PRICE ITEM -->
       <div class="panel price panel-red">
         <div class="panel-heading  text-center">
         <h3>{{$plan->name}}</h3>
         </div>
         <div class="panel-body text-center">
-          <p class="lead" style="font-size:28px"><strong>$ {{$plan->monthly_price}} / month</strong></p>
+          <p class="lead" style="font-size:28px"><strong>
+            $ {{$plan->monthly_price}} / month</strong></p>
         </div>
         <ul class="list-group list-group-flush text-center">
-          @php 
-          $aboutPlanss =$plan->about_plans;
-          $arrayName = array();
-          for ($i=0; $i < count($aboutPlanss) ; $i++) 
-          { 
-            $arrayName[$i]= $aboutPlanss[$i]->id;
-          }
-          @endphp
-            @foreach($about_plans as $about)
-              @if(in_array($about->id , $arrayName ))
-              <li class="list-group-item">
-                  <i class="icon-ok text-success fa fa-check"> </i> 
-              </li>
+          {{-- 
+             @php 
+           $aboutPlanss =$plan->aboutsPlans;
+           $arrayName = array();
+           for ($i=0; $i < count($aboutPlanss) ; $i++) 
+           { 
+             if($aboutPlanss[$i]->value==1){
+               dd($aboutPlanss[$i]->value);
+               $arrayName[$i]= $aboutPlanss[$i]->id;
+             }
+           }
+           @endphp  
+           --}}
+       
+            @foreach($plan->aboutsPlans as $about)
+            <li class="list-group-item"> 
+            @if($about->value==1)
+                  <i class="icon-ok text-success fa fa-check"> </i>              
                 @else
-                <li class="list-group-item">
                     <i class="icon-ok text-danger fa fa-times"></i> 
-                </li>
                 @endif
-              @endforeach     
+              @php 
+              $des=  $about->about_plans($about->about_id)->first();
+              @endphp
+              {{$des->name}}
+              </li>
+            @endforeach     
         </ul>
         <div class="panel-footer">
         @if(Auth::user()->plan_id < $plan->id )
@@ -79,8 +87,10 @@
     </div>
   @endforeach
 
-  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-  
+{{--  
+<div class="col-md-3 col-lg-3 col-xs-6 col-sm-6">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+</div>
     <!-- PRICE ITEM -->
     <div class="panel price panel-blue">
       <div class="panel-heading arrow_box text-center">
@@ -100,7 +110,7 @@
     </div>
     <!-- /PRICE ITEM -->
   </div>
-  
+    --}}
 
 <div class="col-md-12">
 </div>

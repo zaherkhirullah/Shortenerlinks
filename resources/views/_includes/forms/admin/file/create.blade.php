@@ -75,7 +75,6 @@
              
              {{ Form::radio('isPrivate','1',FALSE) }} private
              {{ Form::radio('isPrivate','0',TRUE) }} Public
-
               @if ($errors->has('isPrivate'))
               <span class="help-block">
                 <strong>{{ $errors->first('isPrivate') }}</strong>

@@ -20,23 +20,33 @@ class CreateAboutPlansTable extends Migration
             $table->timestamps();
         });
         Schema::create('plans_abouts', function (Blueprint $table) {
-            $table->integer('plan_id')-> unsigned();        
-            $table->integer('about_id')->unsigned();        
-            $table->boolean('value')->default(0);
+            $table->increments('id');
+            $table->integer('plan_id')->unsigned();
+            $table->integer('about_id')->unsigned();
+            $table->boolean('value');
+            $table->boolean('isDeleted')->default(0);
             $table->timestamps();
-            $table->primary('plan_id','about_id');
+            $table->unique(['plan_id', 'about_id']);
+        
+            $table->foreign('plan_id')->references('id')->on('plans')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
+            $table->foreign('about_id')->references('id')->on('about_plans')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
+
+
         });
 
         
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
+        Schema::table('plans_abouts', function ( $table) {
+            $table->dropForeign('plans_abouts_about_id_foreign');
+            $table->dropForeign('plans_abouts_plan_id_foreign');
+        });
         Schema::dropIfExists('about_plans');
         Schema::dropIfExists('plans_abouts');
     }

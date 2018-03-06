@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 @section('content')
   
+
+
 <section class="scrollable padder">
     <section class="content">
         <div class="col-md-12">
