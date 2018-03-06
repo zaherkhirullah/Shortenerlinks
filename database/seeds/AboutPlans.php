@@ -11,25 +11,25 @@ class AboutPlans extends Seeder
      */
     public function run()
     {
-        $plan = new \App\Http\Models\abouPlan();
-        $plan->name='Link stats';
-        $plan->description='About Link stats ';
-        $plan->save();
-        $plan = new \App\Http\Models\abouPlan();
-        $plan->name='Referral earnings';
-        $plan->description='About Referral earnings';
-        $plan->save();
-        $plan = new \App\Http\Models\abouPlan();
-        $plan->name='Custom alias';
-        $plan->description='About Custom alias';
-        $plan->save();
-        $plan = new \App\Http\Models\abouPlan();
-        $plan->name='Edit uploaded files';
-        $plan->description='About Edit uploaded files';
-        $plan->save();
-        $plan = new \App\Http\Models\abouPlan();
-        $plan->name='Edit short link';
-        $plan->description='Edit short link';
-        $plan->save();
+       $aboutPlan = new \App\Http\Models\aboutPlan();
+       $aboutPlan->name='Link stats';
+       $aboutPlan->description='About Link stats ';
+       $aboutPlan->save();
+       $aboutPlan = new \App\Http\Models\aboutPlan();
+       $aboutPlan->name='Referral earnings';
+       $aboutPlan->description='About Referral earnings';
+       $aboutPlan->save();
+       $aboutPlan = new \App\Http\Models\aboutPlan();
+       $aboutPlan->name='Custom alias';
+       $aboutPlan->description='About Custom alias';
+       $aboutPlan->save();
+       $aboutPlan = new \App\Http\Models\aboutPlan();
+       $aboutPlan->name='Edit uploaded files';
+       $aboutPlan->description='About Edit uploaded files';
+       $aboutPlan->save();
+       $aboutPlan = new \App\Http\Models\aboutPlan();
+       $aboutPlan->name='Edit short link';
+       $aboutPlan->description='Edit short link';
+       $aboutPlan->save();
     }
 }
