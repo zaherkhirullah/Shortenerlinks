@@ -128,7 +128,7 @@
                @if($refUsers)
                     <table class="table table-striped table-flip-scroll cf">
                         <thead class="cf">
-                            <tr>
+                            <tr class="table-bordered">
                                 <th>@lang('lang.username')</th>
                                 <th>@lang('lang.earnings')</th>
                                 <th>@lang('lang.my_earnings')</th>
@@ -137,7 +137,7 @@
                         <tbody>
                         
                         @foreach($refUsers as $user)
-                            <tr>
+                            <tr >
                                 <td>{{ $user->username }}</td>
                             <td class="v-middle">{{$earn->TotalEarnings($user->id)}} $</td>
                                 <td class="v-middle text-success">
@@ -146,8 +146,9 @@
                                 </td>
                             </tr>
                         @endforeach
-                            <tr>
-                                <td>Toplam :</td>
+                    
+                            <tr class="table-bordered text-info">
+                                <td><b>Toplam :<b></td>
                                 <td>  {{$user_earnings}} $</td>                                
                                 <td>  {{$my_earnings}} $</td>
                             </tr>
