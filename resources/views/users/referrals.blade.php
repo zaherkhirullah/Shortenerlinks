@@ -125,7 +125,7 @@
                <div class="text-center">
                 <h4 class="font-thin m-t-xl text-info"><b>@lang('lang.my_referrals') </b></h4>
                </div>
-               @if(count($refUsers))
+               @if($refUsers)
                     <table class="table table-striped table-flip-scroll cf">
                         <thead class="cf">
                             <tr>

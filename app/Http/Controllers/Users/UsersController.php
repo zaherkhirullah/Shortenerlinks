@@ -131,7 +131,8 @@ class UsersController extends Controller
     {
         $user_id = Auth::id();
         $refUsers=User::where('referred_by',$user_id)->get();
-         if(count($refUsers)){
+         if(count($refUsers))
+         {
              $user_earnings = $earn->ReferralEarnings($user_id);
              $my_earnings =$earn->Referral_MyEarnings($user_id);
         }
