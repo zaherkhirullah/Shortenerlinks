@@ -141,10 +141,16 @@
                                 <td>{{ $user->username }}</td>
                             <td class="v-middle">{{$earn->TotalEarnings($user->id)}} $</td>
                                 <td class="v-middle text-success">
-                                    {{$my_earnings}} $
+                                    {{$earn->userRef_Earnings(Auth::id(),$user->id)}}$
+                                   
                                 </td>
                             </tr>
                         @endforeach
+                            <tr>
+                                <td>Toplam :</td>
+                                <td>  {{$user_earnings}} $</td>                                
+                                <td>  {{$my_earnings}} $</td>
+                            </tr>
                         </tbody>
                     </table>
                @else

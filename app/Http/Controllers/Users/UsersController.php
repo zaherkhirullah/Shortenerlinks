@@ -136,7 +136,7 @@ class UsersController extends Controller
              $my_earnings =$earn->Referral_MyEarnings($user_id);
         }
 
-        return view('users.referrals',compact('refUsers','my_earnings','earn'));
+        return view('users.referrals',compact('refUsers','my_earnings','user_earnings','earn'));
     }
 
     public function withdraw()

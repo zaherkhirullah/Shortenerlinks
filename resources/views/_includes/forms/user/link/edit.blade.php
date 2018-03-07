@@ -78,7 +78,7 @@
      </div>
      <div class="col-md-8">
      {{  Form::label('alias','Edit Alias')   }}
-     {{ Form::text('alias',$link->alias,
+     {{ Form::text('alias',$link->slug,
         ['placeholder' =>'Insert Alias', 'required'=>'required',
         'id'=>'alias','class' =>"form-control " ])  
         }}

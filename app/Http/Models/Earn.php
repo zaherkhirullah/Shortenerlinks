@@ -32,7 +32,7 @@ class Earn extends Model
         {
             $earn += $linkk->earnings;
         }
-       
+
         return $earn;
     }
 
@@ -45,7 +45,7 @@ class Earn extends Model
                 ['created_at',">",Today()],
                 ['created_at',"<",Carbon::today()->addDay(1)]
             ])->get();
-    
+
          foreach($files as $filee)
         {
             $earn += $filee->earnings;
@@ -54,10 +54,10 @@ class Earn extends Model
     }
 
     public function TotalLinkEarnings($user_id)
-    {  
+    {
         $earn = 0;
         $links = $this->userlinks($user_id)->get();
-    
+
         foreach($links as $linkk)
         {
             $earn += $linkk->earnings;
@@ -65,7 +65,7 @@ class Earn extends Model
         return $earn;
     }
     public function TotalFileEarnings($user_id)
-    {  
+    {
         $earn = 0;
         $files = $this->userfiles($user_id)->get();
         foreach($files as $filee)
@@ -75,42 +75,58 @@ class Earn extends Model
         return $earn;
     }
     public function TotalEarnings($user_id)
-    {   
-        $earn =  $this->TotalFileEarnings($user_id) + 
+    {
+        $earn =  $this->TotalFileEarnings($user_id) +
                  $this->TotalLinkEarnings($user_id)+
                  $this->Referral_MyEarnings($user_id);
         return $earn;
     }
     public function ReferralEarnings($user_id)
-    {   
+    {
         $earn = 0;
         $refUsers = User::where('referred_by',$user_id)->get();
-               
         foreach($refUsers as $refUser)
-        { 
+        {
             $earn += $this->TotalEarnings($refUser->id);
         }
         return $earn;
     }
     // calculate user referal earnings
     public function Referral_MyEarnings($user_id)
-    {  
+    {
         $earn = 0;
-        $refUsers=User::where('referred_by',$user_id)->get();        
+        $refUsers=User::where('referred_by',$user_id)->get();
         $ref_earnings = Options::where('name','ref_earnings')->first();
         $ref_earnings =$ref_earnings->value;
-        if(count($refUsers)){
+        if(count($refUsers))
+        {
             $user_earnings = $this->ReferralEarnings($user_id);
             $my_earnings =($user_earnings * $ref_earnings)  / 100;
             $earn = $my_earnings;
         }
         return $earn;
     }
+     // calculate user referal earnings
+     public function userRef_Earnings($user_id,$ref_id)
+     {
+         $earn = 0;
+         $refUsers=User::where('referred_by',$user_id)->first();
+         $ref_earnings = Options::where('name','ref_earnings')->first();
+         $ref_earnings =$ref_earnings->value;
+         if(count($refUsers))
+         {
+            //  $user_earnings = $this->ReferralEarnings($user_id);
+             $user_earnings = $this->TotalEarnings($ref_id);
+             $my_earnings =($user_earnings * $ref_earnings)  / 100;
+             $earn = $my_earnings;
+         }
+         return $earn;
+     }
     public function add_to_ref_Balance($ref_id, $price)
-    {  
+    {
         $earn = 0;
         $ref_User = User::where('id',$ref_id)->first();
-     
+
         if($ref_User)
         {
             $ref_earnings = Options::where('name','ref_earnings')->first();
@@ -119,7 +135,7 @@ class Earn extends Model
             $Balance =$ref_User->Balance;
             $Balance->avilable_amount +=   $earn ;
             $Balance->save();
-        }        
+        }
         return $earn;
     }
 }

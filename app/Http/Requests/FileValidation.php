@@ -42,8 +42,6 @@ class FileValidation extends FormRequest
                     'path'  => 'required|min:10|max:15000'   ,
                     'description'  =>'required|min:10|string|max:1000',
                     'url'=>  'string|unique:files,shorted_url,NULL,id,user_id,' . Auth::id(),
-                    
-
                 ];
             }
             case 'PUT':
