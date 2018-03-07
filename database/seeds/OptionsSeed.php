@@ -49,7 +49,7 @@ class OptionsSeed extends Seeder
         $option = new \App\Http\Models\Options();
         $option->name='ref_earnings';
         $option->display_name='referral earnings per houndred %';
-        $option->value=3;
+        $option->value=20;
         $option->save();
         
 

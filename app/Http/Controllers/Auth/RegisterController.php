@@ -66,6 +66,7 @@ class RegisterController extends Controller
             $userr = User::where([['affiliate_id',$code]])->first();
             $referred_by =  $userr->id;
         }
+        $ip =\Request::ip();
         $ip =geoip($ip)->ip;
         $user =  User::create([
             'first_name' => $data['first_name'],
