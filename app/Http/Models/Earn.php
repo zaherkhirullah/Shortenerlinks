@@ -110,7 +110,7 @@ class Earn extends Model
      public function userRef_Earnings($user_id,$ref_id)
      {
          $earn = 0;
-         $refUsers=User::where('referred_by',$user_id)->first();
+         $refUsers=User::where('referred_by',$user_id)->get();
          $ref_earnings = Options::where('name','ref_earnings')->first();
          $ref_earnings =$ref_earnings->value;
          if(count($refUsers))
