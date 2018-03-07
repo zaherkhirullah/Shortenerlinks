@@ -13,7 +13,8 @@ class file extends Model
   protected $table = 'files';
 
     protected $fillable = ['user_id','domain_id','folder_id','slug','path','title','description',
-    'isDeleted','size','downloads','file_name','views' ,'isPrivate','password','shorted_url',
+    'isDeleted','size','downloads','file_name','views' ,
+    'isPrivate','password','shorted_url','ip',
                           ];
      
 // list All files

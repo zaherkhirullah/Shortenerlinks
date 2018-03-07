@@ -14,7 +14,7 @@ class link extends Model
   protected $fillable = 
   [
    'user_id','domain_id','ad_id','folder_id','slug','clicks',
-   'status','url','shorted_url','alias','isDeleted',
+   'status','url','shorted_url','alias','isDeleted','ip',
   ];
  
     /*

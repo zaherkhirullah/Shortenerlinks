@@ -114,7 +114,8 @@ class LinkController extends Controller
      $domain_id = $data['domain_id'];
      $domain = Domain::find($domain_id);
      $shorted_url =($domain_id ==1)?url('/l/'. $slug) : $domain->url .'/l/'. $slug;
-     
+     $ip = \Request::ip();
+     $ip =geoip($ip)->ip;
      $link = link::create(
       [
         'user_id'    => Auth::id(),
@@ -123,6 +124,7 @@ class LinkController extends Controller
         'ad_id'      => $data['ad_id'],
         'alias'      => $datalias,
         'slug'       => $slug,
+        'ip'         => $ip,
         'url'        => $data['url'],
         'shorted_url' =>$shorted_url ,
       ]);

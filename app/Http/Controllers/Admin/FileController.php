@@ -132,12 +132,16 @@ class fileController extends Controller
         $domain = Domain::find($domain_id);
         $shorted_url =($domain_id ==1)?url('/f/'. $slug) : $domain->url .'/f/'. $slug;
         $UserId = Auth::id();
+     
+         $ip = \Request::ip();       
+        $ip =geoip($ip)->ip;        
         return file::create(
             [
             'user_id'    => $UserId ,
             'domain_id'  => $domain_id,
             'folder_id'  => $folder_id,
             'slug'       => $slug ,
+            'ip'       => $ip ,
             'title'      => $title,
             'file_name'   => $file_name,
             'description'=> $data['description'],

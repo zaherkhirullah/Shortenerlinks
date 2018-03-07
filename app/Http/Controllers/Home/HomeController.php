@@ -10,6 +10,8 @@ use App\Http\Models\Earn;
 use App\Http\Models\linkVisitor;
 use App\Http\Models\Options;
 use App\Http\Models\Country;
+use App\Http\Models\plan;
+use App\Http\Models\aboutPlan;
 use App\Http\Models\fileDownloader;
 use App\Http\Models\advertisements;
 use App\Balance;
@@ -50,18 +52,25 @@ class HomeController extends Controller
     }
     
 
-    public function index()
+    public function index(plan $plan, aboutPlan $aboutPlan)
     {
-   
-        return view('home.home');
+        $plans = $plan->plans()->paginate(20);
+        $about_plans =$aboutPlan->aboutPlans()->get();
+        return view('home.home',compact('plans','about_plans'));
     }
     public function rates()
     {
         $country = new Country();
         $countries =$country->countries()->paginate(20);
+    
         return view ('home.rates',compact('countries'));
     }
-
+    public function plans(plan $plan ,aboutPlan $aboutPlan)
+    {
+        $plans = $plan->plans()->paginate(20);
+        $about_plans =$aboutPlan->aboutPlans()->get();
+        return view('home.plans',compact('plans','about_plans'));
+    }
     public function terms()
     {
         return view('home.terms');

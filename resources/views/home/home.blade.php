@@ -111,7 +111,47 @@
                 </div>
             </div>
         </section>
-
+        <div class="panel panel-default">   
+               <div class="panel-heading">
+            <center>
+                    <h1> @lang('lang.all') @lang('lang.Plans')</h1>
+                </center>
+            </div>
+            <div class="panel-body">  
+                @foreach($plans as $plan)
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                    <!-- PRICE ITEM -->
+                    <div class="panel price panel-info">
+                        <div class="panel-heading  text-center">
+                        <h3>{{$plan->name}}</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                        <p class="lead" style="font-size:28px"><strong>
+                            $ {{$plan->monthly_price}} / month</strong></p>
+                        </div>
+                        <ul class="list-group list-group-flush text-center">
+                            @foreach($plan->aboutsPlans as $about)
+                            <li class="list-group-item"> 
+                            @if($about->value==1)
+                                <i class="icon-ok text-success fa fa-check"> </i>              
+                                @else
+                                    <i class="icon-ok text-danger fa fa-times"></i> 
+                                @endif
+                            @php 
+                            $des=  $about->about_plans($about->about_id)->first();
+                            @endphp
+                            {{$des->name}}
+                            </li>
+                            @endforeach     
+                        </ul>
+                        <div class="panel-footer">
+                        </div>
+                    </div>
+                    <!-- /PRICE ITEM -->
+                    </div>
+                @endforeach
+            </div>
+        </div>
         <section class="section testimonials">
             <div class="container">
                 <h2 class="title text-center">What are people saying about Shortener links?</h2>
@@ -174,5 +214,7 @@
                 </div>
             </div>
         </section>
-    </div>
+          
+           
+        </div>
 @endsection
