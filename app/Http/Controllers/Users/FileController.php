@@ -73,9 +73,9 @@ class fileController extends Controller
 public function update(Request $request, file $file)
 {  
     $domain = Domain::find($request->domain_id);
-   
-    $dattitle=($request->title)?: null;
-    $slug =($request->title)?: str_random(10);
+
+    $dattitle=  $request->title? safeName($request->title):null;
+    $slug =($dattitle)?$dattitle: str_random(7);
     $shorted_url =( $request->domain_id ==1)? url('/f/'.  $slug ) : $domain->url .'/f/'. $slug;
     
     $file->update($request->all());
@@ -129,8 +129,9 @@ public function update(Request $request, file $file)
            $domain_id = $data['domain_id'];
            $folder_id = $data['folder_id'];
            $path = $data['path'];
-           $title=($data['title'])?: null;
-           $slug =($data['title'])?: str_random(7);
+           $title=  $data['title']? safeName($data['title']):null;
+           $slug =($title)?$title: str_random(7);
+         
            if(!empty($path))
            { 
             $upload_file = $this->upload_file($path,null,$slug );

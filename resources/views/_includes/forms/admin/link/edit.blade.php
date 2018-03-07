@@ -10,8 +10,8 @@
 {{ Form::open(array ('route' =>  ['links.update',$link->id],
      'method'  => 'PATCH', 'id'=>'shorten_form' )) }}
      <div style="display: none;">
-	{{ method_field('PATCH') }}
-	{{ csrf_field() }}
+        {{ method_field('PATCH') }}
+        @csrf
 </div>
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">

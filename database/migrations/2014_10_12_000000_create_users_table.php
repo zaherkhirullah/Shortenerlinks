@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
             $table->string('username',255);
             $table->string('email',255);
             $table->integer('role_id')->unsigned()->default(4);
-            $table->integer('plan_id')->unsigned()->default(1);
+            $table->integer('plan_id')->unsigned()->default(2);
             $table->ipAddress('ip')->nullable();	                        
             $table->boolean('confirm_email')->default(0);
             $table->string('password',255);

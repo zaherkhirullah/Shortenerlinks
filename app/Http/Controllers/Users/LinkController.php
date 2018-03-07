@@ -67,10 +67,10 @@ class LinkController extends Controller
     public function update(LinkValidation $request, link $link)
     {
       $domain = Domain::find($request->domain_id);
-
-      $datalias=($request->alias)?: null;
-      $slug =($request->slug)?: str_random(7);
-
+      
+      $datalias=  $request->alias? safeName($request->alias):null;
+      $slug =($datalias)?$datalias: str_random(7);
+      
       $shorted_url =( $request->domain_id ==1)? url('/l/'.  $slug ) : $domain->url .'/l/'. $slug;
       $link->update($request->all());
       if($link->slug != $slug)
@@ -104,13 +104,13 @@ class LinkController extends Controller
     |  private Functions
     |------------------------
     */
-   
+ 
+
   // NewItemew for create new item in table(for calling in store).
   protected function NewItem(array $data)
   {   
-     $datalias=($data['alias'])?: null;
-     $slug =($data['alias'])?: str_random(7);
-   
+    $datalias=  $data['alias']? safeName( $data['alias']):null;
+     $slug =($datalias)?$datalias: str_random(7);
      $domain_id = $data['domain_id'];
      $domain = Domain::find($domain_id);
      $shorted_url =($domain_id ==1)?url('/l/'. $slug) : $domain->url .'/l/'. $slug;

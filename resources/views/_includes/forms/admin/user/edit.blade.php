@@ -1,7 +1,7 @@
-    {{ Form::open(array('route' =>  ['users.update',$user->id],'method'  => 'POST', 'id'=>'Create_form')) }}
+    {{ Form::open(array('route' =>  ['users.update',$user->id],'method'  => 'PATCH', 'id'=>'Create_form')) }}
     <div style="display: none;">
-	{{ method_field('PUT') }}
-	{{ csrf_field() }}
+            {{ method_field('PATCH') }}
+            @csrf
 </div>
 
     <div class="col-md-8">

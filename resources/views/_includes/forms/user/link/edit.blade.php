@@ -7,10 +7,10 @@
         </ul>
     </div>
 @endif
-{{ Form::open(array ('route' => ['link.update',$link->id],'method'  => 'PATCH', 'id'=>'shorten_form')) }}
+{{ Form::open(array ('route' => ['link.update',$link->id],'method'  => 'PUT', 'id'=>'shorten_form')) }}
      <div style="display: none;">
-	{{ method_field('PUT') }}
-	{{ csrf_field() }}
+	 {{ method_field('PUT') }}
+    @csrf
 </div>
 <div class="col-md-12">
   <div class="collapse" id="collapseAdvanced">
@@ -77,8 +77,8 @@
       @endif
      </div>
      <div class="col-md-8">
-     {{  Form::label('slug','Edit Alias')   }}
-     {{ Form::text('slug',$link->slug,
+     {{  Form::label('alias','Edit Alias')   }}
+     {{ Form::text('alias',$link->alias,
         ['placeholder' =>'Insert Alias', 'required'=>'required',
         'id'=>'alias','class' =>"form-control " ])  
         }}

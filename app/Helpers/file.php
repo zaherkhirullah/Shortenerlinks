@@ -47,6 +47,15 @@ return $factor * $get_size_type[0];
 
 }
 
+function safeName($data)
+{   
+  $dizi=array(['.','$','+','<','>','|','*','^','/','(',')','"',"'","\"",'!','&','#','%']);
+  for( $i=0;$i < count($dizi); $i++ )
+  {
+    $data = str_replace($dizi[$i],str_random(1,2),$data);
+  }
+  return $data;
+}
 
 /**
  * Is the mime type an image
