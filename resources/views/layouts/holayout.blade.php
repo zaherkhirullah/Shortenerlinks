@@ -1,6 +1,6 @@
 <!doctype html>
 @if (App::isLocale('ar'))
-<html dir="rtl" lang="{{ app()->getLocale() }}" >
+<html dir="rtl"  lang="{{ app()->getLocale() }}" >
 @else
 <html dir="ltr"  lang="{{ app()->getLocale() }}">
 @endif
@@ -34,12 +34,10 @@
 </head>
 <body class="home-page" >
     @include('_includes.home.header')  
-<div>
-
-    <!--Start Content-->
-    @yield('content')
-    
-</div>
+    <div class="content-body">
+        <!--Start Content-->
+        @yield('content')
+    </div>
     <footer class="footer">
         <div class="footer-content">
             <div class="container">
@@ -88,7 +86,6 @@
             </div>
         </div>
     </footer>
-
     <!-- Scripts -->
     @include('_includes.home.scripts')
     @yield('scripts')
@@ -96,6 +93,5 @@
         <i class="ion ion-chevron-up">
         </i>
     </div>
-
 </body>
 </html>

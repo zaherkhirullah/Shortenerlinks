@@ -266,7 +266,6 @@ public function download_file(Request $request)
             ['created_at',"<",Carbon::today()->addDay(1)]
         ])->get();         
         if(count($file_visitorr) < $AllowedCount )
-        // if(count($file_visitorr) < 100 )
         {
             $fileDownloader = new fileDownloader();
             $fileDownloader->ip = $ip;
@@ -294,8 +293,8 @@ public function download_file(Request $request)
                  $file->save();                   
                  $Balance->avilable_amount += $file_price;
                  $Balance->save();
-                return response()->download($filee, $file->file_name);
             }
+            return response()->download($filee, $file->file_name);            
         }      
 }
 

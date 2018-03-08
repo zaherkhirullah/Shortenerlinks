@@ -15,7 +15,7 @@
             @foreach($files as $file)
             <div class="col-md-4">
                     <div class="panel panel-body">
-                        <ul>
+                    <ul class="list-unstyled">
                             <li> <b class="text-success"> @lang('lang.Name'): </b>  {{$file->slug}}</li>
                             <li> <b class="text-success"> @lang('lang.file_name'): </b>  <small>{{$file->file_name}}</small></li>
                             <li> <b class="text-success">@lang('lang.file_size'): </b>    {{$file->size}}</li>

@@ -96,7 +96,7 @@ Route::prefix('user')->group(function()
      Route::get( '/file/dlist', 'FileController@deletedFiles')->name("file.deletedFiles");
      Route::delete( '/file/restore/{file}',array('uses' => 'FileController@restore', 
                                                'as' => 'file.restore'));
-     // Users Recources
+     // Users Resources
      Route::resource( '/folder', 'FolderController'); 
      Route::resource( '/link',   'LinkController');  
      Route::resource( '/file',   'FileController');
@@ -167,7 +167,7 @@ Route::group(['namespace' => 'Home'], function()
   // captcha file
   Route::get('/f/{slug}', 'HomeController@visitFile')->name('visitFile');
   Route::get('/Fc/f/{slug}', 'HomeController@Fc_visitFile')->name('Fc_visitFile');
-  Route::post('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
+  Route::get('/f/g/{slug}', 'HomeController@getFile')->name('getFile');
   Route::post('/f/dow/{slug}', 'HomeController@downloadFile')->name('downloadFile');
   Route::post('/f/go/{slug}', 'HomeController@goToFile')->name('goFile');
 });
@@ -176,7 +176,7 @@ Route::group(['namespace' => 'Home'], function()
 
 /*
 |=============================
-|  --/ Authouraization /-- 
+|  --/ Authorization /-- 
 |=============================
 */
 

@@ -1,19 +1,25 @@
 @extends('layouts.holayout')
 
 @section('content')
-    <div class="bg-slider-wrapper">
+
+<div class="bg-slider-wrapper">
         <div class="flexslider bg-slider">
             <ul class="slides">
-                <li class="slide slide-1 flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
+                <li class="slide slide-1 flex-active-slide" >
                 </li>
+                {{--  style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"  --}}
             </ul>
         </div>
-    </div>
-    <section class="row">
-            <span class="col-md-4 pull-right">    
+     </div>
+
+     <section class="row">
+        <div class="col-md-6">
+            <span class="row" style=" float: right; margin-right: -100%; position: absoul; opacity: 1; display: block; z-index: 2;">    
                     @include('tools.partials.flash_message') 
             </span>
-    </section>
+        </div>
+     </section>
+    
     <section class="promo section section-on-bg">
         <div class="container text-center ">           
             <h2 class="title"> @lang('lang.shorten_urls')</h2>
@@ -32,7 +38,6 @@
         </div>
     </section>
     <div class="sections-wrapper">
-        
         <section id="why" class="section why">
             <div class="container">
                 <h2 class="title text-center">Earn with Shortener links</h2>
@@ -113,7 +118,7 @@
         </section>
         <div class="panel panel-default">   
                <div class="panel-heading">
-            <center>
+                 <center>
                     <h1> @lang('lang.all') @lang('lang.Plans')</h1>
                 </center>
             </div>
@@ -214,7 +219,5 @@
                 </div>
             </div>
         </section>
-          
-           
-        </div>
+    </div>
 @endsection
