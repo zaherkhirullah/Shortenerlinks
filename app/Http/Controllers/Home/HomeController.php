@@ -286,7 +286,7 @@ public function download_file(Request $request)
                 }
                 $Balance =$User->Balance;
                  //PDF file is stored under project/public/download/info.pdf
-                $filee= public_path(). "/uploads/files/". $file->file_name;
+                $filee= "/uploads/files/". $file->file_name;
                  Session::flash('download.in.the.next.request', $filee);
                  $file->downloads += 1;
                  $file->earnings +=$file_price; 

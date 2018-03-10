@@ -2,7 +2,9 @@
 	<!-- Html tag Starts -->
 	<html lang="{{ app()->getLocale() }}"  class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
 	<!-- Head tag Starts -->
-
+	@if(Session::has('download.in.the.next.request'))
+		<meta http-equiv="refresh" content="5;url={{ Session::get('download.in.the.next.request') }}">
+	@endif
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

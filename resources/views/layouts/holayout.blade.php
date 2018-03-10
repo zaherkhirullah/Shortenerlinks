@@ -28,9 +28,7 @@
     <link rel="stylesheet" href="{{ asset('styles/home/css/bootstrap.css') }}" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-@if(Session::has('download.in.the.next.request'))
-<meta http-equiv="refresh" content="5;url={{ Session::get('download.in.the.next.request') }}">
-@endif
+
 </head>
 <body class="home-page" >
     @include('_includes.home.header')  
