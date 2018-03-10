@@ -10,11 +10,7 @@ class language
 {
     public function handle($request, Closure $next)
     {
-        if(Session::has('lang'))
-		{   
-            $lang =  Session::get('lang');           
-            App::setLocale($lang);
-        }
+        app()->setLocale(\lang());  // lang helper
        return $next($request);  
     }
 }

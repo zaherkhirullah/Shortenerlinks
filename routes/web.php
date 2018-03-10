@@ -18,6 +18,9 @@ Route::prefix('settings')->group(function()
                                    'uses'=>'LanguageController@changelang',));
                                   
     Route::get('lang/{lang}', 'LanguageController@index')->name('lang');
+
+    Route::get('sendmail', 'MailController@sendMails');
+    
   });
 });
 
@@ -103,7 +106,7 @@ Route::prefix('user')->group(function()
      Route::resource( '/ticket',  'TicketController');
      Route::resource( '/withdraw','WithdrawController');
      Route::resource( '/plan','PlanController');
-
+     
     });
 });
 

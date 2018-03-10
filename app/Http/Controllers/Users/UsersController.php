@@ -16,6 +16,8 @@ use App\Http\Models\Downloads;
 use App\User;
 use Charts;
 use Auth;
+use App\Mail\withdrawMail;
+use Mail;
 use Carbon\Carbon;
 use \Khill\Lavacharts\Lavacharts;
 class UsersController extends Controller
@@ -24,7 +26,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
-
+   
     public function chart_space()
     {   
         $User = Auth::user();        
@@ -61,7 +63,7 @@ class UsersController extends Controller
             $i = $i<10 ? '0'.$i : $i;
             $date->month = $date->month< 10 ? '0'.$date->month : $date->month;
             $link_views = $view->dateLinkViews($date->year.'-'.$date->month.'-'.$i);
-            $file_downloads = $download->dateFileDownloads( $date);
+            $file_downloads = $download->dateFileDownloads($date->year.'-'.$date->month.'-'.$i);
             $files_links_count->addRow([$date->year.'-'.$date->month.'-'.$i, $link_views , $file_downloads]); 
         }
         return $files_links_count;

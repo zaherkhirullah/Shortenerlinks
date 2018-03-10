@@ -59,7 +59,7 @@ class User extends Authenticatable
       }
       public function tickets()
       {
-          return $this ->hasMany( Ticket::class)->orderBy('created_at','desc');;
+          return $this ->hasMany( Ticket::class)->orderBy('created_at','desc');
       }
 
      // list All users

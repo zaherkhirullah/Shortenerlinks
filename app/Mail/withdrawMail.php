@@ -10,16 +10,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class withdrawMail extends Mailable
 {
     use Queueable, SerializesModels;
-    
-    public $title;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($title)
+    public function __construct($content)
     {
-        $this->$title=$title;
+        $this->content=$content;
     }
 
     /**
@@ -27,11 +26,10 @@ class withdrawMail extends Mailable
      *
      * @return $this
      */
-
     public function build()
     {
-        return $this->from('shortener@links.com')->view('mail.withdraw');
-
-        // return $this->view('view.name');
+        // return $this->from('shortener@links.com')->view('mail.withdraw');
+        return $this->markdown('emails.withdraw')
+         ->with('content',$this->content);
     }
 }

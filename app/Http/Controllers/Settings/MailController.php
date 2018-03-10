@@ -7,9 +7,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailer;
 use App\Mail\withdrawMail;
-
+use Mail;
 class MailController extends Controller
 {
+    public function sendMails()
+    {
+    	$content = [
+    		'title'=> 'Shortenerlinks.com mail', 
+    		'body'=> 'The body of your message.',
+    		'button' => 'Click Here'
+    		];
+    	$receiverAddress = 'zaher.khirullah@gmail.com';
+    	Mail::to($receiverAddress)->send(new withdrawMail($content));
+    	dd('mail send successfully');
+    }
+
     public function sendMail(Request $request ,$page)
     {
         $email = new Mailer();
@@ -38,25 +50,17 @@ class MailController extends Controller
     {
         $page = "mail.confirmEmail";
         $this->sendMail($request::all() ,$page);
-        
 
-        
     }
     public function contact(Request $request,Mailer $email)
     {
         $page = "mail.contatcs";
         $this->sendMail($request::all() ,$page);
-        
-
-        
     }
     public function withdraw(Request $request,Mailer $email)
     {
         $page = "mail.withdraw";
         $this->sendMail($request::all() ,$page);
-        
-        
-
     }
    
     

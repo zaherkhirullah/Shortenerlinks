@@ -28,20 +28,22 @@ class Downloads extends Model
     public function dateFileDownloads($date,$user_id = null)
     { 
         $user_id =$user_id ? $user_id: Auth::id();  
-         $file = new file();
+         $file = new file;
+        
         $files = $file->where(
             [
                 ['user_id',$user_id],
                 ['created_at',">",$date],
                 ['created_at',"<",Carbon::parse($date)->addDay(1)]
             ])->get();
-    
         $Download = 0;
         foreach($files as $filee)
         {
             $Download += $filee->downloads;
+          
         }
         return $Download;
+            
     }
     public function TodayFileDownloads($user_id=null)
     {   
