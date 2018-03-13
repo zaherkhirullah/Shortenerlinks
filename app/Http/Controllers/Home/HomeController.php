@@ -16,6 +16,7 @@ use App\Http\Models\fileDownloader;
 use App\Http\Models\advertisements;
 use App\Balance;
 use App\User;
+use Carbon\Carbon;
 use Auth;
 use Session;
 class HomeController extends Controller
@@ -100,7 +101,7 @@ class HomeController extends Controller
    
     public function goToLink(Request $request)
     {  
-         $option  = new Options;
+        $option  = new Options;
         $link    = new link; 
         $linkVisitor = new linkVisitor;
         $visit_link = Options::where('name','count_visit_link')->first() ;
@@ -173,7 +174,8 @@ class HomeController extends Controller
         return view('visitor.Fcaptcha',compact('file','site_key','ads'));
     }
     public function getFile(Request $request)
-    {   $option  = new Options;
+    {  
+         $option  = new Options;
         $file    = new file; 
         $ads= advertisements::skip(3)->take(3);
         $timer = $option->timer();
@@ -253,7 +255,7 @@ class HomeController extends Controller
                     }
                     $Balance =$User->Balance;
                     //PDF file is stored under project/public/download/info.pdf
-                    $filee= /*public_path().*/ "/uploads/files/". $file->file_name;
+                    $filee= public_path(). "/uploads/files/". $file->file_name;
                     Session::flash('download.in.the.next.request', $filee);
                     $file->downloads += 1;
                     $file->earnings +=$file_price;
