@@ -49,23 +49,32 @@ class link extends Model
     {
         return $this->deletedLinks()->where('user_id',Auth::id());
     }
-      public function domain()
-      {
-        return $this->belongsTo(Domain::class); 
-      }
-      public function user()
-      {
-        return $this->belongsTo(User::class); 
-      }
-         public function folder()
-      {
-        return $this->belongsTo(folder::class); 
-      }
-      public function adstype()
-      {
-        return $this->belongsTo(Adstype::class); 
-      }
+    public function linkByslug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
+    public function domain()
+    {
+    return $this->belongsTo(Domain::class); 
+    }
+    public function user()
+    {
+    return $this->belongsTo(User::class); 
+    }
+        public function folder()
+    {
+    return $this->belongsTo(folder::class); 
+    }
+    public function adstype()
+    {
+    return $this->belongsTo(Adstype::class); 
+    }
 
+
+
+
+
+      /******__ Old* */
       public function striposArray($haystack, $needle, $offset = 0)
       {
           if (!is_array($needle)) {

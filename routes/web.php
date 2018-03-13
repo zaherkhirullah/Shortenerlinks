@@ -164,7 +164,7 @@ Route::group(['namespace' => 'Home'], function()
   // captcha link
   Route::get('/l/{slug}', 'HomeController@visitLink')->name('visitLink');
   Route::get('/Fc/l/{slug}', 'HomeController@Fc_visitLink')->name('Fc_visitLink');
-  Route::post('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
+  Route::get('/l/g/{slug}', 'HomeController@getLink')->name('getLink');
   Route::post('/l/go/{slug}', 'HomeController@goToLink')->name('goLink');
 
   // captcha file
