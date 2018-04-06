@@ -141,6 +141,7 @@ return [
     'Message'             => ' Message',
     'created_at'          => ' Created date',
     'updated_at'          => ' Updated date',
+    'visited_at'          => ' Visited date',
     'click_to'            => ' Click to',
     'click'               => ' Click',
     'clicks'              => ' Clicks',

@@ -142,23 +142,23 @@
                                     <div class="modal-content bg-default">
                                     <div class="modal-body">
                                       <div class="padder">
-                                        {{Form::open(array('route' =>['files.destroy',$file->id],
-                                        'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
-                      
-                                        <div class="text-center">
-                                          <h4 id="msg-shorten ">@lang('lang.delete')  @lang('lang.file') </h4>
-                                        </div>
-                                        <p class="text-danger">@lang('lang.are_you_wont')  @lang('lang.delete')
-                                          <b class="text-success">{{$file->slug}}</b> @lang('lang.file') ?</p> 
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
-                                                @lang('lang.cancle')
-                                            </button>
-                                            <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
-                                              <i class="fa fa-trash"></i> @lang('lang.delete')
-                                            </button>
+                                          {{Form::open(array('route' =>['files.destroy',$file->id],
+                                          'method'=>'delete','class'=>'form-delete','id'=>'form-delete' )) }}
+                        
+                                          <div class="text-center">
+                                            <h4 id="msg-shorten ">@lang('lang.delete')  @lang('lang.file') </h4>
                                           </div>
-                                          {{Form::close() }}
+                                          <p class="text-danger">@lang('lang.are_you_wont')  @lang('lang.delete')
+                                            <b class="text-success">{{$file->slug}}</b> @lang('lang.file') ?</p> 
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
+                                                  @lang('lang.cancle')
+                                              </button>
+                                              <button id="btn-delete" class="btn btn-rounded  pull-right btn-success" type="submit">
+                                                <i class="fa fa-trash"></i> @lang('lang.delete')
+                                              </button>
+                                            </div>
+                                            {{Form::close() }}
                                         </div>
                                       </div>
                                     </div>
@@ -235,7 +235,7 @@
                 @else
                     <h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.hidden_files')</h2>
                 @endif
-            </center>
+              </center>
             </div>
             @if(Route::is('files.index'))
             <div class="text-clear col-md-12">  </div>

@@ -152,6 +152,8 @@ return [
     'message'           => ' رسالة ',
     'created_at'        => ' تاريخ الإنشاء',
     'updated_at'        => ' تاريخ التعديل',
+    'visited_at'        => ' تاريخ الزيارة',
+    
     'click_to'          => ' إضغط ل',
     'click'             => ' إضغط',
     'clicks'            => ' الضغطات',

@@ -39,6 +39,7 @@ class FileValidation extends FormRequest
                 return [
                     'domain_id'=>  'required|integer',
                     'folder_id'=>  'required|integer',
+                    'title'=>  'string|max:7',
                     'path'  => 'required|min:10|max:15000'   ,
                     'description'  =>'required|min:10|string|max:1000',
                     'url'=>  'string|unique:files,shorted_url,NULL,id,user_id,' . Auth::id(),
@@ -51,7 +52,7 @@ class FileValidation extends FormRequest
                     'domain_id'=>  'required|integer',
                     'folder_id'=>  'required|integer',
                     'path'  => 'required|min:10|max:15000',
-                    'title'=>  'unique:files,slug,' .$this->file->id,
+                    'title'=>  'max:7|string|unique:files,slug,' .$this->file->id,
                 ];
             }
             default:break;

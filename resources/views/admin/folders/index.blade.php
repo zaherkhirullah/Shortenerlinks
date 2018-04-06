@@ -96,7 +96,12 @@
 				@else
 				<div class="col-md-8 col-md-offset-2">
 					<center> 
-						<h2 class="text-danger alert alert-warning"> @lang('lang.dont_have') @lang('lang.folders')</h2>
+						<div class="text-danger alert alert-warning"> 
+							<h4> 
+								<i class="text-lg fa fa-info-circle"></i>																	
+								@lang('lang.dont_have') @lang('lang.folders')
+							</h4>
+						</div>
 					</center>
 				</div>
 				@if(Route::is('folders.index'))

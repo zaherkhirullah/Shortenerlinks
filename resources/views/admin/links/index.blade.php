@@ -126,8 +126,8 @@
 
                   <div class="text-center">
                     <h4 id="msg-shorten ">Delete Shorten link</h4>
-                  </div>
-                  <p class="text-danger">@lang('lang.are_you_wont')  Delete
+                  </div>wont
+                  <p class="text-danger">@lang('lang.are_you_want')  Delete
                     <b class="text-success">{{$link->slug}}</b> link ?</p> 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
@@ -155,7 +155,7 @@
                     <div class="text-center">
                       <h4 id="msg-shorten ">Hidden Shorten link</h4>
                     </div>
-                    <p class="text-danger">@lang('lang.are_you_wont')  Hidden
+                    <p class="text-danger">@lang('lang.are_you_want')  Hidden
                       <b class="text-success">{{$link->slug}}</b> link ?</p> 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-rounded pull-left btn-default" data-dismiss="modal">
@@ -184,7 +184,7 @@
                       <h4 id="msg-shorten ">UnHidden link</h4>
                     </div>
                     <hr>
-                    <p>@lang('lang.are_you_wont')  UnHidden
+                    <p>@lang('lang.are_you_want')  UnHidden
                       <b class="text-info">
                         {{$link->slug}} </b> link ?
                       </p> 

@@ -73,26 +73,26 @@ class UsersController extends Controller
         $lava = new Lavacharts;
         $link = new link;
         $visitors = $lava->DataTable();
-     $visitors->addStringColumn('Country')
+        $visitors->addStringColumn('Country')
                    ->addNumberColumn('visitors');
-    $links = $link->userLinks(Auth::id())->get();
-    
-    foreach($links as $link)
-    {   
-        $linkVisitors =linkVisitor::where('link_id',$link->id)->get();
-        //        
-        foreach($linkVisitors as $visitor)
-        {
-            $links_count =linkVisitor::where('country',$visitor->country)->count();
-            $visitors->addRow(array($visitor->country, $links_count ));
+        $links = $link->userLinks(Auth::id())->get();
+        
+        foreach($links as $link)
+        {   
+            $linkVisitors =linkVisitor::where('link_id',$link->id)->get();
+            //        
+            foreach($linkVisitors as $visitor)
+            {
+                $links_count =linkVisitor::where('country',$visitor->country)->count();
+                $visitors->addRow(array($visitor->country, $links_count ));
+            }
         }
+        return $visitors;
     }
-    return $visitors;
-}
     
 
     public function dashboard(Earn $earn ,Views $view,Downloads $download)
-    {   
+    {  
         $user_id = Auth::id();
         $TodayLinkEarnings= $earn->TodayLinkEarnings($user_id);
         $TodayFileEarnings= $earn->TodayFileEarnings($user_id);

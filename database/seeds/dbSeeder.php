@@ -54,7 +54,8 @@ class dbSeeder extends Seeder
         $plan->display_name='Visitors';
         $plan->space_size=1;
         $plan->monthly_price=0;
-        $plan->yearly_price=0;
+        $plan->yearly_price=0;              
+        $plan->max_file_size=size_toByte(200);          
         $plan->save();
         $plan = new \App\Http\Models\plan();
         $plan->name='member';
@@ -62,6 +63,8 @@ class dbSeeder extends Seeder
         $plan->space_size=100;
         $plan->monthly_price=0;
         $plan->yearly_price=0;
+        $plan->ref_earnings=20;        
+        $plan->max_file_size=size_toByte(5000);  
         $plan->save();
         $plan = new \App\Http\Models\plan();
         $plan->name='professional';
@@ -69,6 +72,9 @@ class dbSeeder extends Seeder
         $plan->space_size=100000000000;
         $plan->monthly_price=11.95;
         $plan->yearly_price=125;
+        $plan->ref_earnings=25;
+        $plan->max_file_size=size_toByte(10000);  
+                
         $plan->save();
 
         $user = new \App\User();
