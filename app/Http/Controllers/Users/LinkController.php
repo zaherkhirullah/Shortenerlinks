@@ -55,12 +55,13 @@ class LinkController extends Controller
    
     public function visitors($link)
     { 
+      
         $lava = new Lavacharts;
-        $link = new link;
         $visitors = $lava->DataTable();
         $visitors->addStringColumn('Country')
                 ->addNumberColumn('visitors');
         $linkVisitors =linkVisitor::where('link_id',$link->id)->get();     
+      
         foreach($linkVisitors as $visitor)
         {
           $links_count =linkVisitor::where('country',$visitor->country)->count();
@@ -72,9 +73,9 @@ class LinkController extends Controller
     public function show(link $link)
     {
       $lava = new Lavacharts; // See note below for Laravel
+      
       $vsitors =   $this->visitors($link);
       $lava->GeoChart('visitors', $vsitors);
-      
       $visitors = DB::table('link_visitors')->where('link_id',$link->id)->get();
       return view('users.links.show',compact('link','lava','visitors'));
     }
