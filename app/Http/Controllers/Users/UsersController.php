@@ -20,6 +20,7 @@ use App\Mail\withdrawMail;
 use Mail;
 use Carbon\Carbon;
 use \Khill\Lavacharts\Lavacharts;
+
 class UsersController extends Controller
 {
     public function __construct()
@@ -115,10 +116,12 @@ class UsersController extends Controller
               
         $lava = new Lavacharts; // See note below for Laravel
         $files_links= $this->chart_files_links();
-        $visitors =          $this->visitors();
-        $reasons =          $this->chart_space();
-        $lava->DonutChart('IMDB', $reasons,     ['title' => \Lang::get('lang.use_cloud_space'),]);
-        $lava->LineChart('Temps', $files_links, ['title' => \Lang::get('lang.Files') .' & '.  \Lang::get('lang.Links')]);
+        $visitors =   $this->visitors();
+        $reasons =    $this->chart_space();
+        $lava->DonutChart('IMDB', $reasons,  
+           ['title' => \Lang::get('lang.use_cloud_space'),]);
+        $lava->LineChart('Temps', $files_links,
+         ['title' => \Lang::get('lang.Files') .' & '.  \Lang::get('lang.Links')]);
         $lava->GeoChart('visitors', $visitors);
 
     $array = array([

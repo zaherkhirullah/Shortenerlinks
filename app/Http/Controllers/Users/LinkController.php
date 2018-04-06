@@ -7,11 +7,15 @@ use App\Http\Requests\LinkValidation;
 use App\Http\Controllers\Controller;
 use App\Http\Models\folder;
 use App\Http\Models\Domain;
+use App\Http\Models\linkVisitor;
 use App\Http\Models\Adstype;
 use App\Http\Models\link;
 use Session;
 use Auth;
 use DB;
+use \Khill\Lavacharts\Lavacharts;
+use Charts;
+
 class LinkController extends Controller
 {
     
@@ -48,12 +52,31 @@ class LinkController extends Controller
       Session::flash('success',' Sucessfully created the ' .$request->url . ' link .');
       return redirect()->route('link.index');
     }
+   
+    public function visitors($link)
+    { 
+        $lava = new Lavacharts;
+        $link = new link;
+        $visitors = $lava->DataTable();
+        $visitors->addStringColumn('Country')
+                ->addNumberColumn('visitors');
+        $linkVisitors =linkVisitor::where('link_id',$link->id)->get();     
+        foreach($linkVisitors as $visitor)
+        {
+          $links_count =linkVisitor::where('country',$visitor->country)->count();
+          $visitors->addRow(array($visitor->country, $links_count ));
+        }
+        return $visitors;
+    }
     // show link details
     public function show(link $link)
     {
+      $lava = new Lavacharts; // See note below for Laravel
+      $vsitors =   $this->visitors($link);
+      $lava->GeoChart('visitors', $vsitors);
+      
       $visitors = DB::table('link_visitors')->where('link_id',$link->id)->get();
-
-        return view('users.links.show',compact('link','visitors'));
+      return view('users.links.show',compact('link','lava','visitors'));
     }
     // edit link details
     public function edit(link $link)

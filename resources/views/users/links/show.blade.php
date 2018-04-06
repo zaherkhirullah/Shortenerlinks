@@ -6,6 +6,11 @@
 <center>
     <h2> @lang('lang.visit')  @lang('lang.links') {{$visitors->count()}}</h2>
 </center>
+<div class="col-md-4">
+    <div id="pop-div"></div>
+    {{--  // With Lava class alias  --}}
+    <?=$lava->render('GeoChart', 'visitors', 'pop-div') ?>
+</div>
 @foreach ($visitors as $visitor)
 <div class="col-md-4">
         <div  class="panel panel-body">
@@ -20,5 +25,6 @@
         </div>
     </div>
 @endforeach
+
 </div>
 @endsection
