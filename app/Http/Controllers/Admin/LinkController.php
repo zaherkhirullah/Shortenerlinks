@@ -9,9 +9,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\folder;
 use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
+use App\Http\Models\linkVisitor;
 use App\Http\Models\link;
 use Session;
 use Auth;
+use DB;
+use \Khill\Lavacharts\Lavacharts;
+use Charts;
 class LinkController extends Controller
 {
     
@@ -45,10 +49,31 @@ class LinkController extends Controller
       $this->NewItem($request->all());
       return redirect()->route('links.index'); 
     }
+    public function visitors($link)
+    {
+        $lava = new Lavacharts;
+        $visitors = $lava->DataTable();
+        $visitors->addStringColumn('Country')
+                ->addNumberColumn('visitors');
+                $linkVisitors =linkVisitor::where('link_id',$link->id)->get();  
+                
+        foreach( $linkVisitors as $visitor)
+        {
+          $visitors->addRow(array($visitor->country,$linkVisitors->count()));
+        }
+        return $visitors;
+    }
+    
     // show link details
     public function show(link $link)
     {
-        return view('admin.links.show',compact('link'));
+        $lava = new Lavacharts; // See note below for Laravel
+      
+        $vsitors =   $this->visitors($link);
+        $lava->GeoChart('visitors', $vsitors);
+        $visitors = DB::table('link_visitors')->where('link_id',$link->id)->get();
+        
+        return view('admin.links.show',compact('link','lava','visitors'));
     }
     // edit link details
     public function edit(link $link)

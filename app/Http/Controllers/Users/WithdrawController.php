@@ -78,7 +78,7 @@ class WithdrawController extends Controller
             $Balance->save();
         }
 
-        Session::flash('success' , 'Sucessfully has been hided the ' .$withdraw->amount .' withdraw :)');
+        Session::flash('success' , 'Sucessfully has been cancled your ' .$withdraw->amount .' withdraw request :)');
         return redirect()->route('withdraw.index');
     }
     // for delete withdraw
@@ -120,7 +120,9 @@ class WithdrawController extends Controller
               'amount'  => $amount,
               'status'  => 1,
               'withdrawal_method_id'  => $withdrawal_method_id,
-              'withdraw_address'      => $data['withdraw_address'],
+              'withdraw_address'      => '-',
+            //   'withdraw_address'      =>  $data['withdraw_address'],
+             
             ]);
             Session::flash('success',' Sucessfully created your request (' .$amount . ') and Pending we will return message on email  .');
         if($withdraw)

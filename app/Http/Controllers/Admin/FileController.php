@@ -6,12 +6,16 @@ use App\Http\Models\folder;
 use App\Http\Models\file;
 use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
+use App\Http\Models\fileDownloader;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 use Auth;
 use Session;
+use DB;
+use \Khill\Lavacharts\Lavacharts;
+use Charts;
 class fileController extends Controller
 {
 
@@ -53,25 +57,44 @@ class fileController extends Controller
         return view('admin.files.Form',compact('domains','folders','ads'));
     }
     // build file
-        public function store(FileValidation $request)
-        { 
-        $this->NewItem($request->all());
-        Session::flash('success',' Sucessfully Created the ' .$request->slug . ' file .');
-        return redirect()->route('files.index')->
-                with( ['message'=>' Sucessfully Created :)']);
+    public function store(FileValidation $request)
+    { 
+    $this->NewItem($request->all());
+    Session::flash('success',' Sucessfully Created the ' .$request->slug . ' file .');
+    return redirect()->route('files.index')->
+            with( ['message'=>' Sucessfully Created :)']);
+    }
+    public function downloaders($file)
+    {
+        $lava = new Lavacharts;
+        $downloaders = $lava->DataTable();
+        $downloaders->addStringColumn('Country')
+                ->addNumberColumn('downloaders');
+                $fileDownloaders =fileDownloader::where('file_id',$file->id)->get();  
+                
+        foreach( $fileDownloaders as $downloader)
+        {
+        $downloaders->addRow(array($downloader->country,$fileDownloaders->count()));
         }
+        return $downloaders;
+    }
 
     // show file details
     public function show(file $file)
     {
-        return view('admin.files.show',compact('file'));
+        $lava = new Lavacharts; // See note below for Laravel
+        $downloders =   $this->downloaders($file);
+        $lava->GeoChart('downloaders', $downloders);
+        $downloaders = DB::table('file_downloaders')->where('file_id',$file->id)->get();
+       
+        return view('admin.files.show',compact('file','lava','downloaders'));
     }
     // edit file details
     public function edit(file $file)
     {
-        $domains = Domain::pluck('name', 'id');
+        $domains =  Domain::pluck('name', 'id');
         $ads=      Adstype::pluck('name', 'id');
-        $folders=    Folder::pluck('name', 'id');
+        $folders=   Folder::pluck('name', 'id');
 
         return view('admin.files.Form',compact('domains','folders','ads','file'));
     }

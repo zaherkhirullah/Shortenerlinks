@@ -54,8 +54,7 @@ class LinkController extends Controller
     }
    
     public function visitors($link)
-    { 
-      
+    {
         $lava = new Lavacharts;
         $visitors = $lava->DataTable();
         $visitors->addStringColumn('Country')

@@ -6,6 +6,7 @@ use App\Http\Models\file;
 use App\Http\Models\folder;
 use App\Http\Models\Domain;
 use App\Http\Models\Adstype;
+use App\Http\Models\fileDownloader;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FileValidation;
 use Auth;
 use Session;
+use DB;
+use \Khill\Lavacharts\Lavacharts;
+use Charts;
 class fileController extends Controller
 {
 
@@ -54,41 +58,61 @@ class fileController extends Controller
       $this->NewItem($request->all());
       return redirect()->route('file.index');
     }
+    
+    public function downloaders($file)
+    {
+        $lava = new Lavacharts;
+        $downloaders = $lava->DataTable();
+        $downloaders->addStringColumn('Country')
+                ->addNumberColumn('downloaders');
+                $fileDownloaders =fileDownloader::where('file_id',$file->id)->get();  
+                
+        foreach( $fileDownloaders as $downloader)
+        {
+        $downloaders->addRow(array($downloader->country,$fileDownloaders->count()));
+        }
+        return $downloaders;
+    }
 // show file details
-      public function show(file $file)
-      {
-          return view('users.files.show',compact('file'));
-      }
+    public function show(file $file)
+    {
+        $lava = new Lavacharts; // See note below for Laravel
+        $downloders =   $this->downloaders($file);
+        $lava->GeoChart('downloaders', $downloders);
+        $downloaders = DB::table('file_downloaders')->where('file_id',$file->id)->get();
+       
+        return view('users.files.show',compact('file','lava','downloaders'));
+    }
 // edit file details
-      public function edit(file $file)
-      {
-         $domains = Domain::pluck('name', 'id');
-         $ads=Adstype::pluck('name', 'id');
-         $folders=folder::pluck('name', 'id');
-        return view('users.files.Form',compact('domains','folders','ads'))->withfile($file);
-  
-      }
+    public function edit(file $file)
+    {
+        $domains = Domain::pluck('name', 'id');
+        $ads=Adstype::pluck('name', 'id');
+        $folders=folder::pluck('name', 'id');
+    return view('users.files.Form',compact('domains','folders','ads'))->withfile($file);
+
+    }
 
 // update function
-public function update(Request $request, file $file)
-{  
-    $domain = Domain::find($request->domain_id);
+    public function update(Request $request, file $file)
+    {  
+        $domain = Domain::find($request->domain_id);
 
-    $dattitle=  $request->title? safeName($request->title):null;
-    $slug =($dattitle)?$dattitle: str_random(7);
-    $shorted_url =( $request->domain_id ==1)? url('/f/'.  $slug ) : $domain->url .'/f/'. $slug;
-    
-    $file->update($request->all());
-    if($file->slug != $slug)
-    $file->slug = $slug;
-    else; 
-    $file->shorted_url = $shorted_url;
+        $dattitle=  $request->title? safeName($request->title):null;
+        $slug =($dattitle)?$dattitle: str_random(7);
+        $shorted_url =( $request->domain_id ==1)? url('/f/'.  $slug ) : $domain->url .'/f/'. $slug;
+        
+        $file->update($request->all());
+        if($file->slug != $slug)
+        $file->slug = $slug;
+        else; 
+        $file->shorted_url = $shorted_url;
 
-    if($file->save())
-    Session::flash('success',' Sucessfully updated the ' .$slug . ' file .');
-    return redirect()->route('file.index');
+        if($file->save())
+        Session::flash('success',' Sucessfully updated the ' .$slug . ' file .');
+        return redirect()->route('file.index');
 
-}
+    }
 // for hide file    
     public function destroy(file $file)
     {
