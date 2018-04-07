@@ -60,12 +60,11 @@ class LinkController extends Controller
         $visitors = $lava->DataTable();
         $visitors->addStringColumn('Country')
                 ->addNumberColumn('visitors');
-        $linkVisitors =linkVisitor::where('link_id',$link->id)->get();     
-      
-        foreach($linkVisitors as $visitor)
+                $linkVisitors =linkVisitor::where('link_id',$link->id)->get();  
+                
+        foreach( $linkVisitors as $visitor)
         {
-          $links_count =linkVisitor::where('country',$visitor->country)->count();
-          $visitors->addRow(array($visitor->country, $links_count ));
+          $visitors->addRow(array($visitor->country,$linkVisitors->count()));
         }
         return $visitors;
     }
